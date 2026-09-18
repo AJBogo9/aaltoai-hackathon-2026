@@ -1,0 +1,48 @@
+# --- Sponsor and partner data: never commit ---
+data/*
+!data/.gitkeep
+
+# --- Secrets ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+service-account*.json
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Editors ---
+.vscode/
+.idea/
+*.swp
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+dist/
+build/
+*.egg-info/
+
+# --- Node ---
+node_modules/
+.next/
+.vite/
+npm-debug.log*
+pnpm-debug.log*
+yarn-error.log*
+
+# --- Rust ---
+target/
+
+# --- Misc ---
+.cache/
+*.log
