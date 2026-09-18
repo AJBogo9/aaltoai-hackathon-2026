@@ -1,0 +1,12 @@
+# Analysis stack for the hackathon. Recreate with:
+#   uv venv && uv pip install -r requirements.txt
+pandas
+numpy
+pyarrow
+matplotlib
+scipy
+scikit-learn
+networkx
+pyreadr          # reads the partner's .RData files, used once by scripts/convert_rdata.py
+jupyter
+jupytext
