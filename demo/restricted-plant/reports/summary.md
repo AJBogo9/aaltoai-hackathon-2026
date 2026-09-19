@@ -1,20 +1,20 @@
-# Process Fault Analysis Summary
+# Process Fault Audit Summary
 
-unit_01.csv: 53 columns, 59 faults detected
-unit_02.csv: 53 columns, 57 faults detected
-unit_03.csv: 53 columns, 50 faults detected
-unit_04.csv: 53 columns, 165 faults detected
-unit_05.csv: 53 columns, 48 faults detected
-unit_06.csv: 53 columns, 56 faults detected
-unit_07.csv: 53 columns, 52 faults detected
-unit_08.csv: 53 columns, 56 faults detected
-unit_09.csv: 53 columns, 47 faults detected
-unit_10.csv: 53 columns, 50 faults detected
-unit_11.csv: 53 columns, 49 faults detected
-unit_12.csv: 53 columns, 58 faults detected
-unit_13.csv: 53 columns, 55 faults detected
-unit_14.csv: 53 columns, 46 faults detected
-unit_15.csv: 53 columns, 52 faults detected
-unit_16.csv: 53 columns, 55 faults detected
-unit_17.csv: 53 columns, 48 faults detected
-unit_18.csv: 53 columns, 78 faults detected
+unit_01.csv: 7 faults detected (details in unit_01.csv.json).
+unit_02.csv: 2 faults detected (details in unit_02.csv.json).
+unit_03.csv: 2 faults detected (details in unit_03.csv.json).
+unit_04.csv: 2 faults detected (details in unit_04.csv.json).
+unit_05.csv: 3 faults detected (details in unit_05.csv.json).
+unit_06.csv: 2 faults detected (details in unit_06.csv.json).
+unit_07.csv: 2 faults detected (details in unit_07.csv.json).
+unit_08.csv: 1 faults detected (details in unit_08.csv.json).
+unit_09.csv: 2 faults detected (details in unit_09.csv.json).
+unit_10.csv: 2 faults detected (details in unit_10.csv.json).
+unit_11.csv: 1 faults detected (details in unit_11.csv.json).
+unit_12.csv: 2 faults detected (details in unit_12.csv.json).
+unit_13.csv: 2 faults detected (details in unit_13.csv.json).
+unit_14.csv: 2 faults detected (details in unit_14.csv.json).
+unit_15.csv: 2 faults detected (details in unit_15.csv.json).
+unit_16.csv: 2 faults detected (details in unit_16.csv.json).
+unit_17.csv: 1 faults detected (details in unit_17.csv.json).
+unit_18.csv: 2 faults detected (details in unit_18.csv.json).

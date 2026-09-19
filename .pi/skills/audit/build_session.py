@@ -1,20 +1,32 @@
 #!/usr/bin/env python3
 """Build a walkthrough session file from the existing audit reports.
 
-Reads reports/summary.md + reports/unit_*.csv.json, writes
-reports/walkthrough/session.json. Derives the four things the report schema
-does not expose:
+Reads reports/unit_*.csv.json, writes reports/walkthrough/session.json.
+Derives the four things the report schema does not expose:
   1. events  - the per-column findings regrouped into whole events
-  2. primary - the "led by tag_NN" driver, parsed out of summary.md prose
+  2. primary - the driver column for each system event
   3. clean   - the rationale for the files with findings: []
   4. order   - a teaching order, clean file first
 
+reports/summary.md is optional. When present it enriches the session with row
+counts, the per-file prose line, the "led by tag_NN" driver and the clean-file
+rationale; when absent those are derived from the reports or left null, and the
+walkthrough still builds.
+
 Reports are never modified. Standard library only.
 """
-import json, os, re, glob, collections
+import argparse, json, os, re, glob, collections
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
+_parser = argparse.ArgumentParser()
+_parser.add_argument(
+    "--workspace",
+    required=True,
+    help="Absolute path to the workspace this pi instance was given with /workspace. "
+    "The skill may be installed outside the workspace, so its own location is not used.",
+)
+_args = _parser.parse_args()
+
+ROOT = os.path.abspath(_args.workspace)
 REPORTS = os.path.join(ROOT, "reports")
 OUT = os.path.join(REPORTS, "walkthrough")
 
@@ -32,10 +44,16 @@ def severity(layer, fault_type, n_cols):
 
 
 def parse_summary(path):
-    """Pull per-file driver column and clean rationale out of the prose."""
+    """Pull per-file driver column and clean rationale out of the prose.
+
+    Optional input: an absent or unreadable summary.md yields an empty mapping
+    and every consumer below falls back to the per-file reports.
+    """
     info = collections.defaultdict(dict)
+    if not os.path.isfile(path):
+        return info
     for line in open(path):
-        m = re.match(r"\s*-\s+\*\*(unit_\d+\.csv)\*\*\s*\((\d+) rows\)\s*-\s*(.*)", line)
+        m = re.match(r"\s*-\s+\*\*(\S+\.csv)\*\*\s*\((\d+) rows\)\s*-\s*(.*)", line)
         if not m:
             continue
         fname, rows, rest = m.group(1), int(m.group(2)), m.group(3).strip()
@@ -52,9 +70,23 @@ def parse_summary(path):
     return info
 
 
+_DRIVER_RE = re.compile(r"\b(driver|drives|driven by|led by|leads|initiat|origin|root)", re.I)
+
+
+def pick_primary(members):
+    """Driver column when summary.md did not name one.
+
+    Prefer a column whose own evidence prose claims it led, then the most
+    confident column; ties keep report order, so the choice is deterministic.
+    """
+    flagged = [m for m in members if _DRIVER_RE.search(m.get("evidence") or "")]
+    pool = flagged or members
+    return max(pool, key=lambda m: m.get("confidence", 0.0))["column"]
+
+
 def main():
     summary = parse_summary(os.path.join(REPORTS, "summary.md"))
-    files = sorted(glob.glob(os.path.join(REPORTS, "unit_*.csv.json")))
+    files = sorted(glob.glob(os.path.join(REPORTS, "*.csv.json")))
     units, n_findings = [], 0
 
     for path in files:
@@ -76,7 +108,7 @@ def main():
             cols = [m["column"] for m in members]
             primary = meta.get("primary") if layer == "system" else None
             if primary not in cols:
-                primary = cols[0]
+                primary = pick_primary(members)
             events.append({
                 "layer": layer,
                 "fault_type": ftype,

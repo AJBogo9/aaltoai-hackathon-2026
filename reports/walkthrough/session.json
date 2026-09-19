@@ -26,381 +26,381 @@
  "column_schema": [
   {
    "column": "sample",
-   "type": "counter",
-   "role": "index",
    "confidence": 0.3,
-   "evidence": "name matches an index column"
+   "evidence": "name matches an index column",
+   "role": "index",
+   "type": "counter"
   },
   {
    "column": "timestamp",
-   "type": "counter",
-   "role": "index",
    "confidence": 0.3,
-   "evidence": "name matches an index column"
+   "evidence": "name matches an index column",
+   "role": "index",
+   "type": "counter"
   },
   {
    "column": "tag_01",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_02",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_03",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_04",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_05",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_06",
-   "type": "flow",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_07",
-   "type": "flow",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_08",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_09",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_10",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_11",
-   "type": "composition",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_12",
-   "type": "composition",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_13",
-   "type": "temperature",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_14",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_15",
-   "type": "pressure",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_16",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_17",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_18",
-   "type": "flow",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_19",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_20",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_21",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_22",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_23",
-   "type": "pressure",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_24",
-   "type": "pressure",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_25",
-   "type": "flow",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_26",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_27",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_28",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_29",
-   "type": "pressure",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_30",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_31",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_32",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_33",
-   "type": "flow",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_34",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_35",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_36",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_37",
-   "type": "composition",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_38",
-   "type": "pressure",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_39",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_40",
-   "type": "temperature",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_41",
-   "type": "pressure",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_42",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_43",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_44",
-   "type": "pressure",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_45",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_46",
-   "type": "pressure",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_47",
-   "type": "temperature",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_48",
-   "type": "composition",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_49",
-   "type": "composition",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_50",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_51",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_52",
-   "type": "level",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   }
  ],
  "units": {

@@ -1,16 +1,27 @@
 #!/usr/bin/env python3
 """Show the raw data behind an event, so the human sees it instead of reading about it.
 
-  python3 show_window.py unit_04 tag_36 tag_49 --window 180 891
+  python3 show_window.py <unit> <ref_column> <column>... --window <start> <end>
 
 First column given is the reference (the event's driver). For each column prints
 median and spread before vs inside the window, its correlation with the
 reference at the best lag, and the raw values at onset.
+Requires --workspace DIR - the folder this pi instance was given with
+/workspace. The skill may be installed outside the workspace, so its own
+location is not used. Data is read from the first of <workspace>/sensordata,
+<workspace>/data, or <workspace> itself that holds *.csv.
 """
 import csv, sys, os, statistics as st
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-DATA = os.path.join(os.path.abspath(os.path.join(HERE, "..", "..", "..")), "data")
+
+def find_data_dir(workspace):
+    for cand in ("sensordata", "data", "."):
+        p = os.path.join(workspace, cand)
+        if os.path.isdir(p) and any(f.endswith(".csv") for f in os.listdir(p)):
+            return p
+    print(f"no .csv files found in {workspace} (looked in sensordata/, data/, and the "
+          "workspace root)", file=sys.stderr)
+    sys.exit(1)
 
 
 def num(x):
@@ -20,8 +31,8 @@ def num(x):
         return None
 
 
-def load(unit, cols):
-    path = os.path.join(DATA, unit + ".csv")
+def load(data_dir, unit, cols):
+    path = os.path.join(data_dir, unit + ".csv")
     series = {c: [] for c in cols}
     with open(path) as fh:
         for row in csv.DictReader(fh):
@@ -65,6 +76,14 @@ def stats(v, lo, hi):
 
 def main():
     args = sys.argv[1:]
+    if "--workspace" not in args:
+        print("--workspace is required: pass the folder this pi instance was given "
+              "with /workspace (it is named in your system prompt).", file=sys.stderr)
+        sys.exit(1)
+    k = args.index("--workspace")
+    workspace = os.path.abspath(os.path.expanduser(args[k + 1]))
+    args = args[:k] + args[k + 2:]
+
     if "--window" in args:
         k = args.index("--window")
         lo, hi = int(args[k + 1]), int(args[k + 2])
@@ -72,7 +91,8 @@ def main():
     else:
         lo = hi = -1
     unit, cols = args[0], args[1:]
-    series = load(unit, cols)
+    data_dir = find_data_dir(workspace)
+    series = load(data_dir, unit, cols)
     ref = series[cols[0]]
 
     print("%s   window [%d, %d]   reference = %s\n" % (unit, lo, hi, cols[0]))

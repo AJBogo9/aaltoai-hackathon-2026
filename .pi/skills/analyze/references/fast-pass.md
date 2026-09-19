@@ -24,9 +24,10 @@ by file, do not iterate, do not verify.
 ## What the script does per file
 
 - **schema**: one entry per column, filled in by rule, not by thinking.
-  `sample`/`timestamp` → `role: index`. Everything else → `role: observed`,
-  `type` guessed from the column's value range or just `"flow"`.
-  `confidence: 0.3`, `evidence: "range-based guess"`.
+  `sample`/`timestamp` → `role: index`. Everything else → `role: observed`
+  and `type: "unknown"` — never guess a type, not even here; the fast pass is
+  allowed to be wrong about faults, not to invent what a sensor measures.
+  `confidence: 0.3`, `evidence: "fast pass, no inference"`.
 - **findings**: for each column, flag a block only if something is trivially
   obvious in a single pass — missing/empty values, a run of identical values,
   a value far outside the column's own range, or the largest jump in the
@@ -56,6 +57,10 @@ acceptable.
   ]
 }
 ```
+Write it **one record per line** — `json.dumps(entry, separators=(",",":"))` per
+schema entry and per finding — not `json.dump(..., indent=2)`, which turns 54
+columns into 380 lines of nothing. Same JSON, ~6x fewer lines.
+
 `reports/summary.md`: one plain line per file.
 
 Never read `truth/` or `labels/`.

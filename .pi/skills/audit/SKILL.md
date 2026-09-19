@@ -1,12 +1,19 @@
 ---
 name: audit
-description: Read out the plant_audit reports - the sensor set, then every fault and finding, file by file - so a person can get a grasp of 52 unlabelled sensors. Use when someone wants to review the audit, see what was found, or drill into a specific unit or channel. Not for producing the audit itself.
+description: Read out a folder of analyse reports - the sensor set, then every fault and finding, file by file - so a person can get a grasp of undocumented process data. Use when someone wants to review an audit, see what was found, or drill into a specific unit or channel. Not for producing the audit itself.
 ---
 
 # Sensor walkthrough
 
-The reports in `reports/` describe 18 recordings of the same 52 sensors. Present
-what they found, clearly and in order. Reports are read-only.
+Turn the reports in `<workspace>/reports/` into text a person can read.
+Reports are read-only.
+
+**Everything you say comes from the reports in front of you.** This skill
+carries no facts about any plant, dataset, tag or file — it describes how to
+present reports, never what they contain. If a number, a tag name, a
+coefficient or a verdict is not in the reports you just read, you do not have
+it: say so, or leave it out. Do not fill a gap from memory, from a previous
+session, or from what a dataset of this kind usually looks like.
 
 Do not interview the person. State the findings and the evidence for them. If
 they want to correct or annotate something they will say so; record that in
@@ -16,99 +23,114 @@ question back to them.
 ## Setup
 
 ```bash
-python3 .pi/skills/audit/build_session.py
+python3 .pi/skills/audit/build_session.py --workspace /abs/path/to/workspace
 ```
 
-Writes `reports/walkthrough/session.json`, which regroups the 158 per-column
-findings into 21 whole events and adds four things the report schema does not
-carry: the driver column for each event, the reasoning for the clean files, a
-severity, and a teaching order. Read that file, not the raw reports.
+`--workspace` is required: it's the folder this pi instance was given with
+`/workspace`, named in your system prompt under `## Workspace`. The skill may
+be installed outside the workspace, so its own location is never used to find
+`reports/`.
 
-## Before you start: three known errors
+Writes `<workspace>/reports/walkthrough/session.json`, which regroups the
+per-column findings into whole events and adds four things the report schema
+does not carry: the driver column for each event, the reasoning for the clean
+files, a severity, and a teaching order. Read that file, not the raw reports.
 
-The reports contain three wrong claims. Correct them where they come up; never
-repeat them as fact.
+`reports/summary.md` is **optional**. It is prose enrichment, not an input the
+walkthrough depends on: when it is there, the session picks up each file's row
+count, its one-line description, its named driver and its clean-file rationale
+from it. When it is absent — or written in some other shape than the parser
+expects — the session still builds, the driver is derived from the findings'
+own `evidence` and confidence, and `rows`, `summary_line` and `clean_rationale`
+come back `null`. Do not stop, and do not ask for a summary to be written:
+present what `session.json` carries and leave out the fields that are null.
 
-1. **`tag_02` / `tag_11` are not a redundant pair.** The summary says
-   `tag_11 = tag_02/100`. The real ratio is ~98 and drifts per file, residuals
-   3.6-4.8% of range. Coupled, not duplicates.
-2. **`tag_08` / `tag_19` is approximate, not exact** - ~2% residual, coefficient
-   varies per file.
-3. **`tag_15`, `tag_16`, `tag_17`, `tag_51` are not actuators.** The summary
-   lists them as actuated *and* as 6-min assays. They update on a strict
-   2-sample grid, so the apparent "lead" is a sampling artifact. Only `tag_14`
-   and `tag_36` are defensible.
-
-The two redundancies that do hold exactly, in all 18 files:
-`tag_01 = 0.4321*tag_20 + 29.893` and `tag_21 = 0.3398*tag_31 + 37.053`
-(max residual 0.0007). Never feed both into a model.
+If `session.json` has no units in it, say the reports folder is empty or
+unreadable and stop. Do not describe an audit that isn't there.
 
 ## 1. Orientation - once, at the start
 
-From `column_schema`, which is identical in all 18 reports:
+A short read of `column_schema` and the session totals: how many files, how
+many columns, how many events, how many files came back clean.
 
-- 52 tags. By type: 19 composition, 12 flow, 11 temperature, 3 level, 2 pressure.
-- **Three update rates:** 33 continuous, 14 on a 2-sample (6 min) grid, 5 on a
-  5-sample (15 min) grid. The sampled ones look frozen but are not - a repeat
-  run at its own period is normal, a run *longer* than the period is a miss.
-  Say this early; it is the most confusing thing about the data.
-- The two exact redundant pairs above.
-- Levels (`tag_08`/`tag_19`, `tag_30`) integrate - they ramp instead of settling.
-- `tag_48` sits slightly negative in every file. Normal, not a fault.
+Then whatever the schema `evidence` fields actually establish about the
+columns — an update rate, an exact redundancy between two columns, a column
+that integrates rather than settling, a column that saturates. Report these in
+the reports' own terms and only where a report says so.
+
+Two things to hold to here:
+
+- **Do not say what any column measures.** Columns in undocumented data are
+  unlabelled, and `analyze` does not guess a physical quantity — it writes
+  `type: "unknown"`. Pass that through. Never present a type census ("so many
+  temperatures, so many flows"); if a report carries a `type` other than
+  `unknown` or `counter`, it is stale output from an older run — ignore the
+  field rather than repeat it.
+- **Distinguish behaviour from identity.** "this column ramps
+  instead of settling" is something a report measured. "this column is a level"
+  is a guess. Say the
+  first, never the second.
+
+If a report states an exact relationship between two columns, repeat it with
+its residual and say plainly that both should never go into the same model.
 
 ## 2. Inventory - the whole dataset on one screen
 
-Then a compact table of all 18 files: unit, rows, verdict, layers present,
-event count, and a one-line description of each event. This is the main
-deliverable - most people want the inventory, not a guided tour.
+A compact table of every file: unit, rows, verdict, layers present, event
+count, and a one-line description of each event. This is the main deliverable
+- most people want the inventory, not a guided tour. Drop the rows column if
+`rows` is null throughout: that only means no summary.md was parsed, not that
+anything is missing from the audit.
 
-Group it by layer so the shape is visible:
-- **4 clean** - unit_05, 08, 13, 16
+Group it by layer so the shape is visible - clean files first, then:
 - **record** faults - the file is wrong as written
 - **measurement** faults - one channel moved, nothing coupled to it did
 - **system** faults - coupled channels moved together, the plant really changed
 
+Which files are clean, and how many, comes from the session. Do not carry a
+list of clean files between sessions.
+
 ## 3. Per file - on request, or in `teaching_order` if they want all of it
 
 `teaching_order` runs clean files first, then record, measurement, system, with
-unit_07 last (five stacked events, including 24 frozen channels). Following it
-means every file builds on the previous one - but if they ask for a specific
-unit, just go there.
+the most stacked file last. Following it means every file builds on the
+previous one - but if they ask for a specific unit, just go there.
 
 For each file state the verdict and event count, then each event:
 
 - what happened, in one sentence, from `layer` + `fault_type`
 - **the driver first** (`primary_column`), then the coupled columns as a group.
-  Never enumerate 28 columns individually - say how many and name the driver.
+  Never enumerate them individually - say how many and name the driver.
 - window and onset
 - confidence and severity, and say plainly when confidence is low
 - for a clean file, `clean_rationale` - what nearly looked like a fault and why
-  it was not
+  it was not. If it is null, say the file came back clean and leave it there.
 
 ## 4. Evidence on demand
 
 When an event needs backing, or someone doubts a call:
 
 ```bash
-python3 .pi/skills/audit/show_window.py unit_04 tag_36 tag_49 --window 180 891
+python3 .pi/skills/audit/show_window.py --workspace /abs/path/to/workspace <unit> <ref_column> <other columns...> --window <start> <end>
 ```
 
-First column is the reference - use the event's driver. Prints median and spread
-before vs inside the window, each other column's correlation with the reference
-at its best lag, and the raw values at onset. Show numbers, not sparklines.
+First column is the reference - use the event's `primary_column`, and take the
+window from the event. Prints median and spread before vs inside the window,
+each other column's correlation with the reference at its best lag, and the raw
+values at onset. Show numbers, not sparklines.
 
-The `evidence` field on each event holds the audit's own prose per column; quote
-it when it adds something the numbers do not.
+The `evidence` field on each event holds the audit's own prose per column;
+quote it when it adds something the numbers do not.
 
-## Cross-file facts worth stating
+## Cross-file statements
 
-All 18 files are the same 52 sensors - the affine coefficients above are
-identical to four decimals in every file, which is what proves it. So a channel
-fact is a plant fact.
+Only make one when the session supports it. Whether the files are even the same
+sensor set is a claim to check, not assume - identical column names plus an
+exact relationship reproducing across every file is what would establish it,
+and `analyze` records that in the schema evidence if it found it.
 
-36 of the 49 flagged channels appear in more than one file; `tag_36`, `tag_22`,
-`tag_13`, `tag_47` each appear in five. When listing a channel, say where else
-it shows up. Exception: a `record` fault is a property of that one file, not the
+When a channel appears in several files, say which ones, counted from the
+session. Exception: a `record` fault is a property of that one file, not the
 plant - do not generalise those.
 
 ## Answering a specific question
@@ -117,11 +139,11 @@ If someone asks for a specific piece of data - a single tag, a single file, a
 yes/no, a number - answer only that, in whatever form fits the question. Do
 not wrap it in the orientation, inventory, or per-file walkthrough format
 above; those apply when giving a tour of the audit, not when someone wants one
-fact. Still correct any of the three known errors if they touch the answer,
-and still pull from `session.json` rather than the raw reports.
+fact. Pull it from `session.json`. If it isn't in there, say so.
 
 ## Notes file
 
 If they correct something or supply a real tag name, append it to
 `reports/walkthrough/notes.json` and carry it forward for the rest of the
-session. Do not solicit it.
+session. Do not solicit it. Notes are the only place real tag identities ever
+come from - they are supplied by a person, never reconstructed from the data.
