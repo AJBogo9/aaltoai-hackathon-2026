@@ -26,7 +26,7 @@ scripts/launch.sh demo/confidential-hr -- --provider mistral
 
 Needs docker or podman, and the API keys of the providers you want set in your shell. The demo workspaces,
 providers and a scripted walkthrough are in [`demo/DEMO.md`](demo/DEMO.md). How the guard works is in
-[`.pi/extensions/workspace-guard/README.md`](.pi/extensions/workspace-guard/README.md).
+[`.pi/extensions/confidentiality-broker/README.md`](.pi/extensions/confidentiality-broker/README.md).
 
 ## How we work
 

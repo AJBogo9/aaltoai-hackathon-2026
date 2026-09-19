@@ -215,7 +215,7 @@ export default function (pi: ExtensionAPI) {
     const isWrite = WRITE_TOOLS.has(name);
     const isShell = SHELL_TOOLS.has(name);
     if (!isRead && !isWrite && !isShell) {
-      return { block: true, reason: `The ${name} tool is not allowed by workspace-guard.` };
+      return { block: true, reason: `The ${name} tool is not allowed by confidentiality-broker.` };
     }
 
     const loaded = loadEnv(ctx);

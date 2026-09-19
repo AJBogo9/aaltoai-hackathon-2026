@@ -1,4 +1,4 @@
-# workspace-guard
+# confidentiality-broker
 
 A [pi](https://pi.dev) extension that runs the agent on one folder, the **workspace**, and stops data from
 flowing to a model provider that is not cleared for it.

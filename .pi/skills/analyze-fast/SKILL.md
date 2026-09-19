@@ -49,7 +49,7 @@ Given the workspace, the script resolves:
 - **Output** — `<workspace>/reports`. Override with `--out DIR`.
 
 Both are checked to be inside the workspace (symlinks resolved) and the run is
-refused otherwise — pi's workspace guard would block the write regardless, so
+refused otherwise — pi's confidentiality broker would block the write regardless, so
 failing early gives a clearer message. Writing into `hyvätraportit/` is refused
 unless you pass `--force`: that folder holds the hand-checked reports and demo
 output must not overwrite them.
