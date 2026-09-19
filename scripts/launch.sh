@@ -46,6 +46,8 @@ REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
 POLICY="$REPO/.pi/confidentiality.json"
 GUARD="$REPO/.pi/extensions/workspace-guard"
 SKILLS="$REPO/.pi/skills"
+VERDA_EXT="$REPO/.pi/extensions/verda.ts"
+ENV_LOCAL="$REPO/.env.local"
 
 DRY_RUN=0
 REBUILD=0
@@ -140,8 +142,22 @@ KEY_ARGS=()
 for var in GEMINI_API_KEY OPENAI_API_KEY MISTRAL_API_KEY ANTHROPIC_API_KEY; do
   if [[ -n "${!var:-}" ]]; then KEY_ARGS+=(-e "$var"); fi
 done
-if [[ ${#KEY_ARGS[@]} -eq 0 ]]; then
-  echo "launch: warning: none of GEMINI/OPENAI/MISTRAL/ANTHROPIC_API_KEY is set; only local providers will work." >&2
+# --- Verda / Norrin. That provider is not built into pi: it is registered by .pi/extensions/verda.ts,
+# which reads its key from the gitignored .env.local. The repo is not mounted, so mount exactly those two
+# files, both read-only and both OUTSIDE the workspace, so the agent cannot read the key. The env file's
+# path is passed in, since the extension's default (./.env.local) would resolve inside the workspace.
+VERDA_MOUNTS=()
+VERDA_EXT_ARGS=()
+if [[ -f "$VERDA_EXT" && -f "$ENV_LOCAL" ]] && grep -Eq '^[[:space:]]*(export[[:space:]]+)?VERDA_API_KEY[[:space:]]*=[[:space:]]*[^[:space:]]' "$ENV_LOCAL"; then
+  VERDA_MOUNTS=(
+    --mount "type=bind,src=$VERDA_EXT,dst=/opt/guard/extensions/verda.ts,readonly"
+    --mount "type=bind,src=$ENV_LOCAL,dst=/opt/guard/verda.env,readonly"
+    -e VERDA_ENV_FILE=/opt/guard/verda.env)
+  VERDA_EXT_ARGS=(-e /opt/guard/extensions/verda.ts)
+fi
+
+if [[ ${#KEY_ARGS[@]} -eq 0 && ${#VERDA_EXT_ARGS[@]} -eq 0 ]]; then
+  echo "launch: warning: no provider key found (GEMINI/OPENAI/MISTRAL/ANTHROPIC_API_KEY in the environment, or VERDA_API_KEY in .env.local); only local providers will work." >&2
 fi
 
 # --- Start pi. Only /workspace is writable; everything else in the container is read-only.
@@ -161,13 +177,15 @@ RUN=("$RT" run --rm --init "${TTY_ARGS[@]}" "${USER_ARGS[@]}"
   -e HOME=/tmp/home -e PI_CODING_AGENT_DIR=/tmp/pi-agent
   -e PI_WORKSPACE=/workspace -e "PI_WORKSPACE_LEVEL=$LEVEL" -e PI_POLICY_FILE=/opt/guard/policy.json
   -e PI_SANDBOXED=1 -e PI_OFFLINE=1 -e PI_TELEMETRY=0
-  ${KEY_ARGS[@]+"${KEY_ARGS[@]}"})
+  ${KEY_ARGS[@]+"${KEY_ARGS[@]}"}
+  ${VERDA_MOUNTS[@]+"${VERDA_MOUNTS[@]}"})
 if [[ -n "${PI_MODELS_FILE:-}" ]]; then
   [[ -f "$PI_MODELS_FILE" ]] || die "PI_MODELS_FILE is not a file: $PI_MODELS_FILE"
   RUN+=(--mount "type=bind,src=$(cd "$(dirname "$PI_MODELS_FILE")" && pwd -P)/$(basename "$PI_MODELS_FILE"),dst=/tmp/pi-agent/models.json,readonly")
 fi
 RUN+=("$IMAGE" pi
   --no-extensions -e /opt/guard/extensions/workspace-guard/index.ts
+  ${VERDA_EXT_ARGS[@]+"${VERDA_EXT_ARGS[@]}"}
   --no-skills --skill /opt/guard/skills
   --no-approve --no-context-files
   --tools read,bash,edit,write,grep,find,ls

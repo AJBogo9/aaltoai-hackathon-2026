@@ -16,7 +16,9 @@ const DEFAULT_BASE = "https://containers.datacrunch.io/data-sovereignty-mistral-
 const CONTEXT_WINDOW = 262_144;
 
 function readEnvFile(cwd: string): Record<string, string> {
-  const file = path.join(cwd, ENV_FILE);
+  // scripts/launch.sh mounts .env.local outside the workspace and names it here, because the repo is
+  // not mounted in the container and cwd is the workspace.
+  const file = process.env.VERDA_ENV_FILE || path.join(cwd, ENV_FILE);
   let text: string;
   try {
     text = fs.readFileSync(file, "utf8");
