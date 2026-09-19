@@ -5,20 +5,25 @@ description: Read out a folder of analyse reports - the sensor set, then every f
 
 # Sensor walkthrough
 
-Turn the reports in `<workspace>/reports/` into text a person can read.
-Reports are read-only.
+Turn the reports in `<workspace>/reports/` into one short report. Same shape
+every run. Reports are read-only.
 
 **Everything you say comes from the reports in front of you.** This skill
-carries no facts about any plant, dataset, tag or file — it describes how to
-present reports, never what they contain. If a number, a tag name, a
-coefficient or a verdict is not in the reports you just read, you do not have
-it: say so, or leave it out. Do not fill a gap from memory, from a previous
+carries no facts about any plant, dataset, tag or file. If a number, a tag
+name, a coefficient or a verdict is not in the session you just read, you do
+not have it: leave it out. Do not fill a gap from memory, from a previous
 session, or from what a dataset of this kind usually looks like.
 
-Do not interview the person. State the findings and the evidence for them. If
-they want to correct or annotate something they will say so; record that in
-`reports/walkthrough/notes.json` and move on. Never end a section with a
-question back to them.
+Two things never to say:
+
+- **What a column measures.** Columns here are unlabelled and `analyze` writes
+  `type: "unknown"`. Report behaviour ("ramps instead of settling"), never
+  identity ("is a level"). A `type` other than `unknown` or `counter` is stale
+  output from an older run - ignore the field.
+- **Anything the session does not carry.** Null fields get dropped from the
+  output, not guessed at.
+
+Do not interview the person and never end on a question back to them.
 
 ## Setup
 
@@ -26,87 +31,94 @@ question back to them.
 python3 .pi/skills/audit/build_session.py --workspace /abs/path/to/workspace
 ```
 
-`--workspace` is required: it's the folder this pi instance was given with
+`--workspace` is required: the folder this pi instance was given with
 `/workspace`, named in your system prompt under `## Workspace`. The skill may
 be installed outside the workspace, so its own location is never used to find
 `reports/`.
 
-Writes `<workspace>/reports/walkthrough/session.json`, which regroups the
-per-column findings into whole events and adds four things the report schema
-does not carry: the driver column for each event, the reasoning for the clean
-files, a severity, and a teaching order. Read that file, not the raw reports.
+Writes `<workspace>/reports/walkthrough/session.json`. Read that file, not the
+raw reports. `reports/summary.md` is optional enrichment - without it `rows`,
+`summary_line` and `clean_rationale` come back null. Do not ask for one to be
+written.
 
-`reports/summary.md` is **optional**. It is prose enrichment, not an input the
-walkthrough depends on: when it is there, the session picks up each file's row
-count, its one-line description, its named driver and its clean-file rationale
-from it. When it is absent — or written in some other shape than the parser
-expects — the session still builds, the driver is derived from the findings'
-own `evidence` and confidence, and `rows`, `summary_line` and `clean_rationale`
-come back `null`. Do not stop, and do not ask for a summary to be written:
-present what `session.json` carries and leave out the fields that are null.
+If `session.json` has no units, say the reports folder is empty or unreadable
+and stop.
 
-If `session.json` has no units in it, say the reports folder is empty or
-unreadable and stop. Do not describe an audit that isn't there.
+## The report
 
-## 1. Orientation - once, at the start
+Default output, unless they asked for one specific thing (see below). Nothing
+before it, nothing after it. Every value comes from `session.json`.
 
-A short read of `column_schema` and the session totals: how many files, how
-many columns, how many events, how many files came back clean.
+```
+## Audit - {n_units} files, {n_events} events, {n_clean} clean
 
-Then whatever the schema `evidence` fields actually establish about the
-columns — an update rate, an exact redundancy between two columns, a column
-that integrates rather than settling, a column that saturates. Report these in
-the reports' own terms and only where a report says so.
+{one line per schema `evidence` entry that states an update rate, an exact
+relationship between two columns with its residual, a column that integrates
+rather than settling, or one that saturates. Reports' own terms, only where a
+report says so. Nothing else from the schema - an entry saying a column is not
+inferable from unlabelled data carries nothing and is skipped. Skip the whole
+section if that leaves it empty.}
 
-Two things to hold to here:
+| File | Rows | Verdict | Layers | Events | What |
+|---|---|---|---|---|---|
+| unit_01 | 8640 | clean | - | 0 | {clean_rationale, else "clean"} |
+| unit_02 | 8640 | faulted | record | 2 | {each event's fault_type, joined "; "} |
 
-- **Do not say what any column measures.** Columns in undocumented data are
-  unlabelled, and `analyze` does not guess a physical quantity — it writes
-  `type: "unknown"`. Pass that through. Never present a type census ("so many
-  temperatures, so many flows"); if a report carries a `type` other than
-  `unknown` or `counter`, it is stale output from an older run — ignore the
-  field rather than repeat it.
-- **Distinguish behaviour from identity.** "this column ramps
-  instead of settling" is something a report measured. "this column is a level"
-  is a guess. Say the
-  first, never the second.
+Clean rows first, then record, then measurement, then system.
+Drop the Rows column entirely if `rows` is null throughout.
 
-If a report states an exact relationship between two columns, repeat it with
-its residual and say plainly that both should never go into the same model.
+### What was found
 
-## 2. Inventory - the whole dataset on one screen
+| Event | Fault | Driver | +cols | Window | Why |
+|---|---|---|---|---|---|
+| unit_03:e1 | step_change | tag_07 | 3 | 4100-4400 | {evidence[primary_column], verbatim} |
 
-A compact table of every file: unit, rows, verdict, layers present, event
-count, and a one-line description of each event. This is the main deliverable
-- most people want the inventory, not a guided tour. Drop the rows column if
-`rows` is null throughout: that only means no summary.md was parsed, not that
-anything is missing from the audit.
+Only the events that carry something the inventory does not:
 
-Group it by layer so the shape is visible - clean files first, then:
-- **record** faults - the file is wrong as written
-- **measurement** faults - one channel moved, nothing coupled to it did
-- **system** faults - coupled channels moved together, the plant really changed
+- every `system` event - coupled channels moved together
+- every event with `n_columns` > 1
+- nothing else individually.
 
-Which files are clean, and how many, comes from the session. Do not carry a
-list of clean files between sessions.
+Ordered by severity, then unit. The Why column is the driver's own `evidence`
+string from the session, quoted as written and not paraphrased - it is the
+report's explanation of the call, and it is the reason this table exists.
 
-## 3. Per file - on request, or in `teaching_order` if they want all of it
+Then one line per remaining fault_type, rolled up rather than tabled:
 
-`teaching_order` runs clean files first, then record, measurement, system, with
-the most stacked file last. Following it means every file builds on the
-previous one - but if they ask for a specific unit, just go there.
+```
+9 more single-column record faults: impossible_value (unit_04, unit_06, ...),
+frozen_channel (unit_11).
+```
 
-For each file state the verdict and event count, then each event:
+Two columns are conditional, not default: add **Severity** only when the
+selected events do not all share one, and **Confidence** only when they do not
+all share one value - in a set where every finding scored the same, a column
+repeating it says nothing. When confidence is below 0.5, say so once under the
+table instead.
+```
 
-- what happened, in one sentence, from `layer` + `fault_type`
-- **the driver first** (`primary_column`), then the coupled columns as a group.
-  Never enumerate them individually - say how many and name the driver.
-- window and onset
-- confidence and severity, and say plainly when confidence is low
-- for a clean file, `clean_rationale` - what nearly looked like a fault and why
-  it was not. If it is null, say the file came back clean and leave it there.
+Then stop. That is the whole default report - no per-file tour, no summary
+paragraph, no next steps.
 
-## 4. Evidence on demand
+Two lines may be added after the tables when the session supports them, one
+sentence each, otherwise omitted:
+
+- A channel appearing in several files: name it and count the files. A
+  `record` fault is a property of one file - never generalise those.
+- Whether the files are the same sensor set: only if identical column names
+  plus an exact relationship reproduce across every file, per the schema
+  evidence. Otherwise say nothing.
+
+## Per file - only when asked
+
+For a named unit, or for all of them in `teaching_order` if they ask for the
+full tour. Per event: one sentence from `layer` + `fault_type`, the driver and
+the count of coupled columns, window and onset, severity, and the driver's
+`evidence` quoted. Quote a coupled column's `evidence` too when it says
+something different from the driver's; skip it when it repeats. For a clean
+file, `clean_rationale`, or just that it came back clean.
+
+## Evidence on demand
 
 When an event needs backing, or someone doubts a call:
 
@@ -117,33 +129,19 @@ python3 .pi/skills/audit/show_window.py --workspace /abs/path/to/workspace <unit
 First column is the reference - use the event's `primary_column`, and take the
 window from the event. Prints median and spread before vs inside the window,
 each other column's correlation with the reference at its best lag, and the raw
-values at onset. Show numbers, not sparklines.
-
-The `evidence` field on each event holds the audit's own prose per column;
-quote it when it adds something the numbers do not.
-
-## Cross-file statements
-
-Only make one when the session supports it. Whether the files are even the same
-sensor set is a claim to check, not assume - identical column names plus an
-exact relationship reproducing across every file is what would establish it,
-and `analyze` records that in the schema evidence if it found it.
-
-When a channel appears in several files, say which ones, counted from the
-session. Exception: a `record` fault is a property of that one file, not the
-plant - do not generalise those.
+values at onset. Show numbers, not sparklines. The event's `evidence` field
+holds the audit's own prose per column; quote it when it adds something the
+numbers do not.
 
 ## Answering a specific question
 
-If someone asks for a specific piece of data - a single tag, a single file, a
-yes/no, a number - answer only that, in whatever form fits the question. Do
-not wrap it in the orientation, inventory, or per-file walkthrough format
-above; those apply when giving a tour of the audit, not when someone wants one
-fact. Pull it from `session.json`. If it isn't in there, say so.
+A single tag, a single file, a yes/no, a number: answer only that, in whatever
+form fits. No tables, no orientation. Pull it from `session.json`; if it isn't
+in there, say so.
 
 ## Notes file
 
 If they correct something or supply a real tag name, append it to
 `reports/walkthrough/notes.json` and carry it forward for the rest of the
 session. Do not solicit it. Notes are the only place real tag identities ever
-come from - they are supplied by a person, never reconstructed from the data.
+come from - never reconstructed from the data.
