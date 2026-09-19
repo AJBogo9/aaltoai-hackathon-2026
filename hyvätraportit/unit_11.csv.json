@@ -1,0 +1,816 @@
+{
+  "schema": [
+    {
+      "column": "sample",
+      "type": "integer row counter",
+      "role": "index",
+      "confidence": 0.99,
+      "evidence": "strictly 1..N, unit step; pure counter"
+    },
+    {
+      "column": "timestamp",
+      "type": "ISO-8601 clock",
+      "role": "index",
+      "confidence": 0.99,
+      "evidence": "3-min nominal spacing in all 18 files"
+    },
+    {
+      "column": "tag_01",
+      "type": "indeterminate (noise-dominated)",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "level-ac1 ~0.00: no process dynamics at 3 min. Exactly affine to tag_20 (tag_20=2.3143*tag_01-69.181, residual 0.03% of sd, same slope in all 18 files) -> the two are one signal in two scalings"
+    },
+    {
+      "column": "tag_02",
+      "type": "composition / concentration, percent scale",
+      "role": "observed",
+      "confidence": 0.45,
+      "evidence": "bounded 0-100 (rails at exactly 100.0 in unit_07), pooled median 24.7, level-ac1 0.72 (bounded and noisy, not an integrator). tag_11 is the same signal as a fraction (tag_11=tag_02/98.6, residual 8%)"
+    },
+    {
+      "column": "tag_03",
+      "type": "indeterminate (noise-dominated)",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "level-ac1 ~0.00, very tight band 26.6-27.2, no partner above |r|=0.5 in any file"
+    },
+    {
+      "column": "tag_04",
+      "type": "temperature",
+      "role": "observed",
+      "confidence": 0.25,
+      "evidence": "level-ac1 0.76 with a visible settle; r=+0.66 with tag_13 (the other 341-range channel); updates every 2nd sample (6 min)"
+    },
+    {
+      "column": "tag_05",
+      "type": "indeterminate (noise-dominated)",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "level-ac1 -0.09, band 40.2-42.1, no coupled partner in any file"
+    },
+    {
+      "column": "tag_06",
+      "type": "flow / throughput",
+      "role": "actuated",
+      "confidence": 0.45,
+      "evidence": "leads tag_22(+3), tag_43(+3), tag_39(+3), tag_46(+1), tag_49(-1) in 15-18/18 files; level-ac1 0.97, continuously sampled so the lead is not a sampling artifact; 7 coupled partners. CAVEAT: tag_25 and tag_33 track it at lag 0 (r=0.97-1.00) so which of the three is primary cannot be separated, and none of them saturates"
+    },
+    {
+      "column": "tag_07",
+      "type": "flow",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "magnitude ~3663, level-ac1 0.39 (fast, tracks its driver); only partner tag_15 (r=-0.78), and that apparent lead is tag_15's 2-sample hold"
+    },
+    {
+      "column": "tag_08",
+      "type": "indeterminate, percent scale",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "level-ac1 0.02 (no dynamics) yet exactly affine to tag_19 (tag_19=-0.42095*tag_08+30.57); rails at exactly 100.0 during the unit_07 runaway -> 0-100 span"
+    },
+    {
+      "column": "tag_09",
+      "type": "indeterminate",
+      "role": "observed",
+      "confidence": 0.25,
+      "evidence": "level-ac1 0.75; weak partners tag_10/tag_13 (|r|~0.6); updates every 2nd sample (6 min)"
+    },
+    {
+      "column": "tag_10",
+      "type": "pressure",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "tracks tag_13 at lag 0 with r=+0.91 and the tag_06 group at lag 0 (pressure follows its driver essentially immediately); level-ac1 0.87. Candidate cause, but its lead over the group is not separable from tag_13's"
+    },
+    {
+      "column": "tag_11",
+      "type": "composition / concentration, fraction scale",
+      "role": "observed",
+      "confidence": 0.45,
+      "evidence": "= tag_02/98.6 in all 18 files (residual 8% of sd); median 0.250 vs tag_02 24.7; rails near 1.01 when tag_02 rails at 100"
+    },
+    {
+      "column": "tag_12",
+      "type": "composition (slow analyser)",
+      "role": "observed",
+      "confidence": 0.4,
+      "evidence": "updates only every 5th sample (15 min) in every file -> slow analyser/lab loop; level-ac1 0.81; bounded 0.08-0.12"
+    },
+    {
+      "column": "tag_13",
+      "type": "temperature",
+      "role": "observed",
+      "confidence": 0.45,
+      "evidence": "level-ac1 0.98 with a visible lag behind the tag_06/tag_25/tag_33 flow group (+2 samples) in most files; tight band 338-345 around 341.4; continuously sampled"
+    },
+    {
+      "column": "tag_14",
+      "type": "indeterminate",
+      "role": "observed",
+      "confidence": 0.2,
+      "evidence": "level-ac1 0.31; single weak partner tag_22 (r=+0.62)"
+    },
+    {
+      "column": "tag_15",
+      "type": "composition (pH-like)",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "bounded 6.48-7.43 in every file, level-ac1 0.54; its apparent +2 lead over tag_07/tag_34/tag_28 is explained by its own 2-sample hold, not causality"
+    },
+    {
+      "column": "tag_16",
+      "type": "indeterminate",
+      "role": "observed",
+      "confidence": 0.25,
+      "evidence": "r=+0.96 with tag_32 and +0.95 with tag_37, but the apparent +2 lead is exactly its 2-sample hold; tag_32~tag_37 correlate at lag 0, so tag_16 is a co-measurement, not the cause"
+    },
+    {
+      "column": "tag_17",
+      "type": "composition-related",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "r=-0.91 with tag_02/tag_11; apparent +2 lead is its own 2-sample hold; level-ac1 0.65"
+    },
+    {
+      "column": "tag_18",
+      "type": "flow",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "magnitude ~4509, level-ac1 0.50; partner tag_51 (r=-0.78) whose lead is a 2-sample-hold artifact"
+    },
+    {
+      "column": "tag_19",
+      "type": "indeterminate, derived from tag_08",
+      "role": "observed",
+      "confidence": 0.35,
+      "evidence": "tag_19=-0.42095*tag_08+30.57 with the same slope in every file (residual 4% of sd); level-ac1 0.02"
+    },
+    {
+      "column": "tag_20",
+      "type": "indeterminate (noise-dominated), derived from tag_01",
+      "role": "observed",
+      "confidence": 0.35,
+      "evidence": "tag_20=2.3143*tag_01-69.181, identical slope in all 18 files, residual 0.03% of sd; level-ac1 ~0.00"
+    },
+    {
+      "column": "tag_21",
+      "type": "indeterminate (noise-dominated)",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "level-ac1 -0.01; exactly affine to tag_31 (tag_31=2.9429*tag_21-109.04, residual 0.03% of sd)"
+    },
+    {
+      "column": "tag_22",
+      "type": "composition / purity, percent",
+      "role": "observed",
+      "confidence": 0.4,
+      "evidence": "lags the tag_06/tag_25/tag_33 flow group by 3 samples with r=-0.79 (inverse purity-vs-throughput), tight band 79.7-80.6, level-ac1 0.81"
+    },
+    {
+      "column": "tag_23",
+      "type": "indeterminate",
+      "role": "observed",
+      "confidence": 0.25,
+      "evidence": "level-ac1 0.57, band 2.22-2.31; no partner above |r|=0.5 in any file; updates every 2nd sample (6 min)"
+    },
+    {
+      "column": "tag_24",
+      "type": "indeterminate",
+      "role": "observed",
+      "confidence": 0.25,
+      "evidence": "level-ac1 0.55, band 1.61-1.70; no partner above |r|=0.5 in any file; updates every 2nd sample (6 min)"
+    },
+    {
+      "column": "tag_25",
+      "type": "flow / throughput",
+      "role": "actuated",
+      "confidence": 0.4,
+      "evidence": "r=+0.97 with tag_06 and +0.96 with tag_33 at lag 0; leads tag_22(+3), tag_43(+3), tag_46(+1); level-ac1 0.97. Same caveat as tag_06: the three move together at lag 0, so the primary is not separable"
+    },
+    {
+      "column": "tag_26",
+      "type": "indeterminate (noise-dominated)",
+      "role": "observed",
+      "confidence": 0.25,
+      "evidence": "level-ac1 0.04, band 42.0-42.7, no coupled partner"
+    },
+    {
+      "column": "tag_27",
+      "type": "indeterminate",
+      "role": "observed",
+      "confidence": 0.2,
+      "evidence": "level-ac1 0.50; only partner tag_51 (r=-0.78, lead is a hold artifact)"
+    },
+    {
+      "column": "tag_28",
+      "type": "composition / purity, percent",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "very tight band 94.36-94.83 near a 0-100 ceiling, level-ac1 0.45"
+    },
+    {
+      "column": "tag_29",
+      "type": "indeterminate",
+      "role": "observed",
+      "confidence": 0.2,
+      "evidence": "level-ac1 0.40, band 9.20-9.49, no coupled partner"
+    },
+    {
+      "column": "tag_30",
+      "type": "indeterminate",
+      "role": "observed",
+      "confidence": 0.25,
+      "evidence": "level-ac1 0.06, band 59.2-63.4, no partner above |r|=0.5 in any file"
+    },
+    {
+      "column": "tag_31",
+      "type": "indeterminate (noise-dominated), derived from tag_21",
+      "role": "observed",
+      "confidence": 0.35,
+      "evidence": "tag_31=2.9429*tag_21-109.04, identical slope in all 18 files; level-ac1 -0.01"
+    },
+    {
+      "column": "tag_32",
+      "type": "indeterminate, percent-like",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "r=+0.95 with tag_37 at lag 0; level-ac1 0.64; rails at exactly 0.0 during the unit_07 runaway -> bounded below at 0"
+    },
+    {
+      "column": "tag_33",
+      "type": "flow / throughput",
+      "role": "actuated",
+      "confidence": 0.4,
+      "evidence": "tag_33=1.0424*tag_06-186 (residual 6.5%) i.e. near-duplicate of tag_06; leads tag_22/tag_43/tag_39 by 3; level-ac1 0.97. Primary not separable from tag_06/tag_25"
+    },
+    {
+      "column": "tag_34",
+      "type": "indeterminate",
+      "role": "observed",
+      "confidence": 0.2,
+      "evidence": "level-ac1 0.39; single partner tag_15 (r=-0.79) whose lead is a hold artifact"
+    },
+    {
+      "column": "tag_35",
+      "type": "indeterminate (noise-dominated)",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "level-ac1 0.02, band 23.5-26.8, no coupled partner"
+    },
+    {
+      "column": "tag_36",
+      "type": "valve position / controller output",
+      "role": "actuated",
+      "confidence": 0.45,
+      "evidence": "leads tag_47(+1) and tag_50(+1) in 18/18 files and is continuously sampled, so the lead is real; level-ac1 0.996 (integrating); saturates at ~100.3 (4.4% of unit_07 samples sit on that value) -> a physical 0-100 limit. Only 2 followers, hence moderate confidence"
+    },
+    {
+      "column": "tag_37",
+      "type": "ratio / fraction",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "bounded 0.31-0.37, r=+0.95 with tag_32 at lag 0; level-ac1 0.63"
+    },
+    {
+      "column": "tag_38",
+      "type": "indeterminate",
+      "role": "observed",
+      "confidence": 0.2,
+      "evidence": "level-ac1 0.54, band 8.71-9.07, no coupled partner; updates every 2nd sample (6 min)"
+    },
+    {
+      "column": "tag_39",
+      "type": "indeterminate",
+      "role": "observed",
+      "confidence": 0.2,
+      "evidence": "level-ac1 0.74, band 25.8-26.9; lags the tag_06 group by 3 in 18/18 files but only at r~0.51; updates every 2nd sample (6 min)"
+    },
+    {
+      "column": "tag_40",
+      "type": "fixed reference / setpoint",
+      "role": "observed",
+      "confidence": 0.6,
+      "evidence": "median 120.4 in all 18 files with MAD 0.015 and only ~1.6% distinct values; does not respond to any event in any file"
+    },
+    {
+      "column": "tag_41",
+      "type": "indeterminate",
+      "role": "observed",
+      "confidence": 0.2,
+      "evidence": "level-ac1 0.52, band 1.08-1.43, no coupled partner; updates every 2nd sample (6 min)"
+    },
+    {
+      "column": "tag_42",
+      "type": "indeterminate",
+      "role": "observed",
+      "confidence": 0.2,
+      "evidence": "level-ac1 0.22, band 74.1-75.9, no coupled partner"
+    },
+    {
+      "column": "tag_43",
+      "type": "temperature",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "lags the tag_06/tag_25/tag_33 flow group by 3 samples (r=+0.62..0.68) - a visible thermal lag; level-ac1 0.82; updates every 2nd sample (6 min)"
+    },
+    {
+      "column": "tag_44",
+      "type": "indeterminate",
+      "role": "observed",
+      "confidence": 0.2,
+      "evidence": "level-ac1 0.55, band 2.21-2.39, no coupled partner; updates every 2nd sample (6 min)"
+    },
+    {
+      "column": "tag_45",
+      "type": "composition (slow analyser)",
+      "role": "observed",
+      "confidence": 0.4,
+      "evidence": "updates only every 5th sample (15 min) in every file -> slow analyser/lab loop; level-ac1 0.81; band 52.9-54.6"
+    },
+    {
+      "column": "tag_46",
+      "type": "indeterminate",
+      "role": "observed",
+      "confidence": 0.25,
+      "evidence": "lags the tag_06/tag_25 group by 1-2 samples (r~-0.55); level-ac1 0.69; updates every 2nd sample (6 min)"
+    },
+    {
+      "column": "tag_47",
+      "type": "flow",
+      "role": "observed",
+      "confidence": 0.45,
+      "evidence": "follows tag_36 at +1 sample with r=+0.99 in 18/18 files - a flow tracking its valve almost immediately; level-ac1 0.99; magnitude ~233"
+    },
+    {
+      "column": "tag_48",
+      "type": "composition (slow analyser)",
+      "role": "observed",
+      "confidence": 0.4,
+      "evidence": "updates only every 5th sample (15 min) in every file -> slow analyser/lab loop; level-ac1 0.79; near-zero band 0.001-0.035"
+    },
+    {
+      "column": "tag_49",
+      "type": "composition (slow analyser)",
+      "role": "observed",
+      "confidence": 0.4,
+      "evidence": "updates only every 5th sample (15 min) in every file -> slow analyser/lab loop; level-ac1 0.94; lags tag_13/tag_10; band 0.80-0.87"
+    },
+    {
+      "column": "tag_50",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "level-ac1 0.994 - integrator-like, the slowest-settling channel after tag_36; follows tag_36 at +1 (r=+0.97) and tag_47 (r=+0.95)"
+    },
+    {
+      "column": "tag_51",
+      "type": "indeterminate",
+      "role": "observed",
+      "confidence": 0.2,
+      "evidence": "level-ac1 0.67; partners tag_18/tag_27 (|r|~0.78) but its apparent +2 lead is exactly its own 2-sample hold; updates every 2nd sample (6 min)"
+    },
+    {
+      "column": "tag_52",
+      "type": "composition (slow analyser)",
+      "role": "observed",
+      "confidence": 0.4,
+      "evidence": "updates only every 5th sample (15 min) in every file -> slow analyser/lab loop; level-ac1 0.81; band 42.9-44.7"
+    }
+  ],
+  "findings": [
+    {
+      "column": "tag_05",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.45,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 156, +0 samples relative to the primary group, peak -4.8 pooled sd. Coupled to the primary variables through the plant-wide mode rather than a named partner (0/0 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_06",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.75,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Moves at the leading edge of the event (onset at sample 156, +0 samples relative to the primary group), peak +15.5 pooled sd. 7 of its 7 coupled partners move in the same window, which is what makes this a process change and not an instrument fault."
+    },
+    {
+      "column": "tag_14",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 156, +0 samples relative to the primary group, peak -5.5 pooled sd. Coupled to the primary variables through tag_22 (1/1 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_25",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.75,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Moves at the leading edge of the event (onset at sample 156, +0 samples relative to the primary group), peak +14.6 pooled sd. 6 of its 6 coupled partners move in the same window, which is what makes this a process change and not an instrument fault."
+    },
+    {
+      "column": "tag_26",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.45,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 156, +0 samples relative to the primary group, peak -4.9 pooled sd. Coupled to the primary variables through the plant-wide mode rather than a named partner (0/0 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_28",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 156, +0 samples relative to the primary group, peak +9.1 pooled sd. Coupled to the primary variables through the plant-wide mode rather than a named partner (0/1 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_29",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.45,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 156, +0 samples relative to the primary group, peak -10.7 pooled sd. Coupled to the primary variables through the plant-wide mode rather than a named partner (0/0 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_30",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.45,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 156, +0 samples relative to the primary group, peak +16.4 pooled sd. Coupled to the primary variables through the plant-wide mode rather than a named partner (0/0 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_33",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.75,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Moves at the leading edge of the event (onset at sample 156, +0 samples relative to the primary group), peak +15.5 pooled sd. 6 of its 6 coupled partners move in the same window, which is what makes this a process change and not an instrument fault."
+    },
+    {
+      "column": "tag_13",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 158, +2 samples relative to the primary group, peak -13.6 pooled sd. Coupled to the primary variables through tag_04, tag_06, tag_09, tag_10, tag_33, tag_49 (6/6 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_10",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 160, +4 samples relative to the primary group, peak +12.7 pooled sd. Coupled to the primary variables through tag_06, tag_09, tag_13, tag_22, tag_25, tag_33, tag_49 (7/7 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_22",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 161, +5 samples relative to the primary group, peak -12.4 pooled sd. Coupled to the primary variables through tag_06, tag_10, tag_14, tag_25, tag_33, tag_46 (6/6 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_42",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.45,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 161, +5 samples relative to the primary group, peak -10.1 pooled sd. Coupled to the primary variables through the plant-wide mode rather than a named partner (0/0 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_04",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 162, +6 samples relative to the primary group, peak -9.2 pooled sd. Coupled to the primary variables through tag_13 (1/1 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_38",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.45,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 162, +6 samples relative to the primary group, peak -4.8 pooled sd. Coupled to the primary variables through the plant-wide mode rather than a named partner (0/0 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_39",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.45,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 162, +6 samples relative to the primary group, peak +8.2 pooled sd. Coupled to the primary variables through the plant-wide mode rather than a named partner (0/0 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_50",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 162, +6 samples relative to the primary group, peak +12.5 pooled sd. Coupled to the primary variables through tag_36, tag_47 (2/2 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_51",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 162, +6 samples relative to the primary group, peak -8.4 pooled sd. Coupled to the primary variables through tag_18, tag_27 (2/2 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_09",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 164, +8 samples relative to the primary group, peak +10.7 pooled sd. Coupled to the primary variables through tag_10, tag_13 (2/2 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_17",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 164, +8 samples relative to the primary group, peak -6.8 pooled sd. Coupled to the primary variables through tag_02, tag_11 (2/2 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_18",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 164, +8 samples relative to the primary group, peak +7.4 pooled sd. Coupled to the primary variables through tag_51 (1/1 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_24",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.45,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 164, +8 samples relative to the primary group, peak -4.2 pooled sd. Coupled to the primary variables through the plant-wide mode rather than a named partner (0/0 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_43",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 164, +8 samples relative to the primary group, peak +9.4 pooled sd. Coupled to the primary variables through tag_06, tag_25, tag_33 (3/3 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_44",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.45,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 164, +8 samples relative to the primary group, peak -5.4 pooled sd. Coupled to the primary variables through the plant-wide mode rather than a named partner (0/0 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_46",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 164, +8 samples relative to the primary group, peak -8.6 pooled sd. Coupled to the primary variables through tag_06, tag_22, tag_25 (3/3 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_27",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 165, +9 samples relative to the primary group, peak +7.4 pooled sd. Coupled to the primary variables through tag_51 (1/1 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_02",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 166, +10 samples relative to the primary group, peak +8.9 pooled sd. Coupled to the primary variables through tag_11, tag_17 (2/2 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_11",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 166, +10 samples relative to the primary group, peak +9.1 pooled sd. Coupled to the primary variables through tag_02, tag_17 (2/2 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_16",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 166, +10 samples relative to the primary group, peak -4.9 pooled sd. Coupled to the primary variables through tag_32, tag_37 (2/2 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_23",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.45,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 166, +10 samples relative to the primary group, peak -6.1 pooled sd. Coupled to the primary variables through the plant-wide mode rather than a named partner (0/0 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_32",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 166, +10 samples relative to the primary group, peak -6.4 pooled sd. Coupled to the primary variables through tag_16, tag_37 (2/2 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_49",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 166, +10 samples relative to the primary group, peak +14.8 pooled sd. Coupled to the primary variables through tag_13, tag_10 (2/2 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_37",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 172, +16 samples relative to the primary group, peak -5.9 pooled sd. Coupled to the primary variables through tag_16, tag_32 (2/2 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_36",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 184, +28 samples relative to the primary group, peak +15.7 pooled sd. Coupled to the primary variables through tag_47, tag_50 (2/2 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_47",
+      "window": [
+        156,
+        501
+      ],
+      "layer": "system",
+      "fault_type": "transient_upset",
+      "onset_estimate": 156,
+      "confidence": 0.65,
+      "evidence": "Transient upset between samples 156 and 501; every participating channel returns to its pre-event level afterwards (post-minus-pre medians within 0.5 sd). Responds after the primary group (tag_06, tag_25, tag_33): onset at sample 186, +30 samples relative to the primary group, peak +13.1 pooled sd. Coupled to the primary variables through tag_36, tag_50 (2/2 of its usual partners move in the same window)."
+    },
+    {
+      "column": "tag_30",
+      "window": [
+        168,
+        859
+      ],
+      "layer": "measurement",
+      "fault_type": "bias_step",
+      "onset_estimate": 168,
+      "confidence": 0.7,
+      "evidence": "tag_30 steps from 61.4 to ~77 at sample ~168 (+16.0 = 12 pooled sd) and stays there for the remaining 690 samples. Every other channel in unit_11 returns to its pre-event level by sample ~501 (post-minus-pre medians within 0.5 pooled sd); tag_30's is +11.7 sd. tag_30 has no partner above |r|=0.5 in any of the 18 files, so nothing supports a sustained process change at that level. Read as a sensor that shifted during the upset and did not come back - separate from the transient, which was real."
+    }
+  ]
+}
