@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import * as fs from "node:fs";
 import * as os from "node:os";
 import * as path from "node:path";
-import { checkWritePath, resolveWorkspace } from "./paths.ts";
+import { checkWritePath } from "./paths.ts";
 
 const base = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), "ws-guard-")));
 const cwd = path.join(base, "project");
@@ -18,24 +18,6 @@ fs.symlinkSync(outside, path.join(ws, "escape"));
 fs.symlinkSync(path.join(outside, "nope.txt"), path.join(ws, "dangling"));
 
 after(() => fs.rmSync(base, { recursive: true, force: true }));
-
-test("resolveWorkspace accepts an existing folder below cwd", () => {
-  const r = resolveWorkspace("workspace", cwd);
-  assert.ok(r.ok);
-  assert.equal(r.resolved, ws);
-});
-
-test("resolveWorkspace rejects missing folders, files and empty input", () => {
-  assert.equal(resolveWorkspace("nope", cwd).ok, false);
-  assert.equal(resolveWorkspace("afile", cwd).ok, false);
-  assert.equal(resolveWorkspace("   ", cwd).ok, false);
-});
-
-test("resolveWorkspace rejects cwd, its parents and the filesystem root", () => {
-  assert.equal(resolveWorkspace(".", cwd).ok, false);
-  assert.equal(resolveWorkspace("..", cwd).ok, false);
-  assert.equal(resolveWorkspace("/", cwd).ok, false);
-});
 
 test("relative path inside the workspace is allowed, even when new and nested", () => {
   const r = checkWritePath(ws, "workspace/notes/a.txt", cwd);

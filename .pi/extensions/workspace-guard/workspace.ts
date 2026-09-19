@@ -1,40 +1,8 @@
-import * as fs from "node:fs";
-import { loadMetadata } from "./metadata.ts";
 import type { Metadata } from "./metadata.ts";
-import { resolveWorkspace, within } from "./paths.ts";
-import { clearanceOf, cleared, findPolicyFile, loadPolicy, normalizeLevel, rank } from "./policy.ts";
-import type { Loaded, Policy } from "./policy.ts";
+import { clearanceOf, cleared, normalizeLevel } from "./policy.ts";
+import type { Policy } from "./policy.ts";
 
-export type Active = { workspace: string; policy: Policy; meta: Metadata };
-
-/** Everything /workspace requires: a valid folder, a valid policy, and a valid metadata file in the folder. */
-export function activateWorkspace(arg: string, cwd: string): Loaded<Active> {
-  const dir = resolveWorkspace(arg, cwd);
-  if (!dir.ok) return dir;
-
-  const policyFile = findPolicyFile(cwd);
-  if (!policyFile) {
-    return { ok: false, reason: "No .pi/confidentiality.json found, so the workspace cannot be checked." };
-  }
-  const policy = loadPolicy(policyFile);
-  if (!policy.ok) return policy;
-
-  let policyReal = policyFile;
-  try {
-    policyReal = fs.realpathSync(policyFile);
-  } catch {
-    // keep the unresolved path
-  }
-  if (within(dir.resolved, policyReal)) {
-    return { ok: false, reason: "The workspace must not contain the confidentiality policy." };
-  }
-
-  const meta = loadMetadata(dir.resolved, policy.value);
-  if (!meta.ok) return meta;
-  return { ok: true, value: { workspace: dir.resolved, policy: policy.value, meta: meta.value } };
-}
-
-/** Summary lines for /workspace and /confidentiality. */
+/** Summary lines for /confidentiality. */
 export function describeWorkspace(
   policy: Policy,
   meta: Metadata,
@@ -43,16 +11,11 @@ export function describeWorkspace(
 ): string[] {
   const clearance = clearanceOf(policy, provider);
   const access = cleared(policy, clearance, meta.level)
-    ? "file access is allowed."
-    : `all file access will be refused. Switch to a provider cleared for ${meta.level}.`;
-  const session = normalizeLevel(policy, taint);
-  const lines = [
+    ? "tools are allowed."
+    : `every tool will be refused. Switch to a provider cleared for ${meta.level}.`;
+  return [
     `Workspace level: ${meta.level}.`,
     `Provider ${provider ?? "(none)"} is cleared for ${clearance}: ${access}`,
-    `Session level: ${session}.`,
+    `Session level: ${normalizeLevel(policy, taint)}.`,
   ];
-  if (rank(policy, session) > rank(policy, meta.level)) {
-    lines.push("Writes are disabled here until you start a new session with /new: the session level is above this workspace's label.");
-  }
-  return lines;
 }

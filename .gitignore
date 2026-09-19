@@ -2,6 +2,9 @@
 data/*
 !data/.gitkeep
 
+# --- pi session transcripts written inside a workspace by scripts/launch.sh ---
+.pi-sessions/
+
 # --- Secrets ---
 .env
 .env.*

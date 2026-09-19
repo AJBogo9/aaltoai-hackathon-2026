@@ -2,7 +2,7 @@
   "levels": ["public", "confidential", "restricted"],
   "providers": {
     "google": "public",
-    "openai": "confidential",
+    "openai": "public",
     "mistral": "confidential",
     "lemonade": "restricted",
     "ollama": "restricted"

@@ -4,9 +4,6 @@ import * as path from "node:path";
 
 export type PathCheck = { ok: true; resolved: string } | { ok: false; reason: string };
 
-/** Folders in the project that can never be a workspace, so the agent cannot rewrite its own guard. */
-const PROTECTED_DIRS = [".pi", ".git", ".devcontainer", ".claude"];
-
 export function expandHome(p: string): string {
   if (p === "~") return os.homedir();
   if (p.startsWith("~/")) return path.join(os.homedir(), p.slice(2));
@@ -55,31 +52,6 @@ export function realResolve(target: string): string {
       current = parent;
     }
   }
-}
-
-/** Validate the folder given to /workspace. It must exist, must not contain cwd and must not be a protected folder. */
-export function resolveWorkspace(arg: string, cwd: string): PathCheck {
-  const requested = arg.trim();
-  if (!requested) return { ok: false, reason: "No folder given." };
-
-  let real: string;
-  let cwdReal: string;
-  try {
-    real = fs.realpathSync(path.resolve(cwd, expandHome(requested)));
-    cwdReal = fs.realpathSync(cwd);
-  } catch {
-    return { ok: false, reason: `Folder not found: ${requested}` };
-  }
-  if (!fs.statSync(real).isDirectory()) return { ok: false, reason: `Not a folder: ${real}` };
-  if (within(real, cwdReal)) {
-    return { ok: false, reason: `The workspace must not contain the project folder (${cwdReal}).` };
-  }
-  for (const dir of PROTECTED_DIRS) {
-    if (within(path.join(cwdReal, dir), real)) {
-      return { ok: false, reason: `The workspace must not be inside ${dir}.` };
-    }
-  }
-  return { ok: true, resolved: real };
 }
 
 /** Validate a path the agent wants to write. `workspace` must already be a real path; relative paths are resolved against `base`. */

@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { workspaceNote, withWorkspaceNote } from "./prompt.ts";
 import type { ConfInfo } from "./prompt.ts";
-import { BLOCKED_TOOLS, READ_ONLY_TOOLS, WRITE_TOOLS } from "./rules.ts";
+import { READ_ONLY_TOOLS, SHELL_TOOLS, WRITE_TOOLS } from "./rules.ts";
 
 const BASE = "You are a coding agent.\n\nTools: read, write.";
 const CONF: ConfInfo = {
@@ -11,6 +11,7 @@ const CONF: ConfInfo = {
   taint: "public",
   level: "confidential",
   allowed: true,
+  shell: true,
 };
 const NO_ACCESS: ConfInfo = {
   provider: "google",
@@ -18,6 +19,7 @@ const NO_ACCESS: ConfInfo = {
   taint: "public",
   level: "confidential",
   allowed: false,
+  shell: true,
 };
 
 function count(text: string, needle: string): number {
@@ -41,14 +43,24 @@ test("the section states the rules and names every tool the guard handles", () =
   for (const workspace of [undefined, "/work/a"]) {
     const note = workspaceNote(workspace, CONF);
     assert.ok(note.includes("Rules enforced on every tool call"));
-    for (const name of [...READ_ONLY_TOOLS, ...WRITE_TOOLS, ...BLOCKED_TOOLS]) {
+    for (const name of [...READ_ONLY_TOOLS, ...WRITE_TOOLS, ...SHELL_TOOLS]) {
       assert.ok(note.includes(name), `note should name ${name}`);
     }
     assert.ok(note.includes("symlinks"));
-    assert.ok(note.includes("read-only source data"));
     assert.ok(note.includes(".confidentiality.json is protected"));
     assert.ok(note.includes("do not try to work around it"));
   }
+});
+
+test("bash is described as a sandboxed tool inside the launcher, and as disabled outside it", () => {
+  const inside = workspaceNote("/work/a", CONF);
+  assert.ok(inside.includes("runs in a sandbox where the workspace is the only writable folder"));
+  assert.ok(!inside.includes("Disabled: bash"));
+
+  const outside = workspaceNote("/work/a", { ...CONF, shell: false });
+  assert.ok(outside.includes("Disabled: bash"));
+  assert.ok(outside.includes("scripts/launch.sh"));
+  assert.ok(!outside.includes("runs in a sandbox"));
 });
 
 test("the section says relative paths are relative to the workspace", () => {
@@ -62,14 +74,14 @@ test("the section tells the model the workspace label, the session level and the
   assert.ok(note.includes("every file and folder in the workspace is labeled confidential"));
   assert.ok(note.includes("This session is at level confidential"));
   assert.ok(note.includes("(my-openai) is cleared up to confidential"));
-  assert.ok(note.includes("every file tool is refused"));
-  assert.ok(note.includes("data never moves to a lower label"));
-  assert.ok(!note.includes("no file access"));
+  assert.ok(note.includes("every tool is refused"));
+  assert.ok(note.includes("cannot be used in this session"));
+  assert.ok(!note.includes("no tool access"));
 });
 
-test("when the provider is cleared below the workspace, the model is told it has no file access", () => {
+test("when the provider is cleared below the workspace, the model is told it has no tool access", () => {
   const note = workspaceNote("/work/a", NO_ACCESS);
-  assert.ok(note.includes("you currently have no file access"));
+  assert.ok(note.includes("you currently have no tool access"));
   assert.ok(note.includes("/work/a"));
   assert.ok(note.includes("labeled confidential"));
   assert.ok(note.includes("(google) is only cleared up to public"));
@@ -82,7 +94,7 @@ test("with no workspace the section still reports the session level and clearanc
   const note = workspaceNote(undefined, { ...CONF, level: undefined, allowed: undefined });
   assert.ok(note.includes("this session is at level public"));
   assert.ok(!note.includes("every file and folder in the workspace is labeled"));
-  assert.ok(!note.includes("no file access"));
+  assert.ok(!note.includes("no tool access"));
 });
 
 test("a missing provider is described as none", () => {

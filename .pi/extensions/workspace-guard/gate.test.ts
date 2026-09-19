@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import * as fs from "node:fs";
 import * as os from "node:os";
 import * as path from "node:path";
-import { decideRead, decideWrite } from "./gate.ts";
+import { decideRead, decideShell, decideWrite } from "./gate.ts";
 import type { Env } from "./gate.ts";
 import { METADATA_NAME } from "./metadata.ts";
 import type { Policy } from "./policy.ts";
@@ -29,17 +29,14 @@ fs.writeFileSync(path.join(outside, "x.txt"), "x");
 fs.symlinkSync(outside, path.join(ws, "link"));
 after(() => fs.rmSync(root, { recursive: true, force: true }));
 
-const report = path.join(ws, "out", "report.md");
-
 // Every path below is relative to the workspace, which is the agent's working directory.
-function env(provider: string | undefined, opts: { level?: string; taint?: string; created?: string[] } = {}): Env {
+function env(provider: string | undefined, opts: { level?: string; sandboxed?: boolean } = {}): Env {
   return {
     policy,
     meta: { level: opts.level ?? "confidential" },
     workspace: ws,
     provider,
-    taint: opts.taint ?? "public",
-    created: new Set(opts.created ?? []),
+    sandboxed: opts.sandboxed ?? false,
   };
 }
 
@@ -66,7 +63,7 @@ test("a missing provider is treated as the lowest clearance", () => {
   assert.ok(decideRead(env("google", { level: "public" }), "read", "public.txt").ok);
 });
 
-test("every read-only tool raises the session level, because file names are data too", () => {
+test("every read-only tool reports the workspace label, because file names are data too", () => {
   for (const [tool, p] of [["read", "public.txt"], ["grep", "data"], ["ls", "data"], ["find", "."]]) {
     assert.equal((decideRead(env("ollama"), tool, p) as any).level, "confidential", tool);
   }
@@ -127,7 +124,6 @@ test("a cleared provider may create a new file, also in a folder that does not e
   const r = decideWrite(env("my-openai"), "write", "new.md");
   assert.ok(r.ok);
   assert.equal(r.resolved, path.join(ws, "new.md"));
-  assert.equal(r.readLevel, undefined);
 
   const nested = decideWrite(env("my-openai"), "write", "sub/dir/new.md");
   assert.ok(nested.ok);
@@ -141,28 +137,28 @@ test("writing above the provider's clearance is refused", () => {
   assert.ok(decideWrite(env("google", { level: "public" }), "write", "new.md").ok);
 });
 
-test("a session above the workspace level may not write there, because that would lower the label", () => {
-  const r = decideWrite(env("ollama", { level: "confidential", taint: "restricted" }), "write", "new.md");
-  assert.equal(r.ok, false);
-  assert.ok(!r.ok && r.reason.includes("above the workspace"));
-  assert.ok(decideWrite(env("ollama", { level: "confidential", taint: "confidential" }), "write", "new.md").ok);
-  assert.ok(decideWrite(env("ollama", { level: "confidential", taint: "public" }), "write", "new.md").ok);
-});
-
-test("existing files are read-only unless the agent created them", () => {
+test("existing files may be changed, because the workspace is writable", () => {
   for (const p of ["public.txt", "data/secret.csv", "out/report.md"]) {
-    const r = decideWrite(env("ollama"), "write", p);
-    assert.equal(r.ok, false, p);
-    assert.ok(!r.ok && r.reason.includes("read-only"));
+    for (const tool of ["write", "edit"]) {
+      const r = decideWrite(env("ollama"), tool, p);
+      assert.ok(r.ok, `${tool} ${p}`);
+      assert.equal(r.resolved, path.join(ws, p));
+    }
   }
-  assert.equal(decideWrite(env("ollama"), "edit", "public.txt").ok, false);
-  assert.ok(decideWrite(env("ollama", { created: [report] }), "write", "out/report.md").ok);
 });
 
-test("editing counts as a read, so it reports the workspace level", () => {
-  const r = decideWrite(env("ollama", { created: [report] }), "edit", "out/report.md");
-  assert.ok(r.ok);
-  assert.equal(r.readLevel, "confidential");
+test("bash needs the launcher's container and a provider cleared for the workspace label", () => {
+  const outside = decideShell(env("ollama"));
+  assert.ok(!outside.ok && outside.reason.includes("scripts/launch.sh"));
+
+  assert.ok(decideShell(env("ollama", { sandboxed: true })).ok);
+  assert.ok(decideShell(env("my-openai", { sandboxed: true })).ok);
+  assert.ok(decideShell(env("google", { sandboxed: true, level: "public" })).ok);
+
+  const uncleared = decideShell(env("google", { sandboxed: true }));
+  assert.ok(!uncleared.ok);
+  assert.ok(uncleared.reason.includes("confidential") && uncleared.reason.includes("google"));
+  assert.equal(decideShell(env(undefined, { sandboxed: true })).ok, false);
 });
 
 test("the metadata file is protected at any depth", () => {

@@ -1,6 +1,7 @@
 {
   "name": "pi-ext-workspace-guard",
   "private": true,
+  "type": "module",
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "node --test \"*.test.ts\""

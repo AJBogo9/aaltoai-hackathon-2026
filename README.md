@@ -17,7 +17,16 @@ Not picked yet. Paste the partner brief into [`docs/challenge.md`](docs/challeng
 
 ## Quickstart
 
-Nothing to run yet. The stack gets added in one commit once the team picks the challenge.
+The project stack gets added in one commit once the team picks the challenge. What exists now is the guarded
+agent: [pi](https://pi.dev) running on one labeled folder, in a container where only that folder is writable.
+
+```bash
+scripts/launch.sh demo/confidential-hr -- --provider mistral
+```
+
+Needs docker or podman, and the API keys of the providers you want set in your shell. The demo workspaces,
+providers and a scripted walkthrough are in [`demo/DEMO.md`](demo/DEMO.md). How the guard works is in
+[`.pi/extensions/workspace-guard/README.md`](.pi/extensions/workspace-guard/README.md).
 
 ## How we work
 
@@ -32,6 +41,8 @@ Nothing to run yet. The stack gets added in one commit once the team picks the c
 This is a data sovereignty hackathon, so the repo treats sponsor data as radioactive:
 
 - **Everything in `data/` is gitignored.** Partner datasets, exports and scratch files go there.
+- **Give the agent one labeled folder at a time.** Put a `.confidentiality.json` in it and start pi with
+  `scripts/launch.sh`. Providers cleared below the label get no access.
 - **Secrets live in a local environment file that git ignores.** Create it when the sponsors
   hand out credentials at the event, and never commit it.
 - Assume this repo may be made public before judging. Nothing committed here should be
