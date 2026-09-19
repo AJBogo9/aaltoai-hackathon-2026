@@ -6,6 +6,6 @@
     "mistral": "confidential",
     "lemonade": "restricted",
     "ollama": "restricted",
-    "verda": "restricted"
+    "verda": "confidential"
   }
 }

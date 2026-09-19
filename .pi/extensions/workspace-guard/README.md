@@ -74,6 +74,8 @@ A provider is cleared for a workspace when its clearance is **the same as or hig
    | `PI_WORKSPACE` | The workspace folder. |
    | `PI_WORKSPACE_LEVEL` | Its label. The extension never re-reads `.confidentiality.json`. |
    | `PI_SANDBOXED=1` | pi runs in the launcher's container, so `bash` is confined. |
+   | `PI_WORKSPACES` | Every labeled folder in the repo, one `level<TAB>name` line each, for `/workspaces`. Display only. |
+   | `PI_WORKSPACE_NAME` | This workspace's name in that list. |
 
 If a variable is missing or invalid, every tool is blocked and the footer says so. Outside the launcher, the
 extension does nothing useful, on purpose.
@@ -83,9 +85,11 @@ extension does nothing useful, on purpose.
 | Command | What it does |
 |---|---|
 | `/confidentiality` | Shows the workspace, its label, whether the current provider may use it, and the session level. |
+| `/providers` | Lists every provider in the policy with its clearance, highest first, whether it may use this workspace, and which one is current. |
+| `/workspaces` | Lists every labeled folder in the repo, its label, whether the current provider would be cleared for it, and which one this session is on. It only lists: it cannot switch. |
 | `/prompt` | Prints the system prompt as it will be sent next, and saves it to `~/.pi/agent/last-system-prompt.txt`. |
 
-There is no `/workspace` command. To use another folder, start a new session with the launcher.
+No command changes the workspace. To use another folder, start a new session with the launcher.
 
 ## Footer status
 
@@ -168,6 +172,9 @@ is above the lowest level.
 - **Clearances are declarations.** Nothing verifies that a provider really is local or EU-hosted. Levels attach to
   the provider id, not to the endpoint or the model.
 - **The session level is coarse.** The whole session is at the workspace label, whatever the model actually read.
+- **Other workspaces' names are visible.** `/workspaces` gets the names and labels of every labeled folder
+  through the environment, so `bash` can read them too. No contents: none of those folders is mounted. Keep
+  folder names free of anything confidential.
 - **Some input is unlabeled:** text you type, pasted content, and files pi loads itself. The launcher turns off
   `AGENTS.md`/`CLAUDE.md` loading and project-local extensions.
 - **One label per workspace.** A `.confidentiality.json` in a subfolder is protected from the file tools but not
