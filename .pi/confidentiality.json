@@ -1,0 +1,6 @@
+{
+  "levels": ["public", "confidential", "restricted"],
+  "providers": {
+    "google": "public"
+  }
+}

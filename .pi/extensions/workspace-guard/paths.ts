@@ -4,19 +4,28 @@ import * as path from "node:path";
 
 export type PathCheck = { ok: true; resolved: string } | { ok: false; reason: string };
 
+/** Folders in the project that can never be a workspace, so the agent cannot rewrite its own guard. */
+const PROTECTED_DIRS = [".pi", ".git", ".devcontainer", ".claude"];
+
 export function expandHome(p: string): string {
   if (p === "~") return os.homedir();
   if (p.startsWith("~/")) return path.join(os.homedir(), p.slice(2));
   return p;
 }
 
+/** Mirror pi's own path handling (leading @, unicode spaces, ~) so the path we check is the path that runs. */
+export function normalizeToolPath(p: string): string {
+  const withoutAt = p.startsWith("@") ? p.slice(1) : p;
+  return expandHome(withoutAt.replace(/\p{Zs}/gu, " "));
+}
+
 /** True when target is root itself or somewhere below it. */
-function within(root: string, target: string): boolean {
+export function within(root: string, target: string): boolean {
   const rel = path.relative(root, target);
   return rel === "" || (rel !== ".." && !rel.startsWith(`..${path.sep}`) && !path.isAbsolute(rel));
 }
 
-function existsNoFollow(p: string): boolean {
+export function existsNoFollow(p: string): boolean {
   try {
     fs.lstatSync(p);
     return true;
@@ -48,7 +57,7 @@ export function realResolve(target: string): string {
   }
 }
 
-/** Validate the folder given to /workspace. It must exist and must not contain cwd. */
+/** Validate the folder given to /workspace. It must exist, must not contain cwd and must not be a protected folder. */
 export function resolveWorkspace(arg: string, cwd: string): PathCheck {
   const requested = arg.trim();
   if (!requested) return { ok: false, reason: "No folder given." };
@@ -65,6 +74,11 @@ export function resolveWorkspace(arg: string, cwd: string): PathCheck {
   if (within(real, cwdReal)) {
     return { ok: false, reason: `The workspace must not contain the project folder (${cwdReal}).` };
   }
+  for (const dir of PROTECTED_DIRS) {
+    if (within(path.join(cwdReal, dir), real)) {
+      return { ok: false, reason: `The workspace must not be inside ${dir}.` };
+    }
+  }
   return { ok: true, resolved: real };
 }
 
@@ -76,7 +90,7 @@ export function checkWritePath(workspace: string, requested: unknown, cwd: strin
 
   let resolved: string;
   try {
-    resolved = realResolve(path.resolve(cwd, expandHome(requested)));
+    resolved = realResolve(path.resolve(cwd, normalizeToolPath(requested)));
   } catch (err) {
     return { ok: false, reason: `Cannot resolve path: ${(err as Error).message}.` };
   }
