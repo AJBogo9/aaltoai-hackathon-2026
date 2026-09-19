@@ -48,6 +48,11 @@ Write `reports/<filename>.json` as you finish each file, not all at once at
 the end. Then write `reports/summary.md` last. The whole job should take
 minutes.
 
+`<filename>` is the source file's full name, extension included: `unit_01.csv`
+becomes `reports/unit_01.csv.json`, not `reports/unit_01_analysis.json` or any
+other variant. `read-report`'s `build_session.py` globs for exactly
+`reports/unit_*.csv.json` and silently finds nothing otherwise.
+
 ## Two computations, reused for everything
 Run both once per file; every question below is a lookup against one of them,
 not a fresh analysis.
