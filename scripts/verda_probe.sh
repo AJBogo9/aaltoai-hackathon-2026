@@ -22,7 +22,13 @@ BASE="${BASE%/v1/chat/completions}"
 BASE="${BASE%/v1}"
 
 if [[ -z "${VERDA_API_KEY:-}" ]]; then
-  echo "VERDA_API_KEY is empty. Copy .env.example to .env.local and paste the key there." >&2
+  if [[ -f "${ENV_FILE}" ]]; then
+    echo "VERDA_API_KEY is empty in ${ENV_FILE}." >&2
+    echo "Paste the key into that file. Do NOT copy the example over it again," >&2
+    echo "that overwrites whatever you just pasted." >&2
+  else
+    echo "${ENV_FILE} does not exist. Create it from the example, then paste the key." >&2
+  fi
   exit 1
 fi
 
