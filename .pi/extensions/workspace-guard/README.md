@@ -83,6 +83,7 @@ extension does nothing useful, on purpose.
 | Command | What it does |
 |---|---|
 | `/confidentiality` | Shows the workspace, its label, whether the current provider may use it, and the session level. |
+| `/providers` | Lists every provider in the policy with its clearance, highest first, whether it may use this workspace, and which one is current. |
 | `/prompt` | Prints the system prompt as it will be sent next, and saves it to `~/.pi/agent/last-system-prompt.txt`. |
 
 There is no `/workspace` command. To use another folder, start a new session with the launcher.

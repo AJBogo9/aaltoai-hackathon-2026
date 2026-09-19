@@ -14,7 +14,7 @@ export type StatusInput = {
   taint?: string;
 };
 
-type Color = "green" | "yellow" | "red" | "dim";
+export type Color = "green" | "yellow" | "red" | "dim";
 
 const CODES: Record<Color, string> = {
   green: "\x1b[32m",
@@ -24,7 +24,7 @@ const CODES: Record<Color, string> = {
 };
 const RESET = "\x1b[0m";
 
-function paint(text: string, color: Color, on: boolean): string {
+export function paint(text: string, color: Color, on: boolean): string {
   return on ? `${CODES[color]}${text}${RESET}` : text;
 }
 

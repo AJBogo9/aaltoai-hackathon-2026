@@ -8,7 +8,8 @@ ARG PI_VERSION=0.85.1
 
 # python3 (standard library only) is for the data-analysis skills.
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends bash ca-certificates git python3 ripgrep \
+  && apt-get install -y --no-install-recommends bash ca-certificates fd-find git python3 ripgrep \
+  && ln -s /usr/bin/fdfind /usr/local/bin/fd \
   && rm -rf /var/lib/apt/lists/*
 
 RUN npm install -g --ignore-scripts @earendil-works/pi-coding-agent@${PI_VERSION} \

@@ -11,7 +11,7 @@ import { withWorkspaceNote } from "./prompt.ts";
 import type { ConfInfo } from "./prompt.ts";
 import { READ_ONLY_TOOLS, SHELL_TOOLS, WRITE_TOOLS } from "./rules.ts";
 import { statusLine } from "./status.ts";
-import { describeWorkspace } from "./workspace.ts";
+import { describeProviders, describeWorkspace } from "./workspace.ts";
 
 type Ctx = { cwd: string; model?: { provider?: string } };
 type UiCtx = Ctx & {
@@ -106,6 +106,20 @@ export default function (pi: ExtensionAPI) {
       const { policy, workspace, meta } = config.value;
       const lines = describeWorkspace(policy, meta, ctx.model?.provider, meta.level);
       ctx.ui.notify([`Workspace: ${workspace}`, ...lines].join("\n"), "info");
+    },
+  });
+
+  pi.registerCommand("providers", {
+    description: "List every provider's clearance and whether it may use this workspace",
+    handler: async (_args, ctx) => {
+      const config = loadConfig();
+      if (!config.ok) {
+        ctx.ui.notify(config.reason, "error");
+        return;
+      }
+      const { policy, meta } = config.value;
+      const color = !process.env.NO_COLOR;
+      ctx.ui.notify(describeProviders(policy, meta.level, ctx.model?.provider, color).join("\n"), "info");
     },
   });
 
