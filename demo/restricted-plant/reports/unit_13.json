@@ -1,0 +1,1161 @@
+{
+  "schema": [
+    {
+      "column": "sample",
+      "type": "unknown",
+      "role": "index",
+      "confidence": 0.495,
+      "evidence": "Medians increase linearly with step 10.00; Insufficient data"
+    },
+    {
+      "column": "tag_01",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 1 samples (corr=0.06); Leads tag_03 by 1 samples (corr=-0.13); Leads tag_04 by 3 samples (corr=-0.10); Leads tag_05 by 1 samples (corr=0.11); Leads tag_07 by 3 samples (corr=0.07); Leads tag_08 by 2 samples (corr=0.14); Leads tag_09 by 3 samples (corr=0.28); Leads tag_10 by 1 samples (corr=-0.10); Leads tag_11 by 2 samples (corr=-0.07); Leads tag_13 by 2 samples (corr=-0.03); Leads tag_14 by 3 samples (corr=0.11); Leads tag_15 by 3 samples (corr=-0.07); Leads tag_17 by 3 samples (corr=0.08); Leads tag_18 by 2 samples (corr=0.13); Leads tag_19 by 2 samples (corr=-0.15); Leads tag_21 by 3 samples (corr=0.06); Leads tag_22 by 3 samples (corr=0.14); Leads tag_23 by 2 samples (corr=0.17); Leads tag_24 by 3 samples (corr=-0.06); Leads tag_26 by 3 samples (corr=-0.20); Leads tag_28 by 1 samples (corr=-0.15); Leads tag_29 by 1 samples (corr=0.12); Leads tag_30 by 1 samples (corr=0.30); Leads tag_31 by 3 samples (corr=0.06); Leads tag_32 by 2 samples (corr=0.11); Leads tag_34 by 1 samples (corr=0.16); Leads tag_35 by 3 samples (corr=-0.13); Leads tag_36 by 2 samples (corr=0.04); Leads tag_37 by 2 samples (corr=0.09); Leads tag_41 by 3 samples (corr=0.11); Leads tag_42 by 2 samples (corr=-0.15); Leads tag_43 by 1 samples (corr=-0.16); Leads tag_44 by 3 samples (corr=0.08); Leads tag_45 by 3 samples (corr=0.17); Leads tag_47 by 1 samples (corr=0.04); Leads tag_48 by 3 samples (corr=0.16); Leads tag_49 by 2 samples (corr=-0.11); Leads tag_50 by 1 samples (corr=0.09); Leads tag_52 by 3 samples (corr=-0.17); Leads tag_03 by 1 samples (corr=0.07); Leads tag_04 by 2 samples (corr=-0.08); Leads tag_05 by 3 samples (corr=-0.10); Leads tag_06 by 3 samples (corr=-0.13); Leads tag_07 by 1 samples (corr=0.18); Leads tag_08 by 2 samples (corr=0.13); Leads tag_09 by 3 samples (corr=-0.11); Leads tag_10 by 3 samples (corr=-0.07); Leads tag_13 by 1 samples (corr=-0.05); Leads tag_14 by 1 samples (corr=0.17); Leads tag_15 by 1 samples (corr=0.16); Leads tag_16 by 1 samples (corr=-0.11); Leads tag_17 by 2 samples (corr=0.13); Leads tag_18 by 1 samples (corr=-0.19); Leads tag_19 by 2 samples (corr=-0.13); Leads tag_21 by 3 samples (corr=-0.13); Leads tag_22 by 1 samples (corr=0.18); Leads tag_24 by 3 samples (corr=-0.19); Leads tag_25 by 3 samples (corr=-0.13); Leads tag_26 by 1 samples (corr=0.14); Leads tag_27 by 2 samples (corr=-0.22); Leads tag_28 by 3 samples (corr=0.12); Leads tag_29 by 2 samples (corr=0.15); Leads tag_30 by 3 samples (corr=-0.09); Leads tag_31 by 3 samples (corr=-0.13); Leads tag_32 by 3 samples (corr=-0.12); Leads tag_33 by 3 samples (corr=-0.13); Leads tag_34 by 3 samples (corr=-0.16); Leads tag_36 by 2 samples (corr=0.02); Leads tag_37 by 3 samples (corr=-0.08); Leads tag_38 by 1 samples (corr=-0.20); Leads tag_39 by 1 samples (corr=-0.23); Leads tag_40 by 2 samples (corr=0.10); Leads tag_41 by 2 samples (corr=-0.06); Leads tag_42 by 2 samples (corr=-0.20); Leads tag_44 by 2 samples (corr=0.11); Leads tag_46 by 3 samples (corr=0.13); Leads tag_47 by 1 samples (corr=0.05); Leads tag_48 by 3 samples (corr=0.18); Leads tag_50 by 2 samples (corr=0.11); Leads tag_51 by 1 samples (corr=0.20); Leads 80 columns, follows 0 columns; Median (50.0) and autocorrelation (-0.51) suggest flow"
+    },
+    {
+      "column": "tag_02",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9414525264759261,
+      "evidence": "Leads sample by 3 samples (corr=-0.32); Leads tag_03 by 3 samples (corr=-0.05); Leads tag_04 by 3 samples (corr=-0.34); Leads tag_05 by 3 samples (corr=0.05); Leads tag_07 by 1 samples (corr=-0.09); Leads tag_08 by 3 samples (corr=0.18); Leads tag_10 by 3 samples (corr=-0.21); Leads tag_12 by 2 samples (corr=-0.08); Leads tag_13 by 3 samples (corr=-0.35); Leads tag_14 by 2 samples (corr=-0.14); Leads tag_17 by 2 samples (corr=-0.92); Leads tag_18 by 2 samples (corr=-0.26); Leads tag_19 by 3 samples (corr=-0.17); Leads tag_21 by 3 samples (corr=-0.21); Leads tag_22 by 2 samples (corr=-0.14); Leads tag_23 by 2 samples (corr=-0.16); Leads tag_24 by 3 samples (corr=0.24); Leads tag_26 by 1 samples (corr=0.30); Leads tag_27 by 3 samples (corr=-0.12); Leads tag_30 by 2 samples (corr=0.13); Leads tag_31 by 3 samples (corr=-0.21); Leads tag_32 by 2 samples (corr=0.16); Leads tag_35 by 3 samples (corr=-0.06); Leads tag_36 by 2 samples (corr=-0.14); Leads tag_37 by 2 samples (corr=0.17); Leads tag_39 by 2 samples (corr=0.27); Leads tag_41 by 2 samples (corr=-0.10); Leads tag_42 by 3 samples (corr=0.11); Leads tag_43 by 2 samples (corr=0.10); Leads tag_44 by 2 samples (corr=-0.09); Leads tag_47 by 3 samples (corr=-0.17); Leads tag_50 by 1 samples (corr=-0.21); Leads tag_51 by 3 samples (corr=0.20); Leads tag_03 by 2 samples (corr=-0.15); Leads tag_05 by 2 samples (corr=0.18); Leads tag_06 by 3 samples (corr=0.47); Leads tag_07 by 3 samples (corr=-0.11); Leads tag_10 by 3 samples (corr=0.30); Leads tag_12 by 3 samples (corr=0.23); Leads tag_13 by 3 samples (corr=0.23); Leads tag_15 by 2 samples (corr=0.15); Leads tag_21 by 1 samples (corr=-0.15); Leads tag_22 by 2 samples (corr=-0.15); Leads tag_23 by 3 samples (corr=-0.14); Leads tag_24 by 2 samples (corr=0.23); Leads tag_25 by 3 samples (corr=0.43); Leads tag_27 by 3 samples (corr=-0.06); Leads tag_28 by 3 samples (corr=-0.15); Leads tag_29 by 3 samples (corr=0.15); Leads tag_31 by 1 samples (corr=-0.15); Leads tag_32 by 2 samples (corr=0.10); Leads tag_33 by 3 samples (corr=0.48); Leads tag_34 by 3 samples (corr=-0.11); Leads tag_35 by 3 samples (corr=0.08); Leads tag_36 by 1 samples (corr=-0.13); Leads tag_37 by 2 samples (corr=0.14); Leads tag_38 by 3 samples (corr=-0.09); Leads tag_39 by 2 samples (corr=0.14); Leads tag_40 by 2 samples (corr=0.12); Leads tag_41 by 2 samples (corr=0.26); Leads tag_43 by 2 samples (corr=0.05); Leads tag_44 by 3 samples (corr=-0.13); Leads tag_46 by 3 samples (corr=-0.12); Leads tag_48 by 1 samples (corr=0.19); Leads tag_49 by 3 samples (corr=0.48); Leads tag_50 by 2 samples (corr=-0.25); Leads tag_51 by 2 samples (corr=0.07); Leads tag_52 by 1 samples (corr=-0.31); Leads 68 columns, follows 0 columns; Median (25.2) and autocorrelation (0.03) suggest flow"
+    },
+    {
+      "column": "tag_03",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_01 by 1 samples (corr=-0.13); Leads tag_02 by 3 samples (corr=-0.05); Leads sample by 3 samples (corr=-0.05); Leads tag_01 by 1 samples (corr=0.07); Leads tag_02 by 2 samples (corr=-0.15); Leads tag_05 by 3 samples (corr=0.12); Leads tag_06 by 3 samples (corr=0.06); Leads tag_07 by 2 samples (corr=-0.10); Leads tag_08 by 3 samples (corr=0.15); Leads tag_09 by 1 samples (corr=0.09); Leads tag_11 by 2 samples (corr=-0.16); Leads tag_13 by 3 samples (corr=0.11); Leads tag_14 by 2 samples (corr=-0.13); Leads tag_15 by 1 samples (corr=-0.22); Leads tag_17 by 3 samples (corr=0.11); Leads tag_18 by 3 samples (corr=0.21); Leads tag_19 by 3 samples (corr=-0.15); Leads tag_20 by 1 samples (corr=0.07); Leads tag_21 by 2 samples (corr=0.21); Leads tag_22 by 2 samples (corr=-0.10); Leads tag_23 by 1 samples (corr=0.04); Leads tag_24 by 1 samples (corr=-0.08); Leads tag_26 by 2 samples (corr=-0.16); Leads tag_27 by 1 samples (corr=0.09); Leads tag_28 by 2 samples (corr=0.17); Leads tag_30 by 2 samples (corr=0.12); Leads tag_31 by 2 samples (corr=0.21); Leads tag_32 by 3 samples (corr=-0.15); Leads tag_33 by 3 samples (corr=0.07); Leads tag_34 by 3 samples (corr=-0.14); Leads tag_35 by 2 samples (corr=0.13); Leads tag_37 by 3 samples (corr=-0.21); Leads tag_38 by 1 samples (corr=0.14); Leads tag_39 by 3 samples (corr=0.15); Leads tag_40 by 2 samples (corr=-0.12); Leads tag_41 by 3 samples (corr=-0.17); Leads tag_42 by 3 samples (corr=-0.15); Leads tag_43 by 2 samples (corr=-0.13); Leads tag_45 by 1 samples (corr=0.09); Leads tag_46 by 1 samples (corr=-0.14); Leads tag_49 by 2 samples (corr=0.12); Leads tag_50 by 2 samples (corr=0.04); Leads tag_51 by 3 samples (corr=0.03); Leads tag_52 by 1 samples (corr=-0.06); Leads tag_04 by 3 samples (corr=0.14); Leads tag_05 by 3 samples (corr=0.19); Leads tag_06 by 3 samples (corr=-0.14); Leads tag_07 by 1 samples (corr=0.18); Leads tag_09 by 2 samples (corr=-0.16); Leads tag_11 by 1 samples (corr=-0.05); Leads tag_12 by 1 samples (corr=-0.07); Leads tag_13 by 3 samples (corr=-0.05); Leads tag_14 by 3 samples (corr=0.09); Leads tag_15 by 1 samples (corr=-0.17); Leads tag_17 by 1 samples (corr=0.07); Leads tag_18 by 2 samples (corr=-0.18); Leads tag_20 by 1 samples (corr=-0.13); Leads tag_21 by 1 samples (corr=-0.05); Leads tag_23 by 1 samples (corr=-0.11); Leads tag_24 by 2 samples (corr=-0.10); Leads tag_25 by 3 samples (corr=-0.10); Leads tag_26 by 2 samples (corr=0.14); Leads tag_27 by 2 samples (corr=0.13); Leads tag_28 by 2 samples (corr=-0.12); Leads tag_29 by 1 samples (corr=0.08); Leads tag_31 by 1 samples (corr=-0.05); Leads tag_32 by 2 samples (corr=0.27); Leads tag_33 by 3 samples (corr=-0.13); Leads tag_34 by 2 samples (corr=0.20); Leads tag_35 by 3 samples (corr=0.11); Leads tag_36 by 1 samples (corr=0.10); Leads tag_37 by 2 samples (corr=0.28); Leads tag_40 by 1 samples (corr=0.21); Leads tag_41 by 2 samples (corr=-0.13); Leads tag_42 by 2 samples (corr=0.21); Leads tag_43 by 3 samples (corr=0.14); Leads tag_46 by 1 samples (corr=-0.08); Leads tag_48 by 1 samples (corr=-0.18); Leads tag_49 by 3 samples (corr=-0.19); Leads tag_50 by 3 samples (corr=0.05); Leads tag_51 by 3 samples (corr=0.08); Leads tag_52 by 2 samples (corr=-0.12); Leads 82 columns, follows 0 columns; Median (26.9) and autocorrelation (-0.57) suggest flow"
+    },
+    {
+      "column": "tag_04",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_01 by 3 samples (corr=-0.10); Leads tag_02 by 3 samples (corr=-0.34); Leads tag_01 by 2 samples (corr=-0.08); Leads tag_03 by 3 samples (corr=0.14); Leads tag_05 by 3 samples (corr=-0.05); Leads tag_06 by 3 samples (corr=0.09); Leads tag_08 by 1 samples (corr=-0.11); Leads tag_09 by 2 samples (corr=-0.37); Leads tag_10 by 3 samples (corr=0.63); Leads tag_12 by 3 samples (corr=0.18); Leads tag_13 by 3 samples (corr=0.70); Leads tag_14 by 2 samples (corr=-0.07); Leads tag_15 by 2 samples (corr=-0.13); Leads tag_16 by 2 samples (corr=0.04); Leads tag_17 by 2 samples (corr=0.45); Leads tag_18 by 1 samples (corr=0.21); Leads tag_19 by 1 samples (corr=0.11); Leads tag_20 by 2 samples (corr=-0.08); Leads tag_21 by 3 samples (corr=0.12); Leads tag_22 by 3 samples (corr=-0.25); Leads tag_23 by 2 samples (corr=-0.23); Leads tag_24 by 2 samples (corr=-0.07); Leads tag_26 by 3 samples (corr=-0.21); Leads tag_27 by 3 samples (corr=0.18); Leads tag_28 by 3 samples (corr=-0.15); Leads tag_29 by 3 samples (corr=0.07); Leads tag_31 by 3 samples (corr=0.12); Leads tag_33 by 3 samples (corr=0.15); Leads tag_35 by 1 samples (corr=0.13); Leads tag_39 by 2 samples (corr=-0.25); Leads tag_40 by 2 samples (corr=-0.20); Leads tag_41 by 2 samples (corr=-0.19); Leads tag_42 by 3 samples (corr=-0.08); Leads tag_43 by 3 samples (corr=-0.20); Leads tag_44 by 2 samples (corr=-0.07); Leads tag_45 by 2 samples (corr=0.33); Leads tag_49 by 2 samples (corr=0.14); Leads tag_51 by 3 samples (corr=-0.27); Leads tag_52 by 2 samples (corr=-0.14); Leads tag_05 by 2 samples (corr=-0.14); Leads tag_06 by 3 samples (corr=-0.24); Leads tag_08 by 3 samples (corr=-0.10); Leads tag_09 by 3 samples (corr=-0.31); Leads tag_11 by 3 samples (corr=-0.33); Leads tag_12 by 2 samples (corr=-0.19); Leads tag_14 by 3 samples (corr=-0.09); Leads tag_16 by 3 samples (corr=0.11); Leads tag_17 by 2 samples (corr=0.50); Leads tag_19 by 3 samples (corr=0.09); Leads tag_20 by 3 samples (corr=-0.10); Leads tag_21 by 3 samples (corr=0.09); Leads tag_23 by 3 samples (corr=0.20); Leads tag_24 by 2 samples (corr=0.13); Leads tag_25 by 3 samples (corr=-0.40); Leads tag_28 by 1 samples (corr=-0.12); Leads tag_29 by 2 samples (corr=-0.10); Leads tag_31 by 3 samples (corr=0.09); Leads tag_32 by 3 samples (corr=0.12); Leads tag_33 by 3 samples (corr=-0.20); Leads tag_34 by 2 samples (corr=0.11); Leads tag_35 by 2 samples (corr=-0.12); Leads tag_36 by 3 samples (corr=0.54); Leads tag_37 by 3 samples (corr=0.17); Leads tag_38 by 2 samples (corr=0.18); Leads tag_39 by 2 samples (corr=-0.31); Leads tag_40 by 3 samples (corr=-0.09); Leads tag_41 by 2 samples (corr=-0.26); Leads tag_42 by 2 samples (corr=0.07); Leads tag_43 by 3 samples (corr=-0.24); Leads tag_44 by 3 samples (corr=0.07); Leads tag_46 by 2 samples (corr=-0.20); Leads tag_47 by 3 samples (corr=0.53); Leads tag_49 by 3 samples (corr=-0.09); Leads tag_50 by 3 samples (corr=0.47); Leads tag_52 by 3 samples (corr=0.16); Leads 75 columns, follows 0 columns; Median (32.9) and autocorrelation (-0.00) suggest flow"
+    },
+    {
+      "column": "tag_05",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_01 by 1 samples (corr=0.11); Leads tag_02 by 3 samples (corr=0.05); Leads tag_03 by 3 samples (corr=0.12); Leads tag_04 by 3 samples (corr=-0.05); Leads sample by 3 samples (corr=-0.12); Leads tag_01 by 3 samples (corr=-0.10); Leads tag_02 by 2 samples (corr=0.18); Leads tag_03 by 3 samples (corr=0.19); Leads tag_04 by 2 samples (corr=-0.14); Leads tag_08 by 1 samples (corr=-0.07); Leads tag_09 by 3 samples (corr=0.05); Leads tag_10 by 2 samples (corr=0.08); Leads tag_11 by 2 samples (corr=0.18); Leads tag_12 by 3 samples (corr=-0.12); Leads tag_13 by 3 samples (corr=-0.03); Leads tag_14 by 1 samples (corr=0.12); Leads tag_15 by 2 samples (corr=-0.41); Leads tag_17 by 3 samples (corr=-0.12); Leads tag_18 by 2 samples (corr=-0.20); Leads tag_19 by 1 samples (corr=0.07); Leads tag_20 by 3 samples (corr=-0.10); Leads tag_21 by 3 samples (corr=0.21); Leads tag_23 by 1 samples (corr=-0.09); Leads tag_24 by 3 samples (corr=-0.08); Leads tag_27 by 3 samples (corr=0.07); Leads tag_29 by 2 samples (corr=0.16); Leads tag_30 by 1 samples (corr=-0.27); Leads tag_31 by 3 samples (corr=0.21); Leads tag_35 by 1 samples (corr=-0.07); Leads tag_36 by 2 samples (corr=0.11); Leads tag_38 by 3 samples (corr=0.11); Leads tag_39 by 2 samples (corr=-0.11); Leads tag_41 by 2 samples (corr=-0.11); Leads tag_43 by 1 samples (corr=0.05); Leads tag_44 by 2 samples (corr=0.14); Leads tag_45 by 3 samples (corr=0.16); Leads tag_47 by 1 samples (corr=0.13); Leads tag_48 by 3 samples (corr=-0.07); Leads tag_51 by 2 samples (corr=-0.16); Leads tag_52 by 1 samples (corr=-0.12); Leads tag_08 by 3 samples (corr=0.15); Leads tag_09 by 3 samples (corr=0.07); Leads tag_10 by 1 samples (corr=-0.06); Leads tag_11 by 3 samples (corr=0.05); Leads tag_12 by 2 samples (corr=0.20); Leads tag_13 by 1 samples (corr=-0.02); Leads tag_14 by 3 samples (corr=-0.17); Leads tag_19 by 3 samples (corr=-0.15); Leads tag_20 by 1 samples (corr=0.11); Leads tag_21 by 3 samples (corr=-0.17); Leads tag_24 by 2 samples (corr=-0.15); Leads tag_29 by 3 samples (corr=-0.20); Leads tag_30 by 3 samples (corr=0.16); Leads tag_31 by 3 samples (corr=-0.17); Leads tag_35 by 1 samples (corr=-0.22); Leads tag_37 by 2 samples (corr=0.10); Leads tag_38 by 1 samples (corr=-0.11); Leads tag_41 by 1 samples (corr=0.06); Leads tag_43 by 3 samples (corr=0.14); Leads tag_44 by 3 samples (corr=-0.15); Leads tag_45 by 3 samples (corr=0.09); Leads tag_46 by 1 samples (corr=-0.11); Leads tag_47 by 3 samples (corr=0.15); Leads tag_48 by 1 samples (corr=0.08); Leads tag_50 by 1 samples (corr=0.10); Leads tag_51 by 3 samples (corr=0.08); Leads tag_52 by 2 samples (corr=-0.26); Leads 67 columns, follows 0 columns; Median (41.2) and autocorrelation (-0.63) suggest flow"
+    },
+    {
+      "column": "tag_06",
+      "type": "level",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=-0.43); Leads tag_03 by 3 samples (corr=0.06); Leads tag_04 by 3 samples (corr=0.09); Leads tag_01 by 3 samples (corr=-0.13); Leads tag_02 by 3 samples (corr=0.47); Leads tag_03 by 3 samples (corr=-0.14); Leads tag_04 by 3 samples (corr=-0.24); Leads tag_07 by 2 samples (corr=-0.22); Leads tag_09 by 2 samples (corr=-0.11); Leads tag_11 by 3 samples (corr=0.48); Leads tag_12 by 3 samples (corr=-0.03); Leads tag_14 by 3 samples (corr=-0.17); Leads tag_16 by 2 samples (corr=-0.14); Leads tag_17 by 3 samples (corr=-0.33); Leads tag_20 by 3 samples (corr=-0.13); Leads tag_22 by 3 samples (corr=-0.48); Leads tag_24 by 3 samples (corr=0.15); Leads tag_26 by 3 samples (corr=0.08); Leads tag_29 by 2 samples (corr=0.11); Leads tag_34 by 3 samples (corr=-0.18); Leads tag_35 by 2 samples (corr=0.18); Leads tag_36 by 3 samples (corr=-0.39); Leads tag_39 by 3 samples (corr=0.25); Leads tag_41 by 3 samples (corr=0.16); Leads tag_42 by 3 samples (corr=-0.07); Leads tag_43 by 3 samples (corr=0.29); Leads tag_47 by 3 samples (corr=-0.33); Leads tag_49 by 3 samples (corr=0.57); Leads tag_50 by 2 samples (corr=-0.71); Leads tag_51 by 2 samples (corr=-0.26); Leads tag_52 by 2 samples (corr=-0.22); Leads tag_07 by 2 samples (corr=0.12); Leads tag_09 by 3 samples (corr=-0.22); Leads tag_12 by 3 samples (corr=0.18); Leads tag_13 by 3 samples (corr=0.32); Leads tag_14 by 3 samples (corr=-0.38); Leads tag_16 by 3 samples (corr=0.11); Leads tag_18 by 2 samples (corr=0.16); Leads tag_21 by 3 samples (corr=-0.22); Leads tag_22 by 3 samples (corr=-0.60); Leads tag_24 by 1 samples (corr=0.11); Leads tag_26 by 2 samples (corr=0.05); Leads tag_27 by 3 samples (corr=0.32); Leads tag_29 by 3 samples (corr=-0.12); Leads tag_30 by 1 samples (corr=-0.17); Leads tag_31 by 3 samples (corr=-0.22); Leads tag_34 by 3 samples (corr=0.09); Leads tag_35 by 3 samples (corr=-0.04); Leads tag_39 by 3 samples (corr=0.21); Leads tag_41 by 2 samples (corr=0.17); Leads tag_42 by 2 samples (corr=0.11); Leads tag_43 by 3 samples (corr=0.38); Leads tag_44 by 2 samples (corr=-0.52); Leads tag_45 by 1 samples (corr=-0.10); Leads tag_46 by 1 samples (corr=-0.56); Leads tag_48 by 3 samples (corr=-0.27); Leads tag_51 by 1 samples (corr=-0.25); Leads tag_52 by 1 samples (corr=-0.21); Leads 58 columns, follows 0 columns; High median (2702.4) suggests level"
+    },
+    {
+      "column": "tag_07",
+      "type": "level",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=-0.10); Leads tag_01 by 3 samples (corr=0.07); Leads tag_02 by 1 samples (corr=-0.09); Leads tag_03 by 2 samples (corr=-0.10); Leads tag_06 by 2 samples (corr=-0.22); Leads sample by 1 samples (corr=-0.08); Leads tag_01 by 1 samples (corr=0.18); Leads tag_02 by 3 samples (corr=-0.11); Leads tag_03 by 1 samples (corr=0.18); Leads tag_06 by 2 samples (corr=0.12); Leads tag_08 by 3 samples (corr=0.11); Leads tag_09 by 2 samples (corr=-0.14); Leads tag_11 by 3 samples (corr=-0.12); Leads tag_12 by 2 samples (corr=-0.04); Leads tag_14 by 1 samples (corr=0.16); Leads tag_15 by 2 samples (corr=-0.77); Leads tag_16 by 2 samples (corr=-0.15); Leads tag_17 by 3 samples (corr=0.07); Leads tag_19 by 3 samples (corr=-0.10); Leads tag_20 by 1 samples (corr=0.18); Leads tag_21 by 3 samples (corr=0.20); Leads tag_23 by 3 samples (corr=0.07); Leads tag_24 by 2 samples (corr=-0.22); Leads tag_26 by 2 samples (corr=0.22); Leads tag_30 by 1 samples (corr=-0.18); Leads tag_31 by 3 samples (corr=0.20); Leads tag_33 by 2 samples (corr=0.11); Leads tag_34 by 1 samples (corr=0.37); Leads tag_35 by 3 samples (corr=-0.09); Leads tag_36 by 3 samples (corr=0.17); Leads tag_38 by 1 samples (corr=-0.12); Leads tag_39 by 3 samples (corr=0.16); Leads tag_41 by 2 samples (corr=-0.14); Leads tag_48 by 3 samples (corr=-0.21); Leads tag_51 by 2 samples (corr=-0.23); Leads tag_52 by 2 samples (corr=0.16); Leads tag_08 by 1 samples (corr=0.14); Leads tag_09 by 2 samples (corr=-0.11); Leads tag_10 by 2 samples (corr=-0.20); Leads tag_11 by 1 samples (corr=-0.09); Leads tag_12 by 3 samples (corr=0.11); Leads tag_13 by 2 samples (corr=-0.12); Leads tag_14 by 1 samples (corr=-0.22); Leads tag_15 by 3 samples (corr=0.16); Leads tag_16 by 3 samples (corr=0.15); Leads tag_17 by 1 samples (corr=-0.10); Leads tag_19 by 1 samples (corr=-0.13); Leads tag_20 by 3 samples (corr=0.07); Leads tag_21 by 2 samples (corr=-0.12); Leads tag_22 by 2 samples (corr=-0.15); Leads tag_23 by 3 samples (corr=0.08); Leads tag_24 by 3 samples (corr=-0.15); Leads tag_25 by 3 samples (corr=-0.22); Leads tag_29 by 3 samples (corr=-0.17); Leads tag_30 by 3 samples (corr=0.18); Leads tag_31 by 2 samples (corr=-0.12); Leads tag_33 by 2 samples (corr=-0.21); Leads tag_34 by 1 samples (corr=0.40); Leads tag_35 by 1 samples (corr=-0.18); Leads tag_38 by 3 samples (corr=-0.06); Leads tag_39 by 1 samples (corr=0.19); Leads tag_41 by 1 samples (corr=-0.14); Leads tag_42 by 3 samples (corr=0.14); Leads tag_43 by 3 samples (corr=0.16); Leads tag_44 by 2 samples (corr=-0.22); Leads tag_51 by 2 samples (corr=0.07); Leads tag_52 by 2 samples (corr=-0.11); Leads 67 columns, follows 0 columns; High median (3666.4) suggests level"
+    },
+    {
+      "column": "tag_08",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=-0.05); Leads tag_01 by 2 samples (corr=0.14); Leads tag_02 by 3 samples (corr=0.18); Leads tag_03 by 3 samples (corr=0.15); Leads tag_04 by 1 samples (corr=-0.11); Leads tag_05 by 1 samples (corr=-0.07); Leads tag_07 by 3 samples (corr=0.11); Leads sample by 1 samples (corr=0.04); Leads tag_01 by 2 samples (corr=0.13); Leads tag_04 by 3 samples (corr=-0.10); Leads tag_05 by 3 samples (corr=0.15); Leads tag_07 by 1 samples (corr=0.14); Leads tag_10 by 2 samples (corr=-0.12); Leads tag_13 by 3 samples (corr=-0.12); Leads tag_14 by 1 samples (corr=0.09); Leads tag_15 by 3 samples (corr=-0.09); Leads tag_17 by 2 samples (corr=-0.18); Leads tag_18 by 3 samples (corr=-0.15); Leads tag_20 by 2 samples (corr=0.13); Leads tag_22 by 3 samples (corr=0.06); Leads tag_23 by 2 samples (corr=-0.25); Leads tag_24 by 3 samples (corr=-0.07); Leads tag_26 by 2 samples (corr=0.09); Leads tag_27 by 2 samples (corr=-0.11); Leads tag_28 by 1 samples (corr=-0.13); Leads tag_29 by 3 samples (corr=0.21); Leads tag_30 by 1 samples (corr=0.06); Leads tag_32 by 1 samples (corr=-0.10); Leads tag_34 by 2 samples (corr=0.07); Leads tag_35 by 2 samples (corr=-0.10); Leads tag_36 by 2 samples (corr=-0.23); Leads tag_38 by 2 samples (corr=-0.17); Leads tag_39 by 3 samples (corr=0.15); Leads tag_40 by 1 samples (corr=0.18); Leads tag_41 by 1 samples (corr=0.11); Leads tag_42 by 3 samples (corr=-0.18); Leads tag_43 by 1 samples (corr=0.07); Leads tag_45 by 2 samples (corr=0.05); Leads tag_46 by 1 samples (corr=-0.05); Leads tag_47 by 3 samples (corr=-0.21); Leads tag_48 by 3 samples (corr=0.18); Leads tag_49 by 2 samples (corr=0.10); Leads tag_50 by 3 samples (corr=-0.21); Leads tag_52 by 1 samples (corr=-0.20); Leads tag_10 by 1 samples (corr=-0.08); Leads tag_11 by 3 samples (corr=0.18); Leads tag_14 by 3 samples (corr=-0.16); Leads tag_15 by 3 samples (corr=0.12); Leads tag_17 by 1 samples (corr=-0.17); Leads tag_20 by 2 samples (corr=0.14); Leads tag_22 by 1 samples (corr=-0.13); Leads tag_23 by 3 samples (corr=-0.17); Leads tag_24 by 2 samples (corr=-0.15); Leads tag_26 by 1 samples (corr=0.12); Leads tag_27 by 2 samples (corr=-0.19); Leads tag_28 by 3 samples (corr=-0.14); Leads tag_29 by 3 samples (corr=0.10); Leads tag_30 by 3 samples (corr=-0.13); Leads tag_32 by 2 samples (corr=-0.11); Leads tag_34 by 3 samples (corr=-0.10); Leads tag_35 by 3 samples (corr=0.17); Leads tag_37 by 2 samples (corr=-0.12); Leads tag_38 by 2 samples (corr=-0.23); Leads tag_39 by 2 samples (corr=-0.14); Leads tag_40 by 1 samples (corr=-0.11); Leads tag_41 by 3 samples (corr=0.20); Leads tag_42 by 2 samples (corr=-0.09); Leads tag_43 by 2 samples (corr=0.19); Leads tag_44 by 1 samples (corr=-0.14); Leads tag_45 by 2 samples (corr=0.08); Leads tag_46 by 2 samples (corr=-0.04); Leads tag_49 by 3 samples (corr=0.15); Leads tag_50 by 2 samples (corr=-0.21); Leads 73 columns, follows 0 columns; Median (18.1) and autocorrelation (-0.59) suggest flow"
+    },
+    {
+      "column": "tag_09",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=-0.13); Leads tag_01 by 3 samples (corr=0.28); Leads tag_03 by 1 samples (corr=0.09); Leads tag_04 by 2 samples (corr=-0.37); Leads tag_05 by 3 samples (corr=0.05); Leads tag_06 by 2 samples (corr=-0.11); Leads tag_07 by 2 samples (corr=-0.14); Leads tag_01 by 3 samples (corr=-0.11); Leads tag_03 by 2 samples (corr=-0.16); Leads tag_04 by 3 samples (corr=-0.31); Leads tag_05 by 3 samples (corr=0.07); Leads tag_06 by 3 samples (corr=-0.22); Leads tag_07 by 2 samples (corr=-0.11); Leads tag_10 by 2 samples (corr=-0.48); Leads tag_13 by 3 samples (corr=-0.50); Leads tag_14 by 3 samples (corr=0.13); Leads tag_17 by 2 samples (corr=-0.26); Leads tag_20 by 3 samples (corr=-0.11); Leads tag_21 by 2 samples (corr=0.09); Leads tag_22 by 3 samples (corr=0.26); Leads tag_26 by 3 samples (corr=-0.14); Leads tag_28 by 2 samples (corr=0.22); Leads tag_29 by 3 samples (corr=-0.11); Leads tag_30 by 3 samples (corr=0.11); Leads tag_31 by 2 samples (corr=0.09); Leads tag_32 by 1 samples (corr=0.06); Leads tag_33 by 3 samples (corr=-0.25); Leads tag_34 by 2 samples (corr=-0.27); Leads tag_35 by 3 samples (corr=-0.15); Leads tag_38 by 2 samples (corr=0.14); Leads tag_39 by 2 samples (corr=0.27); Leads tag_40 by 2 samples (corr=-0.12); Leads tag_42 by 2 samples (corr=0.09); Leads tag_43 by 3 samples (corr=0.13); Leads tag_44 by 2 samples (corr=0.19); Leads tag_45 by 1 samples (corr=0.08); Leads tag_46 by 2 samples (corr=0.23); Leads tag_48 by 1 samples (corr=0.32); Leads tag_49 by 3 samples (corr=-0.16); Leads tag_52 by 3 samples (corr=0.15); Leads tag_11 by 3 samples (corr=0.13); Leads tag_12 by 2 samples (corr=0.10); Leads tag_13 by 1 samples (corr=-0.48); Leads tag_14 by 3 samples (corr=0.14); Leads tag_16 by 2 samples (corr=-0.11); Leads tag_17 by 2 samples (corr=-0.29); Leads tag_18 by 2 samples (corr=-0.25); Leads tag_20 by 3 samples (corr=0.28); Leads tag_21 by 1 samples (corr=-0.13); Leads tag_22 by 3 samples (corr=0.18); Leads tag_23 by 2 samples (corr=-0.13); Leads tag_24 by 2 samples (corr=0.23); Leads tag_27 by 2 samples (corr=-0.35); Leads tag_28 by 3 samples (corr=0.17); Leads tag_29 by 2 samples (corr=-0.06); Leads tag_30 by 1 samples (corr=-0.13); Leads tag_31 by 1 samples (corr=-0.13); Leads tag_32 by 2 samples (corr=0.07); Leads tag_33 by 2 samples (corr=-0.15); Leads tag_35 by 3 samples (corr=0.16); Leads tag_36 by 1 samples (corr=-0.31); Leads tag_38 by 2 samples (corr=-0.13); Leads tag_40 by 3 samples (corr=0.13); Leads tag_41 by 3 samples (corr=0.15); Leads tag_42 by 2 samples (corr=0.15); Leads tag_43 by 3 samples (corr=0.14); Leads tag_44 by 2 samples (corr=-0.06); Leads tag_47 by 3 samples (corr=-0.32); Leads tag_50 by 2 samples (corr=-0.18); Leads tag_52 by 2 samples (corr=-0.14); Leads 70 columns, follows 0 columns; Median (18.7) and autocorrelation (-0.01) suggest flow"
+    },
+    {
+      "column": "tag_10",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=-0.02); Leads tag_01 by 1 samples (corr=-0.10); Leads tag_02 by 3 samples (corr=-0.21); Leads tag_04 by 3 samples (corr=0.63); Leads tag_05 by 2 samples (corr=0.08); Leads tag_08 by 2 samples (corr=-0.12); Leads tag_09 by 2 samples (corr=-0.48); Leads sample by 3 samples (corr=-0.03); Leads tag_01 by 3 samples (corr=-0.07); Leads tag_02 by 3 samples (corr=0.30); Leads tag_05 by 1 samples (corr=-0.06); Leads tag_07 by 2 samples (corr=-0.20); Leads tag_08 by 1 samples (corr=-0.08); Leads tag_11 by 3 samples (corr=0.31); Leads tag_14 by 2 samples (corr=-0.16); Leads tag_18 by 3 samples (corr=0.11); Leads tag_19 by 1 samples (corr=0.08); Leads tag_20 by 3 samples (corr=-0.07); Leads tag_21 by 2 samples (corr=0.07); Leads tag_22 by 2 samples (corr=-0.41); Leads tag_24 by 2 samples (corr=0.03); Leads tag_25 by 3 samples (corr=0.20); Leads tag_29 by 1 samples (corr=0.15); Leads tag_31 by 2 samples (corr=0.07); Leads tag_32 by 3 samples (corr=-0.13); Leads tag_34 by 2 samples (corr=-0.11); Leads tag_35 by 2 samples (corr=0.22); Leads tag_37 by 2 samples (corr=0.13); Leads tag_38 by 3 samples (corr=-0.13); Leads tag_40 by 2 samples (corr=-0.08); Leads tag_42 by 3 samples (corr=-0.16); Leads tag_43 by 2 samples (corr=-0.23); Leads tag_45 by 3 samples (corr=0.31); Leads tag_49 by 3 samples (corr=0.46); Leads tag_51 by 1 samples (corr=-0.31); Leads tag_52 by 3 samples (corr=-0.24); Leads tag_11 by 3 samples (corr=-0.20); Leads tag_12 by 1 samples (corr=-0.14); Leads tag_14 by 2 samples (corr=-0.14); Leads tag_15 by 1 samples (corr=-0.19); Leads tag_16 by 1 samples (corr=0.11); Leads tag_17 by 3 samples (corr=0.49); Leads tag_18 by 3 samples (corr=0.15); Leads tag_19 by 2 samples (corr=0.12); Leads tag_20 by 1 samples (corr=-0.10); Leads tag_21 by 3 samples (corr=-0.08); Leads tag_22 by 3 samples (corr=-0.35); Leads tag_24 by 3 samples (corr=0.03); Leads tag_27 by 3 samples (corr=0.28); Leads tag_28 by 2 samples (corr=-0.23); Leads tag_29 by 3 samples (corr=-0.06); Leads tag_31 by 3 samples (corr=-0.08); Leads tag_32 by 3 samples (corr=0.10); Leads tag_34 by 3 samples (corr=0.23); Leads tag_35 by 1 samples (corr=0.09); Leads tag_36 by 3 samples (corr=0.51); Leads tag_37 by 2 samples (corr=0.18); Leads tag_38 by 2 samples (corr=0.05); Leads tag_39 by 3 samples (corr=-0.28); Leads tag_41 by 1 samples (corr=-0.23); Leads tag_42 by 3 samples (corr=0.07); Leads tag_43 by 2 samples (corr=-0.14); Leads tag_46 by 2 samples (corr=-0.33); Leads tag_47 by 3 samples (corr=0.55); Leads tag_48 by 1 samples (corr=-0.44); Leads tag_50 by 3 samples (corr=0.22); Leads tag_51 by 2 samples (corr=-0.32); Leads 67 columns, follows 0 columns; Median (22.2) and autocorrelation (-0.49) suggest flow"
+    },
+    {
+      "column": "tag_11",
+      "type": "unknown",
+      "role": "actuated",
+      "confidence": 0.9402409156654289,
+      "evidence": "Leads tag_01 by 2 samples (corr=-0.07); Leads tag_03 by 2 samples (corr=-0.16); Leads tag_05 by 2 samples (corr=0.18); Leads tag_06 by 3 samples (corr=0.48); Leads tag_07 by 3 samples (corr=-0.12); Leads tag_10 by 3 samples (corr=0.31); Leads sample by 3 samples (corr=-0.33); Leads tag_03 by 1 samples (corr=-0.05); Leads tag_04 by 3 samples (corr=-0.33); Leads tag_05 by 3 samples (corr=0.05); Leads tag_07 by 1 samples (corr=-0.09); Leads tag_08 by 3 samples (corr=0.18); Leads tag_09 by 3 samples (corr=0.13); Leads tag_10 by 3 samples (corr=-0.20); Leads tag_12 by 2 samples (corr=-0.07); Leads tag_13 by 3 samples (corr=-0.34); Leads tag_14 by 2 samples (corr=-0.14); Leads tag_17 by 2 samples (corr=-0.92); Leads tag_18 by 2 samples (corr=-0.26); Leads tag_19 by 3 samples (corr=-0.16); Leads tag_21 by 3 samples (corr=-0.20); Leads tag_22 by 2 samples (corr=-0.13); Leads tag_23 by 2 samples (corr=-0.17); Leads tag_24 by 3 samples (corr=0.24); Leads tag_26 by 1 samples (corr=0.30); Leads tag_27 by 3 samples (corr=-0.13); Leads tag_30 by 2 samples (corr=0.12); Leads tag_31 by 3 samples (corr=-0.20); Leads tag_32 by 2 samples (corr=0.16); Leads tag_35 by 3 samples (corr=-0.06); Leads tag_36 by 2 samples (corr=-0.14); Leads tag_37 by 2 samples (corr=0.17); Leads tag_39 by 2 samples (corr=0.26); Leads tag_41 by 2 samples (corr=-0.09); Leads tag_42 by 3 samples (corr=0.11); Leads tag_43 by 2 samples (corr=0.10); Leads tag_44 by 2 samples (corr=-0.09); Leads tag_47 by 3 samples (corr=-0.16); Leads tag_50 by 1 samples (corr=-0.21); Leads tag_51 by 3 samples (corr=0.20); Leads tag_12 by 3 samples (corr=0.22); Leads tag_13 by 3 samples (corr=0.25); Leads tag_15 by 2 samples (corr=0.15); Leads tag_20 by 2 samples (corr=-0.07); Leads tag_21 by 1 samples (corr=-0.15); Leads tag_22 by 3 samples (corr=-0.16); Leads tag_23 by 3 samples (corr=-0.13); Leads tag_24 by 2 samples (corr=0.23); Leads tag_25 by 3 samples (corr=0.43); Leads tag_27 by 3 samples (corr=-0.06); Leads tag_29 by 3 samples (corr=0.16); Leads tag_30 by 1 samples (corr=-0.05); Leads tag_31 by 1 samples (corr=-0.15); Leads tag_32 by 2 samples (corr=0.10); Leads tag_33 by 3 samples (corr=0.48); Leads tag_34 by 3 samples (corr=-0.12); Leads tag_35 by 3 samples (corr=0.09); Leads tag_36 by 1 samples (corr=-0.12); Leads tag_37 by 2 samples (corr=0.13); Leads tag_38 by 3 samples (corr=-0.08); Leads tag_39 by 2 samples (corr=0.14); Leads tag_40 by 2 samples (corr=0.12); Leads tag_41 by 2 samples (corr=0.25); Leads tag_43 by 2 samples (corr=0.06); Leads tag_44 by 3 samples (corr=-0.14); Leads tag_46 by 3 samples (corr=-0.13); Leads tag_48 by 1 samples (corr=0.19); Leads tag_49 by 3 samples (corr=0.49); Leads tag_50 by 3 samples (corr=-0.25); Leads tag_51 by 2 samples (corr=0.06); Leads tag_52 by 1 samples (corr=-0.32); Leads 71 columns, follows 0 columns; No clear type signature"
+    },
+    {
+      "column": "tag_12",
+      "type": "unknown",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_02 by 2 samples (corr=-0.08); Leads tag_04 by 3 samples (corr=0.18); Leads tag_05 by 3 samples (corr=-0.12); Leads tag_06 by 3 samples (corr=-0.03); Leads tag_07 by 2 samples (corr=-0.04); Leads tag_11 by 2 samples (corr=-0.07); Leads tag_02 by 3 samples (corr=0.23); Leads tag_03 by 1 samples (corr=-0.07); Leads tag_04 by 2 samples (corr=-0.19); Leads tag_05 by 2 samples (corr=0.20); Leads tag_06 by 3 samples (corr=0.18); Leads tag_07 by 3 samples (corr=0.11); Leads tag_09 by 2 samples (corr=0.10); Leads tag_10 by 1 samples (corr=-0.14); Leads tag_11 by 3 samples (corr=0.22); Leads tag_13 by 3 samples (corr=-0.11); Leads tag_14 by 3 samples (corr=0.12); Leads tag_15 by 3 samples (corr=-0.09); Leads tag_17 by 3 samples (corr=-0.09); Leads tag_18 by 3 samples (corr=-0.07); Leads tag_21 by 3 samples (corr=-0.13); Leads tag_22 by 3 samples (corr=0.13); Leads tag_24 by 3 samples (corr=-0.17); Leads tag_25 by 3 samples (corr=0.25); Leads tag_27 by 3 samples (corr=0.18); Leads tag_28 by 3 samples (corr=-0.20); Leads tag_29 by 3 samples (corr=-0.11); Leads tag_30 by 1 samples (corr=-0.06); Leads tag_31 by 3 samples (corr=-0.13); Leads tag_33 by 3 samples (corr=0.18); Leads tag_34 by 2 samples (corr=0.14); Leads tag_35 by 3 samples (corr=-0.20); Leads tag_38 by 3 samples (corr=-0.18); Leads tag_39 by 2 samples (corr=0.15); Leads tag_40 by 3 samples (corr=0.13); Leads tag_42 by 3 samples (corr=-0.08); Leads tag_45 by 3 samples (corr=-0.05); Leads tag_47 by 1 samples (corr=-0.34); Leads tag_15 by 3 samples (corr=0.12); Leads tag_17 by 3 samples (corr=0.11); Leads tag_21 by 1 samples (corr=-0.11); Leads tag_23 by 1 samples (corr=-0.31); Leads tag_24 by 1 samples (corr=-0.12); Leads tag_25 by 3 samples (corr=-0.07); Leads tag_26 by 3 samples (corr=-0.21); Leads tag_27 by 2 samples (corr=-0.23); Leads tag_28 by 2 samples (corr=0.06); Leads tag_29 by 1 samples (corr=-0.12); Leads tag_30 by 3 samples (corr=0.05); Leads tag_31 by 1 samples (corr=-0.11); Leads tag_32 by 1 samples (corr=-0.15); Leads tag_33 by 3 samples (corr=-0.05); Leads tag_35 by 3 samples (corr=-0.05); Leads tag_37 by 2 samples (corr=-0.17); Leads tag_39 by 2 samples (corr=0.16); Leads tag_40 by 3 samples (corr=0.05); Leads tag_42 by 3 samples (corr=0.14); Leads tag_43 by 1 samples (corr=0.11); Leads tag_44 by 1 samples (corr=-0.10); Leads tag_45 by 3 samples (corr=0.06); Leads tag_46 by 1 samples (corr=0.16); Leads tag_47 by 2 samples (corr=-0.36); Leads tag_49 by 3 samples (corr=0.28); Leads tag_50 by 2 samples (corr=-0.31); Leads tag_51 by 3 samples (corr=0.15); Leads 65 columns, follows 0 columns; No clear type signature"
+    },
+    {
+      "column": "tag_13",
+      "type": "pressure",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_01 by 2 samples (corr=-0.03); Leads tag_02 by 3 samples (corr=-0.35); Leads tag_03 by 3 samples (corr=0.11); Leads tag_04 by 3 samples (corr=0.70); Leads tag_05 by 3 samples (corr=-0.03); Leads tag_08 by 3 samples (corr=-0.12); Leads tag_09 by 3 samples (corr=-0.50); Leads tag_11 by 3 samples (corr=-0.34); Leads tag_12 by 3 samples (corr=-0.11); Leads sample by 1 samples (corr=0.20); Leads tag_01 by 1 samples (corr=-0.05); Leads tag_02 by 3 samples (corr=0.23); Leads tag_03 by 3 samples (corr=-0.05); Leads tag_05 by 1 samples (corr=-0.02); Leads tag_06 by 3 samples (corr=0.32); Leads tag_07 by 2 samples (corr=-0.12); Leads tag_09 by 1 samples (corr=-0.48); Leads tag_11 by 3 samples (corr=0.25); Leads tag_14 by 2 samples (corr=-0.05); Leads tag_16 by 2 samples (corr=-0.10); Leads tag_20 by 1 samples (corr=-0.05); Leads tag_21 by 1 samples (corr=0.09); Leads tag_22 by 1 samples (corr=-0.29); Leads tag_23 by 3 samples (corr=-0.14); Leads tag_24 by 1 samples (corr=0.03); Leads tag_27 by 1 samples (corr=0.23); Leads tag_28 by 3 samples (corr=-0.24); Leads tag_29 by 3 samples (corr=0.17); Leads tag_31 by 1 samples (corr=0.09); Leads tag_32 by 3 samples (corr=-0.09); Leads tag_33 by 3 samples (corr=0.38); Leads tag_34 by 2 samples (corr=-0.06); Leads tag_35 by 2 samples (corr=0.14); Leads tag_37 by 2 samples (corr=0.05); Leads tag_38 by 3 samples (corr=-0.15); Leads tag_39 by 3 samples (corr=-0.31); Leads tag_40 by 3 samples (corr=0.03); Leads tag_42 by 2 samples (corr=-0.11); Leads tag_43 by 1 samples (corr=-0.25); Leads tag_44 by 1 samples (corr=-0.02); Leads tag_45 by 3 samples (corr=0.31); Leads tag_49 by 3 samples (corr=0.35); Leads tag_52 by 3 samples (corr=-0.24); Leads tag_14 by 3 samples (corr=-0.06); Leads tag_15 by 1 samples (corr=-0.15); Leads tag_17 by 3 samples (corr=0.61); Leads tag_18 by 2 samples (corr=0.23); Leads tag_19 by 3 samples (corr=0.12); Leads tag_20 by 2 samples (corr=-0.03); Leads tag_22 by 1 samples (corr=-0.27); Leads tag_24 by 2 samples (corr=-0.03); Leads tag_25 by 3 samples (corr=-0.19); Leads tag_27 by 3 samples (corr=0.26); Leads tag_28 by 2 samples (corr=-0.25); Leads tag_29 by 1 samples (corr=0.13); Leads tag_34 by 3 samples (corr=0.15); Leads tag_35 by 1 samples (corr=0.10); Leads tag_36 by 3 samples (corr=0.57); Leads tag_37 by 3 samples (corr=0.06); Leads tag_39 by 3 samples (corr=-0.30); Leads tag_40 by 3 samples (corr=-0.02); Leads tag_41 by 2 samples (corr=-0.20); Leads tag_43 by 2 samples (corr=-0.24); Leads tag_44 by 2 samples (corr=-0.03); Leads tag_46 by 2 samples (corr=-0.21); Leads tag_47 by 3 samples (corr=0.57); Leads tag_48 by 3 samples (corr=-0.40); Leads tag_50 by 3 samples (corr=0.32); Leads 68 columns, follows 0 columns; Median (341.5) suggests pressure"
+    },
+    {
+      "column": "tag_14",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=0.31); Leads tag_01 by 3 samples (corr=0.11); Leads tag_02 by 2 samples (corr=-0.14); Leads tag_03 by 2 samples (corr=-0.13); Leads tag_04 by 2 samples (corr=-0.07); Leads tag_05 by 1 samples (corr=0.12); Leads tag_06 by 3 samples (corr=-0.17); Leads tag_07 by 1 samples (corr=0.16); Leads tag_08 by 1 samples (corr=0.09); Leads tag_09 by 3 samples (corr=0.13); Leads tag_10 by 2 samples (corr=-0.16); Leads tag_11 by 2 samples (corr=-0.14); Leads tag_12 by 3 samples (corr=0.12); Leads tag_13 by 2 samples (corr=-0.05); Leads sample by 1 samples (corr=0.28); Leads tag_01 by 1 samples (corr=0.17); Leads tag_03 by 3 samples (corr=0.09); Leads tag_04 by 3 samples (corr=-0.09); Leads tag_05 by 3 samples (corr=-0.17); Leads tag_06 by 3 samples (corr=-0.38); Leads tag_07 by 1 samples (corr=-0.22); Leads tag_08 by 3 samples (corr=-0.16); Leads tag_09 by 3 samples (corr=0.14); Leads tag_10 by 2 samples (corr=-0.14); Leads tag_13 by 3 samples (corr=-0.06); Leads tag_15 by 3 samples (corr=0.15); Leads tag_16 by 1 samples (corr=-0.18); Leads tag_18 by 1 samples (corr=-0.11); Leads tag_19 by 3 samples (corr=0.16); Leads tag_20 by 1 samples (corr=0.17); Leads tag_21 by 3 samples (corr=0.28); Leads tag_23 by 3 samples (corr=0.16); Leads tag_25 by 3 samples (corr=-0.36); Leads tag_28 by 2 samples (corr=0.20); Leads tag_29 by 2 samples (corr=0.18); Leads tag_30 by 2 samples (corr=0.08); Leads tag_31 by 3 samples (corr=0.28); Leads tag_32 by 2 samples (corr=0.10); Leads tag_33 by 3 samples (corr=-0.37); Leads tag_34 by 3 samples (corr=-0.05); Leads tag_35 by 1 samples (corr=0.21); Leads tag_36 by 1 samples (corr=-0.05); Leads tag_37 by 1 samples (corr=0.11); Leads tag_41 by 1 samples (corr=-0.13); Leads tag_42 by 3 samples (corr=-0.30); Leads tag_43 by 2 samples (corr=-0.19); Leads tag_44 by 1 samples (corr=0.31); Leads tag_45 by 1 samples (corr=0.09); Leads tag_46 by 3 samples (corr=0.42); Leads tag_48 by 2 samples (corr=0.14); Leads tag_51 by 3 samples (corr=0.11); Leads tag_52 by 1 samples (corr=-0.14); Leads tag_15 by 3 samples (corr=0.13); Leads tag_16 by 3 samples (corr=-0.34); Leads tag_17 by 1 samples (corr=0.11); Leads tag_18 by 3 samples (corr=0.11); Leads tag_19 by 1 samples (corr=-0.11); Leads tag_20 by 3 samples (corr=0.11); Leads tag_21 by 1 samples (corr=0.09); Leads tag_22 by 1 samples (corr=0.75); Leads tag_23 by 3 samples (corr=0.27); Leads tag_24 by 1 samples (corr=-0.12); Leads tag_25 by 3 samples (corr=-0.11); Leads tag_26 by 3 samples (corr=0.23); Leads tag_28 by 1 samples (corr=-0.24); Leads tag_30 by 2 samples (corr=-0.15); Leads tag_31 by 1 samples (corr=0.09); Leads tag_32 by 1 samples (corr=-0.11); Leads tag_33 by 3 samples (corr=-0.17); Leads tag_34 by 1 samples (corr=-0.14); Leads tag_35 by 3 samples (corr=-0.17); Leads tag_36 by 3 samples (corr=-0.09); Leads tag_37 by 1 samples (corr=-0.14); Leads tag_38 by 1 samples (corr=-0.10); Leads tag_40 by 1 samples (corr=0.30); Leads tag_41 by 3 samples (corr=0.17); Leads tag_43 by 2 samples (corr=-0.32); Leads tag_45 by 3 samples (corr=-0.16); Leads tag_46 by 3 samples (corr=0.19); Leads tag_47 by 2 samples (corr=-0.15); Leads tag_48 by 3 samples (corr=0.12); Leads tag_49 by 1 samples (corr=-0.29); Leads tag_50 by 2 samples (corr=0.27); Leads tag_51 by 3 samples (corr=0.07); Leads tag_52 by 2 samples (corr=-0.07); Leads 85 columns, follows 0 columns; Median (77.3) and autocorrelation (-0.14) suggest flow"
+    },
+    {
+      "column": "tag_15",
+      "type": "unknown",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 1 samples (corr=0.13); Leads tag_01 by 3 samples (corr=-0.07); Leads tag_03 by 1 samples (corr=-0.22); Leads tag_04 by 2 samples (corr=-0.13); Leads tag_05 by 2 samples (corr=-0.41); Leads tag_07 by 2 samples (corr=-0.77); Leads tag_08 by 3 samples (corr=-0.09); Leads tag_12 by 3 samples (corr=-0.09); Leads tag_14 by 3 samples (corr=0.15); Leads sample by 3 samples (corr=0.16); Leads tag_01 by 1 samples (corr=0.16); Leads tag_02 by 2 samples (corr=0.15); Leads tag_03 by 1 samples (corr=-0.17); Leads tag_07 by 3 samples (corr=0.16); Leads tag_08 by 3 samples (corr=0.12); Leads tag_10 by 1 samples (corr=-0.19); Leads tag_11 by 2 samples (corr=0.15); Leads tag_12 by 3 samples (corr=0.12); Leads tag_13 by 1 samples (corr=-0.15); Leads tag_14 by 3 samples (corr=0.13); Leads tag_16 by 3 samples (corr=-0.08); Leads tag_17 by 3 samples (corr=-0.12); Leads tag_19 by 3 samples (corr=-0.13); Leads tag_20 by 1 samples (corr=0.16); Leads tag_21 by 1 samples (corr=-0.14); Leads tag_22 by 3 samples (corr=0.32); Leads tag_26 by 2 samples (corr=0.15); Leads tag_27 by 2 samples (corr=-0.31); Leads tag_28 by 3 samples (corr=-0.21); Leads tag_31 by 1 samples (corr=-0.14); Leads tag_32 by 2 samples (corr=-0.07); Leads tag_34 by 3 samples (corr=0.20); Leads tag_35 by 3 samples (corr=-0.19); Leads tag_37 by 1 samples (corr=-0.08); Leads tag_38 by 2 samples (corr=-0.13); Leads tag_39 by 2 samples (corr=-0.32); Leads tag_40 by 3 samples (corr=0.12); Leads tag_43 by 2 samples (corr=-0.25); Leads tag_45 by 1 samples (corr=-0.04); Leads tag_46 by 2 samples (corr=0.24); Leads tag_47 by 2 samples (corr=-0.14); Leads tag_50 by 2 samples (corr=0.10); Leads tag_52 by 1 samples (corr=-0.15); Leads tag_16 by 2 samples (corr=-0.12); Leads tag_17 by 1 samples (corr=-0.05); Leads tag_18 by 2 samples (corr=-0.30); Leads tag_19 by 3 samples (corr=0.09); Leads tag_20 by 3 samples (corr=-0.07); Leads tag_21 by 1 samples (corr=0.14); Leads tag_22 by 3 samples (corr=0.04); Leads tag_23 by 2 samples (corr=0.09); Leads tag_25 by 2 samples (corr=-0.22); Leads tag_26 by 2 samples (corr=-0.19); Leads tag_27 by 2 samples (corr=-0.25); Leads tag_28 by 2 samples (corr=0.64); Leads tag_30 by 1 samples (corr=0.24); Leads tag_31 by 1 samples (corr=0.14); Leads tag_32 by 2 samples (corr=0.08); Leads tag_34 by 2 samples (corr=-0.83); Leads tag_35 by 3 samples (corr=0.17); Leads tag_36 by 1 samples (corr=-0.19); Leads tag_37 by 2 samples (corr=0.11); Leads tag_38 by 3 samples (corr=0.05); Leads tag_39 by 2 samples (corr=-0.14); Leads tag_40 by 2 samples (corr=-0.40); Leads tag_41 by 1 samples (corr=0.09); Leads tag_43 by 2 samples (corr=-0.18); Leads tag_45 by 2 samples (corr=0.16); Leads tag_46 by 2 samples (corr=0.21); Leads tag_47 by 2 samples (corr=-0.25); Leads tag_49 by 2 samples (corr=0.32); Leads tag_50 by 3 samples (corr=-0.10); Leads 72 columns, follows 0 columns; No clear type signature"
+    },
+    {
+      "column": "tag_16",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_04 by 2 samples (corr=0.04); Leads tag_06 by 2 samples (corr=-0.14); Leads tag_07 by 2 samples (corr=-0.15); Leads tag_13 by 2 samples (corr=-0.10); Leads tag_14 by 1 samples (corr=-0.18); Leads tag_15 by 3 samples (corr=-0.08); Leads sample by 3 samples (corr=-0.53); Leads tag_01 by 1 samples (corr=-0.11); Leads tag_04 by 3 samples (corr=0.11); Leads tag_06 by 3 samples (corr=0.11); Leads tag_07 by 3 samples (corr=0.15); Leads tag_09 by 2 samples (corr=-0.11); Leads tag_10 by 1 samples (corr=0.11); Leads tag_14 by 3 samples (corr=-0.34); Leads tag_15 by 2 samples (corr=-0.12); Leads tag_17 by 2 samples (corr=-0.12); Leads tag_18 by 2 samples (corr=-0.16); Leads tag_20 by 1 samples (corr=-0.11); Leads tag_21 by 3 samples (corr=-0.17); Leads tag_22 by 2 samples (corr=-0.35); Leads tag_24 by 3 samples (corr=0.14); Leads tag_25 by 3 samples (corr=0.09); Leads tag_26 by 3 samples (corr=0.02); Leads tag_28 by 2 samples (corr=0.08); Leads tag_29 by 2 samples (corr=-0.27); Leads tag_31 by 3 samples (corr=-0.17); Leads tag_33 by 3 samples (corr=0.09); Leads tag_34 by 3 samples (corr=0.15); Leads tag_35 by 2 samples (corr=0.10); Leads tag_37 by 2 samples (corr=0.27); Leads tag_38 by 2 samples (corr=0.31); Leads tag_39 by 3 samples (corr=0.20); Leads tag_40 by 2 samples (corr=-0.19); Leads tag_41 by 2 samples (corr=-0.14); Leads tag_42 by 2 samples (corr=0.28); Leads tag_43 by 3 samples (corr=0.14); Leads tag_44 by 3 samples (corr=-0.19); Leads tag_46 by 3 samples (corr=-0.25); Leads tag_47 by 1 samples (corr=0.27); Leads tag_48 by 3 samples (corr=-0.23); Leads tag_49 by 1 samples (corr=0.23); Leads tag_52 by 3 samples (corr=0.09); Leads tag_17 by 2 samples (corr=-0.15); Leads tag_18 by 2 samples (corr=-0.23); Leads tag_21 by 1 samples (corr=-0.13); Leads tag_22 by 2 samples (corr=-0.20); Leads tag_24 by 3 samples (corr=0.13); Leads tag_25 by 2 samples (corr=-0.12); Leads tag_26 by 1 samples (corr=-0.08); Leads tag_28 by 2 samples (corr=0.18); Leads tag_29 by 2 samples (corr=-0.19); Leads tag_31 by 1 samples (corr=-0.13); Leads tag_32 by 2 samples (corr=0.96); Leads tag_33 by 2 samples (corr=-0.16); Leads tag_35 by 2 samples (corr=0.17); Leads tag_36 by 3 samples (corr=0.30); Leads tag_37 by 2 samples (corr=0.97); Leads tag_40 by 2 samples (corr=-0.15); Leads tag_42 by 2 samples (corr=0.31); Leads tag_43 by 2 samples (corr=0.06); Leads tag_45 by 1 samples (corr=0.23); Leads tag_47 by 3 samples (corr=0.28); Leads tag_48 by 1 samples (corr=-0.19); Leads tag_50 by 3 samples (corr=0.11); Leads tag_52 by 3 samples (corr=0.20); Leads 65 columns, follows 0 columns; Median (13.8) and autocorrelation (-0.01) suggest flow"
+    },
+    {
+      "column": "tag_17",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 1 samples (corr=0.27); Leads tag_01 by 3 samples (corr=0.08); Leads tag_02 by 2 samples (corr=-0.92); Leads tag_03 by 3 samples (corr=0.11); Leads tag_04 by 2 samples (corr=0.45); Leads tag_05 by 3 samples (corr=-0.12); Leads tag_06 by 3 samples (corr=-0.33); Leads tag_07 by 3 samples (corr=0.07); Leads tag_08 by 2 samples (corr=-0.18); Leads tag_09 by 2 samples (corr=-0.26); Leads tag_11 by 2 samples (corr=-0.92); Leads tag_12 by 3 samples (corr=-0.09); Leads tag_15 by 3 samples (corr=-0.12); Leads tag_16 by 2 samples (corr=-0.12); Leads tag_01 by 2 samples (corr=0.13); Leads tag_03 by 1 samples (corr=0.07); Leads tag_04 by 2 samples (corr=0.50); Leads tag_07 by 1 samples (corr=-0.10); Leads tag_08 by 1 samples (corr=-0.17); Leads tag_09 by 2 samples (corr=-0.29); Leads tag_10 by 3 samples (corr=0.49); Leads tag_12 by 3 samples (corr=0.11); Leads tag_13 by 3 samples (corr=0.61); Leads tag_14 by 1 samples (corr=0.11); Leads tag_15 by 1 samples (corr=-0.05); Leads tag_16 by 2 samples (corr=-0.15); Leads tag_18 by 3 samples (corr=0.23); Leads tag_19 by 1 samples (corr=0.17); Leads tag_20 by 2 samples (corr=0.13); Leads tag_21 by 1 samples (corr=0.18); Leads tag_22 by 3 samples (corr=-0.15); Leads tag_24 by 2 samples (corr=-0.17); Leads tag_27 by 3 samples (corr=0.21); Leads tag_28 by 3 samples (corr=-0.17); Leads tag_30 by 3 samples (corr=0.18); Leads tag_31 by 1 samples (corr=0.18); Leads tag_32 by 2 samples (corr=0.10); Leads tag_33 by 3 samples (corr=0.07); Leads tag_34 by 1 samples (corr=0.05); Leads tag_35 by 1 samples (corr=0.10); Leads tag_37 by 2 samples (corr=0.14); Leads tag_38 by 1 samples (corr=-0.04); Leads tag_41 by 2 samples (corr=-0.21); Leads tag_45 by 3 samples (corr=0.11); Leads tag_47 by 1 samples (corr=0.34); Leads tag_48 by 3 samples (corr=-0.20); Leads tag_51 by 2 samples (corr=-0.27); Leads tag_52 by 3 samples (corr=-0.15); Leads tag_18 by 1 samples (corr=0.24); Leads tag_19 by 2 samples (corr=0.17); Leads tag_20 by 3 samples (corr=0.08); Leads tag_21 by 3 samples (corr=0.16); Leads tag_25 by 3 samples (corr=-0.48); Leads tag_26 by 1 samples (corr=-0.27); Leads tag_28 by 2 samples (corr=0.10); Leads tag_30 by 2 samples (corr=0.09); Leads tag_31 by 3 samples (corr=0.16); Leads tag_33 by 3 samples (corr=-0.30); Leads tag_34 by 3 samples (corr=0.09); Leads tag_35 by 2 samples (corr=0.07); Leads tag_36 by 3 samples (corr=0.38); Leads tag_38 by 3 samples (corr=0.08); Leads tag_40 by 3 samples (corr=-0.10); Leads tag_41 by 3 samples (corr=-0.20); Leads tag_43 by 1 samples (corr=-0.17); Leads tag_45 by 2 samples (corr=-0.17); Leads tag_46 by 2 samples (corr=-0.13); Leads tag_47 by 3 samples (corr=0.34); Leads tag_48 by 3 samples (corr=-0.31); Leads tag_49 by 3 samples (corr=-0.33); Leads tag_50 by 3 samples (corr=0.39); Leads tag_52 by 3 samples (corr=0.27); Leads 72 columns, follows 0 columns; Median (32.2) and autocorrelation (-0.05) suggest flow"
+    },
+    {
+      "column": "tag_18",
+      "type": "level",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_01 by 2 samples (corr=0.13); Leads tag_02 by 2 samples (corr=-0.26); Leads tag_03 by 3 samples (corr=0.21); Leads tag_04 by 1 samples (corr=0.21); Leads tag_05 by 2 samples (corr=-0.20); Leads tag_08 by 3 samples (corr=-0.15); Leads tag_10 by 3 samples (corr=0.11); Leads tag_11 by 2 samples (corr=-0.26); Leads tag_12 by 3 samples (corr=-0.07); Leads tag_14 by 1 samples (corr=-0.11); Leads tag_16 by 2 samples (corr=-0.16); Leads tag_17 by 3 samples (corr=0.23); Leads sample by 3 samples (corr=0.15); Leads tag_01 by 1 samples (corr=-0.19); Leads tag_03 by 2 samples (corr=-0.18); Leads tag_06 by 2 samples (corr=0.16); Leads tag_09 by 2 samples (corr=-0.25); Leads tag_10 by 3 samples (corr=0.15); Leads tag_13 by 2 samples (corr=0.23); Leads tag_14 by 3 samples (corr=0.11); Leads tag_15 by 2 samples (corr=-0.30); Leads tag_16 by 2 samples (corr=-0.23); Leads tag_17 by 1 samples (corr=0.24); Leads tag_20 by 1 samples (corr=-0.19); Leads tag_23 by 3 samples (corr=0.05); Leads tag_24 by 3 samples (corr=-0.11); Leads tag_26 by 3 samples (corr=-0.05); Leads tag_27 by 1 samples (corr=0.37); Leads tag_29 by 1 samples (corr=0.21); Leads tag_30 by 1 samples (corr=-0.15); Leads tag_36 by 3 samples (corr=0.07); Leads tag_41 by 2 samples (corr=-0.13); Leads tag_42 by 3 samples (corr=-0.15); Leads tag_43 by 3 samples (corr=-0.08); Leads tag_45 by 3 samples (corr=-0.20); Leads tag_47 by 3 samples (corr=0.09); Leads tag_48 by 3 samples (corr=-0.14); Leads tag_49 by 3 samples (corr=-0.13); Leads tag_51 by 2 samples (corr=-0.73); Leads tag_52 by 3 samples (corr=0.14); Leads tag_19 by 3 samples (corr=0.15); Leads tag_20 by 2 samples (corr=0.13); Leads tag_22 by 2 samples (corr=-0.18); Leads tag_23 by 1 samples (corr=-0.08); Leads tag_26 by 3 samples (corr=-0.17); Leads tag_27 by 1 samples (corr=0.30); Leads tag_30 by 2 samples (corr=-0.11); Leads tag_36 by 3 samples (corr=0.07); Leads tag_38 by 2 samples (corr=-0.19); Leads tag_40 by 2 samples (corr=-0.19); Leads tag_41 by 3 samples (corr=-0.14); Leads tag_42 by 2 samples (corr=0.21); Leads tag_43 by 3 samples (corr=0.20); Leads tag_44 by 3 samples (corr=-0.19); Leads tag_45 by 3 samples (corr=-0.15); Leads tag_46 by 3 samples (corr=-0.17); Leads tag_47 by 3 samples (corr=0.11); Leads tag_48 by 2 samples (corr=0.04); Leads tag_49 by 3 samples (corr=-0.06); Leads tag_50 by 1 samples (corr=-0.04); Leads tag_51 by 2 samples (corr=-0.21); Leads tag_52 by 2 samples (corr=-0.11); Leads 62 columns, follows 0 columns; High median (4505.5) suggests level"
+    },
+    {
+      "column": "tag_19",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_01 by 2 samples (corr=-0.15); Leads tag_02 by 3 samples (corr=-0.17); Leads tag_03 by 3 samples (corr=-0.15); Leads tag_04 by 1 samples (corr=0.11); Leads tag_05 by 1 samples (corr=0.07); Leads tag_07 by 3 samples (corr=-0.10); Leads tag_10 by 1 samples (corr=0.08); Leads tag_11 by 3 samples (corr=-0.16); Leads tag_14 by 3 samples (corr=0.16); Leads tag_15 by 3 samples (corr=-0.13); Leads tag_17 by 1 samples (corr=0.17); Leads sample by 1 samples (corr=-0.08); Leads tag_01 by 2 samples (corr=-0.13); Leads tag_04 by 3 samples (corr=0.09); Leads tag_05 by 3 samples (corr=-0.15); Leads tag_07 by 1 samples (corr=-0.13); Leads tag_10 by 2 samples (corr=0.12); Leads tag_13 by 3 samples (corr=0.12); Leads tag_14 by 1 samples (corr=-0.11); Leads tag_15 by 3 samples (corr=0.09); Leads tag_17 by 2 samples (corr=0.17); Leads tag_18 by 3 samples (corr=0.15); Leads tag_20 by 2 samples (corr=-0.13); Leads tag_22 by 3 samples (corr=-0.08); Leads tag_23 by 2 samples (corr=0.25); Leads tag_24 by 3 samples (corr=0.08); Leads tag_26 by 2 samples (corr=-0.09); Leads tag_27 by 2 samples (corr=0.12); Leads tag_28 by 1 samples (corr=0.13); Leads tag_29 by 3 samples (corr=-0.22); Leads tag_30 by 1 samples (corr=-0.06); Leads tag_32 by 1 samples (corr=0.11); Leads tag_34 by 2 samples (corr=-0.07); Leads tag_35 by 2 samples (corr=0.09); Leads tag_36 by 2 samples (corr=0.23); Leads tag_38 by 2 samples (corr=0.17); Leads tag_39 by 3 samples (corr=-0.14); Leads tag_40 by 1 samples (corr=-0.19); Leads tag_41 by 1 samples (corr=-0.11); Leads tag_42 by 3 samples (corr=0.19); Leads tag_43 by 1 samples (corr=-0.06); Leads tag_46 by 1 samples (corr=0.04); Leads tag_47 by 3 samples (corr=0.21); Leads tag_48 by 3 samples (corr=-0.19); Leads tag_49 by 2 samples (corr=-0.09); Leads tag_50 by 3 samples (corr=0.20); Leads tag_52 by 1 samples (corr=0.20); Leads tag_20 by 2 samples (corr=-0.15); Leads tag_22 by 1 samples (corr=0.11); Leads tag_23 by 3 samples (corr=0.17); Leads tag_24 by 2 samples (corr=0.17); Leads tag_26 by 1 samples (corr=-0.12); Leads tag_27 by 2 samples (corr=0.19); Leads tag_28 by 3 samples (corr=0.14); Leads tag_30 by 3 samples (corr=0.13); Leads tag_32 by 2 samples (corr=0.13); Leads tag_34 by 3 samples (corr=0.10); Leads tag_35 by 3 samples (corr=-0.17); Leads tag_37 by 2 samples (corr=0.13); Leads tag_38 by 2 samples (corr=0.24); Leads tag_39 by 2 samples (corr=0.15); Leads tag_40 by 1 samples (corr=0.10); Leads tag_41 by 3 samples (corr=-0.20); Leads tag_42 by 2 samples (corr=0.10); Leads tag_43 by 2 samples (corr=-0.18); Leads tag_44 by 1 samples (corr=0.13); Leads tag_45 by 2 samples (corr=-0.07); Leads tag_46 by 3 samples (corr=-0.04); Leads tag_49 by 3 samples (corr=-0.14); Leads tag_50 by 2 samples (corr=0.20); Leads 70 columns, follows 0 columns; Median (23.0) and autocorrelation (-0.58) suggest flow"
+    },
+    {
+      "column": "tag_20",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_03 by 1 samples (corr=0.07); Leads tag_04 by 2 samples (corr=-0.08); Leads tag_05 by 3 samples (corr=-0.10); Leads tag_06 by 3 samples (corr=-0.13); Leads tag_07 by 1 samples (corr=0.18); Leads tag_08 by 2 samples (corr=0.13); Leads tag_09 by 3 samples (corr=-0.11); Leads tag_10 by 3 samples (corr=-0.07); Leads tag_13 by 1 samples (corr=-0.05); Leads tag_14 by 1 samples (corr=0.17); Leads tag_15 by 1 samples (corr=0.16); Leads tag_16 by 1 samples (corr=-0.11); Leads tag_17 by 2 samples (corr=0.13); Leads tag_18 by 1 samples (corr=-0.19); Leads tag_19 by 2 samples (corr=-0.13); Leads sample by 1 samples (corr=0.06); Leads tag_03 by 1 samples (corr=-0.13); Leads tag_04 by 3 samples (corr=-0.10); Leads tag_05 by 1 samples (corr=0.11); Leads tag_07 by 3 samples (corr=0.07); Leads tag_08 by 2 samples (corr=0.14); Leads tag_09 by 3 samples (corr=0.28); Leads tag_10 by 1 samples (corr=-0.10); Leads tag_11 by 2 samples (corr=-0.07); Leads tag_13 by 2 samples (corr=-0.03); Leads tag_14 by 3 samples (corr=0.11); Leads tag_15 by 3 samples (corr=-0.07); Leads tag_17 by 3 samples (corr=0.08); Leads tag_18 by 2 samples (corr=0.13); Leads tag_19 by 2 samples (corr=-0.15); Leads tag_21 by 3 samples (corr=0.06); Leads tag_22 by 3 samples (corr=0.14); Leads tag_23 by 2 samples (corr=0.17); Leads tag_24 by 3 samples (corr=-0.06); Leads tag_26 by 3 samples (corr=-0.20); Leads tag_28 by 1 samples (corr=-0.15); Leads tag_29 by 1 samples (corr=0.12); Leads tag_30 by 1 samples (corr=0.30); Leads tag_31 by 3 samples (corr=0.06); Leads tag_32 by 2 samples (corr=0.11); Leads tag_34 by 1 samples (corr=0.16); Leads tag_35 by 3 samples (corr=-0.13); Leads tag_36 by 2 samples (corr=0.04); Leads tag_37 by 2 samples (corr=0.09); Leads tag_41 by 3 samples (corr=0.11); Leads tag_42 by 2 samples (corr=-0.15); Leads tag_43 by 1 samples (corr=-0.16); Leads tag_44 by 3 samples (corr=0.08); Leads tag_45 by 3 samples (corr=0.17); Leads tag_47 by 1 samples (corr=0.04); Leads tag_48 by 3 samples (corr=0.16); Leads tag_49 by 2 samples (corr=-0.11); Leads tag_50 by 1 samples (corr=0.09); Leads tag_52 by 3 samples (corr=-0.17); Leads tag_21 by 3 samples (corr=-0.13); Leads tag_22 by 1 samples (corr=0.18); Leads tag_24 by 3 samples (corr=-0.19); Leads tag_25 by 3 samples (corr=-0.13); Leads tag_26 by 1 samples (corr=0.14); Leads tag_27 by 2 samples (corr=-0.22); Leads tag_28 by 3 samples (corr=0.12); Leads tag_29 by 2 samples (corr=0.15); Leads tag_30 by 3 samples (corr=-0.09); Leads tag_31 by 3 samples (corr=-0.13); Leads tag_32 by 3 samples (corr=-0.12); Leads tag_33 by 3 samples (corr=-0.13); Leads tag_34 by 3 samples (corr=-0.16); Leads tag_36 by 2 samples (corr=0.02); Leads tag_37 by 3 samples (corr=-0.08); Leads tag_38 by 1 samples (corr=-0.20); Leads tag_39 by 1 samples (corr=-0.23); Leads tag_40 by 2 samples (corr=0.10); Leads tag_41 by 2 samples (corr=-0.06); Leads tag_42 by 2 samples (corr=-0.20); Leads tag_44 by 2 samples (corr=0.11); Leads tag_46 by 3 samples (corr=0.13); Leads tag_47 by 1 samples (corr=0.05); Leads tag_48 by 3 samples (corr=0.18); Leads tag_50 by 2 samples (corr=0.11); Leads tag_51 by 1 samples (corr=0.20); Leads 80 columns, follows 0 columns; Median (46.5) and autocorrelation (-0.51) suggest flow"
+    },
+    {
+      "column": "tag_21",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 1 samples (corr=0.19); Leads tag_01 by 3 samples (corr=0.06); Leads tag_02 by 3 samples (corr=-0.21); Leads tag_03 by 2 samples (corr=0.21); Leads tag_04 by 3 samples (corr=0.12); Leads tag_05 by 3 samples (corr=0.21); Leads tag_07 by 3 samples (corr=0.20); Leads tag_09 by 2 samples (corr=0.09); Leads tag_10 by 2 samples (corr=0.07); Leads tag_11 by 3 samples (corr=-0.20); Leads tag_12 by 3 samples (corr=-0.13); Leads tag_13 by 1 samples (corr=0.09); Leads tag_14 by 3 samples (corr=0.28); Leads tag_15 by 1 samples (corr=-0.14); Leads tag_16 by 3 samples (corr=-0.17); Leads tag_17 by 1 samples (corr=0.18); Leads tag_20 by 3 samples (corr=0.06); Leads tag_01 by 3 samples (corr=-0.13); Leads tag_02 by 1 samples (corr=-0.15); Leads tag_03 by 1 samples (corr=-0.05); Leads tag_04 by 3 samples (corr=0.09); Leads tag_05 by 3 samples (corr=-0.17); Leads tag_06 by 3 samples (corr=-0.22); Leads tag_07 by 2 samples (corr=-0.12); Leads tag_09 by 1 samples (corr=-0.13); Leads tag_10 by 3 samples (corr=-0.08); Leads tag_11 by 1 samples (corr=-0.15); Leads tag_12 by 1 samples (corr=-0.11); Leads tag_14 by 1 samples (corr=0.09); Leads tag_15 by 1 samples (corr=0.14); Leads tag_16 by 1 samples (corr=-0.13); Leads tag_17 by 3 samples (corr=0.16); Leads tag_20 by 3 samples (corr=-0.13); Leads tag_22 by 1 samples (corr=0.07); Leads tag_24 by 3 samples (corr=-0.19); Leads tag_25 by 3 samples (corr=-0.23); Leads tag_26 by 3 samples (corr=0.16); Leads tag_27 by 1 samples (corr=0.12); Leads tag_28 by 1 samples (corr=0.14); Leads tag_30 by 1 samples (corr=0.13); Leads tag_32 by 3 samples (corr=0.11); Leads tag_33 by 3 samples (corr=-0.22); Leads tag_34 by 1 samples (corr=-0.14); Leads tag_35 by 1 samples (corr=0.12); Leads tag_36 by 3 samples (corr=0.03); Leads tag_37 by 3 samples (corr=0.06); Leads tag_38 by 1 samples (corr=0.09); Leads tag_39 by 3 samples (corr=-0.16); Leads tag_41 by 2 samples (corr=-0.05); Leads tag_42 by 3 samples (corr=-0.14); Leads tag_44 by 3 samples (corr=0.17); Leads tag_45 by 1 samples (corr=-0.07); Leads tag_46 by 2 samples (corr=0.15); Leads tag_47 by 3 samples (corr=-0.04); Leads tag_48 by 2 samples (corr=0.14); Leads tag_50 by 3 samples (corr=0.11); Leads tag_51 by 3 samples (corr=-0.10); Leads tag_52 by 2 samples (corr=0.11); Leads tag_22 by 1 samples (corr=0.19); Leads tag_24 by 1 samples (corr=-0.23); Leads tag_26 by 2 samples (corr=0.07); Leads tag_29 by 2 samples (corr=0.17); Leads tag_30 by 1 samples (corr=-0.10); Leads tag_32 by 2 samples (corr=-0.09); Leads tag_36 by 3 samples (corr=0.04); Leads tag_37 by 2 samples (corr=-0.10); Leads tag_39 by 2 samples (corr=-0.18); Leads tag_40 by 3 samples (corr=0.21); Leads tag_41 by 2 samples (corr=0.13); Leads tag_42 by 3 samples (corr=-0.22); Leads tag_43 by 2 samples (corr=-0.22); Leads tag_44 by 1 samples (corr=0.18); Leads tag_45 by 1 samples (corr=0.05); Leads tag_46 by 1 samples (corr=0.13); Leads tag_47 by 1 samples (corr=-0.09); Leads tag_48 by 3 samples (corr=-0.10); Leads tag_49 by 3 samples (corr=-0.19); Leads tag_50 by 3 samples (corr=0.11); Leads tag_51 by 3 samples (corr=-0.16); Leads 79 columns, follows 0 columns; Median (50.3) and autocorrelation (-0.56) suggest flow"
+    },
+    {
+      "column": "tag_22",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 2 samples (corr=0.41); Leads tag_01 by 3 samples (corr=0.14); Leads tag_02 by 2 samples (corr=-0.14); Leads tag_03 by 2 samples (corr=-0.10); Leads tag_04 by 3 samples (corr=-0.25); Leads tag_06 by 3 samples (corr=-0.48); Leads tag_08 by 3 samples (corr=0.06); Leads tag_09 by 3 samples (corr=0.26); Leads tag_10 by 2 samples (corr=-0.41); Leads tag_11 by 2 samples (corr=-0.13); Leads tag_12 by 3 samples (corr=0.13); Leads tag_13 by 1 samples (corr=-0.29); Leads tag_15 by 3 samples (corr=0.32); Leads tag_16 by 2 samples (corr=-0.35); Leads tag_17 by 3 samples (corr=-0.15); Leads tag_19 by 3 samples (corr=-0.08); Leads tag_20 by 3 samples (corr=0.14); Leads tag_21 by 1 samples (corr=0.07); Leads sample by 1 samples (corr=0.36); Leads tag_01 by 1 samples (corr=0.18); Leads tag_02 by 2 samples (corr=-0.15); Leads tag_06 by 3 samples (corr=-0.60); Leads tag_07 by 2 samples (corr=-0.15); Leads tag_08 by 1 samples (corr=-0.13); Leads tag_09 by 3 samples (corr=0.18); Leads tag_10 by 3 samples (corr=-0.35); Leads tag_11 by 3 samples (corr=-0.16); Leads tag_13 by 1 samples (corr=-0.27); Leads tag_14 by 1 samples (corr=0.75); Leads tag_15 by 3 samples (corr=0.04); Leads tag_16 by 2 samples (corr=-0.20); Leads tag_18 by 2 samples (corr=-0.18); Leads tag_19 by 1 samples (corr=0.11); Leads tag_20 by 1 samples (corr=0.18); Leads tag_21 by 1 samples (corr=0.19); Leads tag_23 by 3 samples (corr=0.16); Leads tag_25 by 3 samples (corr=-0.53); Leads tag_26 by 3 samples (corr=-0.05); Leads tag_27 by 1 samples (corr=-0.25); Leads tag_28 by 3 samples (corr=0.23); Leads tag_29 by 1 samples (corr=0.14); Leads tag_30 by 2 samples (corr=0.09); Leads tag_31 by 1 samples (corr=0.19); Leads tag_32 by 2 samples (corr=0.23); Leads tag_33 by 3 samples (corr=-0.61); Leads tag_36 by 1 samples (corr=-0.03); Leads tag_37 by 2 samples (corr=0.21); Leads tag_38 by 3 samples (corr=0.08); Leads tag_41 by 1 samples (corr=-0.15); Leads tag_42 by 3 samples (corr=-0.21); Leads tag_44 by 2 samples (corr=0.43); Leads tag_45 by 3 samples (corr=0.09); Leads tag_46 by 3 samples (corr=0.42); Leads tag_48 by 3 samples (corr=0.19); Leads tag_51 by 3 samples (corr=0.25); Leads tag_52 by 3 samples (corr=0.11); Leads tag_23 by 2 samples (corr=0.35); Leads tag_25 by 3 samples (corr=-0.39); Leads tag_26 by 2 samples (corr=0.20); Leads tag_27 by 2 samples (corr=-0.26); Leads tag_29 by 3 samples (corr=0.12); Leads tag_30 by 3 samples (corr=0.07); Leads tag_31 by 1 samples (corr=0.07); Leads tag_32 by 3 samples (corr=-0.17); Leads tag_33 by 3 samples (corr=-0.48); Leads tag_34 by 2 samples (corr=0.06); Leads tag_35 by 1 samples (corr=-0.14); Leads tag_36 by 3 samples (corr=-0.17); Leads tag_37 by 3 samples (corr=-0.18); Leads tag_41 by 3 samples (corr=0.13); Leads tag_42 by 3 samples (corr=-0.14); Leads tag_43 by 1 samples (corr=-0.40); Leads tag_45 by 1 samples (corr=-0.11); Leads tag_46 by 3 samples (corr=0.59); Leads tag_47 by 3 samples (corr=-0.21); Leads tag_48 by 3 samples (corr=0.37); Leads tag_50 by 1 samples (corr=0.44); Leads tag_51 by 3 samples (corr=0.16); Leads tag_52 by 3 samples (corr=-0.09); Leads 79 columns, follows 0 columns; Median (80.2) and autocorrelation (0.03) suggest flow"
+    },
+    {
+      "column": "tag_23",
+      "type": "unknown",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_01 by 2 samples (corr=0.17); Leads tag_02 by 2 samples (corr=-0.16); Leads tag_03 by 1 samples (corr=0.04); Leads tag_04 by 2 samples (corr=-0.23); Leads tag_05 by 1 samples (corr=-0.09); Leads tag_07 by 3 samples (corr=0.07); Leads tag_08 by 2 samples (corr=-0.25); Leads tag_11 by 2 samples (corr=-0.17); Leads tag_13 by 3 samples (corr=-0.14); Leads tag_14 by 3 samples (corr=0.16); Leads tag_18 by 3 samples (corr=0.05); Leads tag_19 by 2 samples (corr=0.25); Leads tag_20 by 2 samples (corr=0.17); Leads tag_22 by 3 samples (corr=0.16); Leads sample by 3 samples (corr=0.09); Leads tag_02 by 3 samples (corr=-0.14); Leads tag_03 by 1 samples (corr=-0.11); Leads tag_04 by 3 samples (corr=0.20); Leads tag_07 by 3 samples (corr=0.08); Leads tag_08 by 3 samples (corr=-0.17); Leads tag_09 by 2 samples (corr=-0.13); Leads tag_11 by 3 samples (corr=-0.13); Leads tag_12 by 1 samples (corr=-0.31); Leads tag_14 by 3 samples (corr=0.27); Leads tag_15 by 2 samples (corr=0.09); Leads tag_18 by 1 samples (corr=-0.08); Leads tag_19 by 3 samples (corr=0.17); Leads tag_22 by 2 samples (corr=0.35); Leads tag_25 by 3 samples (corr=-0.20); Leads tag_27 by 1 samples (corr=0.12); Leads tag_29 by 1 samples (corr=-0.16); Leads tag_30 by 3 samples (corr=-0.13); Leads tag_32 by 2 samples (corr=-0.08); Leads tag_34 by 3 samples (corr=-0.12); Leads tag_36 by 3 samples (corr=0.19); Leads tag_37 by 2 samples (corr=-0.09); Leads tag_38 by 2 samples (corr=-0.24); Leads tag_39 by 2 samples (corr=-0.15); Leads tag_40 by 2 samples (corr=0.06); Leads tag_41 by 3 samples (corr=-0.22); Leads tag_42 by 1 samples (corr=0.13); Leads tag_44 by 2 samples (corr=0.07); Leads tag_47 by 3 samples (corr=0.20); Leads tag_48 by 2 samples (corr=-0.11); Leads tag_50 by 1 samples (corr=0.34); Leads tag_51 by 3 samples (corr=-0.03); Leads tag_24 by 2 samples (corr=-0.18); Leads tag_25 by 1 samples (corr=-0.22); Leads tag_26 by 1 samples (corr=0.08); Leads tag_27 by 3 samples (corr=-0.13); Leads tag_29 by 3 samples (corr=-0.12); Leads tag_30 by 2 samples (corr=0.03); Leads tag_32 by 2 samples (corr=-0.09); Leads tag_33 by 1 samples (corr=-0.25); Leads tag_35 by 2 samples (corr=0.25); Leads tag_37 by 2 samples (corr=-0.08); Leads tag_39 by 2 samples (corr=-0.15); Leads tag_40 by 2 samples (corr=-0.11); Leads tag_42 by 1 samples (corr=-0.13); Leads tag_43 by 2 samples (corr=-0.24); Leads tag_44 by 2 samples (corr=0.19); Leads tag_45 by 1 samples (corr=-0.13); Leads tag_46 by 2 samples (corr=0.21); Leads tag_47 by 1 samples (corr=0.11); Leads tag_48 by 1 samples (corr=-0.11); Leads tag_51 by 2 samples (corr=0.12); Leads 66 columns, follows 0 columns; No clear type signature"
+    },
+    {
+      "column": "tag_24",
+      "type": "unknown",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=-0.37); Leads tag_01 by 3 samples (corr=-0.06); Leads tag_02 by 3 samples (corr=0.24); Leads tag_03 by 1 samples (corr=-0.08); Leads tag_04 by 2 samples (corr=-0.07); Leads tag_05 by 3 samples (corr=-0.08); Leads tag_06 by 3 samples (corr=0.15); Leads tag_07 by 2 samples (corr=-0.22); Leads tag_08 by 3 samples (corr=-0.07); Leads tag_10 by 2 samples (corr=0.03); Leads tag_11 by 3 samples (corr=0.24); Leads tag_12 by 3 samples (corr=-0.17); Leads tag_13 by 1 samples (corr=0.03); Leads tag_16 by 3 samples (corr=0.14); Leads tag_17 by 2 samples (corr=-0.17); Leads tag_18 by 3 samples (corr=-0.11); Leads tag_19 by 3 samples (corr=0.08); Leads tag_20 by 3 samples (corr=-0.06); Leads tag_21 by 3 samples (corr=-0.19); Leads tag_01 by 3 samples (corr=-0.19); Leads tag_02 by 2 samples (corr=0.23); Leads tag_03 by 2 samples (corr=-0.10); Leads tag_04 by 2 samples (corr=0.13); Leads tag_05 by 2 samples (corr=-0.15); Leads tag_06 by 1 samples (corr=0.11); Leads tag_07 by 3 samples (corr=-0.15); Leads tag_08 by 2 samples (corr=-0.15); Leads tag_09 by 2 samples (corr=0.23); Leads tag_10 by 3 samples (corr=0.03); Leads tag_11 by 2 samples (corr=0.23); Leads tag_12 by 1 samples (corr=-0.12); Leads tag_13 by 2 samples (corr=-0.03); Leads tag_14 by 1 samples (corr=-0.12); Leads tag_16 by 3 samples (corr=0.13); Leads tag_19 by 2 samples (corr=0.17); Leads tag_20 by 3 samples (corr=-0.19); Leads tag_21 by 1 samples (corr=-0.23); Leads tag_23 by 2 samples (corr=-0.18); Leads tag_25 by 1 samples (corr=0.13); Leads tag_26 by 1 samples (corr=0.09); Leads tag_28 by 3 samples (corr=0.19); Leads tag_29 by 1 samples (corr=-0.29); Leads tag_30 by 3 samples (corr=0.06); Leads tag_31 by 1 samples (corr=-0.23); Leads tag_32 by 2 samples (corr=0.14); Leads tag_33 by 1 samples (corr=0.10); Leads tag_34 by 2 samples (corr=0.07); Leads tag_35 by 3 samples (corr=-0.12); Leads tag_36 by 3 samples (corr=0.12); Leads tag_37 by 2 samples (corr=0.12); Leads tag_38 by 2 samples (corr=-0.12); Leads tag_40 by 3 samples (corr=-0.18); Leads tag_41 by 2 samples (corr=-0.12); Leads tag_42 by 1 samples (corr=0.21); Leads tag_43 by 3 samples (corr=0.15); Leads tag_44 by 2 samples (corr=0.15); Leads tag_49 by 1 samples (corr=0.31); Leads tag_50 by 1 samples (corr=-0.02); Leads tag_52 by 3 samples (corr=0.20); Leads tag_25 by 3 samples (corr=0.16); Leads tag_26 by 3 samples (corr=0.31); Leads tag_27 by 2 samples (corr=-0.14); Leads tag_28 by 1 samples (corr=0.11); Leads tag_30 by 3 samples (corr=-0.13); Leads tag_31 by 3 samples (corr=-0.19); Leads tag_32 by 3 samples (corr=0.09); Leads tag_33 by 3 samples (corr=0.13); Leads tag_34 by 2 samples (corr=-0.11); Leads tag_35 by 3 samples (corr=0.14); Leads tag_36 by 3 samples (corr=0.25); Leads tag_37 by 3 samples (corr=0.10); Leads tag_38 by 3 samples (corr=0.11); Leads tag_40 by 3 samples (corr=-0.09); Leads tag_41 by 2 samples (corr=-0.09); Leads tag_45 by 1 samples (corr=0.30); Leads tag_47 by 3 samples (corr=0.19); Leads tag_48 by 3 samples (corr=-0.22); Leads tag_50 by 3 samples (corr=0.12); Leads 78 columns, follows 0 columns; No clear type signature"
+    },
+    {
+      "column": "tag_25",
+      "type": "level",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=-0.50); Leads tag_10 by 3 samples (corr=0.20); Leads tag_12 by 3 samples (corr=0.25); Leads tag_14 by 3 samples (corr=-0.36); Leads tag_16 by 3 samples (corr=0.09); Leads tag_21 by 3 samples (corr=-0.23); Leads tag_22 by 3 samples (corr=-0.53); Leads tag_23 by 3 samples (corr=-0.20); Leads tag_24 by 1 samples (corr=0.13); Leads tag_01 by 3 samples (corr=-0.13); Leads tag_02 by 3 samples (corr=0.43); Leads tag_03 by 3 samples (corr=-0.10); Leads tag_04 by 3 samples (corr=-0.40); Leads tag_07 by 3 samples (corr=-0.22); Leads tag_11 by 3 samples (corr=0.43); Leads tag_12 by 3 samples (corr=-0.07); Leads tag_13 by 3 samples (corr=-0.19); Leads tag_14 by 3 samples (corr=-0.11); Leads tag_15 by 2 samples (corr=-0.22); Leads tag_16 by 2 samples (corr=-0.12); Leads tag_17 by 3 samples (corr=-0.48); Leads tag_20 by 3 samples (corr=-0.13); Leads tag_22 by 3 samples (corr=-0.39); Leads tag_23 by 1 samples (corr=-0.22); Leads tag_24 by 3 samples (corr=0.16); Leads tag_29 by 2 samples (corr=0.09); Leads tag_34 by 3 samples (corr=-0.18); Leads tag_35 by 2 samples (corr=0.09); Leads tag_36 by 3 samples (corr=-0.50); Leads tag_39 by 3 samples (corr=0.37); Leads tag_41 by 3 samples (corr=0.16); Leads tag_42 by 3 samples (corr=-0.04); Leads tag_43 by 3 samples (corr=0.40); Leads tag_47 by 3 samples (corr=-0.44); Leads tag_48 by 3 samples (corr=0.09); Leads tag_49 by 3 samples (corr=0.43); Leads tag_50 by 3 samples (corr=-0.75); Leads tag_51 by 2 samples (corr=-0.19); Leads tag_26 by 2 samples (corr=0.10); Leads tag_27 by 3 samples (corr=0.23); Leads tag_29 by 3 samples (corr=-0.10); Leads tag_31 by 3 samples (corr=-0.23); Leads tag_35 by 1 samples (corr=-0.07); Leads tag_38 by 1 samples (corr=-0.15); Leads tag_39 by 3 samples (corr=0.32); Leads tag_41 by 2 samples (corr=0.26); Leads tag_42 by 2 samples (corr=0.12); Leads tag_43 by 3 samples (corr=0.49); Leads tag_44 by 2 samples (corr=-0.52); Leads tag_45 by 1 samples (corr=-0.18); Leads tag_46 by 1 samples (corr=-0.49); Leads tag_48 by 3 samples (corr=-0.12); Leads tag_49 by 3 samples (corr=0.34); Leads tag_51 by 1 samples (corr=-0.12); Leads tag_52 by 2 samples (corr=-0.24); Leads 55 columns, follows 0 columns; High median (3100.0) suggests level"
+    },
+    {
+      "column": "tag_26",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 2 samples (corr=-0.12); Leads tag_01 by 3 samples (corr=-0.20); Leads tag_02 by 1 samples (corr=0.30); Leads tag_03 by 2 samples (corr=-0.16); Leads tag_04 by 3 samples (corr=-0.21); Leads tag_06 by 3 samples (corr=0.08); Leads tag_07 by 2 samples (corr=0.22); Leads tag_08 by 2 samples (corr=0.09); Leads tag_09 by 3 samples (corr=-0.14); Leads tag_11 by 1 samples (corr=0.30); Leads tag_15 by 2 samples (corr=0.15); Leads tag_16 by 3 samples (corr=0.02); Leads tag_18 by 3 samples (corr=-0.05); Leads tag_19 by 2 samples (corr=-0.09); Leads tag_20 by 3 samples (corr=-0.20); Leads tag_21 by 3 samples (corr=0.16); Leads tag_22 by 3 samples (corr=-0.05); Leads tag_24 by 1 samples (corr=0.09); Leads sample by 1 samples (corr=-0.09); Leads tag_01 by 1 samples (corr=0.14); Leads tag_03 by 2 samples (corr=0.14); Leads tag_06 by 2 samples (corr=0.05); Leads tag_08 by 1 samples (corr=0.12); Leads tag_12 by 3 samples (corr=-0.21); Leads tag_14 by 3 samples (corr=0.23); Leads tag_15 by 2 samples (corr=-0.19); Leads tag_16 by 1 samples (corr=-0.08); Leads tag_17 by 1 samples (corr=-0.27); Leads tag_18 by 3 samples (corr=-0.17); Leads tag_19 by 1 samples (corr=-0.12); Leads tag_20 by 1 samples (corr=0.14); Leads tag_21 by 2 samples (corr=0.07); Leads tag_22 by 2 samples (corr=0.20); Leads tag_23 by 1 samples (corr=0.08); Leads tag_24 by 3 samples (corr=0.31); Leads tag_25 by 2 samples (corr=0.10); Leads tag_27 by 2 samples (corr=-0.20); Leads tag_28 by 3 samples (corr=0.23); Leads tag_29 by 2 samples (corr=0.19); Leads tag_31 by 2 samples (corr=0.07); Leads tag_32 by 1 samples (corr=0.08); Leads tag_33 by 3 samples (corr=-0.04); Leads tag_35 by 2 samples (corr=-0.08); Leads tag_36 by 1 samples (corr=0.08); Leads tag_37 by 1 samples (corr=0.07); Leads tag_39 by 2 samples (corr=-0.20); Leads tag_40 by 2 samples (corr=0.19); Leads tag_43 by 1 samples (corr=-0.14); Leads tag_44 by 3 samples (corr=0.08); Leads tag_45 by 3 samples (corr=0.27); Leads tag_50 by 1 samples (corr=0.10); Leads tag_51 by 1 samples (corr=0.05); Leads tag_27 by 1 samples (corr=-0.10); Leads tag_29 by 3 samples (corr=0.24); Leads tag_30 by 2 samples (corr=-0.10); Leads tag_31 by 3 samples (corr=0.16); Leads tag_32 by 1 samples (corr=-0.06); Leads tag_33 by 3 samples (corr=0.10); Leads tag_34 by 1 samples (corr=0.20); Leads tag_35 by 1 samples (corr=-0.11); Leads tag_36 by 2 samples (corr=0.10); Leads tag_37 by 1 samples (corr=-0.05); Leads tag_38 by 1 samples (corr=-0.12); Leads tag_40 by 2 samples (corr=0.22); Leads tag_41 by 3 samples (corr=-0.18); Leads tag_42 by 2 samples (corr=-0.13); Leads tag_43 by 3 samples (corr=0.07); Leads tag_44 by 1 samples (corr=0.13); Leads tag_45 by 2 samples (corr=-0.06); Leads tag_46 by 2 samples (corr=0.21); Leads tag_47 by 2 samples (corr=0.15); Leads tag_48 by 2 samples (corr=0.17); Leads tag_51 by 3 samples (corr=-0.12); Leads tag_52 by 2 samples (corr=-0.15); Leads 74 columns, follows 0 columns; Median (42.4) and autocorrelation (-0.44) suggest flow"
+    },
+    {
+      "column": "tag_27",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=-0.12); Leads tag_02 by 3 samples (corr=-0.12); Leads tag_03 by 1 samples (corr=0.09); Leads tag_04 by 3 samples (corr=0.18); Leads tag_05 by 3 samples (corr=0.07); Leads tag_08 by 2 samples (corr=-0.11); Leads tag_11 by 3 samples (corr=-0.13); Leads tag_12 by 3 samples (corr=0.18); Leads tag_13 by 1 samples (corr=0.23); Leads tag_15 by 2 samples (corr=-0.31); Leads tag_17 by 3 samples (corr=0.21); Leads tag_18 by 1 samples (corr=0.37); Leads tag_19 by 2 samples (corr=0.12); Leads tag_21 by 1 samples (corr=0.12); Leads tag_22 by 1 samples (corr=-0.25); Leads tag_23 by 1 samples (corr=0.12); Leads tag_26 by 2 samples (corr=-0.20); Leads sample by 3 samples (corr=-0.10); Leads tag_01 by 2 samples (corr=-0.22); Leads tag_02 by 3 samples (corr=-0.06); Leads tag_03 by 2 samples (corr=0.13); Leads tag_06 by 3 samples (corr=0.32); Leads tag_08 by 2 samples (corr=-0.19); Leads tag_09 by 2 samples (corr=-0.35); Leads tag_10 by 3 samples (corr=0.28); Leads tag_11 by 3 samples (corr=-0.06); Leads tag_12 by 2 samples (corr=-0.23); Leads tag_13 by 3 samples (corr=0.26); Leads tag_15 by 2 samples (corr=-0.25); Leads tag_18 by 1 samples (corr=0.30); Leads tag_19 by 2 samples (corr=0.19); Leads tag_20 by 2 samples (corr=-0.22); Leads tag_22 by 2 samples (corr=-0.26); Leads tag_23 by 3 samples (corr=-0.13); Leads tag_24 by 2 samples (corr=-0.14); Leads tag_25 by 3 samples (corr=0.23); Leads tag_26 by 1 samples (corr=-0.10); Leads tag_29 by 3 samples (corr=0.12); Leads tag_30 by 3 samples (corr=-0.11); Leads tag_33 by 3 samples (corr=0.32); Leads tag_34 by 2 samples (corr=-0.14); Leads tag_35 by 2 samples (corr=-0.06); Leads tag_40 by 2 samples (corr=-0.09); Leads tag_41 by 2 samples (corr=-0.24); Leads tag_43 by 2 samples (corr=0.21); Leads tag_44 by 2 samples (corr=-0.17); Leads tag_45 by 3 samples (corr=-0.23); Leads tag_46 by 1 samples (corr=-0.23); Leads tag_50 by 3 samples (corr=-0.13); Leads tag_51 by 2 samples (corr=-0.78); Leads tag_52 by 3 samples (corr=0.18); Leads tag_28 by 3 samples (corr=-0.17); Leads tag_29 by 1 samples (corr=-0.20); Leads tag_30 by 3 samples (corr=-0.16); Leads tag_31 by 1 samples (corr=0.12); Leads tag_34 by 3 samples (corr=0.17); Leads tag_35 by 1 samples (corr=-0.22); Leads tag_36 by 3 samples (corr=0.19); Leads tag_37 by 2 samples (corr=0.21); Leads tag_38 by 3 samples (corr=-0.11); Leads tag_40 by 2 samples (corr=-0.12); Leads tag_41 by 3 samples (corr=-0.03); Leads tag_42 by 3 samples (corr=0.16); Leads tag_44 by 1 samples (corr=-0.17); Leads tag_46 by 3 samples (corr=-0.28); Leads tag_47 by 3 samples (corr=0.25); Leads tag_48 by 2 samples (corr=-0.34); Leads tag_49 by 3 samples (corr=-0.15); Leads tag_50 by 3 samples (corr=0.05); Leads tag_51 by 2 samples (corr=-0.19); Leads 70 columns, follows 0 columns; Median (54.0) and autocorrelation (-0.38) suggest flow"
+    },
+    {
+      "column": "tag_28",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 1 samples (corr=-0.01); Leads tag_01 by 1 samples (corr=-0.15); Leads tag_03 by 2 samples (corr=0.17); Leads tag_04 by 3 samples (corr=-0.15); Leads tag_08 by 1 samples (corr=-0.13); Leads tag_09 by 2 samples (corr=0.22); Leads tag_12 by 3 samples (corr=-0.20); Leads tag_13 by 3 samples (corr=-0.24); Leads tag_14 by 2 samples (corr=0.20); Leads tag_15 by 3 samples (corr=-0.21); Leads tag_16 by 2 samples (corr=0.08); Leads tag_17 by 3 samples (corr=-0.17); Leads tag_19 by 1 samples (corr=0.13); Leads tag_20 by 1 samples (corr=-0.15); Leads tag_21 by 1 samples (corr=0.14); Leads tag_22 by 3 samples (corr=0.23); Leads tag_24 by 3 samples (corr=0.19); Leads tag_26 by 3 samples (corr=0.23); Leads sample by 3 samples (corr=-0.06); Leads tag_01 by 3 samples (corr=0.12); Leads tag_02 by 3 samples (corr=-0.15); Leads tag_03 by 2 samples (corr=-0.12); Leads tag_04 by 1 samples (corr=-0.12); Leads tag_08 by 3 samples (corr=-0.14); Leads tag_09 by 3 samples (corr=0.17); Leads tag_10 by 2 samples (corr=-0.23); Leads tag_12 by 2 samples (corr=0.06); Leads tag_13 by 2 samples (corr=-0.25); Leads tag_14 by 1 samples (corr=-0.24); Leads tag_15 by 2 samples (corr=0.64); Leads tag_16 by 2 samples (corr=0.18); Leads tag_17 by 2 samples (corr=0.10); Leads tag_19 by 3 samples (corr=0.14); Leads tag_20 by 3 samples (corr=0.12); Leads tag_24 by 1 samples (corr=0.11); Leads tag_27 by 3 samples (corr=-0.17); Leads tag_29 by 3 samples (corr=-0.29); Leads tag_30 by 1 samples (corr=0.25); Leads tag_34 by 1 samples (corr=-0.49); Leads tag_35 by 1 samples (corr=0.07); Leads tag_36 by 3 samples (corr=-0.13); Leads tag_41 by 2 samples (corr=0.21); Leads tag_42 by 3 samples (corr=0.24); Leads tag_43 by 2 samples (corr=0.09); Leads tag_44 by 1 samples (corr=-0.06); Leads tag_45 by 3 samples (corr=-0.14); Leads tag_48 by 2 samples (corr=0.16); Leads tag_49 by 1 samples (corr=0.17); Leads tag_51 by 2 samples (corr=0.28); Leads tag_29 by 2 samples (corr=0.05); Leads tag_30 by 1 samples (corr=0.23); Leads tag_31 by 1 samples (corr=0.14); Leads tag_35 by 1 samples (corr=0.19); Leads tag_36 by 1 samples (corr=-0.11); Leads tag_42 by 1 samples (corr=0.08); Leads tag_43 by 3 samples (corr=-0.16); Leads tag_44 by 2 samples (corr=0.18); Leads tag_47 by 2 samples (corr=-0.16); Leads tag_50 by 1 samples (corr=-0.12); Leads tag_51 by 2 samples (corr=0.11); Leads tag_52 by 1 samples (corr=0.29); Leads 61 columns, follows 0 columns; Median (94.6) and autocorrelation (-0.50) suggest flow"
+    },
+    {
+      "column": "tag_29",
+      "type": "unknown",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 2 samples (corr=0.28); Leads tag_01 by 1 samples (corr=0.12); Leads tag_04 by 3 samples (corr=0.07); Leads tag_05 by 2 samples (corr=0.16); Leads tag_06 by 2 samples (corr=0.11); Leads tag_08 by 3 samples (corr=0.21); Leads tag_09 by 3 samples (corr=-0.11); Leads tag_10 by 1 samples (corr=0.15); Leads tag_12 by 3 samples (corr=-0.11); Leads tag_13 by 3 samples (corr=0.17); Leads tag_14 by 2 samples (corr=0.18); Leads tag_16 by 2 samples (corr=-0.27); Leads tag_18 by 1 samples (corr=0.21); Leads tag_19 by 3 samples (corr=-0.22); Leads tag_20 by 1 samples (corr=0.12); Leads tag_22 by 1 samples (corr=0.14); Leads tag_23 by 1 samples (corr=-0.16); Leads tag_24 by 1 samples (corr=-0.29); Leads tag_25 by 2 samples (corr=0.09); Leads tag_26 by 2 samples (corr=0.19); Leads tag_27 by 3 samples (corr=0.12); Leads tag_28 by 3 samples (corr=-0.29); Leads sample by 3 samples (corr=0.27); Leads tag_01 by 2 samples (corr=0.15); Leads tag_02 by 3 samples (corr=0.15); Leads tag_03 by 1 samples (corr=0.08); Leads tag_04 by 2 samples (corr=-0.10); Leads tag_05 by 3 samples (corr=-0.20); Leads tag_06 by 3 samples (corr=-0.12); Leads tag_07 by 3 samples (corr=-0.17); Leads tag_08 by 3 samples (corr=0.10); Leads tag_09 by 2 samples (corr=-0.06); Leads tag_10 by 3 samples (corr=-0.06); Leads tag_11 by 3 samples (corr=0.16); Leads tag_12 by 1 samples (corr=-0.12); Leads tag_13 by 1 samples (corr=0.13); Leads tag_16 by 2 samples (corr=-0.19); Leads tag_20 by 2 samples (corr=0.15); Leads tag_21 by 2 samples (corr=0.17); Leads tag_22 by 3 samples (corr=0.12); Leads tag_23 by 3 samples (corr=-0.12); Leads tag_25 by 3 samples (corr=-0.10); Leads tag_26 by 3 samples (corr=0.24); Leads tag_27 by 1 samples (corr=-0.20); Leads tag_28 by 2 samples (corr=0.05); Leads tag_31 by 2 samples (corr=0.17); Leads tag_33 by 3 samples (corr=-0.13); Leads tag_34 by 1 samples (corr=-0.07); Leads tag_35 by 3 samples (corr=0.10); Leads tag_36 by 2 samples (corr=-0.04); Leads tag_41 by 1 samples (corr=0.07); Leads tag_44 by 3 samples (corr=0.28); Leads tag_45 by 2 samples (corr=0.15); Leads tag_47 by 3 samples (corr=-0.10); Leads tag_49 by 1 samples (corr=0.06); Leads tag_50 by 3 samples (corr=0.07); Leads tag_52 by 2 samples (corr=-0.29); Leads tag_32 by 3 samples (corr=-0.22); Leads tag_33 by 2 samples (corr=0.13); Leads tag_34 by 2 samples (corr=0.07); Leads tag_35 by 1 samples (corr=-0.17); Leads tag_36 by 2 samples (corr=-0.05); Leads tag_37 by 3 samples (corr=-0.18); Leads tag_38 by 3 samples (corr=-0.28); Leads tag_40 by 2 samples (corr=0.19); Leads tag_41 by 1 samples (corr=-0.11); Leads tag_45 by 3 samples (corr=-0.11); Leads tag_47 by 1 samples (corr=-0.06); Leads tag_48 by 1 samples (corr=0.30); Leads tag_49 by 3 samples (corr=-0.11); Leads tag_50 by 3 samples (corr=0.05); Leads tag_51 by 3 samples (corr=-0.18); Leads 72 columns, follows 0 columns; No clear type signature"
+    },
+    {
+      "column": "tag_30",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=0.14); Leads tag_01 by 1 samples (corr=0.30); Leads tag_02 by 2 samples (corr=0.13); Leads tag_03 by 2 samples (corr=0.12); Leads tag_05 by 1 samples (corr=-0.27); Leads tag_07 by 1 samples (corr=-0.18); Leads tag_08 by 1 samples (corr=0.06); Leads tag_09 by 3 samples (corr=0.11); Leads tag_11 by 2 samples (corr=0.12); Leads tag_12 by 1 samples (corr=-0.06); Leads tag_14 by 2 samples (corr=0.08); Leads tag_17 by 3 samples (corr=0.18); Leads tag_18 by 1 samples (corr=-0.15); Leads tag_19 by 1 samples (corr=-0.06); Leads tag_20 by 1 samples (corr=0.30); Leads tag_21 by 1 samples (corr=0.13); Leads tag_22 by 2 samples (corr=0.09); Leads tag_23 by 3 samples (corr=-0.13); Leads tag_24 by 3 samples (corr=0.06); Leads tag_27 by 3 samples (corr=-0.11); Leads tag_28 by 1 samples (corr=0.25); Leads sample by 2 samples (corr=0.12); Leads tag_01 by 3 samples (corr=-0.09); Leads tag_05 by 3 samples (corr=0.16); Leads tag_06 by 1 samples (corr=-0.17); Leads tag_07 by 3 samples (corr=0.18); Leads tag_08 by 3 samples (corr=-0.13); Leads tag_09 by 1 samples (corr=-0.13); Leads tag_11 by 1 samples (corr=-0.05); Leads tag_12 by 3 samples (corr=0.05); Leads tag_14 by 2 samples (corr=-0.15); Leads tag_15 by 1 samples (corr=0.24); Leads tag_17 by 2 samples (corr=0.09); Leads tag_18 by 2 samples (corr=-0.11); Leads tag_19 by 3 samples (corr=0.13); Leads tag_20 by 3 samples (corr=-0.09); Leads tag_21 by 1 samples (corr=-0.10); Leads tag_22 by 3 samples (corr=0.07); Leads tag_23 by 2 samples (corr=0.03); Leads tag_24 by 3 samples (corr=-0.13); Leads tag_26 by 2 samples (corr=-0.10); Leads tag_27 by 3 samples (corr=-0.16); Leads tag_28 by 1 samples (corr=0.23); Leads tag_31 by 1 samples (corr=-0.10); Leads tag_32 by 1 samples (corr=0.08); Leads tag_33 by 1 samples (corr=-0.16); Leads tag_34 by 2 samples (corr=-0.07); Leads tag_36 by 1 samples (corr=0.03); Leads tag_37 by 2 samples (corr=0.09); Leads tag_38 by 3 samples (corr=-0.09); Leads tag_39 by 3 samples (corr=-0.15); Leads tag_40 by 2 samples (corr=-0.19); Leads tag_42 by 2 samples (corr=0.10); Leads tag_43 by 3 samples (corr=-0.10); Leads tag_44 by 2 samples (corr=0.08); Leads tag_46 by 2 samples (corr=0.19); Leads tag_47 by 1 samples (corr=-0.03); Leads tag_48 by 3 samples (corr=0.13); Leads tag_50 by 2 samples (corr=0.10); Leads tag_51 by 1 samples (corr=0.07); Leads tag_52 by 1 samples (corr=-0.05); Leads tag_31 by 1 samples (corr=0.13); Leads tag_32 by 2 samples (corr=-0.08); Leads tag_33 by 1 samples (corr=-0.13); Leads tag_34 by 1 samples (corr=-0.21); Leads tag_35 by 3 samples (corr=0.18); Leads tag_36 by 2 samples (corr=-0.01); Leads tag_37 by 2 samples (corr=-0.09); Leads tag_38 by 2 samples (corr=0.12); Leads tag_39 by 2 samples (corr=-0.16); Leads tag_40 by 1 samples (corr=-0.10); Leads tag_42 by 3 samples (corr=-0.14); Leads tag_43 by 2 samples (corr=-0.24); Leads tag_44 by 1 samples (corr=0.14); Leads tag_45 by 1 samples (corr=0.25); Leads tag_46 by 1 samples (corr=0.14); Leads tag_47 by 1 samples (corr=-0.05); Leads tag_48 by 1 samples (corr=-0.11); Leads tag_49 by 1 samples (corr=0.18); Leads tag_51 by 3 samples (corr=0.13); Leads tag_52 by 2 samples (corr=-0.11); Leads 81 columns, follows 0 columns; Median (61.4) and autocorrelation (-0.51) suggest flow"
+    },
+    {
+      "column": "tag_31",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 1 samples (corr=0.19); Leads tag_01 by 3 samples (corr=0.06); Leads tag_02 by 3 samples (corr=-0.21); Leads tag_03 by 2 samples (corr=0.21); Leads tag_04 by 3 samples (corr=0.12); Leads tag_05 by 3 samples (corr=0.21); Leads tag_07 by 3 samples (corr=0.20); Leads tag_09 by 2 samples (corr=0.09); Leads tag_10 by 2 samples (corr=0.07); Leads tag_11 by 3 samples (corr=-0.20); Leads tag_12 by 3 samples (corr=-0.13); Leads tag_13 by 1 samples (corr=0.09); Leads tag_14 by 3 samples (corr=0.28); Leads tag_15 by 1 samples (corr=-0.14); Leads tag_16 by 3 samples (corr=-0.17); Leads tag_17 by 1 samples (corr=0.18); Leads tag_20 by 3 samples (corr=0.06); Leads tag_22 by 1 samples (corr=0.19); Leads tag_24 by 1 samples (corr=-0.23); Leads tag_26 by 2 samples (corr=0.07); Leads tag_29 by 2 samples (corr=0.17); Leads tag_30 by 1 samples (corr=-0.10); Leads tag_01 by 3 samples (corr=-0.13); Leads tag_02 by 1 samples (corr=-0.15); Leads tag_03 by 1 samples (corr=-0.05); Leads tag_04 by 3 samples (corr=0.09); Leads tag_05 by 3 samples (corr=-0.17); Leads tag_06 by 3 samples (corr=-0.22); Leads tag_07 by 2 samples (corr=-0.12); Leads tag_09 by 1 samples (corr=-0.13); Leads tag_10 by 3 samples (corr=-0.08); Leads tag_11 by 1 samples (corr=-0.15); Leads tag_12 by 1 samples (corr=-0.11); Leads tag_14 by 1 samples (corr=0.09); Leads tag_15 by 1 samples (corr=0.14); Leads tag_16 by 1 samples (corr=-0.13); Leads tag_17 by 3 samples (corr=0.16); Leads tag_20 by 3 samples (corr=-0.13); Leads tag_22 by 1 samples (corr=0.07); Leads tag_24 by 3 samples (corr=-0.19); Leads tag_25 by 3 samples (corr=-0.23); Leads tag_26 by 3 samples (corr=0.16); Leads tag_27 by 1 samples (corr=0.12); Leads tag_28 by 1 samples (corr=0.14); Leads tag_30 by 1 samples (corr=0.13); Leads tag_32 by 3 samples (corr=0.11); Leads tag_33 by 3 samples (corr=-0.22); Leads tag_34 by 1 samples (corr=-0.14); Leads tag_35 by 1 samples (corr=0.12); Leads tag_36 by 3 samples (corr=0.03); Leads tag_37 by 3 samples (corr=0.06); Leads tag_38 by 1 samples (corr=0.09); Leads tag_39 by 3 samples (corr=-0.16); Leads tag_41 by 2 samples (corr=-0.05); Leads tag_42 by 3 samples (corr=-0.14); Leads tag_44 by 3 samples (corr=0.17); Leads tag_45 by 1 samples (corr=-0.07); Leads tag_46 by 2 samples (corr=0.15); Leads tag_47 by 3 samples (corr=-0.04); Leads tag_48 by 2 samples (corr=0.14); Leads tag_50 by 3 samples (corr=0.11); Leads tag_51 by 3 samples (corr=-0.10); Leads tag_52 by 2 samples (corr=0.11); Leads tag_32 by 2 samples (corr=-0.09); Leads tag_36 by 3 samples (corr=0.04); Leads tag_37 by 2 samples (corr=-0.10); Leads tag_39 by 2 samples (corr=-0.18); Leads tag_40 by 3 samples (corr=0.21); Leads tag_41 by 2 samples (corr=0.13); Leads tag_42 by 3 samples (corr=-0.22); Leads tag_43 by 2 samples (corr=-0.22); Leads tag_44 by 1 samples (corr=0.18); Leads tag_45 by 1 samples (corr=0.05); Leads tag_46 by 1 samples (corr=0.13); Leads tag_47 by 1 samples (corr=-0.09); Leads tag_48 by 3 samples (corr=-0.10); Leads tag_49 by 3 samples (corr=-0.19); Leads tag_50 by 3 samples (corr=0.11); Leads tag_51 by 3 samples (corr=-0.16); Leads 79 columns, follows 0 columns; Median (38.9) and autocorrelation (-0.56) suggest flow"
+    },
+    {
+      "column": "tag_32",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_01 by 2 samples (corr=0.11); Leads tag_02 by 2 samples (corr=0.16); Leads tag_03 by 3 samples (corr=-0.15); Leads tag_08 by 1 samples (corr=-0.10); Leads tag_09 by 1 samples (corr=0.06); Leads tag_10 by 3 samples (corr=-0.13); Leads tag_11 by 2 samples (corr=0.16); Leads tag_13 by 3 samples (corr=-0.09); Leads tag_14 by 2 samples (corr=0.10); Leads tag_15 by 2 samples (corr=-0.07); Leads tag_17 by 2 samples (corr=0.10); Leads tag_19 by 1 samples (corr=0.11); Leads tag_20 by 2 samples (corr=0.11); Leads tag_21 by 3 samples (corr=0.11); Leads tag_22 by 2 samples (corr=0.23); Leads tag_23 by 2 samples (corr=-0.08); Leads tag_24 by 2 samples (corr=0.14); Leads tag_26 by 1 samples (corr=0.08); Leads tag_30 by 1 samples (corr=0.08); Leads tag_31 by 3 samples (corr=0.11); Leads sample by 3 samples (corr=-0.37); Leads tag_01 by 3 samples (corr=-0.12); Leads tag_02 by 2 samples (corr=0.10); Leads tag_03 by 2 samples (corr=0.27); Leads tag_04 by 3 samples (corr=0.12); Leads tag_08 by 2 samples (corr=-0.11); Leads tag_09 by 2 samples (corr=0.07); Leads tag_10 by 3 samples (corr=0.10); Leads tag_11 by 2 samples (corr=0.10); Leads tag_12 by 1 samples (corr=-0.15); Leads tag_14 by 1 samples (corr=-0.11); Leads tag_15 by 2 samples (corr=0.08); Leads tag_16 by 2 samples (corr=0.96); Leads tag_19 by 2 samples (corr=0.13); Leads tag_20 by 3 samples (corr=-0.12); Leads tag_21 by 2 samples (corr=-0.09); Leads tag_22 by 3 samples (corr=-0.17); Leads tag_23 by 2 samples (corr=-0.09); Leads tag_24 by 3 samples (corr=0.09); Leads tag_26 by 1 samples (corr=-0.06); Leads tag_29 by 3 samples (corr=-0.22); Leads tag_30 by 2 samples (corr=-0.08); Leads tag_31 by 2 samples (corr=-0.09); Leads tag_34 by 2 samples (corr=0.11); Leads tag_38 by 3 samples (corr=0.33); Leads tag_41 by 2 samples (corr=0.12); Leads tag_43 by 2 samples (corr=-0.12); Leads tag_45 by 2 samples (corr=0.32); Leads tag_46 by 3 samples (corr=-0.08); Leads tag_47 by 3 samples (corr=0.34); Leads tag_48 by 1 samples (corr=-0.15); Leads tag_49 by 3 samples (corr=0.16); Leads tag_51 by 2 samples (corr=0.34); Leads tag_34 by 1 samples (corr=0.07); Leads tag_38 by 1 samples (corr=0.23); Leads tag_40 by 2 samples (corr=0.14); Leads tag_41 by 2 samples (corr=-0.17); Leads tag_43 by 2 samples (corr=-0.10); Leads tag_44 by 3 samples (corr=0.34); Leads tag_47 by 2 samples (corr=0.34); Leads tag_49 by 2 samples (corr=-0.13); Leads tag_50 by 3 samples (corr=0.35); Leads tag_51 by 2 samples (corr=0.16); Leads tag_52 by 1 samples (corr=0.22); Leads 64 columns, follows 0 columns; Median (41.2) and autocorrelation (-0.00) suggest flow"
+    },
+    {
+      "column": "tag_33",
+      "type": "level",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=-0.40); Leads tag_03 by 3 samples (corr=0.07); Leads tag_04 by 3 samples (corr=0.15); Leads tag_07 by 2 samples (corr=0.11); Leads tag_09 by 3 samples (corr=-0.25); Leads tag_12 by 3 samples (corr=0.18); Leads tag_13 by 3 samples (corr=0.38); Leads tag_14 by 3 samples (corr=-0.37); Leads tag_16 by 3 samples (corr=0.09); Leads tag_17 by 3 samples (corr=0.07); Leads tag_21 by 3 samples (corr=-0.22); Leads tag_22 by 3 samples (corr=-0.61); Leads tag_24 by 1 samples (corr=0.10); Leads tag_26 by 3 samples (corr=-0.04); Leads tag_27 by 3 samples (corr=0.32); Leads tag_29 by 3 samples (corr=-0.13); Leads tag_30 by 1 samples (corr=-0.16); Leads tag_31 by 3 samples (corr=-0.22); Leads tag_01 by 3 samples (corr=-0.13); Leads tag_02 by 3 samples (corr=0.48); Leads tag_03 by 3 samples (corr=-0.13); Leads tag_04 by 3 samples (corr=-0.20); Leads tag_07 by 2 samples (corr=-0.21); Leads tag_09 by 2 samples (corr=-0.15); Leads tag_11 by 3 samples (corr=0.48); Leads tag_12 by 3 samples (corr=-0.05); Leads tag_14 by 3 samples (corr=-0.17); Leads tag_16 by 2 samples (corr=-0.16); Leads tag_17 by 3 samples (corr=-0.30); Leads tag_20 by 3 samples (corr=-0.13); Leads tag_22 by 3 samples (corr=-0.48); Leads tag_23 by 1 samples (corr=-0.25); Leads tag_24 by 3 samples (corr=0.13); Leads tag_26 by 3 samples (corr=0.10); Leads tag_29 by 2 samples (corr=0.13); Leads tag_30 by 1 samples (corr=-0.13); Leads tag_34 by 3 samples (corr=-0.16); Leads tag_35 by 2 samples (corr=0.19); Leads tag_36 by 3 samples (corr=-0.34); Leads tag_39 by 3 samples (corr=0.23); Leads tag_41 by 3 samples (corr=0.15); Leads tag_42 by 3 samples (corr=-0.09); Leads tag_43 by 3 samples (corr=0.26); Leads tag_47 by 3 samples (corr=-0.28); Leads tag_49 by 3 samples (corr=0.55); Leads tag_50 by 2 samples (corr=-0.67); Leads tag_51 by 2 samples (corr=-0.29); Leads tag_52 by 2 samples (corr=-0.24); Leads tag_34 by 3 samples (corr=0.10); Leads tag_35 by 3 samples (corr=-0.04); Leads tag_39 by 3 samples (corr=0.16); Leads tag_41 by 2 samples (corr=0.15); Leads tag_42 by 2 samples (corr=0.10); Leads tag_43 by 3 samples (corr=0.37); Leads tag_44 by 2 samples (corr=-0.52); Leads tag_45 by 1 samples (corr=-0.07); Leads tag_46 by 1 samples (corr=-0.56); Leads tag_48 by 1 samples (corr=-0.27); Leads tag_51 by 1 samples (corr=-0.25); Leads tag_52 by 1 samples (corr=-0.22); Leads 60 columns, follows 0 columns; High median (2630.9) suggests level"
+    },
+    {
+      "column": "tag_34",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=-0.07); Leads tag_01 by 1 samples (corr=0.16); Leads tag_03 by 3 samples (corr=-0.14); Leads tag_06 by 3 samples (corr=-0.18); Leads tag_07 by 1 samples (corr=0.37); Leads tag_08 by 2 samples (corr=0.07); Leads tag_09 by 2 samples (corr=-0.27); Leads tag_10 by 2 samples (corr=-0.11); Leads tag_12 by 2 samples (corr=0.14); Leads tag_13 by 2 samples (corr=-0.06); Leads tag_14 by 3 samples (corr=-0.05); Leads tag_15 by 3 samples (corr=0.20); Leads tag_16 by 3 samples (corr=0.15); Leads tag_17 by 1 samples (corr=0.05); Leads tag_19 by 2 samples (corr=-0.07); Leads tag_20 by 1 samples (corr=0.16); Leads tag_21 by 1 samples (corr=-0.14); Leads tag_23 by 3 samples (corr=-0.12); Leads tag_24 by 2 samples (corr=0.07); Leads tag_25 by 3 samples (corr=-0.18); Leads tag_27 by 2 samples (corr=-0.14); Leads tag_28 by 1 samples (corr=-0.49); Leads tag_29 by 1 samples (corr=-0.07); Leads tag_30 by 2 samples (corr=-0.07); Leads tag_31 by 1 samples (corr=-0.14); Leads tag_32 by 2 samples (corr=0.11); Leads tag_33 by 3 samples (corr=-0.16); Leads tag_01 by 3 samples (corr=-0.16); Leads tag_02 by 3 samples (corr=-0.11); Leads tag_03 by 2 samples (corr=0.20); Leads tag_04 by 2 samples (corr=0.11); Leads tag_06 by 3 samples (corr=0.09); Leads tag_07 by 1 samples (corr=0.40); Leads tag_08 by 3 samples (corr=-0.10); Leads tag_10 by 3 samples (corr=0.23); Leads tag_11 by 3 samples (corr=-0.12); Leads tag_13 by 3 samples (corr=0.15); Leads tag_14 by 1 samples (corr=-0.14); Leads tag_15 by 2 samples (corr=-0.83); Leads tag_17 by 3 samples (corr=0.09); Leads tag_19 by 3 samples (corr=0.10); Leads tag_20 by 3 samples (corr=-0.16); Leads tag_22 by 2 samples (corr=0.06); Leads tag_24 by 2 samples (corr=-0.11); Leads tag_26 by 1 samples (corr=0.20); Leads tag_27 by 3 samples (corr=0.17); Leads tag_29 by 2 samples (corr=0.07); Leads tag_30 by 1 samples (corr=-0.21); Leads tag_32 by 1 samples (corr=0.07); Leads tag_33 by 3 samples (corr=0.10); Leads tag_35 by 2 samples (corr=-0.12); Leads tag_36 by 1 samples (corr=0.19); Leads tag_37 by 3 samples (corr=0.10); Leads tag_38 by 2 samples (corr=0.10); Leads tag_39 by 2 samples (corr=-0.13); Leads tag_41 by 1 samples (corr=-0.11); Leads tag_43 by 2 samples (corr=-0.10); Leads tag_44 by 2 samples (corr=-0.09); Leads tag_45 by 3 samples (corr=0.08); Leads tag_48 by 2 samples (corr=-0.24); Leads tag_49 by 1 samples (corr=-0.26); Leads tag_50 by 1 samples (corr=0.12); Leads tag_51 by 2 samples (corr=-0.25); Leads tag_52 by 3 samples (corr=0.15); Leads tag_35 by 1 samples (corr=-0.10); Leads tag_36 by 1 samples (corr=0.13); Leads tag_37 by 2 samples (corr=0.12); Leads tag_38 by 3 samples (corr=0.05); Leads tag_39 by 3 samples (corr=0.08); Leads tag_41 by 3 samples (corr=-0.11); Leads tag_42 by 3 samples (corr=0.08); Leads tag_43 by 2 samples (corr=-0.13); Leads tag_45 by 2 samples (corr=-0.08); Leads tag_48 by 3 samples (corr=0.14); Leads tag_49 by 1 samples (corr=-0.22); Leads tag_50 by 3 samples (corr=0.14); Leads tag_52 by 3 samples (corr=-0.15); Leads 77 columns, follows 0 columns; Median (63.1) and autocorrelation (-0.17) suggest flow"
+    },
+    {
+      "column": "tag_35",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_01 by 3 samples (corr=-0.13); Leads tag_02 by 3 samples (corr=-0.06); Leads tag_03 by 2 samples (corr=0.13); Leads tag_04 by 1 samples (corr=0.13); Leads tag_05 by 1 samples (corr=-0.07); Leads tag_06 by 2 samples (corr=0.18); Leads tag_07 by 3 samples (corr=-0.09); Leads tag_08 by 2 samples (corr=-0.10); Leads tag_09 by 3 samples (corr=-0.15); Leads tag_10 by 2 samples (corr=0.22); Leads tag_11 by 3 samples (corr=-0.06); Leads tag_12 by 3 samples (corr=-0.20); Leads tag_13 by 2 samples (corr=0.14); Leads tag_14 by 1 samples (corr=0.21); Leads tag_15 by 3 samples (corr=-0.19); Leads tag_16 by 2 samples (corr=0.10); Leads tag_17 by 1 samples (corr=0.10); Leads tag_19 by 2 samples (corr=0.09); Leads tag_20 by 3 samples (corr=-0.13); Leads tag_21 by 1 samples (corr=0.12); Leads tag_24 by 3 samples (corr=-0.12); Leads tag_25 by 2 samples (corr=0.09); Leads tag_26 by 2 samples (corr=-0.08); Leads tag_27 by 2 samples (corr=-0.06); Leads tag_28 by 1 samples (corr=0.07); Leads tag_29 by 3 samples (corr=0.10); Leads tag_31 by 1 samples (corr=0.12); Leads tag_33 by 2 samples (corr=0.19); Leads tag_34 by 2 samples (corr=-0.12); Leads tag_02 by 3 samples (corr=0.08); Leads tag_03 by 3 samples (corr=0.11); Leads tag_04 by 2 samples (corr=-0.12); Leads tag_05 by 1 samples (corr=-0.22); Leads tag_06 by 3 samples (corr=-0.04); Leads tag_07 by 1 samples (corr=-0.18); Leads tag_08 by 3 samples (corr=0.17); Leads tag_09 by 3 samples (corr=0.16); Leads tag_10 by 1 samples (corr=0.09); Leads tag_11 by 3 samples (corr=0.09); Leads tag_12 by 3 samples (corr=-0.05); Leads tag_13 by 1 samples (corr=0.10); Leads tag_14 by 3 samples (corr=-0.17); Leads tag_15 by 3 samples (corr=0.17); Leads tag_16 by 2 samples (corr=0.17); Leads tag_17 by 2 samples (corr=0.07); Leads tag_19 by 3 samples (corr=-0.17); Leads tag_22 by 1 samples (corr=-0.14); Leads tag_23 by 2 samples (corr=0.25); Leads tag_24 by 3 samples (corr=0.14); Leads tag_25 by 1 samples (corr=-0.07); Leads tag_26 by 1 samples (corr=-0.11); Leads tag_27 by 1 samples (corr=-0.22); Leads tag_28 by 1 samples (corr=0.19); Leads tag_29 by 1 samples (corr=-0.17); Leads tag_30 by 3 samples (corr=0.18); Leads tag_33 by 3 samples (corr=-0.04); Leads tag_34 by 1 samples (corr=-0.10); Leads tag_39 by 1 samples (corr=-0.13); Leads tag_40 by 2 samples (corr=-0.08); Leads tag_41 by 2 samples (corr=0.22); Leads tag_42 by 1 samples (corr=0.12); Leads tag_43 by 3 samples (corr=-0.12); Leads tag_44 by 3 samples (corr=-0.18); Leads tag_45 by 1 samples (corr=0.06); Leads tag_46 by 3 samples (corr=-0.07); Leads tag_49 by 3 samples (corr=0.15); Leads tag_51 by 3 samples (corr=0.16); Leads tag_52 by 1 samples (corr=-0.05); Leads tag_36 by 3 samples (corr=0.04); Leads tag_38 by 1 samples (corr=0.15); Leads tag_39 by 3 samples (corr=-0.12); Leads tag_40 by 1 samples (corr=0.04); Leads tag_41 by 2 samples (corr=-0.13); Leads tag_42 by 2 samples (corr=-0.15); Leads tag_43 by 2 samples (corr=-0.06); Leads tag_44 by 1 samples (corr=-0.09); Leads tag_45 by 1 samples (corr=0.04); Leads tag_46 by 2 samples (corr=-0.15); Leads tag_48 by 2 samples (corr=-0.19); Leads tag_50 by 1 samples (corr=-0.08); Leads tag_51 by 3 samples (corr=-0.15); Leads tag_52 by 3 samples (corr=-0.04); Leads 82 columns, follows 0 columns; Median (25.2) and autocorrelation (-0.54) suggest flow"
+    },
+    {
+      "column": "tag_36",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_01 by 2 samples (corr=0.04); Leads tag_02 by 2 samples (corr=-0.14); Leads tag_05 by 2 samples (corr=0.11); Leads tag_06 by 3 samples (corr=-0.39); Leads tag_07 by 3 samples (corr=0.17); Leads tag_08 by 2 samples (corr=-0.23); Leads tag_11 by 2 samples (corr=-0.14); Leads tag_14 by 1 samples (corr=-0.05); Leads tag_18 by 3 samples (corr=0.07); Leads tag_19 by 2 samples (corr=0.23); Leads tag_20 by 2 samples (corr=0.04); Leads tag_21 by 3 samples (corr=0.03); Leads tag_22 by 1 samples (corr=-0.03); Leads tag_23 by 3 samples (corr=0.19); Leads tag_24 by 3 samples (corr=0.12); Leads tag_25 by 3 samples (corr=-0.50); Leads tag_26 by 1 samples (corr=0.08); Leads tag_28 by 3 samples (corr=-0.13); Leads tag_29 by 2 samples (corr=-0.04); Leads tag_30 by 1 samples (corr=0.03); Leads tag_31 by 3 samples (corr=0.03); Leads tag_33 by 3 samples (corr=-0.34); Leads tag_34 by 1 samples (corr=0.19); Leads sample by 3 samples (corr=-0.34); Leads tag_01 by 2 samples (corr=0.02); Leads tag_02 by 1 samples (corr=-0.13); Leads tag_03 by 1 samples (corr=0.10); Leads tag_04 by 3 samples (corr=0.54); Leads tag_09 by 1 samples (corr=-0.31); Leads tag_10 by 3 samples (corr=0.51); Leads tag_11 by 1 samples (corr=-0.12); Leads tag_13 by 3 samples (corr=0.57); Leads tag_14 by 3 samples (corr=-0.09); Leads tag_15 by 1 samples (corr=-0.19); Leads tag_16 by 3 samples (corr=0.30); Leads tag_17 by 3 samples (corr=0.38); Leads tag_18 by 3 samples (corr=0.07); Leads tag_20 by 2 samples (corr=0.02); Leads tag_21 by 3 samples (corr=0.04); Leads tag_22 by 3 samples (corr=-0.17); Leads tag_24 by 3 samples (corr=0.25); Leads tag_26 by 2 samples (corr=0.10); Leads tag_27 by 3 samples (corr=0.19); Leads tag_28 by 1 samples (corr=-0.11); Leads tag_29 by 2 samples (corr=-0.05); Leads tag_30 by 2 samples (corr=-0.01); Leads tag_31 by 3 samples (corr=0.04); Leads tag_34 by 1 samples (corr=0.13); Leads tag_35 by 3 samples (corr=0.04); Leads tag_37 by 2 samples (corr=0.41); Leads tag_38 by 3 samples (corr=0.14); Leads tag_39 by 1 samples (corr=-0.32); Leads tag_40 by 3 samples (corr=-0.11); Leads tag_42 by 3 samples (corr=0.06); Leads tag_43 by 3 samples (corr=-0.25); Leads tag_45 by 3 samples (corr=0.44); Leads tag_46 by 3 samples (corr=-0.21); Leads tag_47 by 1 samples (corr=0.94); Leads tag_48 by 1 samples (corr=-0.45); Leads tag_51 by 3 samples (corr=-0.11); Leads tag_39 by 3 samples (corr=-0.32); Leads tag_40 by 3 samples (corr=-0.08); Leads tag_41 by 1 samples (corr=-0.35); Leads tag_42 by 1 samples (corr=0.05); Leads tag_43 by 3 samples (corr=-0.19); Leads tag_44 by 3 samples (corr=0.29); Leads tag_47 by 1 samples (corr=0.94); Leads tag_49 by 3 samples (corr=-0.37); Leads tag_50 by 3 samples (corr=0.86); Leads 69 columns, follows 0 columns; Median (47.7) and autocorrelation (-0.27) suggest flow"
+    },
+    {
+      "column": "tag_37",
+      "type": "unknown",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_01 by 2 samples (corr=0.09); Leads tag_02 by 2 samples (corr=0.17); Leads tag_03 by 3 samples (corr=-0.21); Leads tag_10 by 2 samples (corr=0.13); Leads tag_11 by 2 samples (corr=0.17); Leads tag_13 by 2 samples (corr=0.05); Leads tag_14 by 1 samples (corr=0.11); Leads tag_15 by 1 samples (corr=-0.08); Leads tag_16 by 2 samples (corr=0.27); Leads tag_17 by 2 samples (corr=0.14); Leads tag_20 by 2 samples (corr=0.09); Leads tag_21 by 3 samples (corr=0.06); Leads tag_22 by 2 samples (corr=0.21); Leads tag_23 by 2 samples (corr=-0.09); Leads tag_24 by 2 samples (corr=0.12); Leads tag_26 by 1 samples (corr=0.07); Leads tag_30 by 2 samples (corr=0.09); Leads tag_31 by 3 samples (corr=0.06); Leads tag_34 by 3 samples (corr=0.10); Leads tag_36 by 2 samples (corr=0.41); Leads sample by 3 samples (corr=-0.35); Leads tag_01 by 3 samples (corr=-0.08); Leads tag_02 by 2 samples (corr=0.14); Leads tag_03 by 2 samples (corr=0.28); Leads tag_04 by 3 samples (corr=0.17); Leads tag_05 by 2 samples (corr=0.10); Leads tag_08 by 2 samples (corr=-0.12); Leads tag_10 by 2 samples (corr=0.18); Leads tag_11 by 2 samples (corr=0.13); Leads tag_12 by 2 samples (corr=-0.17); Leads tag_13 by 3 samples (corr=0.06); Leads tag_14 by 1 samples (corr=-0.14); Leads tag_15 by 2 samples (corr=0.11); Leads tag_16 by 2 samples (corr=0.97); Leads tag_19 by 2 samples (corr=0.13); Leads tag_20 by 3 samples (corr=-0.08); Leads tag_21 by 2 samples (corr=-0.10); Leads tag_22 by 3 samples (corr=-0.18); Leads tag_23 by 2 samples (corr=-0.08); Leads tag_24 by 3 samples (corr=0.10); Leads tag_26 by 1 samples (corr=-0.05); Leads tag_27 by 2 samples (corr=0.21); Leads tag_29 by 3 samples (corr=-0.18); Leads tag_30 by 2 samples (corr=-0.09); Leads tag_31 by 2 samples (corr=-0.10); Leads tag_34 by 2 samples (corr=0.12); Leads tag_38 by 3 samples (corr=0.30); Leads tag_41 by 2 samples (corr=0.09); Leads tag_43 by 2 samples (corr=-0.11); Leads tag_45 by 3 samples (corr=0.34); Leads tag_46 by 3 samples (corr=-0.10); Leads tag_47 by 3 samples (corr=0.33); Leads tag_48 by 1 samples (corr=-0.18); Leads tag_49 by 3 samples (corr=0.20); Leads tag_51 by 2 samples (corr=0.30); Leads tag_52 by 3 samples (corr=-0.06); Leads tag_41 by 2 samples (corr=-0.16); Leads tag_43 by 2 samples (corr=-0.10); Leads tag_44 by 3 samples (corr=0.33); Leads tag_47 by 1 samples (corr=0.36); Leads tag_49 by 2 samples (corr=-0.12); Leads tag_50 by 3 samples (corr=0.36); Leads tag_51 by 3 samples (corr=0.12); Leads tag_52 by 2 samples (corr=0.18); Leads 64 columns, follows 0 columns; No clear type signature"
+    },
+    {
+      "column": "tag_38",
+      "type": "unknown",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_03 by 1 samples (corr=0.14); Leads tag_05 by 3 samples (corr=0.11); Leads tag_07 by 1 samples (corr=-0.12); Leads tag_08 by 2 samples (corr=-0.17); Leads tag_09 by 2 samples (corr=0.14); Leads tag_10 by 3 samples (corr=-0.13); Leads tag_12 by 3 samples (corr=-0.18); Leads tag_13 by 3 samples (corr=-0.15); Leads tag_15 by 2 samples (corr=-0.13); Leads tag_16 by 2 samples (corr=0.31); Leads tag_17 by 1 samples (corr=-0.04); Leads tag_19 by 2 samples (corr=0.17); Leads tag_21 by 1 samples (corr=0.09); Leads tag_22 by 3 samples (corr=0.08); Leads tag_23 by 2 samples (corr=-0.24); Leads tag_24 by 2 samples (corr=-0.12); Leads tag_30 by 3 samples (corr=-0.09); Leads tag_31 by 1 samples (corr=0.09); Leads tag_32 by 3 samples (corr=0.33); Leads tag_34 by 2 samples (corr=0.10); Leads tag_36 by 3 samples (corr=0.14); Leads tag_37 by 3 samples (corr=0.30); Leads sample by 1 samples (corr=-0.16); Leads tag_01 by 1 samples (corr=-0.20); Leads tag_02 by 3 samples (corr=-0.09); Leads tag_04 by 2 samples (corr=0.18); Leads tag_05 by 1 samples (corr=-0.11); Leads tag_07 by 3 samples (corr=-0.06); Leads tag_08 by 2 samples (corr=-0.23); Leads tag_09 by 2 samples (corr=-0.13); Leads tag_10 by 2 samples (corr=0.05); Leads tag_11 by 3 samples (corr=-0.08); Leads tag_14 by 1 samples (corr=-0.10); Leads tag_15 by 3 samples (corr=0.05); Leads tag_17 by 3 samples (corr=0.08); Leads tag_18 by 2 samples (corr=-0.19); Leads tag_19 by 2 samples (corr=0.24); Leads tag_20 by 1 samples (corr=-0.20); Leads tag_24 by 3 samples (corr=0.11); Leads tag_25 by 1 samples (corr=-0.15); Leads tag_26 by 1 samples (corr=-0.12); Leads tag_27 by 3 samples (corr=-0.11); Leads tag_29 by 3 samples (corr=-0.28); Leads tag_30 by 2 samples (corr=0.12); Leads tag_32 by 1 samples (corr=0.23); Leads tag_34 by 3 samples (corr=0.05); Leads tag_35 by 1 samples (corr=0.15); Leads tag_40 by 3 samples (corr=-0.08); Leads tag_42 by 1 samples (corr=0.22); Leads tag_44 by 2 samples (corr=0.16); Leads tag_47 by 3 samples (corr=0.03); Leads tag_48 by 3 samples (corr=-0.19); Leads tag_49 by 1 samples (corr=0.16); Leads tag_50 by 3 samples (corr=-0.05); Leads tag_51 by 2 samples (corr=-0.10); Leads tag_52 by 3 samples (corr=0.28); Leads tag_40 by 3 samples (corr=0.12); Leads tag_43 by 1 samples (corr=-0.20); Leads tag_44 by 2 samples (corr=0.32); Leads tag_45 by 2 samples (corr=0.23); Leads tag_47 by 1 samples (corr=0.07); Leads tag_50 by 3 samples (corr=0.09); Leads 62 columns, follows 0 columns; No clear type signature"
+    },
+    {
+      "column": "tag_39",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=-0.29); Leads tag_02 by 2 samples (corr=0.27); Leads tag_03 by 3 samples (corr=0.15); Leads tag_04 by 2 samples (corr=-0.25); Leads tag_05 by 2 samples (corr=-0.11); Leads tag_06 by 3 samples (corr=0.25); Leads tag_07 by 3 samples (corr=0.16); Leads tag_08 by 3 samples (corr=0.15); Leads tag_09 by 2 samples (corr=0.27); Leads tag_11 by 2 samples (corr=0.26); Leads tag_12 by 2 samples (corr=0.15); Leads tag_13 by 3 samples (corr=-0.31); Leads tag_15 by 2 samples (corr=-0.32); Leads tag_16 by 3 samples (corr=0.20); Leads tag_19 by 3 samples (corr=-0.14); Leads tag_21 by 3 samples (corr=-0.16); Leads tag_23 by 2 samples (corr=-0.15); Leads tag_25 by 3 samples (corr=0.37); Leads tag_26 by 2 samples (corr=-0.20); Leads tag_30 by 3 samples (corr=-0.15); Leads tag_31 by 3 samples (corr=-0.16); Leads tag_33 by 3 samples (corr=0.23); Leads tag_34 by 2 samples (corr=-0.13); Leads tag_35 by 1 samples (corr=-0.13); Leads tag_36 by 1 samples (corr=-0.32); Leads sample by 3 samples (corr=-0.23); Leads tag_01 by 1 samples (corr=-0.23); Leads tag_02 by 2 samples (corr=0.14); Leads tag_04 by 2 samples (corr=-0.31); Leads tag_06 by 3 samples (corr=0.21); Leads tag_07 by 1 samples (corr=0.19); Leads tag_08 by 2 samples (corr=-0.14); Leads tag_10 by 3 samples (corr=-0.28); Leads tag_11 by 2 samples (corr=0.14); Leads tag_12 by 2 samples (corr=0.16); Leads tag_13 by 3 samples (corr=-0.30); Leads tag_15 by 2 samples (corr=-0.14); Leads tag_19 by 2 samples (corr=0.15); Leads tag_20 by 1 samples (corr=-0.23); Leads tag_21 by 2 samples (corr=-0.18); Leads tag_23 by 2 samples (corr=-0.15); Leads tag_25 by 3 samples (corr=0.32); Leads tag_30 by 2 samples (corr=-0.16); Leads tag_31 by 2 samples (corr=-0.18); Leads tag_33 by 3 samples (corr=0.16); Leads tag_34 by 3 samples (corr=0.08); Leads tag_35 by 3 samples (corr=-0.12); Leads tag_36 by 3 samples (corr=-0.32); Leads tag_41 by 2 samples (corr=0.20); Leads tag_42 by 3 samples (corr=0.10); Leads tag_43 by 2 samples (corr=0.31); Leads tag_44 by 3 samples (corr=-0.16); Leads tag_45 by 3 samples (corr=-0.37); Leads tag_47 by 1 samples (corr=-0.25); Leads tag_48 by 1 samples (corr=0.08); Leads tag_51 by 2 samples (corr=-0.26); Leads tag_52 by 3 samples (corr=0.34); Leads tag_40 by 2 samples (corr=-0.10); Leads tag_41 by 3 samples (corr=0.08); Leads tag_42 by 2 samples (corr=0.18); Leads tag_44 by 2 samples (corr=-0.22); Leads tag_45 by 2 samples (corr=0.23); Leads tag_46 by 3 samples (corr=-0.28); Leads tag_47 by 2 samples (corr=-0.26); Leads tag_48 by 3 samples (corr=-0.07); Leads tag_49 by 2 samples (corr=0.19); Leads tag_50 by 1 samples (corr=-0.43); Leads 67 columns, follows 0 columns; Median (26.3) and autocorrelation (0.00) suggest flow"
+    },
+    {
+      "column": "tag_40",
+      "type": "pressure",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 1 samples (corr=0.11); Leads tag_03 by 2 samples (corr=-0.12); Leads tag_04 by 2 samples (corr=-0.20); Leads tag_08 by 1 samples (corr=0.18); Leads tag_09 by 2 samples (corr=-0.12); Leads tag_10 by 2 samples (corr=-0.08); Leads tag_12 by 3 samples (corr=0.13); Leads tag_13 by 3 samples (corr=0.03); Leads tag_15 by 3 samples (corr=0.12); Leads tag_16 by 2 samples (corr=-0.19); Leads tag_19 by 1 samples (corr=-0.19); Leads tag_23 by 2 samples (corr=0.06); Leads tag_24 by 3 samples (corr=-0.18); Leads tag_26 by 2 samples (corr=0.19); Leads tag_27 by 2 samples (corr=-0.09); Leads tag_30 by 2 samples (corr=-0.19); Leads tag_35 by 2 samples (corr=-0.08); Leads tag_36 by 3 samples (corr=-0.11); Leads tag_38 by 3 samples (corr=-0.08); Leads sample by 2 samples (corr=0.11); Leads tag_01 by 2 samples (corr=0.10); Leads tag_02 by 2 samples (corr=0.12); Leads tag_03 by 1 samples (corr=0.21); Leads tag_04 by 3 samples (corr=-0.09); Leads tag_08 by 1 samples (corr=-0.11); Leads tag_09 by 3 samples (corr=0.13); Leads tag_11 by 2 samples (corr=0.12); Leads tag_12 by 3 samples (corr=0.05); Leads tag_13 by 3 samples (corr=-0.02); Leads tag_14 by 1 samples (corr=0.30); Leads tag_15 by 2 samples (corr=-0.40); Leads tag_16 by 2 samples (corr=-0.15); Leads tag_17 by 3 samples (corr=-0.10); Leads tag_18 by 2 samples (corr=-0.19); Leads tag_19 by 1 samples (corr=0.10); Leads tag_20 by 2 samples (corr=0.10); Leads tag_21 by 3 samples (corr=0.21); Leads tag_23 by 2 samples (corr=-0.11); Leads tag_24 by 3 samples (corr=-0.09); Leads tag_26 by 2 samples (corr=0.22); Leads tag_27 by 2 samples (corr=-0.12); Leads tag_29 by 2 samples (corr=0.19); Leads tag_30 by 1 samples (corr=-0.10); Leads tag_31 by 3 samples (corr=0.21); Leads tag_32 by 2 samples (corr=0.14); Leads tag_35 by 1 samples (corr=0.04); Leads tag_36 by 3 samples (corr=-0.08); Leads tag_38 by 3 samples (corr=0.12); Leads tag_39 by 2 samples (corr=-0.10); Leads tag_41 by 2 samples (corr=-0.12); Leads tag_43 by 2 samples (corr=-0.07); Leads tag_44 by 1 samples (corr=0.21); Leads tag_45 by 3 samples (corr=0.15); Leads tag_46 by 3 samples (corr=0.24); Leads tag_47 by 2 samples (corr=-0.12); Leads tag_48 by 3 samples (corr=0.12); Leads tag_49 by 3 samples (corr=0.12); Leads tag_50 by 3 samples (corr=-0.11); Leads tag_51 by 3 samples (corr=0.09); Leads tag_52 by 2 samples (corr=-0.04); Leads tag_41 by 3 samples (corr=0.14); Leads tag_43 by 1 samples (corr=-0.23); Leads tag_47 by 1 samples (corr=-0.11); Leads tag_48 by 3 samples (corr=0.11); Leads tag_49 by 2 samples (corr=-0.14); Leads tag_51 by 2 samples (corr=-0.13); Leads tag_52 by 2 samples (corr=-0.20); Leads 67 columns, follows 0 columns; Median (120.4) suggests pressure"
+    },
+    {
+      "column": "tag_41",
+      "type": "unknown",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=-0.03); Leads tag_01 by 3 samples (corr=0.11); Leads tag_02 by 2 samples (corr=-0.10); Leads tag_03 by 3 samples (corr=-0.17); Leads tag_04 by 2 samples (corr=-0.19); Leads tag_05 by 2 samples (corr=-0.11); Leads tag_06 by 3 samples (corr=0.16); Leads tag_07 by 2 samples (corr=-0.14); Leads tag_08 by 1 samples (corr=0.11); Leads tag_11 by 2 samples (corr=-0.09); Leads tag_14 by 1 samples (corr=-0.13); Leads tag_16 by 2 samples (corr=-0.14); Leads tag_17 by 2 samples (corr=-0.21); Leads tag_18 by 2 samples (corr=-0.13); Leads tag_19 by 1 samples (corr=-0.11); Leads tag_20 by 3 samples (corr=0.11); Leads tag_21 by 2 samples (corr=-0.05); Leads tag_22 by 1 samples (corr=-0.15); Leads tag_23 by 3 samples (corr=-0.22); Leads tag_24 by 2 samples (corr=-0.12); Leads tag_25 by 3 samples (corr=0.16); Leads tag_27 by 2 samples (corr=-0.24); Leads tag_28 by 2 samples (corr=0.21); Leads tag_29 by 1 samples (corr=0.07); Leads tag_31 by 2 samples (corr=-0.05); Leads tag_32 by 2 samples (corr=0.12); Leads tag_33 by 3 samples (corr=0.15); Leads tag_34 by 1 samples (corr=-0.11); Leads tag_35 by 2 samples (corr=0.22); Leads tag_37 by 2 samples (corr=0.09); Leads tag_39 by 2 samples (corr=0.20); Leads tag_40 by 2 samples (corr=-0.12); Leads tag_01 by 2 samples (corr=-0.06); Leads tag_02 by 2 samples (corr=0.26); Leads tag_03 by 2 samples (corr=-0.13); Leads tag_04 by 2 samples (corr=-0.26); Leads tag_05 by 1 samples (corr=0.06); Leads tag_06 by 2 samples (corr=0.17); Leads tag_07 by 1 samples (corr=-0.14); Leads tag_08 by 3 samples (corr=0.20); Leads tag_09 by 3 samples (corr=0.15); Leads tag_10 by 1 samples (corr=-0.23); Leads tag_11 by 2 samples (corr=0.25); Leads tag_13 by 2 samples (corr=-0.20); Leads tag_14 by 3 samples (corr=0.17); Leads tag_15 by 1 samples (corr=0.09); Leads tag_17 by 3 samples (corr=-0.20); Leads tag_18 by 3 samples (corr=-0.14); Leads tag_19 by 3 samples (corr=-0.20); Leads tag_20 by 2 samples (corr=-0.06); Leads tag_21 by 2 samples (corr=0.13); Leads tag_22 by 3 samples (corr=0.13); Leads tag_24 by 2 samples (corr=-0.09); Leads tag_25 by 2 samples (corr=0.26); Leads tag_26 by 3 samples (corr=-0.18); Leads tag_27 by 3 samples (corr=-0.03); Leads tag_29 by 1 samples (corr=-0.11); Leads tag_31 by 2 samples (corr=0.13); Leads tag_32 by 2 samples (corr=-0.17); Leads tag_33 by 2 samples (corr=0.15); Leads tag_34 by 3 samples (corr=-0.11); Leads tag_35 by 2 samples (corr=-0.13); Leads tag_36 by 1 samples (corr=-0.35); Leads tag_37 by 2 samples (corr=-0.16); Leads tag_39 by 3 samples (corr=0.08); Leads tag_40 by 3 samples (corr=0.14); Leads tag_42 by 2 samples (corr=0.14); Leads tag_43 by 3 samples (corr=0.23); Leads tag_44 by 3 samples (corr=-0.21); Leads tag_46 by 2 samples (corr=-0.16); Leads tag_47 by 2 samples (corr=-0.32); Leads tag_48 by 1 samples (corr=0.16); Leads tag_49 by 2 samples (corr=0.20); Leads tag_52 by 3 samples (corr=-0.17); Leads tag_42 by 3 samples (corr=0.10); Leads tag_43 by 2 samples (corr=0.23); Leads tag_45 by 1 samples (corr=-0.20); Leads tag_46 by 2 samples (corr=0.18); Leads tag_47 by 1 samples (corr=-0.32); Leads tag_49 by 3 samples (corr=0.17); Leads tag_50 by 2 samples (corr=-0.33); Leads 81 columns, follows 0 columns; No clear type signature"
+    },
+    {
+      "column": "tag_42",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_01 by 2 samples (corr=-0.15); Leads tag_02 by 3 samples (corr=0.11); Leads tag_03 by 3 samples (corr=-0.15); Leads tag_04 by 3 samples (corr=-0.08); Leads tag_06 by 3 samples (corr=-0.07); Leads tag_08 by 3 samples (corr=-0.18); Leads tag_09 by 2 samples (corr=0.09); Leads tag_10 by 3 samples (corr=-0.16); Leads tag_11 by 3 samples (corr=0.11); Leads tag_12 by 3 samples (corr=-0.08); Leads tag_13 by 2 samples (corr=-0.11); Leads tag_14 by 3 samples (corr=-0.30); Leads tag_16 by 2 samples (corr=0.28); Leads tag_18 by 3 samples (corr=-0.15); Leads tag_19 by 3 samples (corr=0.19); Leads tag_20 by 2 samples (corr=-0.15); Leads tag_21 by 3 samples (corr=-0.14); Leads tag_22 by 3 samples (corr=-0.21); Leads tag_23 by 1 samples (corr=0.13); Leads tag_24 by 1 samples (corr=0.21); Leads tag_25 by 3 samples (corr=-0.04); Leads tag_28 by 3 samples (corr=0.24); Leads tag_30 by 2 samples (corr=0.10); Leads tag_31 by 3 samples (corr=-0.14); Leads tag_33 by 3 samples (corr=-0.09); Leads tag_35 by 1 samples (corr=0.12); Leads tag_36 by 3 samples (corr=0.06); Leads tag_38 by 1 samples (corr=0.22); Leads tag_39 by 3 samples (corr=0.10); Leads tag_41 by 2 samples (corr=0.14); Leads sample by 2 samples (corr=-0.25); Leads tag_01 by 2 samples (corr=-0.20); Leads tag_03 by 2 samples (corr=0.21); Leads tag_04 by 2 samples (corr=0.07); Leads tag_06 by 2 samples (corr=0.11); Leads tag_07 by 3 samples (corr=0.14); Leads tag_08 by 2 samples (corr=-0.09); Leads tag_09 by 2 samples (corr=0.15); Leads tag_10 by 3 samples (corr=0.07); Leads tag_12 by 3 samples (corr=0.14); Leads tag_16 by 2 samples (corr=0.31); Leads tag_18 by 2 samples (corr=0.21); Leads tag_19 by 2 samples (corr=0.10); Leads tag_20 by 2 samples (corr=-0.20); Leads tag_21 by 3 samples (corr=-0.22); Leads tag_22 by 3 samples (corr=-0.14); Leads tag_23 by 1 samples (corr=-0.13); Leads tag_25 by 2 samples (corr=0.12); Leads tag_26 by 2 samples (corr=-0.13); Leads tag_27 by 3 samples (corr=0.16); Leads tag_28 by 1 samples (corr=0.08); Leads tag_30 by 3 samples (corr=-0.14); Leads tag_31 by 3 samples (corr=-0.22); Leads tag_33 by 2 samples (corr=0.10); Leads tag_34 by 3 samples (corr=0.08); Leads tag_35 by 2 samples (corr=-0.15); Leads tag_36 by 1 samples (corr=0.05); Leads tag_39 by 2 samples (corr=0.18); Leads tag_41 by 3 samples (corr=0.10); Leads tag_43 by 2 samples (corr=0.18); Leads tag_48 by 1 samples (corr=-0.11); Leads tag_50 by 3 samples (corr=-0.14); Leads tag_51 by 3 samples (corr=0.15); Leads tag_52 by 3 samples (corr=-0.11); Leads tag_43 by 1 samples (corr=0.14); Leads tag_44 by 1 samples (corr=-0.20); Leads tag_45 by 3 samples (corr=0.07); Leads tag_47 by 3 samples (corr=0.05); Leads tag_48 by 1 samples (corr=-0.16); Leads tag_51 by 1 samples (corr=0.19); Leads tag_52 by 2 samples (corr=0.29); Leads 71 columns, follows 0 columns; Median (75.0) and autocorrelation (-0.51) suggest flow"
+    },
+    {
+      "column": "tag_43",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_01 by 1 samples (corr=-0.16); Leads tag_02 by 2 samples (corr=0.10); Leads tag_03 by 2 samples (corr=-0.13); Leads tag_04 by 3 samples (corr=-0.20); Leads tag_05 by 1 samples (corr=0.05); Leads tag_06 by 3 samples (corr=0.29); Leads tag_08 by 1 samples (corr=0.07); Leads tag_09 by 3 samples (corr=0.13); Leads tag_10 by 2 samples (corr=-0.23); Leads tag_11 by 2 samples (corr=0.10); Leads tag_13 by 1 samples (corr=-0.25); Leads tag_14 by 2 samples (corr=-0.19); Leads tag_15 by 2 samples (corr=-0.25); Leads tag_16 by 3 samples (corr=0.14); Leads tag_18 by 3 samples (corr=-0.08); Leads tag_19 by 1 samples (corr=-0.06); Leads tag_20 by 1 samples (corr=-0.16); Leads tag_24 by 3 samples (corr=0.15); Leads tag_25 by 3 samples (corr=0.40); Leads tag_26 by 1 samples (corr=-0.14); Leads tag_27 by 2 samples (corr=0.21); Leads tag_28 by 2 samples (corr=0.09); Leads tag_30 by 3 samples (corr=-0.10); Leads tag_32 by 2 samples (corr=-0.12); Leads tag_33 by 3 samples (corr=0.26); Leads tag_34 by 2 samples (corr=-0.10); Leads tag_35 by 3 samples (corr=-0.12); Leads tag_36 by 3 samples (corr=-0.25); Leads tag_37 by 2 samples (corr=-0.11); Leads tag_39 by 2 samples (corr=0.31); Leads tag_40 by 2 samples (corr=-0.07); Leads tag_41 by 3 samples (corr=0.23); Leads tag_42 by 2 samples (corr=0.18); Leads sample by 3 samples (corr=-0.38); Leads tag_02 by 2 samples (corr=0.05); Leads tag_03 by 3 samples (corr=0.14); Leads tag_04 by 3 samples (corr=-0.24); Leads tag_05 by 3 samples (corr=0.14); Leads tag_06 by 3 samples (corr=0.38); Leads tag_07 by 3 samples (corr=0.16); Leads tag_08 by 2 samples (corr=0.19); Leads tag_09 by 3 samples (corr=0.14); Leads tag_10 by 2 samples (corr=-0.14); Leads tag_11 by 2 samples (corr=0.06); Leads tag_12 by 1 samples (corr=0.11); Leads tag_13 by 2 samples (corr=-0.24); Leads tag_14 by 2 samples (corr=-0.32); Leads tag_15 by 2 samples (corr=-0.18); Leads tag_16 by 2 samples (corr=0.06); Leads tag_17 by 1 samples (corr=-0.17); Leads tag_18 by 3 samples (corr=0.20); Leads tag_19 by 2 samples (corr=-0.18); Leads tag_21 by 2 samples (corr=-0.22); Leads tag_22 by 1 samples (corr=-0.40); Leads tag_23 by 2 samples (corr=-0.24); Leads tag_25 by 3 samples (corr=0.49); Leads tag_26 by 3 samples (corr=0.07); Leads tag_28 by 3 samples (corr=-0.16); Leads tag_30 by 2 samples (corr=-0.24); Leads tag_31 by 2 samples (corr=-0.22); Leads tag_32 by 2 samples (corr=-0.10); Leads tag_33 by 3 samples (corr=0.37); Leads tag_34 by 2 samples (corr=-0.13); Leads tag_35 by 2 samples (corr=-0.06); Leads tag_36 by 3 samples (corr=-0.19); Leads tag_37 by 2 samples (corr=-0.10); Leads tag_38 by 1 samples (corr=-0.20); Leads tag_40 by 1 samples (corr=-0.23); Leads tag_41 by 2 samples (corr=0.23); Leads tag_42 by 1 samples (corr=0.14); Leads tag_44 by 2 samples (corr=-0.44); Leads tag_45 by 2 samples (corr=-0.32); Leads tag_46 by 3 samples (corr=-0.27); Leads tag_47 by 3 samples (corr=-0.12); Leads tag_48 by 1 samples (corr=0.09); Leads tag_51 by 3 samples (corr=0.04); Leads tag_52 by 3 samples (corr=-0.16); Leads tag_46 by 2 samples (corr=-0.35); Leads tag_47 by 2 samples (corr=-0.13); Leads tag_48 by 3 samples (corr=-0.09); Leads tag_49 by 1 samples (corr=0.10); Leads tag_50 by 3 samples (corr=-0.39); Leads tag_51 by 3 samples (corr=0.13); Leads tag_52 by 2 samples (corr=0.17); Leads 84 columns, follows 0 columns; Median (23.9) and autocorrelation (0.01) suggest flow"
+    },
+    {
+      "column": "tag_44",
+      "type": "unknown",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=0.29); Leads tag_01 by 3 samples (corr=0.08); Leads tag_02 by 2 samples (corr=-0.09); Leads tag_04 by 2 samples (corr=-0.07); Leads tag_05 by 2 samples (corr=0.14); Leads tag_09 by 2 samples (corr=0.19); Leads tag_11 by 2 samples (corr=-0.09); Leads tag_13 by 1 samples (corr=-0.02); Leads tag_14 by 1 samples (corr=0.31); Leads tag_16 by 3 samples (corr=-0.19); Leads tag_20 by 3 samples (corr=0.08); Leads tag_21 by 3 samples (corr=0.17); Leads tag_22 by 2 samples (corr=0.43); Leads tag_23 by 2 samples (corr=0.07); Leads tag_24 by 2 samples (corr=0.15); Leads tag_26 by 3 samples (corr=0.08); Leads tag_27 by 2 samples (corr=-0.17); Leads tag_28 by 1 samples (corr=-0.06); Leads tag_29 by 3 samples (corr=0.28); Leads tag_30 by 2 samples (corr=0.08); Leads tag_31 by 3 samples (corr=0.17); Leads tag_34 by 2 samples (corr=-0.09); Leads tag_35 by 3 samples (corr=-0.18); Leads tag_38 by 2 samples (corr=0.16); Leads tag_39 by 3 samples (corr=-0.16); Leads tag_40 by 1 samples (corr=0.21); Leads tag_41 by 3 samples (corr=-0.21); Leads tag_43 by 2 samples (corr=-0.44); Leads tag_01 by 2 samples (corr=0.11); Leads tag_02 by 3 samples (corr=-0.13); Leads tag_04 by 3 samples (corr=0.07); Leads tag_05 by 3 samples (corr=-0.15); Leads tag_06 by 2 samples (corr=-0.52); Leads tag_07 by 2 samples (corr=-0.22); Leads tag_08 by 1 samples (corr=-0.14); Leads tag_09 by 2 samples (corr=-0.06); Leads tag_11 by 3 samples (corr=-0.14); Leads tag_12 by 1 samples (corr=-0.10); Leads tag_13 by 2 samples (corr=-0.03); Leads tag_18 by 3 samples (corr=-0.19); Leads tag_19 by 1 samples (corr=0.13); Leads tag_20 by 2 samples (corr=0.11); Leads tag_21 by 1 samples (corr=0.18); Leads tag_23 by 2 samples (corr=0.19); Leads tag_25 by 2 samples (corr=-0.52); Leads tag_26 by 1 samples (corr=0.13); Leads tag_27 by 1 samples (corr=-0.17); Leads tag_28 by 2 samples (corr=0.18); Leads tag_30 by 1 samples (corr=0.14); Leads tag_31 by 1 samples (corr=0.18); Leads tag_32 by 3 samples (corr=0.34); Leads tag_33 by 2 samples (corr=-0.52); Leads tag_35 by 1 samples (corr=-0.09); Leads tag_36 by 3 samples (corr=0.29); Leads tag_37 by 3 samples (corr=0.33); Leads tag_38 by 2 samples (corr=0.32); Leads tag_39 by 2 samples (corr=-0.22); Leads tag_42 by 1 samples (corr=-0.20); Leads tag_45 by 3 samples (corr=0.16); Leads tag_46 by 2 samples (corr=0.41); Leads tag_47 by 1 samples (corr=0.22); Leads tag_50 by 3 samples (corr=0.44); Leads tag_51 by 3 samples (corr=0.10); Leads tag_52 by 1 samples (corr=0.22); Leads tag_45 by 3 samples (corr=0.21); Leads tag_48 by 2 samples (corr=0.22); Leads tag_49 by 1 samples (corr=-0.25); Leads tag_50 by 2 samples (corr=0.42); Leads tag_51 by 2 samples (corr=0.06); Leads 69 columns, follows 0 columns; No clear type signature"
+    },
+    {
+      "column": "tag_45",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=-0.19); Leads tag_01 by 3 samples (corr=0.17); Leads tag_03 by 1 samples (corr=0.09); Leads tag_04 by 2 samples (corr=0.33); Leads tag_05 by 3 samples (corr=0.16); Leads tag_08 by 2 samples (corr=0.05); Leads tag_09 by 1 samples (corr=0.08); Leads tag_10 by 3 samples (corr=0.31); Leads tag_12 by 3 samples (corr=-0.05); Leads tag_13 by 3 samples (corr=0.31); Leads tag_14 by 1 samples (corr=0.09); Leads tag_15 by 1 samples (corr=-0.04); Leads tag_17 by 3 samples (corr=0.11); Leads tag_18 by 3 samples (corr=-0.20); Leads tag_20 by 3 samples (corr=0.17); Leads tag_21 by 1 samples (corr=-0.07); Leads tag_22 by 3 samples (corr=0.09); Leads tag_26 by 3 samples (corr=0.27); Leads tag_27 by 3 samples (corr=-0.23); Leads tag_28 by 3 samples (corr=-0.14); Leads tag_29 by 2 samples (corr=0.15); Leads tag_31 by 1 samples (corr=-0.07); Leads tag_32 by 2 samples (corr=0.32); Leads tag_34 by 3 samples (corr=0.08); Leads tag_35 by 1 samples (corr=0.06); Leads tag_36 by 3 samples (corr=0.44); Leads tag_37 by 3 samples (corr=0.34); Leads tag_39 by 3 samples (corr=-0.37); Leads tag_40 by 3 samples (corr=0.15); Leads tag_43 by 2 samples (corr=-0.32); Leads tag_44 by 3 samples (corr=0.16); Leads sample by 3 samples (corr=-0.23); Leads tag_05 by 3 samples (corr=0.09); Leads tag_06 by 1 samples (corr=-0.10); Leads tag_08 by 2 samples (corr=0.08); Leads tag_12 by 3 samples (corr=0.06); Leads tag_14 by 3 samples (corr=-0.16); Leads tag_15 by 2 samples (corr=0.16); Leads tag_16 by 1 samples (corr=0.23); Leads tag_17 by 2 samples (corr=-0.17); Leads tag_18 by 3 samples (corr=-0.15); Leads tag_19 by 2 samples (corr=-0.07); Leads tag_21 by 1 samples (corr=0.05); Leads tag_22 by 1 samples (corr=-0.11); Leads tag_23 by 1 samples (corr=-0.13); Leads tag_24 by 1 samples (corr=0.30); Leads tag_25 by 1 samples (corr=-0.18); Leads tag_26 by 2 samples (corr=-0.06); Leads tag_29 by 3 samples (corr=-0.11); Leads tag_30 by 1 samples (corr=0.25); Leads tag_31 by 1 samples (corr=0.05); Leads tag_33 by 1 samples (corr=-0.07); Leads tag_34 by 2 samples (corr=-0.08); Leads tag_35 by 1 samples (corr=0.04); Leads tag_38 by 2 samples (corr=0.23); Leads tag_39 by 2 samples (corr=0.23); Leads tag_41 by 1 samples (corr=-0.20); Leads tag_42 by 3 samples (corr=0.07); Leads tag_44 by 3 samples (corr=0.21); Leads tag_46 by 3 samples (corr=0.05); Leads tag_47 by 1 samples (corr=0.28); Leads tag_51 by 2 samples (corr=0.13); Leads tag_47 by 3 samples (corr=0.36); Leads tag_50 by 3 samples (corr=0.35); Leads tag_51 by 2 samples (corr=0.24); Leads 65 columns, follows 0 columns; Median (53.6) and autocorrelation (-0.14) suggest flow"
+    },
+    {
+      "column": "tag_46",
+      "type": "unknown",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=0.53); Leads tag_03 by 1 samples (corr=-0.14); Leads tag_08 by 1 samples (corr=-0.05); Leads tag_09 by 2 samples (corr=0.23); Leads tag_14 by 3 samples (corr=0.42); Leads tag_15 by 2 samples (corr=0.24); Leads tag_16 by 3 samples (corr=-0.25); Leads tag_19 by 1 samples (corr=0.04); Leads tag_21 by 2 samples (corr=0.15); Leads tag_22 by 3 samples (corr=0.42); Leads tag_27 by 1 samples (corr=-0.23); Leads tag_30 by 2 samples (corr=0.19); Leads tag_31 by 2 samples (corr=0.15); Leads tag_32 by 3 samples (corr=-0.08); Leads tag_35 by 3 samples (corr=-0.07); Leads tag_36 by 3 samples (corr=-0.21); Leads tag_37 by 3 samples (corr=-0.10); Leads tag_40 by 3 samples (corr=0.24); Leads tag_41 by 2 samples (corr=-0.16); Leads tag_43 by 3 samples (corr=-0.27); Leads tag_44 by 2 samples (corr=0.41); Leads tag_45 by 3 samples (corr=0.05); Leads tag_01 by 3 samples (corr=0.13); Leads tag_02 by 3 samples (corr=-0.12); Leads tag_03 by 1 samples (corr=-0.08); Leads tag_04 by 2 samples (corr=-0.20); Leads tag_05 by 1 samples (corr=-0.11); Leads tag_06 by 1 samples (corr=-0.56); Leads tag_08 by 2 samples (corr=-0.04); Leads tag_10 by 2 samples (corr=-0.33); Leads tag_11 by 3 samples (corr=-0.13); Leads tag_12 by 1 samples (corr=0.16); Leads tag_13 by 2 samples (corr=-0.21); Leads tag_14 by 3 samples (corr=0.19); Leads tag_15 by 2 samples (corr=0.21); Leads tag_17 by 2 samples (corr=-0.13); Leads tag_18 by 3 samples (corr=-0.17); Leads tag_19 by 3 samples (corr=-0.04); Leads tag_20 by 3 samples (corr=0.13); Leads tag_21 by 1 samples (corr=0.13); Leads tag_22 by 3 samples (corr=0.59); Leads tag_23 by 2 samples (corr=0.21); Leads tag_25 by 1 samples (corr=-0.49); Leads tag_26 by 2 samples (corr=0.21); Leads tag_27 by 3 samples (corr=-0.28); Leads tag_30 by 1 samples (corr=0.14); Leads tag_31 by 1 samples (corr=0.13); Leads tag_33 by 1 samples (corr=-0.56); Leads tag_35 by 2 samples (corr=-0.15); Leads tag_39 by 3 samples (corr=-0.28); Leads tag_41 by 2 samples (corr=0.18); Leads tag_43 by 2 samples (corr=-0.35); Leads tag_49 by 3 samples (corr=-0.37); Leads tag_50 by 3 samples (corr=0.43); Leads tag_51 by 2 samples (corr=0.16); Leads tag_52 by 3 samples (corr=-0.15); Leads tag_47 by 3 samples (corr=-0.27); Leads tag_48 by 2 samples (corr=0.47); Leads tag_51 by 2 samples (corr=0.19); Leads tag_52 by 3 samples (corr=-0.14); Leads 60 columns, follows 0 columns; No clear type signature"
+    },
+    {
+      "column": "tag_47",
+      "type": "pressure",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_01 by 1 samples (corr=0.04); Leads tag_02 by 3 samples (corr=-0.17); Leads tag_05 by 1 samples (corr=0.13); Leads tag_06 by 3 samples (corr=-0.33); Leads tag_08 by 3 samples (corr=-0.21); Leads tag_11 by 3 samples (corr=-0.16); Leads tag_12 by 1 samples (corr=-0.34); Leads tag_15 by 2 samples (corr=-0.14); Leads tag_16 by 1 samples (corr=0.27); Leads tag_17 by 1 samples (corr=0.34); Leads tag_18 by 3 samples (corr=0.09); Leads tag_19 by 3 samples (corr=0.21); Leads tag_20 by 1 samples (corr=0.04); Leads tag_21 by 3 samples (corr=-0.04); Leads tag_23 by 3 samples (corr=0.20); Leads tag_25 by 3 samples (corr=-0.44); Leads tag_29 by 3 samples (corr=-0.10); Leads tag_30 by 1 samples (corr=-0.03); Leads tag_31 by 3 samples (corr=-0.04); Leads tag_32 by 3 samples (corr=0.34); Leads tag_33 by 3 samples (corr=-0.28); Leads tag_36 by 1 samples (corr=0.94); Leads tag_37 by 3 samples (corr=0.33); Leads tag_38 by 3 samples (corr=0.03); Leads tag_39 by 1 samples (corr=-0.25); Leads tag_40 by 2 samples (corr=-0.12); Leads tag_41 by 2 samples (corr=-0.32); Leads tag_43 by 3 samples (corr=-0.12); Leads tag_44 by 1 samples (corr=0.22); Leads tag_45 by 1 samples (corr=0.28); Leads sample by 3 samples (corr=-0.38); Leads tag_01 by 1 samples (corr=0.05); Leads tag_04 by 3 samples (corr=0.53); Leads tag_05 by 3 samples (corr=0.15); Leads tag_09 by 3 samples (corr=-0.32); Leads tag_10 by 3 samples (corr=0.55); Leads tag_12 by 2 samples (corr=-0.36); Leads tag_13 by 3 samples (corr=0.57); Leads tag_14 by 2 samples (corr=-0.15); Leads tag_15 by 2 samples (corr=-0.25); Leads tag_16 by 3 samples (corr=0.28); Leads tag_17 by 3 samples (corr=0.34); Leads tag_18 by 3 samples (corr=0.11); Leads tag_20 by 1 samples (corr=0.05); Leads tag_21 by 1 samples (corr=-0.09); Leads tag_22 by 3 samples (corr=-0.21); Leads tag_23 by 1 samples (corr=0.11); Leads tag_24 by 3 samples (corr=0.19); Leads tag_26 by 2 samples (corr=0.15); Leads tag_27 by 3 samples (corr=0.25); Leads tag_28 by 2 samples (corr=-0.16); Leads tag_29 by 1 samples (corr=-0.06); Leads tag_30 by 1 samples (corr=-0.05); Leads tag_31 by 1 samples (corr=-0.09); Leads tag_32 by 2 samples (corr=0.34); Leads tag_36 by 1 samples (corr=0.94); Leads tag_37 by 1 samples (corr=0.36); Leads tag_38 by 1 samples (corr=0.07); Leads tag_39 by 2 samples (corr=-0.26); Leads tag_40 by 1 samples (corr=-0.11); Leads tag_41 by 1 samples (corr=-0.32); Leads tag_42 by 3 samples (corr=0.05); Leads tag_43 by 2 samples (corr=-0.13); Leads tag_45 by 3 samples (corr=0.36); Leads tag_46 by 3 samples (corr=-0.27); Leads tag_51 by 2 samples (corr=-0.16); Leads tag_52 by 1 samples (corr=0.19); Leads tag_49 by 3 samples (corr=-0.36); Leads tag_50 by 3 samples (corr=0.78); Leads tag_51 by 1 samples (corr=-0.10); Leads tag_52 by 3 samples (corr=0.24); Leads 71 columns, follows 0 columns; Median (230.9) suggests pressure"
+    },
+    {
+      "column": "tag_48",
+      "type": "unknown",
+      "role": "actuated",
+      "confidence": 0.7585687734478219,
+      "evidence": "Leads tag_01 by 3 samples (corr=0.16); Leads tag_05 by 3 samples (corr=-0.07); Leads tag_07 by 3 samples (corr=-0.21); Leads tag_08 by 3 samples (corr=0.18); Leads tag_09 by 1 samples (corr=0.32); Leads tag_14 by 2 samples (corr=0.14); Leads tag_16 by 3 samples (corr=-0.23); Leads tag_17 by 3 samples (corr=-0.20); Leads tag_18 by 3 samples (corr=-0.14); Leads tag_19 by 3 samples (corr=-0.19); Leads tag_20 by 3 samples (corr=0.16); Leads tag_21 by 2 samples (corr=0.14); Leads tag_22 by 3 samples (corr=0.19); Leads tag_23 by 2 samples (corr=-0.11); Leads tag_25 by 3 samples (corr=0.09); Leads tag_28 by 2 samples (corr=0.16); Leads tag_30 by 3 samples (corr=0.13); Leads tag_31 by 2 samples (corr=0.14); Leads tag_32 by 1 samples (corr=-0.15); Leads tag_34 by 2 samples (corr=-0.24); Leads tag_36 by 1 samples (corr=-0.45); Leads tag_37 by 1 samples (corr=-0.18); Leads tag_38 by 3 samples (corr=-0.19); Leads tag_39 by 1 samples (corr=0.08); Leads tag_40 by 3 samples (corr=0.12); Leads tag_41 by 1 samples (corr=0.16); Leads tag_42 by 1 samples (corr=-0.11); Leads tag_43 by 1 samples (corr=0.09); Leads sample by 3 samples (corr=0.29); Leads tag_01 by 3 samples (corr=0.18); Leads tag_02 by 1 samples (corr=0.19); Leads tag_03 by 1 samples (corr=-0.18); Leads tag_05 by 1 samples (corr=0.08); Leads tag_06 by 3 samples (corr=-0.27); Leads tag_10 by 1 samples (corr=-0.44); Leads tag_11 by 1 samples (corr=0.19); Leads tag_13 by 3 samples (corr=-0.40); Leads tag_14 by 3 samples (corr=0.12); Leads tag_16 by 1 samples (corr=-0.19); Leads tag_17 by 3 samples (corr=-0.31); Leads tag_18 by 2 samples (corr=0.04); Leads tag_20 by 3 samples (corr=0.18); Leads tag_21 by 3 samples (corr=-0.10); Leads tag_22 by 3 samples (corr=0.37); Leads tag_23 by 1 samples (corr=-0.11); Leads tag_24 by 3 samples (corr=-0.22); Leads tag_25 by 3 samples (corr=-0.12); Leads tag_26 by 2 samples (corr=0.17); Leads tag_27 by 2 samples (corr=-0.34); Leads tag_29 by 1 samples (corr=0.30); Leads tag_30 by 1 samples (corr=-0.11); Leads tag_31 by 3 samples (corr=-0.10); Leads tag_33 by 1 samples (corr=-0.27); Leads tag_34 by 3 samples (corr=0.14); Leads tag_35 by 2 samples (corr=-0.19); Leads tag_39 by 3 samples (corr=-0.07); Leads tag_40 by 3 samples (corr=0.11); Leads tag_42 by 1 samples (corr=-0.16); Leads tag_43 by 3 samples (corr=-0.09); Leads tag_44 by 2 samples (corr=0.22); Leads tag_46 by 2 samples (corr=0.47); Leads tag_51 by 3 samples (corr=0.17); Leads tag_52 by 3 samples (corr=-0.24); Leads tag_50 by 2 samples (corr=-0.29); Leads tag_52 by 3 samples (corr=-0.12); Leads 65 columns, follows 0 columns; No clear type signature"
+    },
+    {
+      "column": "tag_49",
+      "type": "unknown",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=-0.30); Leads tag_01 by 2 samples (corr=-0.11); Leads tag_03 by 2 samples (corr=0.12); Leads tag_04 by 2 samples (corr=0.14); Leads tag_06 by 3 samples (corr=0.57); Leads tag_08 by 2 samples (corr=0.10); Leads tag_09 by 3 samples (corr=-0.16); Leads tag_10 by 3 samples (corr=0.46); Leads tag_13 by 3 samples (corr=0.35); Leads tag_16 by 1 samples (corr=0.23); Leads tag_18 by 3 samples (corr=-0.13); Leads tag_19 by 2 samples (corr=-0.09); Leads tag_20 by 2 samples (corr=-0.11); Leads tag_24 by 1 samples (corr=0.31); Leads tag_25 by 3 samples (corr=0.43); Leads tag_28 by 1 samples (corr=0.17); Leads tag_29 by 1 samples (corr=0.06); Leads tag_32 by 3 samples (corr=0.16); Leads tag_33 by 3 samples (corr=0.55); Leads tag_34 by 1 samples (corr=-0.26); Leads tag_35 by 3 samples (corr=0.15); Leads tag_37 by 3 samples (corr=0.20); Leads tag_38 by 1 samples (corr=0.16); Leads tag_40 by 3 samples (corr=0.12); Leads tag_41 by 2 samples (corr=0.20); Leads tag_46 by 3 samples (corr=-0.37); Leads tag_02 by 3 samples (corr=0.48); Leads tag_03 by 3 samples (corr=-0.19); Leads tag_04 by 3 samples (corr=-0.09); Leads tag_08 by 3 samples (corr=0.15); Leads tag_11 by 3 samples (corr=0.49); Leads tag_12 by 3 samples (corr=0.28); Leads tag_14 by 1 samples (corr=-0.29); Leads tag_15 by 2 samples (corr=0.32); Leads tag_17 by 3 samples (corr=-0.33); Leads tag_18 by 3 samples (corr=-0.06); Leads tag_19 by 3 samples (corr=-0.14); Leads tag_21 by 3 samples (corr=-0.19); Leads tag_25 by 3 samples (corr=0.34); Leads tag_27 by 3 samples (corr=-0.15); Leads tag_29 by 3 samples (corr=-0.11); Leads tag_30 by 1 samples (corr=0.18); Leads tag_31 by 3 samples (corr=-0.19); Leads tag_32 by 2 samples (corr=-0.13); Leads tag_34 by 1 samples (corr=-0.22); Leads tag_36 by 3 samples (corr=-0.37); Leads tag_37 by 2 samples (corr=-0.12); Leads tag_39 by 2 samples (corr=0.19); Leads tag_40 by 2 samples (corr=-0.14); Leads tag_41 by 3 samples (corr=0.17); Leads tag_43 by 1 samples (corr=0.10); Leads tag_44 by 1 samples (corr=-0.25); Leads tag_47 by 3 samples (corr=-0.36); Leads tag_51 by 2 samples (corr=0.09); Leads tag_51 by 3 samples (corr=-0.12); Leads 55 columns, follows 0 columns; No clear type signature"
+    },
+    {
+      "column": "tag_50",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 3 samples (corr=0.17); Leads tag_01 by 1 samples (corr=0.09); Leads tag_02 by 1 samples (corr=-0.21); Leads tag_03 by 2 samples (corr=0.04); Leads tag_06 by 2 samples (corr=-0.71); Leads tag_08 by 3 samples (corr=-0.21); Leads tag_11 by 1 samples (corr=-0.21); Leads tag_15 by 2 samples (corr=0.10); Leads tag_19 by 3 samples (corr=0.20); Leads tag_20 by 1 samples (corr=0.09); Leads tag_21 by 3 samples (corr=0.11); Leads tag_23 by 1 samples (corr=0.34); Leads tag_24 by 1 samples (corr=-0.02); Leads tag_25 by 3 samples (corr=-0.75); Leads tag_26 by 1 samples (corr=0.10); Leads tag_27 by 3 samples (corr=-0.13); Leads tag_29 by 3 samples (corr=0.07); Leads tag_30 by 2 samples (corr=0.10); Leads tag_31 by 3 samples (corr=0.11); Leads tag_33 by 2 samples (corr=-0.67); Leads tag_34 by 1 samples (corr=0.12); Leads tag_38 by 3 samples (corr=-0.05); Leads tag_40 by 3 samples (corr=-0.11); Leads tag_42 by 3 samples (corr=-0.14); Leads tag_44 by 3 samples (corr=0.44); Leads tag_46 by 3 samples (corr=0.43); Leads tag_01 by 2 samples (corr=0.11); Leads tag_02 by 2 samples (corr=-0.25); Leads tag_03 by 3 samples (corr=0.05); Leads tag_04 by 3 samples (corr=0.47); Leads tag_05 by 1 samples (corr=0.10); Leads tag_08 by 2 samples (corr=-0.21); Leads tag_09 by 2 samples (corr=-0.18); Leads tag_10 by 3 samples (corr=0.22); Leads tag_11 by 3 samples (corr=-0.25); Leads tag_12 by 2 samples (corr=-0.31); Leads tag_13 by 3 samples (corr=0.32); Leads tag_14 by 2 samples (corr=0.27); Leads tag_15 by 3 samples (corr=-0.10); Leads tag_16 by 3 samples (corr=0.11); Leads tag_17 by 3 samples (corr=0.39); Leads tag_18 by 1 samples (corr=-0.04); Leads tag_19 by 2 samples (corr=0.20); Leads tag_20 by 2 samples (corr=0.11); Leads tag_21 by 3 samples (corr=0.11); Leads tag_22 by 1 samples (corr=0.44); Leads tag_24 by 3 samples (corr=0.12); Leads tag_27 by 3 samples (corr=0.05); Leads tag_28 by 1 samples (corr=-0.12); Leads tag_29 by 3 samples (corr=0.05); Leads tag_31 by 3 samples (corr=0.11); Leads tag_32 by 3 samples (corr=0.35); Leads tag_34 by 3 samples (corr=0.14); Leads tag_35 by 1 samples (corr=-0.08); Leads tag_36 by 3 samples (corr=0.86); Leads tag_37 by 3 samples (corr=0.36); Leads tag_38 by 3 samples (corr=0.09); Leads tag_39 by 1 samples (corr=-0.43); Leads tag_41 by 2 samples (corr=-0.33); Leads tag_43 by 3 samples (corr=-0.39); Leads tag_44 by 2 samples (corr=0.42); Leads tag_45 by 3 samples (corr=0.35); Leads tag_47 by 3 samples (corr=0.78); Leads tag_48 by 2 samples (corr=-0.29); Leads tag_51 by 3 samples (corr=0.03); Leads tag_52 by 3 samples (corr=0.19); Leads tag_51 by 3 samples (corr=0.07); Leads 67 columns, follows 0 columns; Median (65.8) and autocorrelation (0.27) suggest flow"
+    },
+    {
+      "column": "tag_51",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads sample by 1 samples (corr=-0.16); Leads tag_02 by 3 samples (corr=0.20); Leads tag_03 by 3 samples (corr=0.03); Leads tag_04 by 3 samples (corr=-0.27); Leads tag_05 by 2 samples (corr=-0.16); Leads tag_06 by 2 samples (corr=-0.26); Leads tag_07 by 2 samples (corr=-0.23); Leads tag_10 by 1 samples (corr=-0.31); Leads tag_11 by 3 samples (corr=0.20); Leads tag_14 by 3 samples (corr=0.11); Leads tag_17 by 2 samples (corr=-0.27); Leads tag_18 by 2 samples (corr=-0.73); Leads tag_21 by 3 samples (corr=-0.10); Leads tag_22 by 3 samples (corr=0.25); Leads tag_23 by 3 samples (corr=-0.03); Leads tag_25 by 2 samples (corr=-0.19); Leads tag_26 by 1 samples (corr=0.05); Leads tag_27 by 2 samples (corr=-0.78); Leads tag_28 by 2 samples (corr=0.28); Leads tag_30 by 1 samples (corr=0.07); Leads tag_31 by 3 samples (corr=-0.10); Leads tag_32 by 2 samples (corr=0.34); Leads tag_33 by 2 samples (corr=-0.29); Leads tag_34 by 2 samples (corr=-0.25); Leads tag_35 by 3 samples (corr=0.16); Leads tag_36 by 3 samples (corr=-0.11); Leads tag_37 by 2 samples (corr=0.30); Leads tag_38 by 2 samples (corr=-0.10); Leads tag_39 by 2 samples (corr=-0.26); Leads tag_40 by 3 samples (corr=0.09); Leads tag_42 by 3 samples (corr=0.15); Leads tag_43 by 3 samples (corr=0.04); Leads tag_44 by 3 samples (corr=0.10); Leads tag_45 by 2 samples (corr=0.13); Leads tag_46 by 2 samples (corr=0.16); Leads tag_47 by 2 samples (corr=-0.16); Leads tag_48 by 3 samples (corr=0.17); Leads tag_49 by 2 samples (corr=0.09); Leads tag_50 by 3 samples (corr=0.03); Leads sample by 3 samples (corr=-0.16); Leads tag_01 by 1 samples (corr=0.20); Leads tag_02 by 2 samples (corr=0.07); Leads tag_03 by 3 samples (corr=0.08); Leads tag_05 by 3 samples (corr=0.08); Leads tag_06 by 1 samples (corr=-0.25); Leads tag_07 by 2 samples (corr=0.07); Leads tag_10 by 2 samples (corr=-0.32); Leads tag_11 by 2 samples (corr=0.06); Leads tag_12 by 3 samples (corr=0.15); Leads tag_14 by 3 samples (corr=0.07); Leads tag_18 by 2 samples (corr=-0.21); Leads tag_20 by 1 samples (corr=0.20); Leads tag_21 by 3 samples (corr=-0.16); Leads tag_22 by 3 samples (corr=0.16); Leads tag_23 by 2 samples (corr=0.12); Leads tag_25 by 1 samples (corr=-0.12); Leads tag_26 by 3 samples (corr=-0.12); Leads tag_27 by 2 samples (corr=-0.19); Leads tag_28 by 2 samples (corr=0.11); Leads tag_29 by 3 samples (corr=-0.18); Leads tag_30 by 3 samples (corr=0.13); Leads tag_31 by 3 samples (corr=-0.16); Leads tag_32 by 2 samples (corr=0.16); Leads tag_33 by 1 samples (corr=-0.25); Leads tag_35 by 3 samples (corr=-0.15); Leads tag_37 by 3 samples (corr=0.12); Leads tag_40 by 2 samples (corr=-0.13); Leads tag_42 by 1 samples (corr=0.19); Leads tag_43 by 3 samples (corr=0.13); Leads tag_44 by 2 samples (corr=0.06); Leads tag_45 by 2 samples (corr=0.24); Leads tag_46 by 2 samples (corr=0.19); Leads tag_47 by 1 samples (corr=-0.10); Leads tag_49 by 3 samples (corr=-0.12); Leads tag_50 by 3 samples (corr=0.07); Leads tag_52 by 1 samples (corr=-0.15); Leads tag_52 by 3 samples (corr=0.06); Leads 77 columns, follows 0 columns; Median (18.8) and autocorrelation (0.01) suggest flow"
+    },
+    {
+      "column": "tag_52",
+      "type": "flow",
+      "role": "actuated",
+      "confidence": 0.9450000000000001,
+      "evidence": "Leads tag_01 by 3 samples (corr=-0.17); Leads tag_03 by 1 samples (corr=-0.06); Leads tag_04 by 2 samples (corr=-0.14); Leads tag_05 by 1 samples (corr=-0.12); Leads tag_06 by 2 samples (corr=-0.22); Leads tag_07 by 2 samples (corr=0.16); Leads tag_08 by 1 samples (corr=-0.20); Leads tag_09 by 3 samples (corr=0.15); Leads tag_10 by 3 samples (corr=-0.24); Leads tag_13 by 3 samples (corr=-0.24); Leads tag_14 by 1 samples (corr=-0.14); Leads tag_15 by 1 samples (corr=-0.15); Leads tag_16 by 3 samples (corr=0.09); Leads tag_17 by 3 samples (corr=-0.15); Leads tag_18 by 3 samples (corr=0.14); Leads tag_19 by 1 samples (corr=0.20); Leads tag_20 by 3 samples (corr=-0.17); Leads tag_21 by 2 samples (corr=0.11); Leads tag_22 by 3 samples (corr=0.11); Leads tag_24 by 3 samples (corr=0.20); Leads tag_27 by 3 samples (corr=0.18); Leads tag_29 by 2 samples (corr=-0.29); Leads tag_30 by 1 samples (corr=-0.05); Leads tag_31 by 2 samples (corr=0.11); Leads tag_33 by 2 samples (corr=-0.24); Leads tag_34 by 3 samples (corr=0.15); Leads tag_35 by 1 samples (corr=-0.05); Leads tag_37 by 3 samples (corr=-0.06); Leads tag_38 by 3 samples (corr=0.28); Leads tag_39 by 3 samples (corr=0.34); Leads tag_40 by 2 samples (corr=-0.04); Leads tag_41 by 3 samples (corr=-0.17); Leads tag_42 by 3 samples (corr=-0.11); Leads tag_43 by 3 samples (corr=-0.16); Leads tag_44 by 1 samples (corr=0.22); Leads tag_46 by 3 samples (corr=-0.15); Leads tag_47 by 1 samples (corr=0.19); Leads tag_48 by 3 samples (corr=-0.24); Leads tag_50 by 3 samples (corr=0.19); Leads tag_51 by 1 samples (corr=-0.15); Leads sample by 3 samples (corr=-0.12); Leads tag_02 by 1 samples (corr=-0.31); Leads tag_03 by 2 samples (corr=-0.12); Leads tag_04 by 3 samples (corr=0.16); Leads tag_05 by 2 samples (corr=-0.26); Leads tag_06 by 1 samples (corr=-0.21); Leads tag_07 by 2 samples (corr=-0.11); Leads tag_09 by 2 samples (corr=-0.14); Leads tag_11 by 1 samples (corr=-0.32); Leads tag_14 by 2 samples (corr=-0.07); Leads tag_16 by 3 samples (corr=0.20); Leads tag_17 by 3 samples (corr=0.27); Leads tag_18 by 2 samples (corr=-0.11); Leads tag_22 by 3 samples (corr=-0.09); Leads tag_25 by 2 samples (corr=-0.24); Leads tag_26 by 2 samples (corr=-0.15); Leads tag_28 by 1 samples (corr=0.29); Leads tag_30 by 2 samples (corr=-0.11); Leads tag_32 by 1 samples (corr=0.22); Leads tag_33 by 1 samples (corr=-0.22); Leads tag_34 by 3 samples (corr=-0.15); Leads tag_35 by 3 samples (corr=-0.04); Leads tag_37 by 2 samples (corr=0.18); Leads tag_40 by 2 samples (corr=-0.20); Leads tag_42 by 2 samples (corr=0.29); Leads tag_43 by 2 samples (corr=0.17); Leads tag_46 by 3 samples (corr=-0.14); Leads tag_47 by 3 samples (corr=0.24); Leads tag_48 by 3 samples (corr=-0.12); Leads tag_51 by 3 samples (corr=0.06); Leads 70 columns, follows 0 columns; Median (43.9) and autocorrelation (-0.14) suggest flow"
+    }
+  ],
+  "findings": [
+    {
+      "column": "sample",
+      "window": [
+        0,
+        9
+      ],
+      "layer": "record",
+      "fault_type": "missing_values",
+      "onset_estimate": 0,
+      "confidence": 0.99,
+      "evidence": [
+        "NaN-dominant in windows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"
+      ]
+    },
+    {
+      "column": "tag_01",
+      "window": [
+        3,
+        4
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 3,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 2.88x in window 3"
+      ]
+    },
+    {
+      "column": "tag_02",
+      "window": [
+        1,
+        2
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 1,
+      "confidence": 0.8,
+      "evidence": [
+        "Partner tag_11 also shifted",
+        "Variance inflated by 3.90x in window 1"
+      ]
+    },
+    {
+      "column": "tag_02",
+      "window": [
+        1,
+        2
+      ],
+      "layer": "system",
+      "fault_type": "process_change",
+      "onset_estimate": 1,
+      "confidence": 0.9,
+      "evidence": [
+        "Median shifted by 6.40 in window 1",
+        "Partner tag_11 also shifted",
+        "Partner tag_11 also shifted"
+      ]
+    },
+    {
+      "column": "tag_11",
+      "window": [
+        1,
+        2
+      ],
+      "layer": "system",
+      "fault_type": "process_change",
+      "onset_estimate": 1,
+      "confidence": 0.9,
+      "evidence": [
+        "Median shifted by 6.40 in window 1",
+        "Partner tag_11 also shifted",
+        "Partner tag_11 also shifted"
+      ]
+    },
+    {
+      "column": "tag_11",
+      "window": [
+        1,
+        2
+      ],
+      "layer": "system",
+      "fault_type": "process_change",
+      "onset_estimate": 1,
+      "confidence": 0.9,
+      "evidence": [
+        "Median shifted by 6.40 in window 1",
+        "Partner tag_11 also shifted",
+        "Partner tag_11 also shifted"
+      ]
+    },
+    {
+      "column": "tag_03",
+      "window": [
+        3,
+        4
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 3,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 2.48x in window 3"
+      ]
+    },
+    {
+      "column": "tag_04",
+      "window": [
+        1,
+        2
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 1,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 4.78x in window 1"
+      ]
+    },
+    {
+      "column": "tag_06",
+      "window": [
+        0,
+        1
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 0,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 6.09x in window 0"
+      ]
+    },
+    {
+      "column": "tag_08",
+      "window": [
+        4,
+        5
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 4,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 5.57x in window 4"
+      ]
+    },
+    {
+      "column": "tag_09",
+      "window": [
+        2,
+        3
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 2,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 2.42x in window 2"
+      ]
+    },
+    {
+      "column": "tag_10",
+      "window": [
+        1,
+        2
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 1,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 2.95x in window 1"
+      ]
+    },
+    {
+      "column": "tag_11",
+      "window": [
+        1,
+        2
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 1,
+      "confidence": 0.8,
+      "evidence": [
+        "Partner tag_02 also shifted",
+        "Variance inflated by 4.50x in window 1"
+      ]
+    },
+    {
+      "column": "tag_11",
+      "window": [
+        1,
+        2
+      ],
+      "layer": "system",
+      "fault_type": "process_change",
+      "onset_estimate": 1,
+      "confidence": 0.9,
+      "evidence": [
+        "Median shifted by 0.06 in window 1",
+        "Partner tag_02 also shifted",
+        "Partner tag_02 also shifted"
+      ]
+    },
+    {
+      "column": "tag_02",
+      "window": [
+        1,
+        2
+      ],
+      "layer": "system",
+      "fault_type": "process_change",
+      "onset_estimate": 1,
+      "confidence": 0.9,
+      "evidence": [
+        "Median shifted by 0.06 in window 1",
+        "Partner tag_02 also shifted",
+        "Partner tag_02 also shifted"
+      ]
+    },
+    {
+      "column": "tag_02",
+      "window": [
+        1,
+        2
+      ],
+      "layer": "system",
+      "fault_type": "process_change",
+      "onset_estimate": 1,
+      "confidence": 0.9,
+      "evidence": [
+        "Median shifted by 0.06 in window 1",
+        "Partner tag_02 also shifted",
+        "Partner tag_02 also shifted"
+      ]
+    },
+    {
+      "column": "tag_12",
+      "window": [
+        0,
+        1
+      ],
+      "layer": "measurement",
+      "fault_type": "bias_step",
+      "onset_estimate": 0,
+      "confidence": 0.9,
+      "evidence": [
+        "Median shifted by 0.02 in window 0"
+      ]
+    },
+    {
+      "column": "tag_13",
+      "window": [
+        5,
+        6
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 5,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 6.55x in window 5"
+      ]
+    },
+    {
+      "column": "tag_14",
+      "window": [
+        4,
+        5
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 4,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 2.87x in window 4"
+      ]
+    },
+    {
+      "column": "tag_15",
+      "window": [
+        8,
+        9
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 8,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 3.54x in window 8"
+      ]
+    },
+    {
+      "column": "tag_16",
+      "window": [
+        7,
+        8
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 7,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 6.47x in window 7"
+      ]
+    },
+    {
+      "column": "tag_17",
+      "window": [
+        0,
+        1
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 0,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 3.06x in window 0"
+      ]
+    },
+    {
+      "column": "tag_18",
+      "window": [
+        8,
+        9
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 8,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 4.71x in window 8"
+      ]
+    },
+    {
+      "column": "tag_19",
+      "window": [
+        4,
+        5
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 4,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 5.52x in window 4"
+      ]
+    },
+    {
+      "column": "tag_20",
+      "window": [
+        3,
+        4
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 3,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 2.88x in window 3"
+      ]
+    },
+    {
+      "column": "tag_21",
+      "window": [
+        6,
+        7
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 6,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 6.75x in window 6"
+      ]
+    },
+    {
+      "column": "tag_22",
+      "window": [
+        7,
+        8
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 7,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 3.16x in window 7"
+      ]
+    },
+    {
+      "column": "tag_24",
+      "window": [
+        3,
+        4
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 3,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 3.34x in window 3"
+      ]
+    },
+    {
+      "column": "tag_25",
+      "window": [
+        4,
+        5
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 4,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 7.09x in window 4"
+      ]
+    },
+    {
+      "column": "tag_26",
+      "window": [
+        5,
+        6
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 5,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 3.65x in window 5"
+      ]
+    },
+    {
+      "column": "tag_27",
+      "window": [
+        8,
+        9
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 8,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 7.66x in window 8"
+      ]
+    },
+    {
+      "column": "tag_29",
+      "window": [
+        2,
+        3
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 2,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 2.69x in window 2"
+      ]
+    },
+    {
+      "column": "tag_30",
+      "window": [
+        0,
+        1
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 0,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 4.91x in window 0"
+      ]
+    },
+    {
+      "column": "tag_31",
+      "window": [
+        6,
+        7
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 6,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 6.75x in window 6"
+      ]
+    },
+    {
+      "column": "tag_32",
+      "window": [
+        7,
+        8
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 7,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 12.33x in window 7"
+      ]
+    },
+    {
+      "column": "tag_33",
+      "window": [
+        0,
+        1
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 0,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 6.69x in window 0"
+      ]
+    },
+    {
+      "column": "tag_34",
+      "window": [
+        6,
+        7
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 6,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 2.24x in window 6"
+      ]
+    },
+    {
+      "column": "tag_35",
+      "window": [
+        2,
+        3
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 2,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 5.31x in window 2"
+      ]
+    },
+    {
+      "column": "tag_36",
+      "window": [
+        6,
+        7
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 6,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 12.01x in window 6"
+      ]
+    },
+    {
+      "column": "tag_37",
+      "window": [
+        7,
+        8
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 7,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 5.63x in window 7"
+      ]
+    },
+    {
+      "column": "tag_38",
+      "window": [
+        2,
+        3
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 2,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 2.31x in window 2"
+      ]
+    },
+    {
+      "column": "tag_39",
+      "window": [
+        8,
+        9
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 8,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 5.39x in window 8"
+      ]
+    },
+    {
+      "column": "tag_40",
+      "window": [
+        5,
+        6
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 5,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 3.06x in window 5"
+      ]
+    },
+    {
+      "column": "tag_41",
+      "window": [
+        7,
+        8
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 7,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 5.24x in window 7"
+      ]
+    },
+    {
+      "column": "tag_42",
+      "window": [
+        4,
+        5
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 4,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 3.04x in window 4"
+      ]
+    },
+    {
+      "column": "tag_43",
+      "window": [
+        8,
+        9
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 8,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 3.32x in window 8"
+      ]
+    },
+    {
+      "column": "tag_44",
+      "window": [
+        0,
+        1
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 0,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 6.17x in window 0"
+      ]
+    },
+    {
+      "column": "tag_45",
+      "window": [
+        1,
+        2
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 1,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 39.00x in window 1"
+      ]
+    },
+    {
+      "column": "tag_46",
+      "window": [
+        0,
+        1
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 0,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 7.32x in window 0"
+      ]
+    },
+    {
+      "column": "tag_47",
+      "window": [
+        2,
+        3
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 2,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 4.88x in window 2"
+      ]
+    },
+    {
+      "column": "tag_48",
+      "window": [
+        6,
+        7
+      ],
+      "layer": "measurement",
+      "fault_type": "bias_step",
+      "onset_estimate": 6,
+      "confidence": 0.9,
+      "evidence": [
+        "Median shifted by 0.03 in window 6"
+      ]
+    },
+    {
+      "column": "tag_49",
+      "window": [
+        6,
+        7
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 6,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 45.70x in window 6"
+      ]
+    },
+    {
+      "column": "tag_50",
+      "window": [
+        0,
+        1
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 0,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 17.16x in window 0"
+      ]
+    },
+    {
+      "column": "tag_51",
+      "window": [
+        8,
+        9
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 8,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 10.72x in window 8"
+      ]
+    },
+    {
+      "column": "tag_52",
+      "window": [
+        2,
+        3
+      ],
+      "layer": "measurement",
+      "fault_type": "variance_inflation",
+      "onset_estimate": 2,
+      "confidence": 0.8,
+      "evidence": [
+        "Variance inflated by 50.54x in window 2"
+      ]
+    }
+  ]
+}
