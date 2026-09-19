@@ -19,7 +19,8 @@
     "--mount", "type=bind,source=/home/matias/Dev/projects/ai_hackathon/.claude,target=/workspaces/ai_hackathon/.claude,readonly"
   ],
   "remoteEnv": {
-    "PI_TELEMETRY": "0"
+    "PI_TELEMETRY": "0",
+    "GEMINI_API_KEY": "${localEnv:GEMINI_API_KEY}"
   },
   "postCreateCommand": "for d in .pi/extensions/*/; do if [ -f \"$d/package.json\" ]; then (cd \"$d\" && if [ -f package-lock.json ]; then npm ci --ignore-scripts; else npm install --ignore-scripts; fi); fi; done; node -v && npm -v && pi --version"
 }
