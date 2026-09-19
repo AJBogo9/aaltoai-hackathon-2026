@@ -1,16 +1,16 @@
 ---
-name: generate-report-2
-description: Fast low-accuracy audit of a folder of undocumented process data - writes reports/<filename>.json per file plus reports/summary.md in the same format as generate-report, by fixed rules instead of reasoning. Use for demos, smoke tests, or "just get something out" when accuracy does not matter. Use generate-report instead whenever the labels have to be right.
+name: analyze-fast
+description: Fast low-accuracy audit of a folder of undocumented process data - writes reports/<filename>.json per file plus reports/summary.md in the same format as analyze, by fixed rules instead of reasoning. Use for demos, smoke tests, or "just get something out" when accuracy does not matter. Use analyze instead whenever the labels have to be right.
 ---
 
 # Fast fault pass (demo quality)
 
 Speed over accuracy. One script, one run, done in seconds. The output has the
-same shape as `generate-report`, so the walkthrough skills read it unchanged -
+same shape as `analyze`, so the walkthrough skills read it unchanged -
 but the labels are guesses and most of them are wrong.
 
 **Do not use this for anything anyone will act on.** If the person wants a real
-audit, use `generate-report`.
+audit, use `analyze`.
 
 ## Do exactly this
 
@@ -18,7 +18,7 @@ Pass the workspace folder this pi instance was given with `/workspace` — it is
 named in your system prompt, under `## Workspace`:
 
 ```bash
-python3 .pi/skills/generate-report-2/fast_report.py --workspace /abs/path/to/workspace
+python3 .pi/skills/analyze-fast/fast_report.py --workspace /abs/path/to/workspace
 ```
 
 Then stop. Do not read the output, review it, spot-check it, or improve it.

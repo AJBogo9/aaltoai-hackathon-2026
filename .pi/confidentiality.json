@@ -5,6 +5,7 @@
     "openai": "public",
     "mistral": "confidential",
     "lemonade": "restricted",
-    "ollama": "restricted"
+    "ollama": "restricted",
+    "verda": "restricted"
   }
 }

@@ -1,5 +1,5 @@
 ---
-name: generate-report
+name: analyze
 description: Audit a folder of undocumented process data end to end and write reports/<filename>.json per file plus reports/summary.md - inferring what each column is, and separating real process faults from instrument and record problems. Use when asked to analyse, audit or profile unlabelled process/sensor files, or to produce the plant_audit reports. A fast low-accuracy pass is available for demos.
 ---
 
@@ -11,6 +11,16 @@ variable that responded. Also flag anything that's an instrument or record
 problem rather than a real process change — an operator needs to know which
 channels to distrust, separately from what the plant actually did. Run end
 to end, no clarifying questions.
+
+**The data is in the workspace this pi instance was given with `/workspace`** —
+the absolute path is in your system prompt, under `## Workspace`. Read the CSVs
+from the first of `<workspace>/sensordata`, `<workspace>/data`, or the workspace
+root itself that holds them, and write every report inside that same workspace.
+Do not resolve paths against this skill's own location — it may be installed
+outside the workspace — and do not use the working directory, which pi requires
+to sit *outside* the workspace, so writes there are blocked. Every `reports/...`
+path below means `<workspace>/reports/...`. If no workspace is set, stop and ask
+the user to run `/workspace <folder>`.
 
 If the person asks for speed over accuracy — a demo, a smoke test, "just get
 something out" — follow `references/fast-pass.md` instead of the rest of this

@@ -1,26 +1,26 @@
 ---
-name: sensor-walkthrough-2
-description: Read out the plant_audit reports in `hyvätraportit/` - the sensor set, then every fault and finding, file by file - so a person can get a grasp of 52 unlabelled sensors. Use when someone wants to review the audit, see what was found, or drill into a specific unit or channel. Not for producing the audit itself.
+name: read-report
+description: Read out the plant_audit reports - the sensor set, then every fault and finding, file by file - so a person can get a grasp of 52 unlabelled sensors. Use when someone wants to review the audit, see what was found, or drill into a specific unit or channel. Not for producing the audit itself.
 ---
 
 # Sensor walkthrough
 
-The reports in `hyvätraportit/` describe 18 recordings of the same 52 sensors. Present
+The reports in `reports/` describe 18 recordings of the same 52 sensors. Present
 what they found, clearly and in order. Reports are read-only.
 
 Do not interview the person. State the findings and the evidence for them. If
 they want to correct or annotate something they will say so; record that in
-`hyvätraportit/walkthrough/notes.json` and move on. Never end a section with a
+`reports/walkthrough/notes.json` and move on. Never end a section with a
 question back to them.
 
 ## Setup
 
 ```bash
-python3 .pi/skills/sensor-walkthrough-2/build_session.py
+python3 .pi/skills/read-report/build_session.py
 ```
 
-Writes `hyvätraportit/walkthrough/session.json`, which regroups the 216 per-column
-findings into 24 whole events and adds four things the report schema does not
+Writes `reports/walkthrough/session.json`, which regroups the 158 per-column
+findings into 21 whole events and adds four things the report schema does not
 carry: the driver column for each event, the reasoning for the clean files, a
 severity, and a teaching order. Read that file, not the raw reports.
 
@@ -90,7 +90,7 @@ For each file state the verdict and event count, then each event:
 When an event needs backing, or someone doubts a call:
 
 ```bash
-python3 .pi/skills/sensor-walkthrough-2/show_window.py unit_04 tag_36 tag_49 --window 180 891
+python3 .pi/skills/read-report/show_window.py unit_04 tag_36 tag_49 --window 180 891
 ```
 
 First column is the reference - use the event's driver. Prints median and spread
@@ -111,8 +111,17 @@ fact is a plant fact.
 it shows up. Exception: a `record` fault is a property of that one file, not the
 plant - do not generalise those.
 
+## Answering a specific question
+
+If someone asks for a specific piece of data - a single tag, a single file, a
+yes/no, a number - answer only that, in whatever form fits the question. Do
+not wrap it in the orientation, inventory, or per-file walkthrough format
+above; those apply when giving a tour of the audit, not when someone wants one
+fact. Still correct any of the three known errors if they touch the answer,
+and still pull from `session.json` rather than the raw reports.
+
 ## Notes file
 
 If they correct something or supply a real tag name, append it to
-`hyvätraportit/walkthrough/notes.json` and carry it forward for the rest of the
+`reports/walkthrough/notes.json` and carry it forward for the rest of the
 session. Do not solicit it.
