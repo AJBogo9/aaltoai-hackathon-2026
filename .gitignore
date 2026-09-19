@@ -46,3 +46,6 @@ target/
 # --- Misc ---
 .cache/
 *.log
+
+
+node_modules/
