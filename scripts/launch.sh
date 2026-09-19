@@ -135,6 +135,19 @@ while IFS='=' read -r key value; do
 done <<<"$RESULT"
 [[ -n "$LEVEL" ]] || die "The check returned no level."
 
+# --- Every labeled folder in the repo, for /workspaces: one "level<TAB>name" line each. Only names and labels
+# go in; none of those folders is mounted. The labels are read loosely here, since they are only displayed.
+# The extension checks each against the policy, and the preflight above is what vouches for this workspace.
+ws_name() { if [[ "$1/" == "$REPO/"* ]]; then echo "${1#"$REPO"/}"; else basename "$1"; fi; }
+WS_NAME="$(ws_name "$WS")"
+WORKSPACES=""
+while IFS= read -r -d '' label; do
+  lvl="$(sed -nE 's/.*"level"[[:space:]]*:[[:space:]]*"([^"]*)".*/\1/p' "$label" 2>/dev/null || true)"
+  lvl="${lvl%%$'\n'*}"
+  WORKSPACES+="${lvl}"$'\t'"$(ws_name "$(dirname "$label")")"$'\n'
+done < <(find "$REPO" -maxdepth 5 \( -name .git -o -name .pi -o -name .devcontainer -o -name .claude -o -name node_modules \) -prune \
+  -o -name .confidentiality.json -type f -print0 2>/dev/null | sort -z)
+
 # --- API keys. Which provider gets used is decided inside pi, so pass in every key that is set on the
 # host. The variable is named without a value: it is read from the host and never appears in the command
 # line. A provider cleared below the label can be selected but gets no tools.
@@ -177,6 +190,7 @@ RUN=("$RT" run --rm --init "${TTY_ARGS[@]}" "${USER_ARGS[@]}"
   -e HOME=/tmp/home -e PI_CODING_AGENT_DIR=/tmp/pi-agent
   -e PI_WORKSPACE=/workspace -e "PI_WORKSPACE_LEVEL=$LEVEL" -e PI_POLICY_FILE=/opt/guard/policy.json
   -e PI_SANDBOXED=1 -e PI_OFFLINE=1 -e PI_TELEMETRY=0
+  -e "PI_WORKSPACE_NAME=$WS_NAME" -e "PI_WORKSPACES=$WORKSPACES"
   ${KEY_ARGS[@]+"${KEY_ARGS[@]}"}
   ${VERDA_MOUNTS[@]+"${VERDA_MOUNTS[@]}"})
 if [[ -n "${PI_MODELS_FILE:-}" ]]; then

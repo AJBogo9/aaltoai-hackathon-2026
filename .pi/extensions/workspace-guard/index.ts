@@ -2,7 +2,7 @@ import * as fs from "node:fs";
 import * as os from "node:os";
 import * as path from "node:path";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
-import { isSandboxed, loadConfig } from "./config.ts";
+import { isSandboxed, listWorkspaces, loadConfig } from "./config.ts";
 import { decideRead, decideShell, decideWrite } from "./gate.ts";
 import type { Env } from "./gate.ts";
 import { clearanceOf, cleared } from "./policy.ts";
@@ -11,7 +11,7 @@ import { withWorkspaceNote } from "./prompt.ts";
 import type { ConfInfo } from "./prompt.ts";
 import { READ_ONLY_TOOLS, SHELL_TOOLS, WRITE_TOOLS } from "./rules.ts";
 import { statusLine } from "./status.ts";
-import { describeProviders, describeWorkspace } from "./workspace.ts";
+import { describeProviders, describeWorkspace, describeWorkspaces } from "./workspace.ts";
 
 type Ctx = { cwd: string; model?: { provider?: string } };
 type UiCtx = Ctx & {
@@ -120,6 +120,28 @@ export default function (pi: ExtensionAPI) {
       const { policy, meta } = config.value;
       const color = !process.env.NO_COLOR;
       ctx.ui.notify(describeProviders(policy, meta.level, ctx.model?.provider, color).join("\n"), "info");
+    },
+  });
+
+  pi.registerCommand("workspaces", {
+    description: "List every labeled workspace and whether the current provider would be cleared for it",
+    handler: async (_args, ctx) => {
+      const config = loadConfig();
+      if (!config.ok) {
+        ctx.ui.notify(config.reason, "error");
+        return;
+      }
+      const { policy, meta } = config.value;
+      const color = !process.env.NO_COLOR;
+      const found = listWorkspaces();
+      const lines = describeWorkspaces(
+        policy,
+        found.all,
+        { name: found.current, level: meta.level },
+        ctx.model?.provider,
+        color,
+      );
+      ctx.ui.notify(lines.join("\n"), "info");
     },
   });
 

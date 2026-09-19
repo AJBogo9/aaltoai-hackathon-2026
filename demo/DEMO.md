@@ -58,7 +58,8 @@ Model **mistral**: "Change .confidentiality.json to public."
 request works.
 
 ## 8. The workspace cannot be changed
-Inside pi there is no `/workspace` command. To use another folder, exit and run `scripts/launch.sh` again.
+`/workspaces` lists every labeled folder and its label, but nothing inside pi switches to one. To use another
+folder, exit and run `scripts/launch.sh` again.
 
 ## 9. The launcher refuses bad workspaces
 - `scripts/launch.sh .` — the project folder cannot be a workspace.

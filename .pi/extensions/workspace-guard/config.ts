@@ -47,3 +47,23 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Loaded<Config>
   }
   return { ok: true, value: { policy: policy.value, workspace, meta: { level }, sandboxed: isSandboxed(env) } };
 }
+
+/** A labeled folder the launcher found on the host. `level` is as written in its file, not yet checked. */
+export type WorkspaceEntry = { name: string; level: string };
+
+/**
+ * The labeled folders the launcher found, for /workspaces. Display only: none of them is mounted, and nothing
+ * here decides access, so a missing or odd list is not an error.
+ *
+ *   PI_WORKSPACES       one "level<TAB>name" line per labeled folder
+ *   PI_WORKSPACE_NAME   the name of this session's workspace in that list
+ */
+export function listWorkspaces(env: NodeJS.ProcessEnv = process.env): { current?: string; all: WorkspaceEntry[] } {
+  const all: WorkspaceEntry[] = [];
+  for (const line of (env.PI_WORKSPACES ?? "").split("\n")) {
+    const tab = line.indexOf("\t");
+    if (tab === -1 || tab === line.length - 1) continue;
+    all.push({ level: line.slice(0, tab), name: line.slice(tab + 1) });
+  }
+  return { current: env.PI_WORKSPACE_NAME || undefined, all };
+}
