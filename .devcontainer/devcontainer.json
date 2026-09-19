@@ -13,6 +13,7 @@
     "--pids-limit=512",
     "--memory=4g",
     "--memory-swap=4g",
+    "--add-host=host.docker.internal:host-gateway",
     "--mount", "type=bind,source=/home/matias/Dev/projects/ai_hackathon/.devcontainer,target=/workspaces/ai_hackathon/.devcontainer,readonly",
     "--mount", "type=bind,source=/home/matias/Dev/projects/ai_hackathon/.git/hooks,target=/workspaces/ai_hackathon/.git/hooks,readonly",
     "--mount", "type=bind,source=/home/matias/Dev/projects/ai_hackathon/.git/config,target=/workspaces/ai_hackathon/.git/config,readonly",

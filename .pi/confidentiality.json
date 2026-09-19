@@ -1,0 +1,10 @@
+{
+  "levels": ["public", "confidential", "restricted"],
+  "providers": {
+    "google": "public",
+    "openai": "confidential",
+    "mistral": "confidential",
+    "lemonade": "restricted",
+    "ollama": "restricted"
+  }
+}
