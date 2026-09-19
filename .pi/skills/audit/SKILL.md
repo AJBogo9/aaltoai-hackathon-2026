@@ -1,5 +1,5 @@
 ---
-name: read-report
+name: audit
 description: Read out the plant_audit reports - the sensor set, then every fault and finding, file by file - so a person can get a grasp of 52 unlabelled sensors. Use when someone wants to review the audit, see what was found, or drill into a specific unit or channel. Not for producing the audit itself.
 ---
 
@@ -16,7 +16,7 @@ question back to them.
 ## Setup
 
 ```bash
-python3 .pi/skills/read-report/build_session.py
+python3 .pi/skills/audit/build_session.py
 ```
 
 Writes `reports/walkthrough/session.json`, which regroups the 158 per-column
@@ -90,7 +90,7 @@ For each file state the verdict and event count, then each event:
 When an event needs backing, or someone doubts a call:
 
 ```bash
-python3 .pi/skills/read-report/show_window.py unit_04 tag_36 tag_49 --window 180 891
+python3 .pi/skills/audit/show_window.py unit_04 tag_36 tag_49 --window 180 891
 ```
 
 First column is the reference - use the event's driver. Prints median and spread

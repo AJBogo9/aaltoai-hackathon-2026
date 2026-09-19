@@ -50,7 +50,7 @@ minutes.
 
 `<filename>` is the source file's full name, extension included: `unit_01.csv`
 becomes `reports/unit_01.csv.json`, not `reports/unit_01_analysis.json` or any
-other variant. `read-report`'s `build_session.py` globs for exactly
+other variant. `audit`'s `build_session.py` globs for exactly
 `reports/unit_*.csv.json` and silently finds nothing otherwise.
 
 ## Two computations, reused for everything
@@ -132,5 +132,5 @@ say in each one how it's coupled to the primary variable.
 ```
 `reports/summary.md`: one plain line per file, written for an operator.
 
-These reports are what the `read-report` skill reads out to a person;
+These reports are what the `audit` skill reads out to a person;
 this skill produces them.

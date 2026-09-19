@@ -54,7 +54,7 @@ failing early gives a clearer message. Writing into `hyvätraportit/` is refused
 unless you pass `--force`: that folder holds the hand-checked reports and demo
 output must not overwrite them.
 
-`sensor-walkthrough` reads `reports/`, so the default output pairs with it.
+`audit` reads `reports/`, so the default output pairs with it.
 `sensor-walkthrough-2` reads `hyvätraportit/` and is **not** the right consumer
 for this skill's output.
 
