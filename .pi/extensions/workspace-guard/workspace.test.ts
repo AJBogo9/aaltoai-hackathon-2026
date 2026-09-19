@@ -90,3 +90,18 @@ test("describeWorkspace shows the label, the provider's clearance and whether ac
 
   assert.ok(describeWorkspace(policy, meta, undefined, "")[1].includes("(none)"));
 });
+
+test("describeWorkspace warns that writes are disabled only when the session level is above the workspace label", () => {
+  const r = activateWorkspace("good", cwd);
+  assert.ok(r.ok);
+  const { policy, meta } = r.value;
+  const highest = policy.levels[policy.levels.length - 1];
+  assert.ok(highest !== meta.level, "the fixture needs a level above the workspace label");
+
+  assert.equal(describeWorkspace(policy, meta, "my-openai", "").length, 3);
+  assert.equal(describeWorkspace(policy, meta, "my-openai", meta.level).length, 3);
+
+  const above = describeWorkspace(policy, meta, "my-openai", highest);
+  assert.equal(above.length, 4);
+  assert.ok(above[3].includes("Writes are disabled") && above[3].includes("/new"));
+});

@@ -2,7 +2,7 @@ import * as fs from "node:fs";
 import { loadMetadata } from "./metadata.ts";
 import type { Metadata } from "./metadata.ts";
 import { resolveWorkspace, within } from "./paths.ts";
-import { clearanceOf, cleared, findPolicyFile, loadPolicy, normalizeLevel } from "./policy.ts";
+import { clearanceOf, cleared, findPolicyFile, loadPolicy, normalizeLevel, rank } from "./policy.ts";
 import type { Loaded, Policy } from "./policy.ts";
 
 export type Active = { workspace: string; policy: Policy; meta: Metadata };
@@ -45,9 +45,14 @@ export function describeWorkspace(
   const access = cleared(policy, clearance, meta.level)
     ? "file access is allowed."
     : `all file access will be refused. Switch to a provider cleared for ${meta.level}.`;
-  return [
+  const session = normalizeLevel(policy, taint);
+  const lines = [
     `Workspace level: ${meta.level}.`,
     `Provider ${provider ?? "(none)"} is cleared for ${clearance}: ${access}`,
-    `Session level: ${normalizeLevel(policy, taint)}.`,
+    `Session level: ${session}.`,
   ];
+  if (rank(policy, session) > rank(policy, meta.level)) {
+    lines.push("Writes are disabled here until you start a new session with /new: the session level is above this workspace's label.");
+  }
+  return lines;
 }
