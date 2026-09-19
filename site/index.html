@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>confidentiality-broker: the pitch deck</title>
+<meta name="description" content="Nine slides from the AaltoAI 2026 Norrin challenge: label based access control for LLM agents.">
+<style>
+  :root{
+    --paper-000:#fbfbf8; --paper-100:#f1f1ec;
+    --ink-900:#0e0e0e; --ink-600:#5a5a5a; --ink-400:#8c8c8c;
+    --rule-200:#d8d8d2;
+    --band-public:#00703c; --band-ink:#ffffff;
+    --text-public:#00703c; --text-confidential:#0b3d91; --text-restricted:#c8102e;
+    --font-serif:"PT Serif",Georgia,serif;
+    --font-mono:"PT Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    --space-1:6px; --space-2:12px; --space-3:18px; --space-4:26px; --space-5:38px; --space-6:58px;
+    --shadow-web:0 1px 3px rgba(0,0,0,.14), 0 8px 24px rgba(0,0,0,.08);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper-000:#0e1116; --paper-100:#151a21;
+      --ink-900:#eef1f4; --ink-600:#9aa3ad; --ink-400:#6f7883;
+      --rule-200:#263039;
+      --band-public:#0a7a44;
+      --text-public:#4fc98a; --text-confidential:#7aa7f0; --text-restricted:#ff7f8f;
+    }
+  }
+  html,body{margin:0}
+  body{background:var(--paper-000);color:var(--ink-900);font-family:var(--font-serif);
+       -webkit-text-size-adjust:100%}
+  .band{display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-3);
+        background:var(--band-public);color:var(--band-ink);border-radius:0;
+        font-family:var(--font-mono);font-size:17px;line-height:20px;letter-spacing:.18em;
+        padding:var(--space-2) var(--space-5)}
+  .band .cleared{text-align:right}
+  main{max-width:880px;margin:0 auto;padding:var(--space-6) var(--space-5) var(--space-5)}
+  .eyebrow{font-family:var(--font-mono);font-size:15px;letter-spacing:.2em;color:var(--ink-400);
+           text-transform:uppercase;margin:0}
+  h1{font-size:58px;line-height:1.05;font-weight:700;margin:var(--space-3) 0 var(--space-4)}
+  .sub{font-size:24px;line-height:1.35;color:var(--ink-600);margin:0 0 var(--space-6);max-width:38em}
+  .open{display:inline-block;font-family:var(--font-mono);font-size:19px;letter-spacing:.06em;
+        color:var(--band-ink);background:var(--band-public);text-decoration:none;
+        padding:var(--space-3) var(--space-5);border-radius:0}
+  .open:hover,.open:focus{outline:2px solid var(--ink-900);outline-offset:2px}
+  .meta{font-family:var(--font-mono);font-size:15px;color:var(--ink-400);margin:var(--space-3) 0 0}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);margin:var(--space-6) 0 0}
+  .lab{font-family:var(--font-mono);font-size:15px;letter-spacing:.16em;color:var(--ink-400);
+       text-transform:uppercase;border-bottom:1px solid var(--rule-200);
+       padding-bottom:var(--space-1);margin:0}
+  .val{font-size:17px;line-height:1.55;color:var(--ink-900);margin:var(--space-3) 0 0}
+  .val code{font-family:var(--font-mono);font-size:15px}
+  .con{color:var(--text-confidential)} .res{color:var(--text-restricted)} .pub{color:var(--text-public)}
+  .kick{font-size:23px;line-height:1.35;border-top:1px solid var(--rule-200);
+        padding-top:var(--space-4);margin:var(--space-6) 0 0}
+  .viewer{margin:var(--space-6) 0 0;display:none}
+  .viewer object{width:100%;height:min(70vh,620px);border:1px solid var(--rule-200);
+                 box-shadow:var(--shadow-web);background:var(--paper-100)}
+  .links{font-family:var(--font-mono);font-size:15px;color:var(--ink-600);margin:var(--space-6) 0 0}
+  .links a{color:inherit}
+  @media (min-width:900px){ .viewer{display:block} }
+  @media (max-width:700px){
+    .band{font-size:13px;letter-spacing:.12em;padding:var(--space-2) 16px;flex-direction:column;align-items:flex-start;gap:4px;overflow-wrap:anywhere}
+    .band .cleared{text-align:left}
+    main{padding:var(--space-5) 16px}
+    h1{font-size:34px}
+    .sub{font-size:19px}
+    .cols{grid-template-columns:1fr;gap:var(--space-5)}
+    .kick{font-size:19px}
+    .open{display:block;text-align:center;font-size:17px}
+  }
+</style>
+</head>
+<body>
+  <div class="band">
+    <span>PUBLIC</span>
+    <span class="cleared">CLEARED: GOOGLE, OPENAI, MISTRAL, LEMONADE, OLLAMA</span>
+  </div>
+
+  <main>
+    <p class="eyebrow">AaltoAI 2026 &middot; Norrin challenge</p>
+    <h1>The label lives on the folder</h1>
+    <p class="sub">Not in the prompt, where the model can be talked out of it. A clearance lives on the
+    provider, and the broker compares the two on every tool call.</p>
+
+    <a class="open" href="Norrin_Pitch.pdf">Open the deck (PDF, 9 slides)</a>
+    <p class="meta">Andreas Bogossian, Matias H&auml;kkinen, Tomi Hirviniemi</p>
+
+    <div class="viewer">
+      <object data="Norrin_Pitch.pdf" type="application/pdf" aria-label="The pitch deck, nine slides">
+        <p class="val">Your browser will not display the PDF inline.
+        <a href="Norrin_Pitch.pdf">Open it directly.</a></p>
+      </object>
+    </div>
+
+    <div class="cols">
+      <div>
+        <p class="lab">About the bands on the slides</p>
+        <p class="val">Slides carry <span class="con">confidential</span> and
+        <span class="res">restricted</span> bands because they quote the demo workspace the
+        product guards. Every record in that workspace is fabricated for the demo.
+        This page is <span class="pub">public</span>, so it is marked public.</p>
+      </div>
+      <div>
+        <p class="lab">What the deck shows</p>
+        <p class="val">A folder carries a level in <code>.confidentiality.json</code>. A provider
+        carries a clearance. A provider cleared below a folder's level gets no access to it at
+        all, not even a file listing.</p>
+      </div>
+    </div>
+
+    <p class="kick">It is a guardrail, not a sandbox. It stops the tool calls it mediates,
+    and it says out loud which check refused.</p>
+
+    <p class="links"><a href="https://github.com/AJBogo9/aaltoai-hackathon-2026">Source on GitHub</a></p>
+  </main>
+
+  <div class="band">
+    <span>PUBLIC</span>
+    <span class="cleared">PAGE MARKED BY CONFIDENTIALITY-BROKER</span>
+  </div>
+</body>
+</html>

@@ -67,3 +67,6 @@ override.tf.json
 # --- Claude Code ---
 # Worktrees live here. Project settings and skills under .claude/ stay committable.
 .claude/worktrees/
+
+# Built into the Pages artifact from demo/, never committed
+site/Norrin_Pitch.pdf

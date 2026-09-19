@@ -1,0 +1,45 @@
+name: Pitch deck to Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'demo/Norrin_Pitch.pdf'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # The deck lives in demo/ and is presented from there. Copying it in at build
+      # time keeps one source of truth, so the published link cannot drift from the
+      # file the team actually presents.
+      - name: Assemble the site
+        run: cp demo/Norrin_Pitch.pdf site/Norrin_Pitch.pdf
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
