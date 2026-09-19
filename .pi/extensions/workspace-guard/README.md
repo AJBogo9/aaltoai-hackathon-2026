@@ -109,7 +109,7 @@ Tools are grouped in `rules.ts`:
 |---|---|---|
 | Read-only | `read`, `ls`, `grep`, `find` | Confined to the workspace. |
 | File-changing | `write`, `edit` | Confined to the workspace and restricted as below. |
-| Blocked | `bash` | Always refused. |
+| Blocked | `bash` | Removed from the model's tool list so it does not try it, and still refused if it is called. |
 | Anything else | | Refused. |
 
 **All file tools**
@@ -120,12 +120,13 @@ Tools are grouped in `rules.ts`:
 - Paths are normalised the way pi does it (leading `@`, unicode spaces, `~`), resolved to real paths so
   `..` and symlinks are followed, and must end up inside the workspace. The tool then runs on exactly
   the path that was checked.
-- For `ls`, `find` and `grep`, an omitted path means the workspace folder.
+- Relative paths are relative to the **workspace**, which is the agent's working directory, not pi's. `.` is
+  the workspace itself, and an omitted path for `ls`, `find` and `grep` means the workspace folder too.
 
 **Reading**
 
-- `read`, `grep` and `edit` raise the session level to the workspace label. `ls` and `find` return names
-  only and do not.
+- `read`, `ls`, `grep`, `find` and `edit` raise the session level to the workspace label. File names
+  count as data too.
 
 **Writing**
 
@@ -163,7 +164,10 @@ model:
 
 - the workspace folder and the tool rules above;
 - the workspace label, the session level, and the current provider's clearance;
-- that a blocked call should be reported to you and not worked around.
+- that relative paths are relative to the workspace;
+- that a blocked call should be reported to you and not worked around;
+- when the provider is cleared below the workspace label: that it currently has no file access, and should tell
+  you to switch provider instead of trying other tools.
 
 The section is regenerated from the current state each turn. `/prompt` shows what will be sent.
 
@@ -182,6 +186,9 @@ workspace label is above the lowest level.
 - **The session level is coarse.** It is a high-water mark, not a track of what influenced what. Once
   you have read confidential data, everything written is confidential. Start a `/new` session to reset
   it.
+- **One label per workspace.** A `.confidentiality.json` in a subfolder is protected from writes but
+  not honored for reads, so a nested folder with a higher label is still readable by any provider
+  cleared for the workspace's root label. Keep workspaces flat.
 - **Some input is unlabeled:** text you type, pasted content, and files pi loads on its own such as
   `AGENTS.md`.
 - **`grep` and `find` and symlinks.** A symlink inside the workspace that points outside is refused for

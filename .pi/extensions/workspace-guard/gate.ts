@@ -2,7 +2,7 @@ import * as path from "node:path";
 import { METADATA_NAME, toRel } from "./metadata.ts";
 import type { Metadata } from "./metadata.ts";
 import { checkWritePath, existsNoFollow, normalizeToolPath, realResolve, within } from "./paths.ts";
-import { clearanceOf, cleared, lowest, rank } from "./policy.ts";
+import { clearanceOf, cleared, rank } from "./policy.ts";
 import type { Policy } from "./policy.ts";
 
 export type Env = {
@@ -12,7 +12,6 @@ export type Env = {
   provider: string | undefined;
   /** The session's confidentiality level: the highest level read so far. */
   taint: string;
-  cwd: string;
   /** Real paths of the files the agent has created; only these may be modified. */
   created: ReadonlySet<string>;
 };
@@ -26,8 +25,9 @@ function refusal(env: Env, clearance: string): string {
 
 /**
  * Decide a read-only tool call. Every file in the workspace has the workspace's label, so a provider
- * cleared below it gets no access at all. Reads are confined to the workspace. ls and find return
- * names only, so they do not raise the session level.
+ * cleared below it gets no access at all. Reads are confined to the workspace, and relative paths are
+ * relative to the workspace: it is the agent's working directory. Every read-only tool raises the
+ * session level to the workspace label, because file names are data too.
  */
 export function decideRead(env: Env, tool: string, requested: unknown): ReadDecision {
   const clearance = clearanceOf(env.policy, env.provider);
@@ -41,7 +41,7 @@ export function decideRead(env: Env, tool: string, requested: unknown): ReadDeci
     return { ok: false, reason: "The path must be a string." };
   } else {
     try {
-      resolved = realResolve(path.resolve(env.cwd, normalizeToolPath(requested)));
+      resolved = realResolve(path.resolve(env.workspace, normalizeToolPath(requested)));
     } catch (err) {
       return { ok: false, reason: `Cannot resolve path: ${(err as Error).message}.` };
     }
@@ -52,14 +52,14 @@ export function decideRead(env: Env, tool: string, requested: unknown): ReadDeci
       reason: `${resolved} is outside the workspace ${env.workspace}. Reads are limited to the workspace.`,
     };
   }
-  const level = tool === "read" || tool === "grep" ? env.meta.level : lowest(env.policy);
-  return { ok: true, resolved, level };
+  return { ok: true, resolved, level: env.meta.level };
 }
 
 /**
  * Decide a write or edit. It needs a provider cleared for the workspace's level (no writing above the
  * provider's clearance) and a session level no higher than the workspace's (no writing down). Only
  * new paths and files the agent created may be written; everything else is read-only source data.
+ * Relative paths are relative to the workspace.
  */
 export function decideWrite(env: Env, tool: string, requested: unknown): WriteDecision {
   const clearance = clearanceOf(env.policy, env.provider);
@@ -71,7 +71,7 @@ export function decideWrite(env: Env, tool: string, requested: unknown): WriteDe
     };
   }
 
-  const check = checkWritePath(env.workspace, requested, env.cwd);
+  const check = checkWritePath(env.workspace, requested, env.workspace);
   if (!check.ok) return check;
   const resolved = check.resolved;
   const rel = toRel(env.workspace, resolved);

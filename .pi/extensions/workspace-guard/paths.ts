@@ -82,15 +82,15 @@ export function resolveWorkspace(arg: string, cwd: string): PathCheck {
   return { ok: true, resolved: real };
 }
 
-/** Validate a path the agent wants to write. `workspace` must already be a real path. */
-export function checkWritePath(workspace: string, requested: unknown, cwd: string): PathCheck {
+/** Validate a path the agent wants to write. `workspace` must already be a real path; relative paths are resolved against `base`. */
+export function checkWritePath(workspace: string, requested: unknown, base: string): PathCheck {
   if (typeof requested !== "string" || requested.trim() === "") {
     return { ok: false, reason: "Missing or empty path." };
   }
 
   let resolved: string;
   try {
-    resolved = realResolve(path.resolve(cwd, normalizeToolPath(requested)));
+    resolved = realResolve(path.resolve(base, normalizeToolPath(requested)));
   } catch (err) {
     return { ok: false, reason: `Cannot resolve path: ${(err as Error).message}.` };
   }

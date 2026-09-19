@@ -37,6 +37,20 @@ export default function (pi: ExtensionAPI) {
     pi.appendEntry(ENTRY, { taint, workspace, created: [...created] });
   }
 
+  /**
+   * Take the blocked tools (bash) out of the model's tool list, so it does not try them. The block in
+   * tool_call stays as a backstop.
+   */
+  function hideBlockedTools(): void {
+    try {
+      const active = pi.getActiveTools();
+      const kept = active.filter((name) => !BLOCKED_TOOLS.has(name));
+      if (kept.length !== active.length) pi.setActiveTools(kept);
+    } catch {
+      // the block in tool_call still applies
+    }
+  }
+
   function loadPolicyFor(ctx: Ctx): Loaded<Policy> {
     const file = findPolicyFile(ctx.cwd);
     if (!file) return { ok: false, reason: "No .pi/confidentiality.json found." };
@@ -104,7 +118,6 @@ export default function (pi: ExtensionAPI) {
         workspace,
         provider: ctx.model?.provider,
         taint: currentTaint(policy.value),
-        cwd: ctx.cwd,
         created,
       },
     };
@@ -120,11 +133,13 @@ export default function (pi: ExtensionAPI) {
       level = meta.value.level;
     }
     const provider = ctx.model?.provider;
+    const clearance = clearanceOf(policy.value, provider);
     return {
       provider,
-      clearance: clearanceOf(policy.value, provider),
+      clearance,
       taint: currentTaint(policy.value),
       level,
+      allowed: level === undefined ? undefined : cleared(policy.value, clearance, level),
     };
   }
 
@@ -226,6 +241,7 @@ export default function (pi: ExtensionAPI) {
 
   // A system prompt change lasts one turn, so re-append the workspace section on every prompt.
   pi.on("before_agent_start", async (event, ctx) => {
+    hideBlockedTools();
     refresh(ctx);
     return { systemPrompt: withWorkspaceNote(event.systemPrompt, workspace, confInfo(ctx)) };
   });
@@ -257,6 +273,7 @@ export default function (pi: ExtensionAPI) {
         ctx.ui.notify(`Workspace not restored: ${result.reason}`, "warning");
       }
     }
+    hideBlockedTools();
     refresh(ctx);
   });
 

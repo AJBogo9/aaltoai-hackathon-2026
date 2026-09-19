@@ -77,6 +77,11 @@ function setup(provider: string | undefined = "google") {
     getSystemPrompt: () => BASE_PROMPT,
     sessionManager: { getEntries: () => entries },
   };
+  const toolState = {
+    active: ["read", "bash", "edit", "write", "grep", "find", "ls", "other_ext_tool"],
+    calls: 0,
+    fail: false,
+  };
   extension({
     registerCommand: (name: string, opts: { handler: Handler }) => void commands.set(name, opts.handler),
     on: (event: string, handler: Handler) => void events.set(event, handler),
@@ -85,8 +90,14 @@ function setup(provider: string | undefined = "google") {
       setModelCalls.push(model);
       ctx.model = model;
     },
+    getActiveTools: () => [...toolState.active],
+    setActiveTools: (names: string[]) => {
+      toolState.calls += 1;
+      if (toolState.fail) throw new Error("boom");
+      toolState.active = names;
+    },
   } as never);
-  return { commands, events, entries, setModelCalls, notes, statuses, selects, chooser, ctx };
+  return { commands, events, entries, setModelCalls, notes, statuses, selects, chooser, toolState, ctx };
 }
 
 type Session = ReturnType<typeof setup>;
@@ -130,7 +141,7 @@ test("a provider cleared below the workspace label gets no file access at all", 
   const s = setup("google");
   await openWorkspace(s);
   for (const name of [...READ_ONLY_TOOLS, ...WRITE_TOOLS]) {
-    const r = await tool(s, name, { path: "workspace-a/public.txt" });
+    const r = await tool(s, name, { path: "public.txt" });
     assert.equal(r.block, true, name);
     assert.ok(r.reason.includes("workspace is labeled confidential"), name);
   }
@@ -139,36 +150,35 @@ test("a provider cleared below the workspace label gets no file access at all", 
 test("a cleared provider can read, the path is rewritten, and the session level is raised and saved", async () => {
   const s = setup("my-openai");
   await openWorkspace(s);
-  const input = { path: "workspace-a/data/secret.csv" };
+  const input = { path: "data/secret.csv" };
   assert.equal(await tool(s, "read", input), undefined);
   assert.equal(input.path, path.join(wsA, "data", "secret.csv"));
   assert.equal(lastEntry(s).taint, "confidential");
 });
 
-test("ls and find do not raise the session level", async () => {
+test("ls and find raise the session level too, because file names are data", async () => {
   const s = setup("my-openai");
   await openWorkspace(s);
-  assert.equal(await tool(s, "ls", { path: "workspace-a" }), undefined);
-  assert.equal(await tool(s, "find", { pattern: "*", path: "workspace-a" }), undefined);
-  assert.equal(lastEntry(s).taint, "");
+  assert.equal(await tool(s, "ls", { path: "." }), undefined);
+  assert.equal(lastEntry(s).taint, "confidential");
 });
 
 test("the agent can create files and then edit them, but not touch source files or the metadata file", async () => {
   const s = setup("my-openai");
   await openWorkspace(s);
 
-  assert.equal(await tool(s, "write", { path: "workspace-a/out/report.md", content: "x" }), undefined);
+  assert.equal(await tool(s, "write", { path: "out/report.md", content: "x" }), undefined);
   assert.deepEqual(lastEntry(s).created, [reportA]);
 
   fs.mkdirSync(path.join(wsA, "out"), { recursive: true });
   fs.writeFileSync(reportA, "x");
-  assert.equal(await tool(s, "edit", { path: "workspace-a/out/report.md", edits: [] }), undefined);
+  assert.equal(await tool(s, "edit", { path: "out/report.md", edits: [] }), undefined);
   assert.equal(lastEntry(s).taint, "confidential");
 
-  const source = await tool(s, "write", { path: "workspace-a/public.txt", content: "x" });
+  const source = await tool(s, "write", { path: "public.txt", content: "x" });
   assert.equal(source.block, true);
   assert.ok(source.reason.includes("read-only"));
-  const meta = await tool(s, "write", { path: `workspace-a/${METADATA_NAME}`, content: "{}" });
+  const meta = await tool(s, "write", { path: `${METADATA_NAME}`, content: "{}" });
   assert.equal(meta.block, true);
   assert.deepEqual(JSON.parse(fs.readFileSync(metaA, "utf8")), { level: "confidential" });
 });
@@ -176,29 +186,29 @@ test("the agent can create files and then edit them, but not touch source files 
 test("a provider cannot write into a workspace above its clearance, but can into one at its level", async () => {
   const s = setup("google");
   await openWorkspace(s, "workspace-b");
-  assert.equal(await tool(s, "write", { path: "workspace-b/x.md", content: "x" }), undefined);
-  assert.equal(await tool(s, "read", { path: "workspace-b/b.txt" }), undefined);
+  assert.equal(await tool(s, "write", { path: "x.md", content: "x" }), undefined);
+  assert.equal(await tool(s, "read", { path: "b.txt" }), undefined);
 
   await openWorkspace(s, "workspace-a");
-  assert.equal((await tool(s, "write", { path: "workspace-a/x.md", content: "x" })).block, true);
+  assert.equal((await tool(s, "write", { path: "x.md", content: "x" })).block, true);
 });
 
 test("a session that has read confidential data cannot write into a lower-labeled workspace", async () => {
   const s = setup("my-openai");
   await openWorkspace(s);
-  await tool(s, "read", { path: "workspace-a/data/secret.csv" });
+  await tool(s, "read", { path: "data/secret.csv" });
 
   await openWorkspace(s, "workspace-b");
-  const write = await tool(s, "write", { path: "workspace-b/x.md", content: "x" });
+  const write = await tool(s, "write", { path: "x.md", content: "x" });
   assert.equal(write.block, true);
   assert.ok(write.reason.includes("above the workspace"));
-  assert.equal(await tool(s, "read", { path: "workspace-b/b.txt" }), undefined);
+  assert.equal(await tool(s, "read", { path: "b.txt" }), undefined);
 });
 
 test("a message is withheld when the session is above the current provider's clearance", async () => {
   const s = setup("my-openai");
   await openWorkspace(s);
-  await tool(s, "read", { path: "workspace-a/data/secret.csv" });
+  await tool(s, "read", { path: "data/secret.csv" });
   const input = s.events.get("input")!;
 
   s.ctx.model = use("google");
@@ -214,14 +224,14 @@ test("a message is withheld when the session is above the current provider's cle
 test("messages pass while nothing has been read", async () => {
   const s = setup("google");
   await openWorkspace(s, "workspace-b");
-  await tool(s, "ls", { path: "workspace-b" });
+  await tool(s, "ls", { path: "." });
   assert.deepEqual(await s.events.get("input")!({ text: "hello" }, s.ctx), { action: "continue" });
 });
 
 test("switching to a provider that is not cleared switches back", async () => {
   const s = setup("my-openai");
   await openWorkspace(s);
-  await tool(s, "read", { path: "workspace-a/data/secret.csv" });
+  await tool(s, "read", { path: "data/secret.csv" });
   const select = s.events.get("model_select")!;
 
   await select({ model: use("google"), previousModel: use("my-openai"), source: "set" }, s.ctx);
@@ -251,8 +261,8 @@ test("resuming a session restores the level, the workspace and the files the age
   });
   await s.events.get("session_start")!({ reason: "resume" }, s.ctx);
 
-  assert.equal(await tool(s, "edit", { path: "workspace-a/out/report.md", edits: [] }), undefined);
-  assert.equal((await tool(s, "write", { path: "workspace-a/public.txt", content: "x" })).block, true);
+  assert.equal(await tool(s, "edit", { path: "out/report.md", edits: [] }), undefined);
+  assert.equal((await tool(s, "write", { path: "public.txt", content: "x" })).block, true);
 
   s.ctx.model = use("google");
   assert.deepEqual(await s.events.get("input")!({ text: "hello" }, s.ctx), { action: "handled" });
@@ -274,8 +284,8 @@ test("a saved workspace that no longer validates is not restored", async () => {
 test("a new session resets the level and the created files but keeps the workspace", async () => {
   const s = setup("my-openai");
   await openWorkspace(s);
-  await tool(s, "write", { path: "workspace-a/out/report.md", content: "x" });
-  await tool(s, "read", { path: "workspace-a/data/secret.csv" });
+  await tool(s, "write", { path: "out/report.md", content: "x" });
+  await tool(s, "read", { path: "data/secret.csv" });
   fs.mkdirSync(path.join(wsA, "out"), { recursive: true });
   fs.writeFileSync(reportA, "x");
 
@@ -288,7 +298,7 @@ test("a new session resets the level and the created files but keeps the workspa
   assert.deepEqual(await s.events.get("input")!({ text: "hello" }, s.ctx), { action: "continue" });
 
   s.ctx.model = use("my-openai");
-  const rewrite = await tool(s, "write", { path: "workspace-a/out/report.md", content: "x" });
+  const rewrite = await tool(s, "write", { path: "out/report.md", content: "x" });
   assert.equal(rewrite.block, true);
   assert.ok(rewrite.reason.includes("read-only"));
 });
@@ -335,15 +345,15 @@ test("/confidentiality reports the label, the clearance and the session level", 
 test("a missing provider only gets into a public workspace", async () => {
   const s = setup(undefined);
   await openWorkspace(s, "workspace-b");
-  assert.equal(await tool(s, "read", { path: "workspace-b/b.txt" }), undefined);
+  assert.equal(await tool(s, "read", { path: "b.txt" }), undefined);
   await openWorkspace(s);
-  assert.equal((await tool(s, "read", { path: "workspace-a/public.txt" })).block, true);
+  assert.equal((await tool(s, "read", { path: "public.txt" })).block, true);
 });
 
 test("without a workspace every file tool is blocked", async () => {
   const s = setup("ollama");
   for (const name of [...READ_ONLY_TOOLS, ...WRITE_TOOLS]) {
-    const r = await tool(s, name, { path: "workspace-a/public.txt" });
+    const r = await tool(s, name, { path: "public.txt" });
     assert.equal(r.block, true, name);
     assert.ok(r.reason.includes("No workspace is set"));
   }
@@ -353,7 +363,7 @@ test("if the policy disappears, file access is blocked", async () => {
   const s = setup("ollama");
   await openWorkspace(s);
   fs.rmSync(policyFile);
-  const r = await tool(s, "read", { path: "workspace-a/public.txt" });
+  const r = await tool(s, "read", { path: "public.txt" });
   assert.equal(r.block, true);
   assert.ok(r.reason.includes("confidentiality.json"));
 });
@@ -362,10 +372,10 @@ test("if the metadata file is corrupted, reads and writes are blocked", async ()
   const s = setup("ollama");
   await openWorkspace(s);
   fs.writeFileSync(metaA, "{");
-  const read = await tool(s, "read", { path: "workspace-a/public.txt" });
+  const read = await tool(s, "read", { path: "public.txt" });
   assert.equal(read.block, true);
   assert.ok(read.reason.includes("not valid JSON"));
-  assert.equal((await tool(s, "write", { path: "workspace-a/x.md", content: "x" })).block, true);
+  assert.equal((await tool(s, "write", { path: "x.md", content: "x" })).block, true);
   assert.equal(fs.readFileSync(metaA, "utf8"), "{");
 });
 
@@ -383,7 +393,7 @@ test("the footer status follows the session level and the provider", async () =>
   await openWorkspace(s);
   assert.ok(s.statuses.at(-1)!.includes("my-openai [confidential] ✓"));
 
-  await tool(s, "read", { path: "workspace-a/data/secret.csv" });
+  await tool(s, "read", { path: "data/secret.csv" });
   assert.ok(s.statuses.at(-1)!.endsWith("session confidential"));
 
   await s.events.get("model_select")!({ model: use("google"), previousModel: undefined, source: "set" }, s.ctx);
@@ -413,7 +423,7 @@ test("a failing status update never breaks a tool call", async () => {
   s.ctx.ui.setStatus = () => {
     throw new Error("boom");
   };
-  assert.equal(await tool(s, "read", { path: "workspace-a/data/secret.csv" }), undefined);
+  assert.equal(await tool(s, "read", { path: "data/secret.csv" }), undefined);
 });
 
 test("/workspace with no argument offers the folders that have a metadata file", async () => {
@@ -464,6 +474,72 @@ test("without a UI, /workspace with no argument just reports the current workspa
   assert.ok(s.notes.at(-1)!.includes("No workspace set"));
 });
 
+test("the blocked tools are taken out of the model's tool list when a session starts", async () => {
+  const s = setup("google");
+  await s.events.get("session_start")!({ reason: "startup" }, s.ctx);
+  assert.deepEqual(s.toolState.active, ["read", "edit", "write", "grep", "find", "ls", "other_ext_tool"]);
+});
+
+test("the blocked tools are removed again on a message if something added them back", async () => {
+  const s = setup("google");
+  await s.events.get("session_start")!({ reason: "startup" }, s.ctx);
+  s.toolState.active = [...s.toolState.active, "bash"];
+  await s.events.get("before_agent_start")!({ systemPrompt: BASE_PROMPT }, s.ctx);
+  assert.ok(!s.toolState.active.includes("bash"));
+  assert.ok(s.toolState.active.includes("other_ext_tool"));
+});
+
+test("the tool list is left alone when nothing needs hiding", async () => {
+  const s = setup("google");
+  await s.events.get("session_start")!({ reason: "startup" }, s.ctx);
+  const calls = s.toolState.calls;
+  await s.events.get("before_agent_start")!({ systemPrompt: BASE_PROMPT }, s.ctx);
+  assert.equal(s.toolState.calls, calls);
+});
+
+test("if the tool list cannot be changed, bash is still refused when it is called", async () => {
+  const s = setup("google");
+  s.toolState.fail = true;
+  await s.events.get("session_start")!({ reason: "startup" }, s.ctx);
+  assert.ok(s.toolState.active.includes("bash"));
+  const r = await tool(s, "bash", { command: "ls -F" });
+  assert.equal(r.block, true);
+  assert.ok(r.reason.includes("The bash tool is disabled"));
+});
+
+test("relative paths in tool calls are relative to the workspace, and the tool runs on the absolute path", async () => {
+  const s = setup("my-openai");
+  await openWorkspace(s);
+
+  const dot = { path: "." };
+  assert.equal(await tool(s, "ls", dot), undefined);
+  assert.equal(dot.path, wsA);
+
+  const bare: Record<string, unknown> = {};
+  assert.equal(await tool(s, "ls", bare), undefined);
+  assert.equal(bare.path, wsA);
+
+  const read = { path: "./data/secret.csv" };
+  assert.equal(await tool(s, "read", read), undefined);
+  assert.equal(read.path, path.join(wsA, "data", "secret.csv"));
+
+  const write = { path: "out/new.md", content: "x" };
+  assert.equal(await tool(s, "write", write), undefined);
+  assert.equal(write.path, path.join(wsA, "out", "new.md"));
+});
+
+test("/prompt tells a provider without clearance that it has no file access", async () => {
+  const s = setup("google");
+  await openWorkspace(s);
+  await command(s, "prompt");
+  assert.ok(s.notes.at(-1)!.includes("you currently have no file access"));
+
+  s.ctx.model = use("my-openai");
+  await command(s, "prompt");
+  assert.ok(!s.notes.at(-1)!.includes("no file access"));
+  assert.ok(s.notes.at(-1)!.includes("You may create and modify files only inside this folder"));
+});
+
 test("every tool the prompt names behaves as the prompt says", async () => {
   const s = setup("ollama");
   await openWorkspace(s);
@@ -474,12 +550,12 @@ test("every tool the prompt names behaves as the prompt says", async () => {
     assert.ok(turn.systemPrompt.includes(name), `prompt should name ${name}`);
   }
   for (const name of READ_ONLY_TOOLS) {
-    assert.equal(await tool(s, name, { path: "workspace-a/public.txt" }), undefined, name);
+    assert.equal(await tool(s, name, { path: "public.txt" }), undefined, name);
     assert.equal((await tool(s, name, { path: "/etc/hostname" })).block, true, name);
   }
   for (const name of WRITE_TOOLS) {
-    assert.equal((await tool(s, name, { path: "README.md" })).block, true, name);
-    assert.equal(await tool(s, name, { path: "workspace-a/out/x.txt" }), undefined, name);
+    assert.equal((await tool(s, name, { path: "../README.md" })).block, true, name);
+    assert.equal(await tool(s, name, { path: "out/x.txt" }), undefined, name);
   }
   for (const name of BLOCKED_TOOLS) {
     assert.equal((await tool(s, name, {})).block, true, name);
