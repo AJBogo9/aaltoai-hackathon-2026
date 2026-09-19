@@ -35,7 +35,9 @@ what's wrong in one file says nothing about another.
 
 ## How to work
 Write one script that profiles every file and prints the statistics you need,
-then reason over that output. Do not open files by hand or make a tool call
+then reason over that output. Never read a CSV directly with a file-reading
+tool (Read, cat, head, etc.) - they are large, and the point is to compute
+statistics, not to look at rows. Do not open files by hand or make a tool call
 per column.
 
 Use the Python 3 standard library only — `csv`, `statistics`, `math`. Do not
@@ -125,5 +127,5 @@ say in each one how it's coupled to the primary variable.
 ```
 `reports/summary.md`: one plain line per file, written for an operator.
 
-These reports are what the `sensor-walkthrough` skill reads out to a person;
+These reports are what the `read-report` skill reads out to a person;
 this skill produces them.
