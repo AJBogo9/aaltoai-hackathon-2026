@@ -9,7 +9,7 @@
 #    label file is read-only, and the guard, skills and policy are read-only.
 #
 # The provider and model are chosen in pi, as usual (/model, or `-- --provider X --model Y`). A provider
-# cleared below the workspace label gets no tools and no messages; the workspace guard extension enforces that.
+# cleared below the workspace label gets no tools and no messages; the confidentiality broker extension enforces that.
 # The workspace cannot be changed after launch: start a new session to use another one.
 # --dry-run runs the check and prints the command without starting pi.
 
@@ -44,7 +44,7 @@ die() {
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
 POLICY="$REPO/.pi/confidentiality.json"
-GUARD="$REPO/.pi/extensions/workspace-guard"
+GUARD="$REPO/.pi/extensions/confidentiality-broker"
 SKILLS="$REPO/.pi/skills"
 VERDA_EXT="$REPO/.pi/extensions/verda.ts"
 ENV_LOCAL="$REPO/.env.local"
@@ -119,8 +119,8 @@ fi
 PREFLIGHT=("$RT" run --rm --network none --read-only --cap-drop=ALL --security-opt=no-new-privileges "${USER_ARGS[@]}"
   --mount "type=bind,src=$WS,dst=/mnt/workspace,readonly"
   --mount "type=bind,src=$POLICY,dst=/opt/guard/policy.json,readonly"
-  --mount "type=bind,src=$GUARD,dst=/opt/guard/extensions/workspace-guard,readonly"
-  "$IMAGE" node /opt/guard/extensions/workspace-guard/preflight.ts
+  --mount "type=bind,src=$GUARD,dst=/opt/guard/extensions/confidentiality-broker,readonly"
+  "$IMAGE" node /opt/guard/extensions/confidentiality-broker/preflight.ts
   --policy /opt/guard/policy.json --workspace /mnt/workspace)
 
 if ! RESULT="$("${PREFLIGHT[@]}")"; then
@@ -183,7 +183,7 @@ RUN=("$RT" run --rm --init "${TTY_ARGS[@]}" "${USER_ARGS[@]}"
   --add-host=host.docker.internal:host-gateway
   --mount "type=bind,src=$WS,dst=/workspace"
   --mount "type=bind,src=$WS/.confidentiality.json,dst=/workspace/.confidentiality.json,readonly"
-  --mount "type=bind,src=$GUARD,dst=/opt/guard/extensions/workspace-guard,readonly"
+  --mount "type=bind,src=$GUARD,dst=/opt/guard/extensions/confidentiality-broker,readonly"
   --mount "type=bind,src=$SKILLS,dst=/opt/guard/skills,readonly"
   --mount "type=bind,src=$POLICY,dst=/opt/guard/policy.json,readonly"
   --workdir /workspace
@@ -198,7 +198,7 @@ if [[ -n "${PI_MODELS_FILE:-}" ]]; then
   RUN+=(--mount "type=bind,src=$(cd "$(dirname "$PI_MODELS_FILE")" && pwd -P)/$(basename "$PI_MODELS_FILE"),dst=/tmp/pi-agent/models.json,readonly")
 fi
 RUN+=("$IMAGE" pi
-  --no-extensions -e /opt/guard/extensions/workspace-guard/index.ts
+  --no-extensions -e /opt/guard/extensions/confidentiality-broker/index.ts
   ${VERDA_EXT_ARGS[@]+"${VERDA_EXT_ARGS[@]}"}
   --no-skills --skill /opt/guard/skills
   --no-approve --no-context-files

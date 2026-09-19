@@ -1,0 +1,26 @@
+<!-- @dsCard group="Marking" height=260 width=1280 --><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Mono&display=swap">
+<style>
+  html,body{margin:0}
+  body{background:var(--paper-000);color:var(--ink-900);font-family:var(--font-sans)}
+  .stage{padding:var(--space-5)}
+  .cap{font-family:var(--font-mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-400);margin:0 0 var(--space-2)}
+  .band{display:flex;justify-content:space-between;align-items:baseline;color:var(--band-ink);
+        font-family:var(--font-mono);font-size:17px;line-height:20px;letter-spacing:.18em;
+        padding:var(--space-2) var(--space-5);border-radius:var(--radius-flat)}
+  .band.pub{background:var(--band-public)} .band.con{background:var(--band-confidential)} .band.res{background:var(--band-restricted)}
+
+  .mb{display:inline-grid;grid-template-columns:auto auto;border-left:1px solid var(--rule-200);border-top:1px solid var(--rule-200)}
+  .mb span{border-right:1px solid var(--rule-200);border-bottom:1px solid var(--rule-200);padding:8px 16px;
+           font-family:var(--font-mono);font-size:18px}
+  .mb .k{color:var(--ink-400);letter-spacing:.16em;font-size:16px}
+  .mb .v{color:var(--ink-900)}
+  .mb .cls{color:var(--text-confidential)}
+</style>
+<div class="stage">
+  <p class="cap">marking block, bottom right of a cover or a first page</p>
+  <div class="mb">
+    <span class="k">PROJECT</span><span class="v">confidentiality-broker</span>
+    <span class="k">CLASSIFICATION</span><span class="v cls">confidential</span>
+    <span class="k">SHEET</span><span class="v">3 of 9</span>
+  </div>
+</div>

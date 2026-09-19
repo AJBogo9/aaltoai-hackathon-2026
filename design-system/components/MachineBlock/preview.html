@@ -1,0 +1,26 @@
+<!-- @dsCard group="Evidence" height=380 width=1280 --><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Mono&display=swap">
+<style>
+  html,body{margin:0}
+  body{background:var(--paper-000);color:var(--ink-900);font-family:var(--font-sans)}
+  .stage{padding:var(--space-5)}
+  .cap{font-family:var(--font-mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-400);margin:0 0 var(--space-2)}
+  .band{display:flex;justify-content:space-between;align-items:baseline;color:var(--band-ink);
+        font-family:var(--font-mono);font-size:17px;line-height:20px;letter-spacing:.18em;
+        padding:var(--space-2) var(--space-5);border-radius:var(--radius-flat)}
+  .band.pub{background:var(--band-public)} .band.con{background:var(--band-confidential)} .band.res{background:var(--band-restricted)}
+
+  .term{background:var(--paper-100);padding:var(--space-4) var(--space-4);border-radius:var(--radius-flat);
+        font-family:var(--font-mono);font-size:18px;line-height:1.72;color:var(--ink-900)}
+  .dim{color:var(--ink-600)} .no{color:var(--signal-refuse)} .yes{color:var(--signal-allow)}
+</style>
+<div class="stage">
+  <p class="cap">quoted, not redrawn</p>
+  <div class="term">
+    <span class="dim">$ pi --model google --workspace demo/confidential-hr</span><br>
+    <span class="dim">&gt; list the files in the workspace</span><br>
+    <span class="no">&#10007; refused: provider google is cleared public,<br>
+    &nbsp;&nbsp;workspace is confidential. no file listing.</span><br><br>
+    <span class="dim">$ pi --model ollama --workspace demo/confidential-hr</span><br>
+    <span class="yes">&#10003; 4 files</span> <span class="dim">(data never left this machine)</span>
+  </div>
+</div>

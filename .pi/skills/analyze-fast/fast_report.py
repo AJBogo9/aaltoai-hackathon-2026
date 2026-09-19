@@ -15,7 +15,7 @@ use the working directory, which pi requires to sit outside the workspace.
 Data is read from the first of <workspace>/sensordata, <workspace>/data, or
 <workspace> itself that holds *.csv. Reports are written to
 <workspace>/reports. Override either with --in / --out; both must stay inside
-the workspace, or pi's workspace guard will block the write anyway.
+the workspace, or pi's confidentiality broker will block the write anyway.
 
 Every threshold below is arbitrary and deliberately untuned.
 """
@@ -231,7 +231,7 @@ def main():
 
     if not inside(workspace, out_dir):
         print(f"refusing to write outside the workspace: {out_dir} is not inside "
-              f"{workspace}. pi's workspace guard would block it anyway.", file=sys.stderr)
+              f"{workspace}. pi's confidentiality broker would block it anyway.", file=sys.stderr)
         return 1
 
     if os.path.basename(out_dir.rstrip(os.sep)).startswith("hyv") and not force:

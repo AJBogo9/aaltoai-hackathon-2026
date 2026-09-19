@@ -1,6 +1,6 @@
 # demo workspace
 
-A fake, self-contained workspace for demoing `workspace-guard` together with the
+A fake, self-contained workspace for demoing `confidentiality-broker` together with the
 `analyze` / `analyze-fast` skills. Nothing in here is real plant data — the CSVs
 are copies of four files from `sensordata/`.
 

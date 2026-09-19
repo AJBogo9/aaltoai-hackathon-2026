@@ -1,0 +1,26 @@
+<!-- @dsCard group="Layouts" height=300 width=1280 --><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Mono&display=swap">
+<style>
+  html,body{margin:0}
+  body{background:var(--paper-000);color:var(--ink-900);font-family:var(--font-sans)}
+  .stage{padding:var(--space-5)}
+  .cap{font-family:var(--font-mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-400);margin:0 0 var(--space-2)}
+  .band{display:flex;justify-content:space-between;align-items:baseline;color:var(--band-ink);
+        font-family:var(--font-mono);font-size:17px;line-height:20px;letter-spacing:.18em;
+        padding:var(--space-2) var(--space-5);border-radius:var(--radius-flat)}
+  .band.pub{background:var(--band-public)} .band.con{background:var(--band-confidential)} .band.res{background:var(--band-restricted)}
+
+  html,body{height:100%}
+  .cover{width:1280px;height:300px;background:var(--paper-000);display:flex;flex-direction:column}
+  .cband{color:var(--band-ink);background:var(--band-public);font-family:var(--font-mono);font-size:22px;
+         line-height:26px;letter-spacing:.16em;padding:14px var(--space-5);display:flex;justify-content:space-between}
+  .mid{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 var(--space-5);gap:var(--space-2)}
+  .name{font-family:var(--font-mono);font-size:50px;line-height:1;color:var(--ink-900)}
+  .tag{font-family:var(--font-serif);font-size:33px;line-height:1.25;color:var(--ink-600)}
+</style>
+<div class="cover">
+  <div class="cband"><span>PUBLIC</span><span>CLEARED: GOOGLE &middot; OPENAI &middot; MISTRAL &middot; LEMONADE &middot; OLLAMA</span></div>
+  <div class="mid">
+    <div class="name">confidentiality-broker</div>
+    <div class="tag">The folder carries a label. The provider carries a clearance.</div>
+  </div>
+</div>
