@@ -49,3 +49,18 @@ target/
 
 
 node_modules/
+
+# --- OpenTofu / Terraform ---
+# State holds every attribute in plaintext, including secrets. Never commit it.
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+override.tf
+override.tf.json
+
+# --- Claude Code ---
+# Worktrees live here. Project settings and skills under .claude/ stay committable.
+.claude/worktrees/
