@@ -1,0 +1,13 @@
+{
+  "name": "pi-ext-workspace-guard",
+  "private": true,
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "node --test paths.test.ts prompt.test.ts index.test.ts"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "0.85.1",
+    "@types/node": "^24",
+    "typescript": "^5"
+  }
+}
