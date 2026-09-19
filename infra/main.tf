@@ -1,31 +1,38 @@
 # Verda infrastructure for the hackathon.
 #
-#   cd infra
-#   tofu init
-#   tofu plan
-#   tofu apply
+#   ./infra/tofu.sh plan
+#   ./infra/tofu.sh apply
 #
-# Everything below is commented out so an accidental `apply` costs nothing.
-# Uncomment what you need.
+# Use the wrapper, not bare `tofu`. The provider reads only VERDA_CLIENT_ID and
+# VERDA_CLIENT_SECRET from the environment, and the wrapper supplies them from
+# the credentials the CLI already stores.
+#
+# Everything below is commented out so an accidental apply costs nothing.
 #
 # This provider ships no data sources, so you cannot look values up in HCL.
-# Find instance types, locations and images with the CLI instead:
-#   verda instance-types
-#   verda locations
+# Get real values from the CLI first:
+#   verda instance-types    # names and $/hr
+#   verda locations         # FIN-01, FIN-02, FIN-03
+#   verda images            # OS image slugs
 
 # resource "verda_ssh_key" "me" {
 #   name       = "andreas"
 #   public_key = file(pathexpand("~/.ssh/id_ed25519.pub"))
 # }
 
-# A GPU box you SSH into. Billed per minute for as long as it exists,
-# so `tofu destroy` it the moment you stop using it.
+# A GPU box you SSH into. Billed per minute for as long as it EXISTS, not for
+# as long as it is busy, so destroy it the moment you stop using it.
+#
+# 1A6000.10V is $0.60/hr with 48 GB of VRAM, which fits a 13B model
+# comfortably or a 30B in 4-bit. Moving up to 1B200.30V costs $6.49/hr,
+# eleven times more, and would consume the team's whole budget in ~44 hours.
+# Check `verda images` for a current image slug before uncommenting.
 # resource "verda_instance" "dev" {
-#   instance_type = "1B200.30V"
-#   image         = "ubuntu-24.04-cuda-12.8-open-docker"
+#   instance_type = "1A6000.10V"
+#   image         = "26.04.cuda13.2.docker"
 #   hostname      = "hackathon-dev"
 #   description   = "Data Sovereignty hackathon"
-#   location      = "FIN-03"
+#   location      = "FIN-01"
 #   ssh_key_ids   = [verda_ssh_key.me.id]
 # }
 
