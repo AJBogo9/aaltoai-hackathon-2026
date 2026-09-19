@@ -1,0 +1,28 @@
+<!-- @dsCard height=300 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Mono&display=swap">
+<style>
+  html,body{margin:0;height:100%}
+  body{background:var(--paper-000)}
+  .blk{rx:var(--radius-flat)}
+  .ink{fill:var(--ink-900)}
+  .con{fill:var(--band-confidential)}
+  .pub{fill:var(--band-public)}
+  .res{fill:var(--band-restricted)}
+  .cut{stroke:var(--paper-000);stroke-width:2;fill:none}
+  .name{fill:var(--ink-900);font-family:var(--font-mono);font-size:46px}
+  .tag{fill:var(--ink-600);font-family:var(--font-serif);font-size:14px}
+</style>
+<svg width="960" height="300" viewBox="0 0 960 300" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="confidentiality-broker: a marking band in the three level colours over the system name">
+  <!-- blocks: ink-900 152 wide, band-confidential 456, band-public 190, band-restricted 190 (bleeds 28 off the right edge), all 114 tall = 3 x space-5; widths are 4, 12, 5 and 5 x space-5; corners radius-flat -->
+  <!-- arrangement: one full-width band of unequal segments across the top, 114 of 300 tall, weighted so confidential (the deck's own level) takes the widest segment and restricted runs off the edge -->
+  <!-- pattern: four hairline cuts of the ground through the coloured segments. Row chosen because this system marks and separates with hairlines and bands, never with boxes or shadows, and a cut band is what its slides actually look like -->
+  <!-- scales: band height 3 x space-5 (114), segment widths multiples of space-5 (38), cuts one space-5 inside a segment edge, name inset space-5 + 2, radius-flat throughout -->
+  <rect class="blk ink" x="0" y="0" width="152" height="114"/>
+  <rect class="blk con" x="152" y="0" width="456" height="114"/>
+  <rect class="blk pub" x="608" y="0" width="190" height="114"/>
+  <rect class="blk res" x="798" y="0" width="190" height="114"/>
+  <path class="cut" d="M190 0V114 M570 0V114 M646 0V114 M836 0V114"/>
+  <text class="name" x="40" y="232">confidentiality-broker</text>
+  <text class="tag" x="40" y="262">Access control for LLM agents. The label lives on the folder.</text>
+</svg>

@@ -1,0 +1,21 @@
+<!-- @dsCard group="Marking" height=260 width=1280 --><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Mono&display=swap">
+<style>
+  html,body{margin:0}
+  body{background:var(--paper-000);color:var(--ink-900);font-family:var(--font-sans)}
+  .stage{padding:var(--space-5)}
+  .cap{font-family:var(--font-mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-400);margin:0 0 var(--space-2)}
+  .band{display:flex;justify-content:space-between;align-items:baseline;color:var(--band-ink);
+        font-family:var(--font-mono);font-size:17px;line-height:20px;letter-spacing:.18em;
+        padding:var(--space-2) var(--space-5);border-radius:var(--radius-flat)}
+  .band.pub{background:var(--band-public)} .band.con{background:var(--band-confidential)} .band.res{background:var(--band-restricted)}
+
+  .row{margin-bottom:var(--space-5)}
+</style>
+<div class="stage">
+  <div class="row"><p class="cap">public, five providers cleared</p>
+    <div class="band pub"><span>PUBLIC</span><span>CLEARED: GOOGLE &middot; OPENAI &middot; MISTRAL &middot; LEMONADE &middot; OLLAMA</span></div></div>
+  <div class="row"><p class="cap">confidential, four cleared</p>
+    <div class="band con"><span>CONFIDENTIAL</span><span>CLEARED: OPENAI &middot; MISTRAL &middot; LEMONADE &middot; OLLAMA</span></div></div>
+  <div><p class="cap">restricted, two cleared</p>
+    <div class="band res"><span>RESTRICTED</span><span>CLEARED: LEMONADE &middot; OLLAMA</span></div></div>
+</div>
