@@ -29,6 +29,8 @@ const reportA = path.join(wsA, "out", "report.md");
 // /prompt writes a file under the home directory, so point it at the temp folder.
 const realHome = process.env.HOME;
 process.env.HOME = home;
+// The footer text is compared as plain text.
+process.env.NO_COLOR = "1";
 after(() => {
   if (realHome === undefined) delete process.env.HOME;
   else process.env.HOME = realHome;
@@ -57,10 +59,21 @@ function setup(provider: string | undefined = "google") {
   const entries: unknown[] = [];
   const setModelCalls: Model[] = [];
   const notes: string[] = [];
+  const statuses: string[] = [];
+  const selects: { title: string; options: string[] }[] = [];
+  const chooser = { pick: (options: string[]): string | undefined => options[0] };
   const ctx: any = {
     cwd,
+    hasUI: true,
     model: provider ? { provider, id: "m" } : undefined,
-    ui: { notify: (message: string) => void notes.push(message) },
+    ui: {
+      notify: (message: string) => void notes.push(message),
+      setStatus: (_key: string, text: string) => void statuses.push(text),
+      select: async (title: string, options: string[]) => {
+        selects.push({ title, options });
+        return chooser.pick(options);
+      },
+    },
     getSystemPrompt: () => BASE_PROMPT,
     sessionManager: { getEntries: () => entries },
   };
@@ -73,7 +86,7 @@ function setup(provider: string | undefined = "google") {
       ctx.model = model;
     },
   } as never);
-  return { commands, events, entries, setModelCalls, notes, ctx };
+  return { commands, events, entries, setModelCalls, notes, statuses, selects, chooser, ctx };
 }
 
 type Session = ReturnType<typeof setup>;
@@ -354,6 +367,101 @@ test("if the metadata file is corrupted, reads and writes are blocked", async ()
   assert.ok(read.reason.includes("not valid JSON"));
   assert.equal((await tool(s, "write", { path: "workspace-a/x.md", content: "x" })).block, true);
   assert.equal(fs.readFileSync(metaA, "utf8"), "{");
+});
+
+test("the footer status shows the workspace, the provider's clearance and the session level", async () => {
+  const s = setup("google");
+  await s.events.get("session_start")!({ reason: "startup" }, s.ctx);
+  assert.equal(s.statuses.at(-1), "○ no workspace  ·  google [public]  ·  session public");
+
+  await openWorkspace(s);
+  assert.equal(s.statuses.at(-1), "● workspace-a [confidential]  ·  google [public] ✗ no access  ·  session public");
+});
+
+test("the footer status follows the session level and the provider", async () => {
+  const s = setup("my-openai");
+  await openWorkspace(s);
+  assert.ok(s.statuses.at(-1)!.includes("my-openai [confidential] ✓"));
+
+  await tool(s, "read", { path: "workspace-a/data/secret.csv" });
+  assert.ok(s.statuses.at(-1)!.endsWith("session confidential"));
+
+  await s.events.get("model_select")!({ model: use("google"), previousModel: undefined, source: "set" }, s.ctx);
+  assert.ok(s.statuses.at(-1)!.includes("google [public] ✗ no access"));
+  assert.ok(s.statuses.at(-1)!.endsWith("session confidential ⛔ messages withheld"));
+});
+
+test("the footer status is restored with the session and reports an unusable policy", async () => {
+  const s = setup("google");
+  s.entries.push({
+    type: "custom",
+    customType: "confidentiality",
+    data: { taint: "confidential", workspace: wsA, created: [] },
+  });
+  await s.events.get("session_start")!({ reason: "resume" }, s.ctx);
+  assert.ok(s.statuses.at(-1)!.includes("workspace-a [confidential]"));
+  assert.ok(s.statuses.at(-1)!.includes("messages withheld"));
+
+  fs.rmSync(policyFile);
+  await command(s, "confidentiality");
+  assert.equal(s.statuses.at(-1), "✗ confidentiality unusable (run /confidentiality)");
+});
+
+test("a failing status update never breaks a tool call", async () => {
+  const s = setup("my-openai");
+  await openWorkspace(s);
+  s.ctx.ui.setStatus = () => {
+    throw new Error("boom");
+  };
+  assert.equal(await tool(s, "read", { path: "workspace-a/data/secret.csv" }), undefined);
+});
+
+test("/workspace with no argument offers the folders that have a metadata file", async () => {
+  const s = setup("my-openai");
+  await command(s, "workspace");
+  assert.equal(s.selects.length, 1);
+  assert.equal(s.selects[0].title, "Choose a workspace");
+  assert.deepEqual(s.selects[0].options, ["workspace-a  [confidential]  ✓", "workspace-b  [public]  ✓"]);
+  assert.ok(s.notes.at(-1)!.includes(`Workspace set: ${wsA}`));
+});
+
+test("the picker marks folders the current provider may not use, and the current workspace", async () => {
+  const s = setup("google");
+  await command(s, "workspace");
+  assert.deepEqual(s.selects[0].options, ["workspace-a  [confidential]  ✗ no access", "workspace-b  [public]  ✓"]);
+
+  s.chooser.pick = (options) => options.find((o) => o.startsWith("workspace-b"));
+  await command(s, "workspace");
+  assert.ok(s.notes.at(-1)!.includes(`Workspace set: ${wsB}`));
+
+  await command(s, "workspace");
+  assert.ok(s.selects[2].options.some((o) => o.startsWith("workspace-b") && o.endsWith("(current)")));
+});
+
+test("cancelling the picker changes nothing", async () => {
+  const s = setup("my-openai");
+  s.chooser.pick = () => undefined;
+  await command(s, "workspace");
+  assert.equal(s.notes.length, 0);
+  await command(s, "prompt");
+  assert.ok(s.notes.at(-1)!.includes("No workspace is set"));
+});
+
+test("the picker says so when no folder has a metadata file", async () => {
+  const s = setup("my-openai");
+  fs.rmSync(metaA);
+  fs.rmSync(path.join(wsB, METADATA_NAME));
+  await command(s, "workspace");
+  assert.equal(s.selects.length, 0);
+  assert.ok(s.notes.at(-1)!.includes("No workspace folders found"));
+});
+
+test("without a UI, /workspace with no argument just reports the current workspace", async () => {
+  const s = setup("my-openai");
+  s.ctx.hasUI = false;
+  await command(s, "workspace");
+  assert.equal(s.selects.length, 0);
+  assert.ok(s.notes.at(-1)!.includes("No workspace set"));
 });
 
 test("every tool the prompt names behaves as the prompt says", async () => {

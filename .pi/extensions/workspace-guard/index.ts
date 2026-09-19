@@ -2,19 +2,28 @@ import * as fs from "node:fs";
 import * as os from "node:os";
 import * as path from "node:path";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import { findWorkspaces, pickerLabel } from "./discover.ts";
 import { decideRead, decideWrite } from "./gate.ts";
 import type { Env } from "./gate.ts";
-import { loadMetadata } from "./metadata.ts";
+import { METADATA_NAME, loadMetadata } from "./metadata.ts";
 import { clearanceOf, cleared, findPolicyFile, loadPolicy, normalizeLevel, rank } from "./policy.ts";
 import type { Loaded, Policy } from "./policy.ts";
 import { withWorkspaceNote } from "./prompt.ts";
 import type { ConfInfo } from "./prompt.ts";
 import { BLOCKED_TOOLS, READ_ONLY_TOOLS, WRITE_TOOLS } from "./rules.ts";
+import { statusLine } from "./status.ts";
 import { activateWorkspace, describeWorkspace } from "./workspace.ts";
 
 type Ctx = { cwd: string; model?: { provider?: string } };
+type UiCtx = Ctx & {
+  ui: {
+    notify(message: string, level?: string): void;
+    setStatus(key: string, text: string): void;
+  };
+};
 
 const ENTRY = "confidentiality";
+const STATUS_KEY = "confidentiality";
 
 export default function (pi: ExtensionAPI) {
   // The workspace, the session's confidentiality level and the files the agent created. All three are
@@ -38,10 +47,41 @@ export default function (pi: ExtensionAPI) {
     return normalizeLevel(policy, taint);
   }
 
-  function raise(policy: Policy, level: string): void {
-    if (rank(policy, level) > rank(policy, currentTaint(policy))) {
-      taint = level;
-      persist();
+  /** Raise the session level. Returns true when it changed. */
+  function raise(policy: Policy, level: string): boolean {
+    if (rank(policy, level) <= rank(policy, currentTaint(policy))) return false;
+    taint = level;
+    persist();
+    return true;
+  }
+
+  /** Redraw the footer status. It is cosmetic, so it must never break the caller. */
+  function refresh(ctx: UiCtx, provider: string | undefined = ctx.model?.provider): void {
+    try {
+      const color = !process.env.NO_COLOR;
+      const policy = loadPolicyFor(ctx);
+      let text: string;
+      if (!policy.ok) {
+        text = statusLine({ problem: policy.reason }, color);
+      } else {
+        let level: string | undefined;
+        let problem: string | undefined;
+        if (workspace) {
+          const meta = loadMetadata(workspace, policy.value);
+          if (meta.ok) level = meta.value.level;
+          else problem = meta.reason;
+        }
+        text =
+          problem !== undefined
+            ? statusLine({ problem }, color)
+            : statusLine(
+                { policy: policy.value, workspace, level, provider, taint: currentTaint(policy.value) },
+                color,
+              );
+      }
+      ctx.ui.setStatus(STATUS_KEY, text);
+    } catch {
+      // ignore
     }
   }
 
@@ -88,32 +128,64 @@ export default function (pi: ExtensionAPI) {
     };
   }
 
+  async function setWorkspace(ctx: UiCtx, arg: string): Promise<void> {
+    const result = activateWorkspace(arg, ctx.cwd);
+    if (!result.ok) {
+      ctx.ui.notify(result.reason, "error");
+      return;
+    }
+    const { policy, meta } = result.value;
+    workspace = result.value.workspace;
+    persist();
+    const lines = describeWorkspace(policy, meta, ctx.model?.provider, taint);
+    ctx.ui.notify([`Workspace set: ${workspace}`, ...lines].join("\n"), "info");
+    refresh(ctx);
+  }
+
   pi.registerCommand("workspace", {
-    description: "Set the folder the agent may read and write: /workspace <folder>",
+    description: "Set the folder the agent may read and write: /workspace <folder>, or pick one from a list",
     handler: async (args, ctx) => {
-      if (!args.trim()) {
+      if (args.trim()) {
+        await setWorkspace(ctx, args);
+        return;
+      }
+      if (!ctx.hasUI) {
+        ctx.ui.notify(workspace ? `Workspace: ${workspace}` : "No workspace set. Use /workspace <folder>.", "info");
+        return;
+      }
+      const policy = loadPolicyFor(ctx);
+      if (!policy.ok) {
+        ctx.ui.notify(policy.reason, "error");
+        return;
+      }
+      const found = findWorkspaces(ctx.cwd, policy.value);
+      if (found.length === 0) {
         ctx.ui.notify(
-          workspace ? `Workspace: ${workspace}` : "No workspace set. Use /workspace <folder>.",
+          `No workspace folders found under ${ctx.cwd}. Create <folder>/${METADATA_NAME}, for example {"level": "confidential"}, or run /workspace <folder>.`,
           "info",
         );
         return;
       }
-      const result = activateWorkspace(args, ctx.cwd);
-      if (!result.ok) {
-        ctx.ui.notify(result.reason, "error");
-        return;
+      const clearance = clearanceOf(policy.value, ctx.model?.provider);
+      const folders = new Map<string, string>();
+      for (const candidate of found) {
+        const label = pickerLabel(
+          candidate,
+          cleared(policy.value, clearance, candidate.level),
+          candidate.abs === workspace,
+        );
+        folders.set(label, candidate.abs);
       }
-      const { policy, meta } = result.value;
-      workspace = result.value.workspace;
-      persist();
-      const lines = describeWorkspace(policy, meta, ctx.model?.provider, taint);
-      ctx.ui.notify([`Workspace set: ${workspace}`, ...lines].join("\n"), "info");
+      const choice = await ctx.ui.select("Choose a workspace", [...folders.keys()]);
+      const abs = choice === undefined ? undefined : folders.get(choice);
+      if (abs) await setWorkspace(ctx, abs);
     },
   });
 
   pi.registerCommand("confidentiality", {
     description: "Show the workspace label, the provider's clearance and the session's level",
     handler: async (_args, ctx) => {
+      refresh(ctx);
       const policy = loadPolicyFor(ctx);
       if (!policy.ok) {
         ctx.ui.notify(policy.reason, "error");
@@ -154,6 +226,7 @@ export default function (pi: ExtensionAPI) {
 
   // A system prompt change lasts one turn, so re-append the workspace section on every prompt.
   pi.on("before_agent_start", async (event, ctx) => {
+    refresh(ctx);
     return { systemPrompt: withWorkspaceNote(event.systemPrompt, workspace, confInfo(ctx)) };
   });
 
@@ -184,6 +257,7 @@ export default function (pi: ExtensionAPI) {
         ctx.ui.notify(`Workspace not restored: ${result.reason}`, "warning");
       }
     }
+    refresh(ctx);
   });
 
   // Withhold a message if the session already holds data the current provider may not see,
@@ -211,6 +285,7 @@ export default function (pi: ExtensionAPI) {
 
   // model_select cannot veto a switch, so switch back if the new provider is not cleared for the session.
   pi.on("model_select", async (event, ctx) => {
+    refresh(ctx, event.model.provider);
     if (!taint) return;
     const policy = loadPolicyFor(ctx);
     if (!policy.ok) return;
@@ -256,7 +331,7 @@ export default function (pi: ExtensionAPI) {
       if (!decision.ok) return { block: true, reason: decision.reason };
       // Run the tool on exactly the path that was checked.
       input.path = decision.resolved;
-      raise(env.policy, decision.level);
+      if (raise(env.policy, decision.level)) refresh(ctx);
       return;
     }
 
@@ -265,7 +340,7 @@ export default function (pi: ExtensionAPI) {
     input.path = decision.resolved;
     created.add(decision.resolved);
     persist();
-    if (decision.readLevel) raise(env.policy, decision.readLevel);
+    if (decision.readLevel && raise(env.policy, decision.readLevel)) refresh(ctx);
     return;
   });
 }
