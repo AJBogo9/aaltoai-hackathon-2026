@@ -698,7 +698,7 @@
      "coupled_columns": [],
      "n_columns": 1,
      "confidence": 0.3,
-     "severity": "medium",
+     "severity": "high",
      "evidence": {
       "tag_43": "15 missing/unparseable cells, first at row 96"
      },

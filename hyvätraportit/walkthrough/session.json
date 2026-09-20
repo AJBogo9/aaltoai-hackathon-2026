@@ -736,7 +736,7 @@
      "coupled_columns": [],
      "n_columns": 1,
      "confidence": 0.9,
-     "severity": "medium",
+     "severity": "high",
      "evidence": {
       "sample": "The sample index jumps 249 -> 290 (40 rows absent) and later runs backwards 724 -> 700, so a block of rows is replayed out of order. 25 timestamps occur twice and one timestamp step is negative (-4320 s at row 684) against a nominal +180 s. 835 rows span indices 1-850. Any per-sample onset in this file is therefore approximate."
      },
@@ -886,7 +886,7 @@
      "coupled_columns": [],
      "n_columns": 1,
      "confidence": 0.9,
-     "severity": "medium",
+     "severity": "high",
      "evidence": {
       "tag_33": "46 consecutive empty cells in tag_33 at samples 299-344. Its lag-0 twins tag_06 and tag_25 are populated and normal over that stretch, so the gap is a recording dropout on one channel, not a shutdown. Ruled out before reading anything into tag_33's block statistics for that window."
      },
@@ -999,7 +999,7 @@
      "coupled_columns": [],
      "n_columns": 1,
      "confidence": 0.9,
-     "severity": "medium",
+     "severity": "high",
      "evidence": {
       "tag_43": "15 empty cells at samples 96, 114, 121, 133, 202, 311, 331, 346, 401, 633, 640, 644, 669, 675, 689 - scattered dropouts, not a block. Every other column is populated on those rows and no column in unit_10 deviates more than 1.2 pooled sd anywhere, so the underlying process was normal; only the record is incomplete."
      },
@@ -1284,7 +1284,7 @@
      "coupled_columns": [],
      "n_columns": 1,
      "confidence": 0.95,
-     "severity": "medium",
+     "severity": "high",
      "evidence": {
       "tag_06": "A contiguous 61-sample block (399-459) reads 26866-26958 where the channel reads 2684-2736 either side - the neighbouring samples are 2688.5 then 26881.0 then later 26941.0 then 2695.3. The ratio to the pooled median is 9.94, i.e. the block is recorded in units 10x smaller. tag_06's lag-0 twins tag_25 and tag_33 stay on their normal scale throughout, confirming the quantity did not change by 10x. Ruled out first because a 2877-sigma excursion would otherwise masquerade as a catastrophic process fault."
      },

@@ -47,12 +47,20 @@ def find_reports(argv):
 
 
 def severity(layer, fault_type, n_cols):
-    """The schema conflates severity with confidence, so derive it here."""
-    ft = fault_type.lower()
+    """The schema conflates severity with confidence, so derive it here.
+
+    fault_type is written with underscores (missing_values, scale_change,
+    absent_and_replayed_rows), so match against a spaced form: the checks used to
+    look for "missing rows" and "scale change" literally and could never fire,
+    leaving every single-column record fault at medium.
+    """
+    ft = fault_type.lower().replace("_", " ")
     if layer == "system":
         return "high"
     if layer == "record":
-        if n_cols > 5 or "missing rows" in ft or "scale change" in ft:
+        # Rows or values lost, or the channel silently rescaled: the record itself
+        # is wrong, so everything derived from it is suspect however few columns move.
+        if n_cols > 5 or "missing" in ft or "absent" in ft or "scale change" in ft:
             return "high"
         return "medium"
     return "medium"
