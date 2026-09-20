@@ -41,7 +41,7 @@ repeat them as fact.
 
 The two redundancies that do hold exactly, in all 18 files:
 `tag_01 = 0.4321*tag_20 + 29.893` and `tag_21 = 0.3398*tag_31 + 37.053`
-(max residual 0.0007). Never feed both into a model.
+(max residual 0.0013 over all 18 files). Never feed both into a model.
 
 ## 1. Orientation - once, at the start
 
@@ -63,7 +63,10 @@ event count, and a one-line description of each event. This is the main
 deliverable - most people want the inventory, not a guided tour.
 
 Group it by layer so the shape is visible:
-- **4 clean** - unit_05, 08, 13, 16
+- **clean** files - take them from the session file's `verdict`, do not recite a
+  fixed list: they differ per pass. In `hyvätraportit/` they are unit_12, 13, 15
+  and 16; in the fast pass under `reports/` there are eight, and they are not the
+  same four.
 - **record** faults - the file is wrong as written
 - **measurement** faults - one channel moved, nothing coupled to it did
 - **system** faults - coupled channels moved together, the plant really changed
