@@ -63,7 +63,8 @@ compares the two, and refuses if the clearance is lower, unreadable or missing.
 summary, not a file listing, not the knowledge that the file exists:
 
 ```text
-✗ refused: provider google is cleared public, workspace is confidential. no file listing.
+The workspace is labeled confidential, but provider "google" is only cleared for public.
+Do not retry with this provider; ask the user to switch to a provider cleared for confidential.
 ```
 
 The model is never asked for its opinion about this, so a prompt injection has nothing to
@@ -93,7 +94,7 @@ scripts/launch.sh demo/confidential-hr        # add --dry-run to check without s
 The footer status line shows the whole state while you do it:
 
 ```text
-● confidential-hr [confidential]  ·  google [public] ✗ no access  ·  session public
+● confidential-hr [confidential]  ·  google [public] ✗ no access  ·  session confidential ⛔ messages withheld
 ```
 
 [`demo/DEMO.md`](demo/DEMO.md) has the full script, and the labelled workspaces under
