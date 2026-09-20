@@ -5,12 +5,9 @@
 </picture>
 
 <!-- brand:marking -->
-`PUBLIC` · cleared: google, openai, mistral, verda, lemonade, ollama
-
 ![tests](https://img.shields.io/badge/tests-114%20passing-00703C)
 ![levels](https://img.shields.io/badge/levels-3-0B3D91)
 ![models](https://img.shields.io/badge/models-local%20or%20EU-3C4048)
-![AaltoAI 2026](https://img.shields.io/badge/AaltoAI%202026-Norrin-8C8C8C)
 <!-- /brand:marking -->
 
 # confidentiality-broker
