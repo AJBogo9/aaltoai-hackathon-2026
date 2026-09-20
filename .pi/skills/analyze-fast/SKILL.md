@@ -14,7 +14,7 @@ audit, use `analyze`.
 
 ## Do exactly this
 
-Pass the workspace folder this pi instance was launched on — it is named in your
+Pass the workspace folder this pi instance was launched on. It is named in your
 system prompt, under `## Workspace`:
 
 ```bash
@@ -31,7 +31,7 @@ low-accuracy. Nothing else.
 ## Where the data comes from
 
 **Everything is resolved inside the workspace, not next to this skill file.**
-The skill can be installed anywhere — a shared `.pi/`, another checkout — so its
+The skill can be installed anywhere (a shared `.pi/`, another checkout), so its
 own location says nothing about where the data is.
 
 `--workspace` is required and has no fallback, on purpose:
@@ -44,12 +44,12 @@ own location says nothing about where the data is.
 
 Given the workspace, the script resolves:
 
-- **Input** — first of `<workspace>/sensordata`, `<workspace>/data`, or
+- **Input**: first of `<workspace>/sensordata`, `<workspace>/data`, or
   `<workspace>` itself that contains `*.csv`. Override with `--in DIR`.
-- **Output** — `<workspace>/reports`. Override with `--out DIR`.
+- **Output**: `<workspace>/reports`. Override with `--out DIR`.
 
 Both are checked to be inside the workspace (symlinks resolved) and the run is
-refused otherwise — pi's confidentiality broker would block the write regardless, so
+refused otherwise, because pi's confidentiality broker would block the write regardless, so
 failing early gives a clearer message. Writing into `hyvätraportit/` is refused
 unless you pass `--force`: that folder holds the hand-checked reports and demo
 output must not overwrite them.
