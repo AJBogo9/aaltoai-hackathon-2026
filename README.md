@@ -4,7 +4,7 @@
        alt="confidentiality-broker: access control for LLM agents. The folder carries a label, the provider carries a clearance, and the broker compares them on every tool call.">
 </picture>
 
-`PUBLIC` · cleared: google, openai, mistral, lemonade, ollama
+`PUBLIC` · cleared: google, openai, mistral, verda, lemonade, ollama
 
 ![tests](https://img.shields.io/badge/tests-109%20passing-00703C)
 ![levels](https://img.shields.io/badge/levels-3-0B3D91)
@@ -46,8 +46,8 @@ compares the two, and refuses if the clearance is lower, unreadable or missing.
 {
   "levels": ["public", "confidential", "restricted"],
   "providers": {
-    "google": "public",
-    "openai": "confidential",  "mistral": "confidential",
+    "google": "public",       "openai": "public",
+    "mistral": "confidential", "verda": "confidential",
     "lemonade": "restricted",  "ollama": "restricted"
   }
 }
