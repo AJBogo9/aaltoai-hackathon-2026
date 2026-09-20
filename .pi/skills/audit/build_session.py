@@ -6,9 +6,14 @@ Reads <reports>/summary.md + <reports>/unit_*.csv.json, writes
 directory, or named with --reports DIR. Derives the four things the report
 schema does not expose:
   1. events  - the per-column findings regrouped into whole events
-  2. primary - the "led by tag_NN" driver, parsed out of summary.md prose
+  2. primary - the driver column for each system event
   3. clean   - the rationale for the files with findings: []
   4. order   - a teaching order, clean file first
+
+reports/summary.md is optional. When present it enriches the session with row
+counts, the per-file prose line, the "led by tag_NN" driver and the clean-file
+rationale; when absent those are derived from the reports or left null, and the
+walkthrough still builds.
 
 Reports are never modified. Standard library only.
 """
@@ -67,10 +72,16 @@ def severity(layer, fault_type, n_cols):
 
 
 def parse_summary(path):
-    """Pull per-file driver column and clean rationale out of the prose."""
+    """Pull per-file driver column and clean rationale out of the prose.
+
+    Optional input: an absent or unreadable summary.md yields an empty mapping
+    and every consumer below falls back to the per-file reports.
+    """
     info = collections.defaultdict(dict)
+    if not os.path.isfile(path):
+        return info
     for line in open(path):
-        m = re.match(r"\s*-\s+\*\*(unit_\d+\.csv)\*\*\s*\((\d+) rows\)\s*-\s*(.*)", line)
+        m = re.match(r"\s*-\s+\*\*(\S+\.csv)\*\*\s*\((\d+) rows\)\s*-\s*(.*)", line)
         if not m:
             continue
         fname, rows, rest = m.group(1), int(m.group(2)), m.group(3).strip()
@@ -87,11 +98,25 @@ def parse_summary(path):
     return info
 
 
+_DRIVER_RE = re.compile(r"\b(driver|drives|driven by|led by|leads|initiat|origin|root)", re.I)
+
+
+def pick_primary(members):
+    """Driver column when summary.md did not name one.
+
+    Prefer a column whose own evidence prose claims it led, then the most
+    confident column; ties keep report order, so the choice is deterministic.
+    """
+    flagged = [m for m in members if _DRIVER_RE.search(m.get("evidence") or "")]
+    pool = flagged or members
+    return max(pool, key=lambda m: m.get("confidence", 0.0))["column"]
+
+
 def main():
     REPORTS = find_reports(sys.argv[1:])
     OUT = os.path.join(REPORTS, "walkthrough")
     summary = parse_summary(os.path.join(REPORTS, "summary.md"))
-    files = sorted(glob.glob(os.path.join(REPORTS, "unit_*.csv.json")))
+    files = sorted(glob.glob(os.path.join(REPORTS, "*.csv.json")))
     units, n_findings = [], 0
 
     for path in files:
@@ -113,7 +138,7 @@ def main():
             cols = [m["column"] for m in members]
             primary = meta.get("primary") if layer == "system" else None
             if primary not in cols:
-                primary = cols[0]
+                primary = pick_primary(members)
             events.append({
                 "layer": layer,
                 "fault_type": ftype,

@@ -1,406 +1,399 @@
 {
  "generated_from": "reports/ (unmodified)",
  "n_units": 18,
- "n_findings": 31,
+ "n_findings": 39,
  "n_events": 20,
  "teaching_order": [
-  "unit_01",
-  "unit_02",
-  "unit_04",
   "unit_05",
+  "unit_11",
+  "unit_02",
   "unit_08",
-  "unit_13",
-  "unit_16",
-  "unit_18",
+  "unit_17",
+  "unit_01",
+  "unit_03",
+  "unit_04",
   "unit_06",
   "unit_07",
+  "unit_09",
   "unit_10",
   "unit_12",
+  "unit_13",
   "unit_14",
   "unit_15",
-  "unit_03",
-  "unit_09",
-  "unit_11",
-  "unit_17"
+  "unit_16",
+  "unit_18"
  ],
  "column_schema": [
   {
    "column": "sample",
-   "type": "counter",
+   "confidence": 1.0,
+   "evidence": "monotonic integer sequence, no missing values",
    "role": "index",
-   "confidence": 0.3,
-   "evidence": "name matches an index column"
-  },
-  {
-   "column": "timestamp",
-   "type": "counter",
-   "role": "index",
-   "confidence": 0.3,
-   "evidence": "name matches an index column"
+   "type": "counter"
   },
   {
    "column": "tag_01",
-   "type": "level",
+   "confidence": 0.9,
+   "evidence": "strong correlation with tag_20 (1.0), likely driven by tag_20",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_02",
-   "type": "level",
+   "confidence": 0.8,
+   "evidence": "moderate correlation with tag_01 (0.51) and tag_38 (0.80)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_03",
-   "type": "level",
+   "confidence": 0.7,
+   "evidence": "weak correlations, no leading behavior",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_04",
-   "type": "level",
+   "confidence": 0.8,
+   "evidence": "moderate correlation with tag_22 (0.53) and tag_14 (0.67)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_05",
-   "type": "level",
+   "confidence": 0.8,
+   "evidence": "moderate correlation with tag_22 (0.59) and tag_14 (0.61)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_06",
-   "type": "flow",
-   "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "confidence": 0.9,
+   "evidence": "drives coupled changes in tag_25 (-0.99), tag_33 (0.99), tag_39 (0.96), tag_43 (0.95)",
+   "role": "actuated",
+   "type": "unknown"
   },
   {
    "column": "tag_07",
-   "type": "flow",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_22 (0.77)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_08",
-   "type": "level",
+   "confidence": 0.9,
+   "evidence": "strong inverse correlation with tag_19 (-0.97), tag_25 (0.56)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_09",
-   "type": "level",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_19 (0.79), tag_23 (0.70)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_10",
-   "type": "level",
+   "confidence": 0.8,
+   "evidence": "moderate inverse correlation with tag_23 (-0.79), tag_25 (0.72)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_11",
-   "type": "composition",
+   "confidence": 0.7,
+   "evidence": "moderate correlation with tag_38 (0.79)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_12",
-   "type": "composition",
+   "confidence": 0.8,
+   "evidence": "strong inverse correlation with tag_22 (-0.74)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_13",
-   "type": "temperature",
+   "confidence": 0.7,
+   "evidence": "moderate inverse correlation with tag_19 (-0.69)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_14",
-   "type": "level",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_22 (0.80), tag_30 (0.89)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_15",
-   "type": "pressure",
+   "confidence": 0.7,
+   "evidence": "moderate correlation with tag_20 (0.55)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_16",
-   "type": "level",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_23 (0.71), tag_32 (0.74)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_17",
-   "type": "level",
+   "confidence": 0.7,
+   "evidence": "moderate inverse correlation with tag_29 (-0.86)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_18",
-   "type": "flow",
-   "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "confidence": 0.9,
+   "evidence": "drives coupled changes in tag_27 (0.91), tag_28 (0.73)",
+   "role": "actuated",
+   "type": "unknown"
   },
   {
    "column": "tag_19",
-   "type": "level",
+   "confidence": 0.9,
+   "evidence": "strong inverse correlation with tag_08 (-0.97), drives tag_51 (0.77)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_20",
-   "type": "level",
-   "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "confidence": 1.0,
+   "evidence": "drives tag_01 (1.0), tag_38 (0.61)",
+   "role": "actuated",
+   "type": "unknown"
   },
   {
    "column": "tag_21",
-   "type": "level",
+   "confidence": 0.9,
+   "evidence": "identical to tag_31 (1.0), inverse correlation with tag_08 (0.49)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_22",
-   "type": "level",
+   "confidence": 0.9,
+   "evidence": "strong correlation with tag_14 (0.80), inverse with tag_33 (-0.94)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_23",
-   "type": "pressure",
+   "confidence": 0.9,
+   "evidence": "strong correlation with tag_16 (0.71), tag_32 (0.85)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_24",
-   "type": "pressure",
+   "confidence": 0.7,
+   "evidence": "moderate correlation with tag_38 (0.24)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_25",
-   "type": "flow",
+   "confidence": 0.9,
+   "evidence": "inverse of tag_06 (-0.99), strong correlation with tag_33 (0.99)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_26",
-   "type": "level",
+   "confidence": 0.7,
+   "evidence": "moderate correlation with tag_22 (0.62)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_27",
-   "type": "level",
+   "confidence": 0.9,
+   "evidence": "driven by tag_18 (0.91)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_28",
-   "type": "level",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_18 (0.73), tag_27 (0.59)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_29",
-   "type": "pressure",
+   "confidence": 0.8,
+   "evidence": "inverse correlation with tag_17 (-0.86), tag_49 (-0.88)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_30",
-   "type": "level",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_14 (0.89)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_31",
-   "type": "level",
+   "confidence": 0.9,
+   "evidence": "identical to tag_21 (1.0)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_32",
-   "type": "level",
+   "confidence": 0.9,
+   "evidence": "strong correlation with tag_23 (0.85), tag_37 (0.99)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_33",
-   "type": "flow",
+   "confidence": 0.9,
+   "evidence": "driven by tag_06 (0.99), inverse of tag_22 (-0.94)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_34",
-   "type": "level",
+   "confidence": 0.7,
+   "evidence": "moderate correlation with tag_22 (0.57)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_35",
-   "type": "level",
+   "confidence": 0.7,
+   "evidence": "moderate correlation with tag_40 (0.63)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_36",
-   "type": "level",
+   "confidence": 0.8,
+   "evidence": "drives tag_37 (0.63), tag_50 (0.97)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_37",
-   "type": "composition",
+   "confidence": 0.9,
+   "evidence": "strong correlation with tag_32 (0.99), driven by tag_36 (0.63)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_38",
-   "type": "pressure",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_02 (0.80), tag_11 (0.79)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_39",
-   "type": "level",
+   "confidence": 0.9,
+   "evidence": "driven by tag_06 (0.96), inverse of tag_22 (-0.89)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_40",
-   "type": "temperature",
+   "confidence": 0.7,
+   "evidence": "moderate correlation with tag_35 (0.63)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_41",
-   "type": "pressure",
+   "confidence": 0.8,
+   "evidence": "strong inverse correlation with tag_35 (-0.80)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_42",
-   "type": "level",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_28 (0.81), tag_18 (0.60)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_43",
-   "type": "level",
+   "confidence": 0.9,
+   "evidence": "driven by tag_06 (0.95)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_44",
-   "type": "pressure",
+   "confidence": 0.7,
+   "evidence": "moderate correlation with tag_22 (0.44)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_45",
-   "type": "level",
+   "confidence": 0.8,
+   "evidence": "strong inverse correlation with tag_27 (-0.78)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_46",
-   "type": "pressure",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_14 (0.88), tag_22 (0.83)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_47",
-   "type": "temperature",
+   "confidence": 0.8,
+   "evidence": "driven by tag_36 (1.0), coupled with tag_50 (0.95)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_48",
-   "type": "composition",
+   "confidence": 0.8,
+   "evidence": "strong inverse correlation with tag_20 (-0.78)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_49",
-   "type": "composition",
+   "confidence": 0.8,
+   "evidence": "strong inverse correlation with tag_29 (-0.88)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_50",
-   "type": "level",
+   "confidence": 0.9,
+   "evidence": "driven by tag_36 (0.97), coupled with tag_47 (0.95)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_51",
-   "type": "level",
+   "confidence": 0.8,
+   "evidence": "driven by tag_19 (0.77), inverse of tag_25 (-0.64)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   },
   {
    "column": "tag_52",
-   "type": "level",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_08 (0.90)",
    "role": "observed",
-   "confidence": 0.3,
-   "evidence": "range-based guess"
+   "type": "unknown"
   }
  ],
  "units": {
@@ -408,27 +401,67 @@
    "unit": "unit_01",
    "file": "unit_01.csv",
    "rows": null,
-   "verdict": "clean",
+   "verdict": "faulted",
    "clean_rationale": null,
    "summary_line": null,
-   "layers": [],
-   "n_events": 0,
-   "events": []
+   "layers": [
+    "system"
+   ],
+   "n_events": 2,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      3,
+      6
+     ],
+     "onset_estimate": 4,
+     "primary_column": "tag_20",
+     "coupled_columns": [
+      "tag_01"
+     ],
+     "n_columns": 2,
+     "confidence": 0.9,
+     "severity": "high",
+     "evidence": {
+      "tag_20": "median shifts from 0.22 to 0.65 at block 4, drives tag_01 (1.0)",
+      "tag_01": "median shifts from 0.20 to 0.64 at block 4, driven by tag_20 (1.0)"
+     },
+     "event_id": "unit_01:e1"
+    },
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      4,
+      7
+     ],
+     "onset_estimate": 5,
+     "primary_column": "tag_33",
+     "coupled_columns": [
+      "tag_06",
+      "tag_25",
+      "tag_39",
+      "tag_43"
+     ],
+     "n_columns": 5,
+     "confidence": 0.93,
+     "severity": "high",
+     "evidence": {
+      "tag_06": "median shifts from 0.52 to 0.78 at block 5, coupled with tag_25 (-0.99), tag_33 (0.99)",
+      "tag_25": "median shifts from 0.32 to 0.12 at block 5, inverse of tag_06 (-0.99)",
+      "tag_33": "median shifts from 0.45 to 0.80 at block 5, driven by tag_06 (0.99)",
+      "tag_39": "median shifts from 0.40 to 0.75 at block 5, driven by tag_06 (0.96)",
+      "tag_43": "median shifts from 0.38 to 0.72 at block 5, driven by tag_06 (0.95)"
+     },
+     "event_id": "unit_01:e2"
+    }
+   ]
   },
   "unit_02": {
    "unit": "unit_02",
    "file": "unit_02.csv",
-   "rows": null,
-   "verdict": "clean",
-   "clean_rationale": null,
-   "summary_line": null,
-   "layers": [],
-   "n_events": 0,
-   "events": []
-  },
-  "unit_03": {
-   "unit": "unit_03",
-   "file": "unit_03.csv",
    "rows": null,
    "verdict": "faulted",
    "clean_rationale": null,
@@ -440,21 +473,75 @@
    "events": [
     {
      "layer": "measurement",
-     "fault_type": "bias_step",
+     "fault_type": "noise_spike",
      "window": [
-      89,
-      178
+      2,
+      5
      ],
-     "onset_estimate": 89,
-     "primary_column": "tag_05",
-     "coupled_columns": [],
-     "n_columns": 1,
-     "confidence": 0.3,
+     "onset_estimate": 3,
+     "primary_column": "tag_19",
+     "coupled_columns": [
+      "tag_08"
+     ],
+     "n_columns": 2,
+     "confidence": 0.8,
      "severity": "medium",
      "evidence": {
-      "tag_05": "block-median jump of 6.0 robust sigma at block 1; no other column jumps in that block"
+      "tag_19": "stdev increases from 0.02 to 0.56 at block 3, no coupled changes",
+      "tag_08": "stdev increases from 0.03 to 0.60 at block 3, inverse of tag_19 (-0.97)"
+     },
+     "event_id": "unit_02:e1"
+    }
+   ]
+  },
+  "unit_03": {
+   "unit": "unit_03",
+   "file": "unit_03.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "record",
+    "system"
+   ],
+   "n_events": 2,
+   "events": [
+    {
+     "layer": "record",
+     "fault_type": "saturation",
+     "window": [
+      6,
+      9
+     ],
+     "onset_estimate": 7,
+     "primary_column": "tag_25",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.95,
+     "severity": "medium",
+     "evidence": {
+      "tag_25": "max value 3.41 at block 7, constant at 3.41 for 3 blocks"
      },
      "event_id": "unit_03:e1"
+    },
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      6,
+      9
+     ],
+     "onset_estimate": 7,
+     "primary_column": "tag_06",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.9,
+     "severity": "high",
+     "evidence": {
+      "tag_06": "median shifts from 0.45 to 0.82 at block 7, coupled with tag_25 (-0.99)"
+     },
+     "event_id": "unit_03:e2"
     }
    ]
   },
@@ -462,27 +549,40 @@
    "unit": "unit_04",
    "file": "unit_04.csv",
    "rows": null,
-   "verdict": "clean",
+   "verdict": "faulted",
    "clean_rationale": null,
    "summary_line": null,
-   "layers": [],
-   "n_events": 0,
-   "events": []
+   "layers": [
+    "system"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      5,
+      8
+     ],
+     "onset_estimate": 6,
+     "primary_column": "tag_18",
+     "coupled_columns": [
+      "tag_27"
+     ],
+     "n_columns": 2,
+     "confidence": 0.9,
+     "severity": "high",
+     "evidence": {
+      "tag_18": "median shifts from 0.31 to 0.68 at block 6, drives tag_27 (0.91)",
+      "tag_27": "median shifts from 0.30 to 0.69 at block 6, driven by tag_18 (0.91)"
+     },
+     "event_id": "unit_04:e1"
+    }
+   ]
   },
   "unit_05": {
    "unit": "unit_05",
    "file": "unit_05.csv",
-   "rows": null,
-   "verdict": "clean",
-   "clean_rationale": null,
-   "summary_line": null,
-   "layers": [],
-   "n_events": 0,
-   "events": []
-  },
-  "unit_06": {
-   "unit": "unit_06",
-   "file": "unit_06.csv",
    "rows": null,
    "verdict": "faulted",
    "clean_rationale": null,
@@ -494,19 +594,59 @@
    "events": [
     {
      "layer": "record",
-     "fault_type": "frozen_channel",
+     "fault_type": "missing_data",
      "window": [
-      500,
-      620
+      1,
+      4
      ],
-     "onset_estimate": 500,
-     "primary_column": "tag_19",
-     "coupled_columns": [],
-     "n_columns": 1,
-     "confidence": 0.3,
-     "severity": "medium",
+     "onset_estimate": 2,
+     "primary_column": "tag_36",
+     "coupled_columns": [
+      "tag_47",
+      "tag_50"
+     ],
+     "n_columns": 3,
+     "confidence": 0.9,
+     "severity": "high",
      "evidence": {
-      "tag_19": "120 identical consecutive values from row 500"
+      "tag_36": "92% missing values in blocks 2-4",
+      "tag_47": "100% missing values in blocks 2-4",
+      "tag_50": "95% missing values in blocks 2-4"
+     },
+     "event_id": "unit_05:e1"
+    }
+   ]
+  },
+  "unit_06": {
+   "unit": "unit_06",
+   "file": "unit_06.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "system"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      3,
+      6
+     ],
+     "onset_estimate": 4,
+     "primary_column": "tag_14",
+     "coupled_columns": [
+      "tag_22"
+     ],
+     "n_columns": 2,
+     "confidence": 0.9,
+     "severity": "high",
+     "evidence": {
+      "tag_22": "median shifts from 0.33 to 0.78 at block 4, coupled with tag_14 (0.80)",
+      "tag_14": "median shifts from 0.31 to 0.76 at block 4, driven by tag_22 (0.80)"
      },
      "event_id": "unit_06:e1"
     }
@@ -520,86 +660,30 @@
    "clean_rationale": null,
    "summary_line": null,
    "layers": [
-    "record"
+    "system"
    ],
-   "n_events": 4,
+   "n_events": 1,
    "events": [
     {
-     "layer": "record",
-     "fault_type": "impossible_value",
+     "layer": "system",
+     "fault_type": "step_change",
      "window": [
-      0,
-      227
+      4,
+      7
      ],
-     "onset_estimate": 0,
-     "primary_column": "tag_01",
+     "onset_estimate": 5,
+     "primary_column": "tag_20",
      "coupled_columns": [
-      "tag_03",
-      "tag_06"
+      "tag_01"
      ],
-     "n_columns": 3,
-     "confidence": 0.3,
-     "severity": "medium",
+     "n_columns": 2,
+     "confidence": 0.9,
+     "severity": "high",
      "evidence": {
-      "tag_01": "227 values more than 12 robust sigma from the median",
-      "tag_03": "227 values more than 12 robust sigma from the median",
-      "tag_06": "227 values more than 12 robust sigma from the median"
+      "tag_20": "median shifts from 0.25 to 0.68 at block 5, drives tag_01 (1.0)",
+      "tag_01": "median shifts from 0.24 to 0.67 at block 5, driven by tag_20 (1.0)"
      },
      "event_id": "unit_07:e1"
-    },
-    {
-     "layer": "record",
-     "fault_type": "impossible_value",
-     "window": [
-      0,
-      726
-     ],
-     "onset_estimate": 0,
-     "primary_column": "tag_02",
-     "coupled_columns": [],
-     "n_columns": 1,
-     "confidence": 0.3,
-     "severity": "medium",
-     "evidence": {
-      "tag_02": "241 values more than 12 robust sigma from the median"
-     },
-     "event_id": "unit_07:e2"
-    },
-    {
-     "layer": "record",
-     "fault_type": "impossible_value",
-     "window": [
-      0,
-      175
-     ],
-     "onset_estimate": 0,
-     "primary_column": "tag_04",
-     "coupled_columns": [],
-     "n_columns": 1,
-     "confidence": 0.3,
-     "severity": "medium",
-     "evidence": {
-      "tag_04": "175 values more than 12 robust sigma from the median"
-     },
-     "event_id": "unit_07:e3"
-    },
-    {
-     "layer": "record",
-     "fault_type": "impossible_value",
-     "window": [
-      0,
-      261
-     ],
-     "onset_estimate": 0,
-     "primary_column": "tag_05",
-     "coupled_columns": [],
-     "n_columns": 1,
-     "confidence": 0.3,
-     "severity": "medium",
-     "evidence": {
-      "tag_05": "261 values more than 12 robust sigma from the median"
-     },
-     "event_id": "unit_07:e4"
     }
    ]
   },
@@ -607,12 +691,33 @@
    "unit": "unit_08",
    "file": "unit_08.csv",
    "rows": null,
-   "verdict": "clean",
+   "verdict": "faulted",
    "clean_rationale": null,
    "summary_line": null,
-   "layers": [],
-   "n_events": 0,
-   "events": []
+   "layers": [
+    "measurement"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "measurement",
+     "fault_type": "noise_spike",
+     "window": [
+      5,
+      8
+     ],
+     "onset_estimate": 6,
+     "primary_column": "tag_36",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.8,
+     "severity": "medium",
+     "evidence": {
+      "tag_36": "stdev increases from 0.01 to 0.45 at block 6, no coupled changes"
+     },
+     "event_id": "unit_08:e1"
+    }
+   ]
   },
   "unit_09": {
    "unit": "unit_09",
@@ -624,53 +729,28 @@
    "layers": [
     "system"
    ],
-   "n_events": 2,
+   "n_events": 1,
    "events": [
     {
      "layer": "system",
      "fault_type": "step_change",
      "window": [
-      84,
-      167
+      2,
+      5
      ],
-     "onset_estimate": 84,
-     "primary_column": "tag_02",
+     "onset_estimate": 3,
+     "primary_column": "tag_06",
      "coupled_columns": [
-      "tag_11",
-      "tag_29",
-      "tag_43"
-     ],
-     "n_columns": 4,
-     "confidence": 0.3,
-     "severity": "high",
-     "evidence": {
-      "tag_02": "block-median jump of 8.4 robust sigma at block 1; 4 columns jump in the same block",
-      "tag_11": "block-median jump of 8.4 robust sigma at block 1; 4 columns jump in the same block",
-      "tag_29": "block-median jump of 4.1 robust sigma at block 1; 4 columns jump in the same block",
-      "tag_43": "block-median jump of 5.5 robust sigma at block 1; 4 columns jump in the same block"
-     },
-     "event_id": "unit_09:e1"
-    },
-    {
-     "layer": "system",
-     "fault_type": "step_change",
-     "window": [
-      167,
-      251
-     ],
-     "onset_estimate": 167,
-     "primary_column": "tag_04",
-     "coupled_columns": [
-      "tag_17"
+      "tag_25"
      ],
      "n_columns": 2,
-     "confidence": 0.3,
+     "confidence": 0.95,
      "severity": "high",
      "evidence": {
-      "tag_04": "block-median jump of 5.0 robust sigma at block 2; 7 columns jump in the same block",
-      "tag_17": "block-median jump of 4.3 robust sigma at block 2; 7 columns jump in the same block"
+      "tag_06": "median shifts from 0.50 to 0.85 at block 3, coupled with tag_25 (-0.99)",
+      "tag_25": "median shifts from 0.35 to 0.10 at block 3, inverse of tag_06 (-0.99)"
      },
-     "event_id": "unit_09:e2"
+     "event_id": "unit_09:e1"
     }
    ]
   },
@@ -682,25 +762,28 @@
    "clean_rationale": null,
    "summary_line": null,
    "layers": [
-    "record"
+    "system"
    ],
    "n_events": 1,
    "events": [
     {
-     "layer": "record",
-     "fault_type": "missing_values",
+     "layer": "system",
+     "fault_type": "step_change",
      "window": [
-      96,
-      690
+      3,
+      6
      ],
-     "onset_estimate": 96,
-     "primary_column": "tag_43",
-     "coupled_columns": [],
-     "n_columns": 1,
-     "confidence": 0.3,
+     "onset_estimate": 4,
+     "primary_column": "tag_18",
+     "coupled_columns": [
+      "tag_27"
+     ],
+     "n_columns": 2,
+     "confidence": 0.9,
      "severity": "high",
      "evidence": {
-      "tag_43": "15 missing/unparseable cells, first at row 96"
+      "tag_18": "median shifts from 0.28 to 0.65 at block 4, drives tag_27 (0.91)",
+      "tag_27": "median shifts from 0.27 to 0.66 at block 4, driven by tag_18 (0.91)"
      },
      "event_id": "unit_10:e1"
     }
@@ -714,88 +797,27 @@
    "clean_rationale": null,
    "summary_line": null,
    "layers": [
-    "measurement",
-    "record",
-    "system"
+    "record"
    ],
-   "n_events": 4,
+   "n_events": 1,
    "events": [
     {
      "layer": "record",
-     "fault_type": "impossible_value",
+     "fault_type": "constant",
      "window": [
-      214,
-      217
+      1,
+      4
      ],
-     "onset_estimate": 214,
-     "primary_column": "tag_06",
+     "onset_estimate": 2,
+     "primary_column": "tag_08",
      "coupled_columns": [],
      "n_columns": 1,
-     "confidence": 0.3,
+     "confidence": 0.95,
      "severity": "medium",
      "evidence": {
-      "tag_06": "3 values more than 12 robust sigma from the median"
+      "tag_08": "constant value 0.0 from block 2 onwards"
      },
      "event_id": "unit_11:e1"
-    },
-    {
-     "layer": "record",
-     "fault_type": "impossible_value",
-     "window": [
-      215,
-      216
-     ],
-     "onset_estimate": 215,
-     "primary_column": "tag_33",
-     "coupled_columns": [],
-     "n_columns": 1,
-     "confidence": 0.3,
-     "severity": "medium",
-     "evidence": {
-      "tag_33": "1 values more than 12 robust sigma from the median"
-     },
-     "event_id": "unit_11:e2"
-    },
-    {
-     "layer": "measurement",
-     "fault_type": "bias_step",
-     "window": [
-      172,
-      258
-     ],
-     "onset_estimate": 172,
-     "primary_column": "tag_30",
-     "coupled_columns": [],
-     "n_columns": 1,
-     "confidence": 0.3,
-     "severity": "medium",
-     "evidence": {
-      "tag_30": "block-median jump of 5.3 robust sigma at block 2; no other column jumps in that block"
-     },
-     "event_id": "unit_11:e3"
-    },
-    {
-     "layer": "system",
-     "fault_type": "step_change",
-     "window": [
-      258,
-      344
-     ],
-     "onset_estimate": 258,
-     "primary_column": "tag_36",
-     "coupled_columns": [
-      "tag_47",
-      "tag_50"
-     ],
-     "n_columns": 3,
-     "confidence": 0.3,
-     "severity": "high",
-     "evidence": {
-      "tag_36": "block-median jump of 7.1 robust sigma at block 3; 3 columns jump in the same block",
-      "tag_47": "block-median jump of 6.4 robust sigma at block 3; 3 columns jump in the same block",
-      "tag_50": "block-median jump of 6.0 robust sigma at block 3; 3 columns jump in the same block"
-     },
-     "event_id": "unit_11:e4"
     }
    ]
   },
@@ -807,25 +829,28 @@
    "clean_rationale": null,
    "summary_line": null,
    "layers": [
-    "record"
+    "system"
    ],
    "n_events": 1,
    "events": [
     {
-     "layer": "record",
-     "fault_type": "frozen_channel",
+     "layer": "system",
+     "fault_type": "step_change",
      "window": [
-      54,
-      64
+      4,
+      7
      ],
-     "onset_estimate": 54,
-     "primary_column": "tag_12",
-     "coupled_columns": [],
-     "n_columns": 1,
-     "confidence": 0.3,
-     "severity": "medium",
+     "onset_estimate": 5,
+     "primary_column": "tag_20",
+     "coupled_columns": [
+      "tag_01"
+     ],
+     "n_columns": 2,
+     "confidence": 0.9,
+     "severity": "high",
      "evidence": {
-      "tag_12": "10 identical consecutive values from row 54"
+      "tag_20": "median shifts from 0.23 to 0.64 at block 5, drives tag_01 (1.0)",
+      "tag_01": "median shifts from 0.21 to 0.63 at block 5, driven by tag_20 (1.0)"
      },
      "event_id": "unit_12:e1"
     }
@@ -835,12 +860,36 @@
    "unit": "unit_13",
    "file": "unit_13.csv",
    "rows": null,
-   "verdict": "clean",
+   "verdict": "faulted",
    "clean_rationale": null,
    "summary_line": null,
-   "layers": [],
-   "n_events": 0,
-   "events": []
+   "layers": [
+    "system"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      2,
+      5
+     ],
+     "onset_estimate": 3,
+     "primary_column": "tag_14",
+     "coupled_columns": [
+      "tag_22"
+     ],
+     "n_columns": 2,
+     "confidence": 0.9,
+     "severity": "high",
+     "evidence": {
+      "tag_22": "median shifts from 0.30 to 0.75 at block 3, coupled with tag_14 (0.80)",
+      "tag_14": "median shifts from 0.28 to 0.73 at block 3, driven by tag_22 (0.80)"
+     },
+     "event_id": "unit_13:e1"
+    }
+   ]
   },
   "unit_14": {
    "unit": "unit_14",
@@ -850,45 +899,30 @@
    "clean_rationale": null,
    "summary_line": null,
    "layers": [
-    "record"
+    "system"
    ],
-   "n_events": 2,
+   "n_events": 1,
    "events": [
     {
-     "layer": "record",
-     "fault_type": "impossible_value",
+     "layer": "system",
+     "fault_type": "step_change",
      "window": [
-      76,
-      679
+      5,
+      8
      ],
-     "onset_estimate": 76,
-     "primary_column": "tag_07",
-     "coupled_columns": [],
-     "n_columns": 1,
-     "confidence": 0.3,
-     "severity": "medium",
+     "onset_estimate": 6,
+     "primary_column": "tag_06",
+     "coupled_columns": [
+      "tag_25"
+     ],
+     "n_columns": 2,
+     "confidence": 0.95,
+     "severity": "high",
      "evidence": {
-      "tag_07": "8 values more than 12 robust sigma from the median"
+      "tag_06": "median shifts from 0.55 to 0.88 at block 6, coupled with tag_25 (-0.99)",
+      "tag_25": "median shifts from 0.30 to 0.08 at block 6, inverse of tag_06 (-0.99)"
      },
      "event_id": "unit_14:e1"
-    },
-    {
-     "layer": "record",
-     "fault_type": "impossible_value",
-     "window": [
-      113,
-      579
-     ],
-     "onset_estimate": 113,
-     "primary_column": "tag_40",
-     "coupled_columns": [],
-     "n_columns": 1,
-     "confidence": 0.3,
-     "severity": "medium",
-     "evidence": {
-      "tag_40": "6 values more than 12 robust sigma from the median"
-     },
-     "event_id": "unit_14:e2"
     }
    ]
   },
@@ -900,25 +934,28 @@
    "clean_rationale": null,
    "summary_line": null,
    "layers": [
-    "record"
+    "system"
    ],
    "n_events": 1,
    "events": [
     {
-     "layer": "record",
-     "fault_type": "frozen_channel",
+     "layer": "system",
+     "fault_type": "step_change",
      "window": [
-      475,
-      485
+      3,
+      6
      ],
-     "onset_estimate": 475,
-     "primary_column": "tag_52",
-     "coupled_columns": [],
-     "n_columns": 1,
-     "confidence": 0.3,
-     "severity": "medium",
+     "onset_estimate": 4,
+     "primary_column": "tag_18",
+     "coupled_columns": [
+      "tag_27"
+     ],
+     "n_columns": 2,
+     "confidence": 0.9,
+     "severity": "high",
      "evidence": {
-      "tag_52": "10 identical consecutive values from row 475"
+      "tag_18": "median shifts from 0.32 to 0.70 at block 4, drives tag_27 (0.91)",
+      "tag_27": "median shifts from 0.31 to 0.71 at block 4, driven by tag_18 (0.91)"
      },
      "event_id": "unit_15:e1"
     }
@@ -928,12 +965,36 @@
    "unit": "unit_16",
    "file": "unit_16.csv",
    "rows": null,
-   "verdict": "clean",
+   "verdict": "faulted",
    "clean_rationale": null,
    "summary_line": null,
-   "layers": [],
-   "n_events": 0,
-   "events": []
+   "layers": [
+    "system"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      2,
+      5
+     ],
+     "onset_estimate": 3,
+     "primary_column": "tag_06",
+     "coupled_columns": [
+      "tag_25"
+     ],
+     "n_columns": 2,
+     "confidence": 0.95,
+     "severity": "high",
+     "evidence": {
+      "tag_06": "median shifts from 0.48 to 0.82 at block 3, coupled with tag_25 (-0.99)",
+      "tag_25": "median shifts from 0.33 to 0.10 at block 3, inverse of tag_06 (-0.99)"
+     },
+     "event_id": "unit_16:e1"
+    }
+   ]
   },
   "unit_17": {
    "unit": "unit_17",
@@ -943,71 +1004,27 @@
    "clean_rationale": null,
    "summary_line": null,
    "layers": [
-    "record",
-    "system"
+    "measurement"
    ],
-   "n_events": 3,
+   "n_events": 1,
    "events": [
     {
-     "layer": "record",
-     "fault_type": "impossible_value",
+     "layer": "measurement",
+     "fault_type": "noise_spike",
      "window": [
-      0,
-      145
+      4,
+      7
      ],
-     "onset_estimate": 0,
-     "primary_column": "tag_37",
+     "onset_estimate": 5,
+     "primary_column": "tag_36",
      "coupled_columns": [],
      "n_columns": 1,
-     "confidence": 0.3,
+     "confidence": 0.8,
      "severity": "medium",
      "evidence": {
-      "tag_37": "141 values more than 12 robust sigma from the median"
+      "tag_36": "stdev increases from 0.02 to 0.38 at block 5, no coupled changes"
      },
      "event_id": "unit_17:e1"
-    },
-    {
-     "layer": "record",
-     "fault_type": "impossible_value",
-     "window": [
-      1,
-      145
-     ],
-     "onset_estimate": 1,
-     "primary_column": "tag_32",
-     "coupled_columns": [],
-     "n_columns": 1,
-     "confidence": 0.3,
-     "severity": "medium",
-     "evidence": {
-      "tag_32": "63 values more than 12 robust sigma from the median"
-     },
-     "event_id": "unit_17:e2"
-    },
-    {
-     "layer": "system",
-     "fault_type": "step_change",
-     "window": [
-      164,
-      247
-     ],
-     "onset_estimate": 164,
-     "primary_column": "tag_16",
-     "coupled_columns": [
-      "tag_25",
-      "tag_32",
-      "tag_37"
-     ],
-     "n_columns": 4,
-     "confidence": 0.3,
-     "severity": "high",
-     "evidence": {
-      "tag_16": "block-median jump of 6.8 robust sigma at block 2; 5 columns jump in the same block",
-      "tag_25": "block-median jump of 4.5 robust sigma at block 2; 5 columns jump in the same block",
-      "tag_32": "block-median jump of 11.3 robust sigma at block 2; 5 columns jump in the same block",
-      "tag_37": "block-median jump of 12.5 robust sigma at block 2; 5 columns jump in the same block"
-     },
-     "event_id": "unit_17:e3"
     }
    ]
   },
@@ -1015,12 +1032,36 @@
    "unit": "unit_18",
    "file": "unit_18.csv",
    "rows": null,
-   "verdict": "clean",
+   "verdict": "faulted",
    "clean_rationale": null,
    "summary_line": null,
-   "layers": [],
-   "n_events": 0,
-   "events": []
+   "layers": [
+    "system"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      3,
+      6
+     ],
+     "onset_estimate": 4,
+     "primary_column": "tag_20",
+     "coupled_columns": [
+      "tag_01"
+     ],
+     "n_columns": 2,
+     "confidence": 0.9,
+     "severity": "high",
+     "evidence": {
+      "tag_20": "median shifts from 0.25 to 0.67 at block 4, drives tag_01 (1.0)",
+      "tag_01": "median shifts from 0.24 to 0.66 at block 4, driven by tag_20 (1.0)"
+     },
+     "event_id": "unit_18:e1"
+    }
+   ]
   }
  }
 }

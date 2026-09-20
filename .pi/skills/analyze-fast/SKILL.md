@@ -54,7 +54,7 @@ failing early gives a clearer message. Writing into `hyvätraportit/` is refused
 unless you pass `--force`: that folder holds the hand-checked reports and demo
 output must not overwrite them.
 
-`sensor-walkthrough` reads `reports/`, so the default output pairs with it.
+`audit` reads `reports/`, so the default output pairs with it.
 `sensor-walkthrough-2` reads `hyvätraportit/` and is **not** the right consumer
 for this skill's output.
 
@@ -65,10 +65,11 @@ No thresholds below are tuned. They were picked once and left alone.
 **schema** - one entry per column, by rule:
 
 - `sample` / `timestamp` → `role: index`
-- everything else → `role: observed`, and `type` bucketed from the column's
-  median magnitude: >1000 flow, >100 temperature, >10 level, >1 pressure,
-  else composition
-- every entry gets `confidence: 0.3`, `evidence: "range-based guess"`
+- everything else → `role: observed`, `type: "unknown"`. Types are never
+  guessed: what a sensor measures is not in the numbers, and the old
+  magnitude buckets (>1000 flow, >100 temperature, ...) were wrong on most
+  columns and got quoted downstream as fact
+- every entry gets `confidence: 0.3`, `evidence: "fast pass, no inference"`
 
 No column is ever labelled `actuated` - the fast pass has no lead/lag analysis
 to justify it.

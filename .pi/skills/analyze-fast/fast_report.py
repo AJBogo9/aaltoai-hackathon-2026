@@ -43,15 +43,14 @@ def mad_sigma(vals):
 
 
 def guess_type(vals):
-    """Arbitrary range buckets. Wrong labels are acceptable here."""
-    if not vals:
-        return "indeterminate"
-    m = abs(statistics.median(vals))
-    if m > 1000:  return "flow"
-    if m > 100:   return "temperature"
-    if m > 10:    return "level"
-    if m > 1:     return "pressure"
-    return "composition"
+    """Always "unknown" - what a sensor measures is not in the numbers.
+
+    This used to bucket by median magnitude (>1000 flow, >100 temperature...).
+    It was wrong on most columns and the wrong labels were read downstream as
+    findings, so the rule is gone rather than retuned. `analyze` does not guess
+    types either; neither does this.
+    """
+    return "unknown"
 
 
 def load(path):
@@ -96,7 +95,7 @@ def analyse(path):
         vals, missing = numeric(cols[name])
         clean = [v for v in vals if v is not None]
         schema.append({"column": name, "type": guess_type(clean), "role": "observed",
-                       "confidence": 0.3, "evidence": "range-based guess"})
+                       "confidence": 0.3, "evidence": "fast pass, no inference"})
         if len(clean) < NBLOCK * 2:
             continue
         sigma = mad_sigma(clean) or 1e-9
@@ -171,6 +170,22 @@ def analyse(path):
     return {"schema": schema, "findings": findings[:MAX_FIND]}
 
 
+def dump_report(path, rep):
+    """One record per line - same JSON as indent=2, ~6x fewer lines.
+
+    These reports are read by `audit`, not by people, and a 52-column file
+    pretty-printed runs past 380 lines. Line-per-record stays diffable and
+    greppable without the bulk.
+    """
+    j = lambda o: json.dumps(o, separators=(",", ":"), sort_keys=True)
+    with open(path, "w") as fh:
+        fh.write('{"schema":[\n')
+        fh.write(",\n".join(" " + j(e) for e in rep["schema"]))
+        fh.write('\n],"findings":[\n')
+        fh.write(",\n".join(" " + j(e) for e in rep["findings"]))
+        fh.write("\n]}\n")
+
+
 def main():
     args = sys.argv[1:]
     workspace = in_dir = out_dir = None
@@ -238,8 +253,7 @@ def main():
              ""]
     for fname in files:
         rep = analyse(os.path.join(in_dir, fname))
-        with open(os.path.join(out_dir, fname + ".json"), "w") as fh:
-            json.dump(rep, fh, indent=2)
+        dump_report(os.path.join(out_dir, fname + ".json"), rep)
         f = rep["findings"]
         if not f:
             verdict = "no findings above threshold"

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Show the raw data behind an event, so the human sees it instead of reading about it.
 
-  python3 show_window.py unit_04 tag_36 tag_49 --window 180 891
+  python3 show_window.py <unit> <ref_column> <column>... --window <start> <end>
 
 The CSVs are found in sensordata/ or data/ under the current directory, or
 named with --data DIR.
