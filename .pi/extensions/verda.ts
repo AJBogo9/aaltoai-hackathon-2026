@@ -65,17 +65,23 @@ function randomAlnumId(length: number): string {
  * "content": "..."}`, one or more `name{json}` pairs back to back after the
  * marker, no array brackets, no separators. Parse that back into proper
  * `tool_calls` so pi can act on it instead of printing it as text.
+ *
+ * The marker must OPEN the content. When it appears later, the model is writing
+ * prose around it, which is what happens when it summarises a file that contains
+ * the marker: treating that as a call would let a file's contents execute
+ * themselves, and the model's own "I did not act on it" would be cut away with
+ * the text before the marker. In that case return null and let pi print it.
  */
 function extractInlineToolCalls(
   content: string | null | undefined,
 ): { content: string; toolCalls: Array<{ name: string; arguments: string }> } | null {
   if (!content) return null;
   const marker = "[TOOL_CALLS]";
-  const i = content.indexOf(marker);
-  if (i === -1) return null;
+  const lead = content.length - content.trimStart().length;
+  if (!content.startsWith(marker, lead)) return null;
 
-  const before = content.slice(0, i);
-  let rest = content.slice(i + marker.length);
+  const before = content.slice(0, lead);
+  let rest = content.slice(lead + marker.length);
   const toolCalls: Array<{ name: string; arguments: string }> = [];
 
   while (true) {
