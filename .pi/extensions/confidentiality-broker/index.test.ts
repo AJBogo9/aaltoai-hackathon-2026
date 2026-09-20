@@ -201,6 +201,31 @@ test("a missing provider only gets into a public workspace", async () => {
   assert.equal((await tool(conf, "read", { path: "public.txt" })).block, true);
 });
 
+test("compaction and branch summarisation are cancelled for an uncleared provider", async () => {
+  const s = setup("google");
+  for (const [event, word] of [
+    ["session_before_compact", "Compaction"],
+    ["session_before_tree", "Branch summarisation"],
+  ] as const) {
+    assert.deepEqual(await s.events.get(event)!({}, s.ctx), { cancel: true }, event);
+    assert.ok(s.notes.at(-1)!.startsWith(`${word} cancelled`), event);
+    assert.ok(s.notes.at(-1)!.includes("confidential"), event);
+  }
+
+  // A cleared provider is left alone.
+  s.ctx.model = use("my-openai");
+  for (const event of ["session_before_compact", "session_before_tree"] as const) {
+    assert.equal(await s.events.get(event)!({}, s.ctx), undefined, event);
+  }
+});
+
+test("compaction is cancelled when the setup is unusable", async () => {
+  const s = setup("ollama");
+  delete process.env.PI_WORKSPACE;
+  assert.deepEqual(await s.events.get("session_before_compact")!({}, s.ctx), { cancel: true });
+  assert.ok(s.notes.at(-1)!.startsWith("Compaction cancelled"));
+});
+
 test("an uncleared provider gets no messages from the very first one, slash text included", async () => {
   const s = setup("google");
   const input = s.events.get("input")!;

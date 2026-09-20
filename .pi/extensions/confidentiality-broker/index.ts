@@ -213,6 +213,32 @@ export default function (pi: ExtensionAPI) {
     );
   });
 
+  /**
+   * Compaction and branch summarisation serialise the conversation and send it to the CURRENT provider, and
+   * neither goes through the input hook: pi dispatches /compact in the TUI before the input callback, and
+   * auto-compaction fires on its own once the context fills. Without this, switching to an uncleared provider
+   * and waiting is enough to hand it the transcript that the input hook exists to withhold.
+   */
+  function refuseSummarisation(ctx: UiCtx, what: string): { cancel: true } | undefined {
+    const config = loadConfig();
+    if (!config.ok) {
+      ctx.ui.notify(`${what} cancelled: ${config.reason}`, "error");
+      return { cancel: true };
+    }
+    const { policy, meta } = config.value;
+    const provider = ctx.model?.provider;
+    const clearance = clearanceOf(policy, provider);
+    if (cleared(policy, clearance, meta.level)) return undefined;
+    ctx.ui.notify(
+      `${what} cancelled: it would send this ${meta.level} conversation to provider ${provider ?? "(none)"}, which is only cleared for ${clearance}. Switch to a provider cleared for ${meta.level} with /model.`,
+      "error",
+    );
+    return { cancel: true };
+  }
+
+  pi.on("session_before_compact", async (_event, ctx) => refuseSummarisation(ctx, "Compaction"));
+  pi.on("session_before_tree", async (_event, ctx) => refuseSummarisation(ctx, "Branch summarisation"));
+
   pi.on("tool_call", async (event, ctx) => {
     const name = event.toolName;
     const isRead = READ_ONLY_TOOLS.has(name);
