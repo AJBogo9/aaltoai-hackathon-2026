@@ -173,11 +173,15 @@ export default function (pi: ExtensionAPI) {
   });
 
   // The session is at the workspace label, so withhold every message while the current provider is not cleared
-  // for it. Slash commands always pass, so the user can switch provider with /model.
-  pi.on("input", async (event, ctx) => {
-    const text = (event as { text?: unknown }).text;
-    if (typeof text === "string" && text.trimStart().startsWith("/")) return { action: "continue" as const };
-
+  // for it.
+  //
+  // Nothing that reaches this hook is a command. Pi dispatches its own commands (/model, /compact, /quit, /new,
+  // /resume, ...) in the TUI before the input callback, and extension commands (/confidentiality, /providers,
+  // /workspaces, /prompt) in the session before this event fires. What is left is ordinary text, or a skill or
+  // prompt-template reference such as /analyze that pi is about to EXPAND and send to the model with the whole
+  // transcript. Letting slash text through would hand an uncleared provider exactly the history we withhold
+  // plain messages to protect.
+  pi.on("input", async (_event, ctx) => {
     const config = loadConfig();
     if (!config.ok) {
       ctx.ui.notify(`Message withheld: ${config.reason}`, "error");

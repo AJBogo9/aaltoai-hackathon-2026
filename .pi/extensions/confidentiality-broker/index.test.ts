@@ -201,14 +201,19 @@ test("a missing provider only gets into a public workspace", async () => {
   assert.equal((await tool(conf, "read", { path: "public.txt" })).block, true);
 });
 
-test("an uncleared provider gets no messages from the very first one, and slash commands still pass", async () => {
+test("an uncleared provider gets no messages from the very first one, slash text included", async () => {
   const s = setup("google");
   const input = s.events.get("input")!;
   assert.deepEqual(await input({ text: "hello" }, s.ctx), { action: "handled" });
   assert.ok(s.notes.at(-1)!.includes("withheld"));
   assert.ok(s.notes.at(-1)!.includes("/model"));
 
-  assert.deepEqual(await input({ text: "/model" }, s.ctx), { action: "continue" });
+  // Pi expands a skill or prompt-template reference AFTER this hook and sends it to the model with the whole
+  // transcript, so slash text must be withheld too. Pi's own commands and the extension's commands are
+  // dispatched before this hook runs and never reach it.
+  assert.deepEqual(await input({ text: "/analyze" }, s.ctx), { action: "handled" });
+  assert.deepEqual(await input({ text: "/skill:analyze" }, s.ctx), { action: "handled" });
+  assert.deepEqual(await input({ text: "  /summarise the employee data" }, s.ctx), { action: "handled" });
 
   s.ctx.model = use("my-openai");
   assert.deepEqual(await input({ text: "hello" }, s.ctx), { action: "continue" });
