@@ -126,7 +126,7 @@ fast low accuracy pass kept for demo timing and says so at the top of its own su
 
 What it found, in one example. `unit_06` is the clean case:
 
-> **tag_19 is frozen at 22.57 for samples 500 to 619** while tag_08, an exact rescaling of
+> **tag_19 is frozen at 22.57 for samples 500 to 619** while tag_08, a rescaling of
 > it, keeps moving. The plant did not change. The instrument died.
 
 A range alarm sees nothing there, because 22.57 is a perfectly plausible reading. The
@@ -143,7 +143,7 @@ produced it. This is the full entry behind that one line about `tag_19`, at conf
 
 > tag_19 holds the identical value 22.57 for 120 consecutive samples (500-619); its normal
 > maximum repeat run is 1 sample. Block scatter over that stretch is exactly 0.00 against a
-> pooled sigma of 0.605. tag_08, which equals -(tag_19-30.57)/0.42095 exactly in all 18
+> pooled sigma of 0.605. tag_08, which tracks -(tag_19-30.57)/0.42095 to within 0.2 in all 18
 > files, keeps moving normally throughout (block medians 18.08, 18.34 and scatter 1.13, 0.95
 > of pooled), so the quantity itself was still changing while the tag_19 channel stopped
 > reporting.
@@ -153,11 +153,11 @@ produced it. This is the full entry behind that one line about `tag_19`, at conf
 | Norrin asked for | Where it is |
 | --- | --- |
 | Infer the meaning of each unlabelled sensor | `schema` in each [`hyvätraportit/unit_*.json`](hyvätraportit/), typed from statistics and lagged correlation alone |
-| Check data quality before reasoning about the process | Instrument and record faults reported separately from process events, in 11 of the 18 files |
+| Check data quality before reasoning about the process | Instrument and record faults reported separately from process events, in 12 of the 18 files |
 | Detect early signs of process drift | Sustained oscillation called in `unit_04` and `unit_18`, a runaway in `unit_07` |
 | Diagnose root cause and rank responsible sensors | A driver column per event, with the lag that implicates it |
 | Separate inference, assumption and uncertainty | 27 tags marked indeterminate, confidences on every row |
-| Keep a human able to review, question and override every conclusion | Evidence and a confidence on every finding, plus [`walkthrough/session.json`](hyvätraportit/walkthrough/session.json), which regroups the 216 findings into 24 events with the driver named, generated from the reports unmodified |
+| Keep a human able to review, question and override every conclusion | Evidence and a confidence on every finding, plus [`walkthrough/session.json`](hyvätraportit/walkthrough/session.json), which regroups the 216 findings into 24 events, names the driver for the 7 system-layer ones and lists the co-moving columns for the rest, generated from the reports unmodified |
 | Raw data never leaves the environment | Enforced per tool call by the broker for any labelled workspace, not promised in a prompt. `sensordata/` is not labelled yet, so for the audit this holds by construction: see [Limits](#limits) |
 | A swappable, locally hosted or EU hosted model | Provider ids in one config file. `ollama` and `lemonade` run on the operator's machine; [`docs/cloud-setup.md`](docs/cloud-setup.md) covers the Finnish GPU cloud for anything heavier |
 | Generalise beyond sensor data | The same broker runs unchanged over the HR and health demo workspaces |
