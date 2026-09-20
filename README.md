@@ -6,7 +6,7 @@
 
 `PUBLIC` · cleared: google, openai, mistral, verda, lemonade, ollama
 
-![tests](https://img.shields.io/badge/tests-109%20passing-00703C)
+![tests](https://img.shields.io/badge/tests-111%20passing-00703C)
 ![levels](https://img.shields.io/badge/levels-3-0B3D91)
 ![models](https://img.shields.io/badge/models-local%20or%20EU-3C4048)
 ![event](https://img.shields.io/badge/AaltoAI%202026-Norrin-8C8C8C)
@@ -22,7 +22,7 @@ Two halves, one for each half of the brief:
 
 - **The broker** ([`.pi/extensions/confidentiality-broker/`](.pi/extensions/confidentiality-broker/)) confines
   the agent to one labelled folder and refuses any provider that is not cleared for that
-  label. 109 tests.
+  label. 111 tests.
 - **The audit** ([`hyvätraportit/`](hyvätraportit/)) infers what 52 unnamed sensor tags are
   from 18 undocumented recordings, and separates real process faults from broken instruments.
 
@@ -103,7 +103,7 @@ The footer status line shows the whole state while you do it:
 Run the tests:
 
 ```bash
-cd .pi/extensions/confidentiality-broker && npm install && npm test   # 109 tests
+cd .pi/extensions/confidentiality-broker && npm install && npm test   # 111 tests
 ```
 
 ## Try the audit
@@ -199,7 +199,7 @@ The full list, including the parts we did not have time to verify, is in
 
 | Path | What |
 | --- | --- |
-| [`.pi/extensions/confidentiality-broker/`](.pi/extensions/confidentiality-broker/) | The broker: policy, path resolution, the gate, the status line, 109 tests |
+| [`.pi/extensions/confidentiality-broker/`](.pi/extensions/confidentiality-broker/) | The broker: policy, path resolution, the gate, the status line, 111 tests |
 | [`.pi/skills/`](.pi/skills/) | The audit skills: `analyze` (the real pass), `analyze-fast` (the fast pass), `read-report` (the walkthrough) |
 | [`sensordata/`](sensordata/) | The 18 undocumented recordings, plus [`MANIFEST.md`](sensordata/MANIFEST.md) |
 | [`hyvätraportit/`](hyvätraportit/) | **The audit output.** Start with `summary.md` |

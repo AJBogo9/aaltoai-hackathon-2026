@@ -92,7 +92,7 @@ pointing at if the room is quiet.
 
 Say this, it is no longer printed on the slide. Two halves, three people: the broker confines
 the agent to one folder, confines bash to a container where only that folder is writable, and
-keeps the label file read-only, with 109 tests behind it. The audit reads 18 recordings of 52 unnamed sensors and works out what each one is.
+keeps the label file read-only, with 111 tests behind it. The audit reads 18 recordings of 52 unnamed sensors and works out what each one is.
 
 ## 4. Live demo (1:10 to 5:40)
 
