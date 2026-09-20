@@ -167,8 +167,14 @@ for var in GEMINI_API_KEY OPENAI_API_KEY MISTRAL_API_KEY ANTHROPIC_API_KEY; do
 done
 # --- Verda / Norrin. That provider is not built into pi: it is registered by .pi/extensions/verda.ts,
 # which reads its key from the gitignored .env.local. The repo is not mounted, so mount exactly those two
-# files, both read-only and both OUTSIDE the workspace, so the agent cannot read the key. The env file's
-# path is passed in, since the extension's default (./.env.local) would resolve inside the workspace.
+# files, both read-only and both OUTSIDE the workspace. The env file's path is passed in, since the
+# extension's default (./.env.local) would resolve inside the workspace.
+#
+# Mounting it outside the workspace keeps it away from pi's FILE tools, which the broker confines. It does
+# NOT keep it away from bash: decideShell checks the provider's clearance, never the command, so a cleared
+# provider can read anything mounted in the container, this file included. The same is true of the API keys
+# passed in above, which `env` will print. Treat every key handed to the container as visible to the model,
+# and see the note at the end of demo/DEMO.md before presenting.
 VERDA_MOUNTS=()
 VERDA_EXT_ARGS=()
 if [[ -f "$VERDA_EXT" && -f "$ENV_LOCAL" ]] && grep -Eq '^[[:space:]]*(export[[:space:]]+)?VERDA_API_KEY[[:space:]]*=[[:space:]]*[^[:space:]]' "$ENV_LOCAL"; then
