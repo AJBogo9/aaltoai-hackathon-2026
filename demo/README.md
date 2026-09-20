@@ -1,35 +1,59 @@
-# demo workspace
+# demo workspaces
 
-A fake, self-contained workspace for demoing `confidentiality-broker` together with the
-`analyze` / `analyze-fast` skills. Nothing in here is real plant data — the CSVs
-are copies of four files from `sensordata/`.
+Four self-contained workspaces for demoing `confidentiality-broker` together with the
+`analyze` / `analyze-fast` / `read-report` skills. Every byte in here is invented.
+Nothing is partner data.
 
-## Label
+`demo/` itself carries no label, because it is a folder of workspaces rather than a
+workspace. Each folder below is labelled on its own and is launched on its own.
 
-`.confidentiality.json` labels this folder **`restricted`**, the top level in
-`.pi/confidentiality.json`. Against that label:
-
-| provider | clearance | may use this workspace |
+| Workspace | Label | Holds |
 |---|---|---|
-| `verda` | restricted | ✅ yes |
-| `ollama` | restricted | ✅ yes |
-| `lemonade` | restricted | ✅ yes |
-| `mistral` | confidential | ❌ no |
-| `openai` | confidential | ❌ no |
-| `google` | public | ❌ no |
+| [`public-docs/`](public-docs/) | `public` | a product FAQ |
+| [`confidential-hr/`](confidential-hr/) | `confidential` | employees.csv, review notes, and a vendor email carrying a prompt injection |
+| [`restricted-health/`](restricted-health/) | `restricted` | patients.csv |
+| [`restricted-plant/`](restricted-plant/) | `restricted` | 18 sensor recordings and the fast-pass reports built from them |
 
-So **`verda` is the approved provider** for the demo, and switching to `openai`
-or `google` loses file access entirely — which is the point worth showing.
+## Who is cleared for what
 
-## Run it
+From [`.pi/confidentiality.json`](../.pi/confidentiality.json). A provider that is not
+listed there is treated as `public`.
 
-From the repo root:
+| Provider | Where it runs | Clearance | public | confidential | restricted |
+|---|---|---|---|---|---|
+| `google`, `openai` | cloud, outside the EU | `public` | yes | no | no |
+| `mistral`, `verda` | cloud, in the EU | `confidential` | yes | yes | no |
+| `lemonade`, `ollama` | on your machine | `restricted` | yes | yes | yes |
 
-```text
-/workspace demo
-/confidentiality
-/analyze-fast
+So only a local model may touch the two `restricted` workspaces. `verda` is the Finnish
+endpoint Norrin provided; it is still a remote service, so it sits with `mistral` rather
+than with the local models.
+
+## Run one
+
+From the repo root, one workspace per session:
+
+```bash
+scripts/launch.sh demo/confidential-hr          # add --dry-run to check without starting pi
+scripts/launch.sh demo/restricted-plant
+scripts/launch.sh --offline demo/restricted-health   # same, with no network at all
 ```
 
-`analyze-fast` resolves its input to `demo/sensordata/` and writes
-`demo/reports/`. Use `/analyze` for the slow, accurate pass.
+The workspace is fixed when pi launches and cannot be changed during a session. There is
+no command that switches it: `/workspaces` lists the labelled folders, and to use another
+one you exit and run `scripts/launch.sh` again.
+
+Inside pi:
+
+```text
+/confidentiality     the workspace label, your provider's clearance, the session level
+/providers           every provider and whether it may use this workspace
+/analyze-fast        the fast, low-accuracy pass
+/analyze             the slow, accurate pass
+```
+
+`analyze-fast` resolves its input inside the workspace, so on `demo/restricted-plant` it
+reads `sensordata/` and writes `reports/`, both relative to that folder. The reports
+committed there are exactly what it produces.
+
+[`DEMO.md`](DEMO.md) is the full step-by-step script.
