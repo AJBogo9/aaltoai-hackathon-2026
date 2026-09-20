@@ -187,7 +187,7 @@ The full list, including the parts we did not have time to verify, is in
 | Path | What |
 | --- | --- |
 | [`.pi/extensions/confidentiality-broker/`](.pi/extensions/confidentiality-broker/) | The broker: policy, path resolution, the gate, the status line, 109 tests |
-| [`.pi/skills/`](.pi/skills/) | The audit skills: `generate-report` (the real pass), `generate-report-2` (the fast pass), `sensor-walkthrough` |
+| [`.pi/skills/`](.pi/skills/) | The audit skills: `analyze` (the real pass), `analyze-fast` (the fast pass), `read-report` (the walkthrough) |
 | [`sensordata/`](sensordata/) | The 18 undocumented recordings, plus [`MANIFEST.md`](sensordata/MANIFEST.md) |
 | [`hyvätraportit/`](hyvätraportit/) | **The audit output.** Start with `summary.md` |
 | [`reports/`](reports/) | The fast low accuracy pass. Not for decisions |
