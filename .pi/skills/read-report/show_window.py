@@ -3,14 +3,33 @@
 
   python3 show_window.py unit_04 tag_36 tag_49 --window 180 891
 
+The CSVs are found in sensordata/ or data/ under the current directory, or
+named with --data DIR.
+
 First column given is the reference (the event's driver). For each column prints
 median and spread before vs inside the window, its correlation with the
 reference at the best lag, and the raw values at onset.
 """
 import csv, sys, os, statistics as st
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-DATA = os.path.join(os.path.abspath(os.path.join(HERE, "..", "..", "..")), "data")
+
+def find_data(argv):
+    """The folder holding unit_*.csv: given with --data, or found in the CURRENT directory.
+
+    Never derived from this file's location. scripts/launch.sh mounts the skills at
+    /opt/guard/skills, so walking up from __file__ landed on /opt; and on the host it
+    pointed at data/, which is gitignored and holds no unit CSVs, so the command this
+    skill documents raised FileNotFoundError on a clean checkout.
+    """
+    if "--data" in argv:
+        return os.path.abspath(os.path.expanduser(argv[argv.index("--data") + 1]))
+    here = os.getcwd()
+    for cand in ("sensordata", "data", "."):
+        p = os.path.join(here, cand)
+        if os.path.isdir(p) and any(f.startswith("unit_") and f.endswith(".csv") for f in os.listdir(p)):
+            return os.path.normpath(p)
+    sys.exit("no unit_*.csv found in %s (looked in sensordata/, data/ and the current "
+             "directory); pass --data DIR" % here)
 
 
 def num(x):
@@ -20,8 +39,8 @@ def num(x):
         return None
 
 
-def load(unit, cols):
-    path = os.path.join(DATA, unit + ".csv")
+def load(data_dir, unit, cols):
+    path = os.path.join(data_dir, unit + ".csv")
     series = {c: [] for c in cols}
     with open(path) as fh:
         for row in csv.DictReader(fh):
@@ -65,6 +84,10 @@ def stats(v, lo, hi):
 
 def main():
     args = sys.argv[1:]
+    data_dir = find_data(args)
+    if "--data" in args:
+        k = args.index("--data")
+        args = args[:k] + args[k + 2:]
     if "--window" in args:
         k = args.index("--window")
         lo, hi = int(args[k + 1]), int(args[k + 2])
@@ -72,7 +95,7 @@ def main():
     else:
         lo = hi = -1
     unit, cols = args[0], args[1:]
-    series = load(unit, cols)
+    series = load(data_dir, unit, cols)
     ref = series[cols[0]]
 
     print("%s   window [%d, %d]   reference = %s\n" % (unit, lo, hi, cols[0]))
