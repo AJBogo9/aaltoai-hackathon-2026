@@ -56,6 +56,10 @@
   .viewer{margin:var(--space-6) 0 0;display:none}
   .viewer object{width:100%;height:min(70vh,620px);border:1px solid var(--rule-200);
                  box-shadow:var(--shadow-web);background:var(--paper-100)}
+  .demo{margin:var(--space-6) 0 0}
+  .demo video{display:block;width:100%;aspect-ratio:1918/1012;margin:var(--space-3) 0 0;
+              border:1px solid var(--rule-200);box-shadow:var(--shadow-web);
+              background:var(--paper-100)}
   .links{font-family:var(--font-mono);font-size:15px;color:var(--ink-600);margin:var(--space-6) 0 0}
   .links a{color:inherit}
   @media (min-width:900px){ .viewer{display:block} }
@@ -91,6 +95,20 @@
         <p class="val">Your browser will not display the PDF inline.
         <a href="Norrin_Pitch.pdf">Open it directly.</a></p>
       </object>
+    </div>
+
+    <div class="demo">
+      <p class="lab">The demo &middot; 67 seconds, no sound</p>
+      <video controls preload="metadata" playsinline poster="demo-poster.png"
+             aria-describedby="demo-caption">
+        <source src="norrin-demo.mp4" type="video/mp4">
+        <p class="val">Your browser will not play the demo inline.
+        <a href="norrin-demo.mp4">Download it (MP4, 3.8&nbsp;MB).</a></p>
+      </video>
+      <p class="val" id="demo-caption">A workspace labeled <span class="con">confidential</span>, opened
+      on a provider cleared only for <span class="pub">public</span>: no tools, no messages, and the
+      broker names the check that refused. Switching to a cleared provider lets the same session run,
+      and the audit skill reads the data it is now allowed to see.</p>
     </div>
 
     <div class="cols">
