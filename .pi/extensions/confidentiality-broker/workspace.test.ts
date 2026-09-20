@@ -3,7 +3,8 @@ import assert from "node:assert/strict";
 import { listWorkspaces } from "./config.ts";
 import { describeProviders, describeWorkspace, describeWorkspaces } from "./workspace.ts";
 import type { Policy } from "./policy.ts";
-import { stripAnsi } from "./status.ts";
+import { setTruecolor, stripAnsi } from "./status.ts";
+import { RGB } from "./brand.generated.ts";
 
 const policy: Policy = {
   levels: ["public", "confidential", "restricted"],
@@ -41,10 +42,12 @@ test("describeProviders says when the current provider is not in the policy", ()
 });
 
 test("describeProviders colors levels like the footer, and the columns still line up", () => {
+  setTruecolor(true);
+  const escape = (name: keyof typeof RGB) => `\x1b[38;2;${RGB[name].join(";")}m`;
   const colored = describeProviders(policy, "confidential", "google");
-  assert.ok(colored[1].includes("\x1b[33mconfidential\x1b[0m"), "middle level is yellow");
-  assert.ok(colored[2].includes("\x1b[32mpublic"), "lowest level is green");
-  assert.ok(colored[2].includes("\x1b[31m✗ no access\x1b[0m"));
+  assert.ok(colored[1].includes(`${escape("between")}confidential\x1b[0m`), "a middle level is confidential blue");
+  assert.ok(colored[2].includes(`${escape("allow")}public`), "the lowest level is public green");
+  assert.ok(colored[2].includes(`${escape("refuse")}✗ no access\x1b[0m`), "a refusal is the restricted colour");
   assert.deepEqual(colored.map(stripAnsi), describeProviders(policy, "confidential", "google", false));
 });
 

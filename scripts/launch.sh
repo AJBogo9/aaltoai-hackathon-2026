@@ -49,6 +49,43 @@ die() {
 }
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
+TOKENS_SH="$REPO/design-system/tokens.sh"
+
+# The classification band, on stderr, before pi takes the screen. The design system's one
+# rule is that the artifact is marked by the system it describes, and the first frame of a
+# live demo is this terminal, not a slide. Level on the left, the providers cleared for it
+# on the right, white on the level's fill, full width.
+#
+# Colours come from design-system/tokens.sh, which scripts/brand.py generates from
+# design-system/tokens.json. Without that file, or without a terminal, the band still
+# prints: it loses its fill and keeps every word.
+band() {
+  local level="$1" cleared="$2" left right cols gap fill="" ink="" reset="" rgb bg
+  left="$(printf '%s' "$level" | tr '[:lower:]' '[:upper:]')"
+  right="CLEARED: $(printf '%s' "$cleared" | tr '[:lower:]' '[:upper:]' | sed 's/,/, /g')"
+  [[ -n "$cleared" ]] || right="CLEARED: (NONE LISTED)"
+
+  cols="${COLUMNS:-$(tput cols 2>/dev/null || echo 80)}"
+  [[ "$cols" =~ ^[0-9]+$ ]] || cols=80
+  # Two spaces of gutter each side, and at least one space between the two halves.
+  if (( ${#left} + ${#right} + 6 > cols )); then right=""; fi
+  gap=$(( cols - ${#left} - ${#right} - 4 ))
+  (( gap < 1 )) && gap=1
+
+  if [[ -t 2 && -z "${NO_COLOR:-}" && -f "$TOKENS_SH" ]]; then
+    # shellcheck source=/dev/null
+    . "$TOKENS_SH"
+    rgb="BAND_RGB_$level"; bg="BAND_BG_$level"
+    case "${COLORTERM:-}" in
+      truecolor | 24bit) fill=$'\e['"48;2;${!rgb}m"; ink=$'\e['"38;2;${BAND_INK}m" ;;
+      *) fill=$'\e['"${!bg}m"; ink=$'\e[97m' ;;
+    esac
+    [[ -n "${!rgb:-}" ]] || { fill=""; ink=""; }
+    [[ -n "$fill" ]] && reset=$'\e[0m'
+  fi
+  printf '%s%s  %s%*s%s  %s\n' "$fill" "$ink" "$left" "$gap" "" "$right" "$reset" >&2
+}
+
 POLICY="$REPO/.pi/confidentiality.json"
 GUARD="$REPO/.pi/extensions/confidentiality-broker"
 SKILLS="$REPO/.pi/skills"
@@ -231,7 +268,8 @@ RUN+=("$IMAGE" pi
   --session-dir /workspace/.pi-sessions)
 RUN+=(${PI_EXTRA[@]+"${PI_EXTRA[@]}"})
 
-echo "launch: workspace $WS is labeled $LEVEL. Providers cleared for it: ${CLEARED:-(none listed)}. Any other provider gets no tools." >&2
+band "$LEVEL" "$CLEARED"
+echo "launch: $WS_NAME is labeled $LEVEL. Any provider not on that band gets no tools and no messages." >&2
 if [[ $OFFLINE -eq 1 ]]; then
   echo "launch: --offline: the container has no network, so no provider is reachable." >&2
 else

@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { levelColor, statusLine, stripAnsi } from "./status.ts";
+import { levelColor, paint, setTruecolor, statusLine, stripAnsi, supportsTruecolor } from "./status.ts";
+import { BASIC, RGB } from "./brand.generated.ts";
 import type { StatusInput } from "./status.ts";
 import type { Policy } from "./policy.ts";
 
@@ -63,10 +64,36 @@ test("colors are optional and never change the text", () => {
   assert.ok(!statusLine(base, false).includes("\x1b"));
 });
 
-test("levels are colored from green at the bottom to red at the top", () => {
-  assert.equal(levelColor(policy, "public"), "green");
-  assert.equal(levelColor(policy, "confidential"), "yellow");
-  assert.equal(levelColor(policy, "restricted"), "red");
-  assert.equal(levelColor(policy, "unknown"), "red");
-  assert.equal(levelColor({ levels: ["only"], providers: {} }, "only"), "green");
+test("the lowest level is painted allow, the highest refuse, everything between", () => {
+  assert.equal(levelColor(policy, "public"), "allow");
+  assert.equal(levelColor(policy, "confidential"), "between");
+  assert.equal(levelColor(policy, "restricted"), "refuse");
+  assert.equal(levelColor(policy, "unknown"), "refuse");
+  assert.equal(levelColor({ levels: ["only"], providers: {} }, "only"), "allow");
+});
+
+test("a truecolor terminal prints the level colours the deck quotes", () => {
+  setTruecolor(true);
+  const escape = (name: keyof typeof RGB) => `\x1b[38;2;${RGB[name].join(";")}m`;
+  assert.equal(paint("public", "allow", true), `${escape("allow")}public\x1b[0m`);
+  assert.equal(paint("confidential", "between", true), `${escape("between")}confidential\x1b[0m`);
+  assert.equal(paint("restricted", "refuse", true), `${escape("refuse")}restricted\x1b[0m`);
+  // The footer is the one element a slide quotes verbatim, so its middle level has to be
+  // the confidential blue of the band and not a fourth colour.
+  assert.ok(statusLine(base, true).includes(`${escape("between")}[confidential]\x1b[0m`));
+});
+
+test("a terminal that does not report truecolor falls back to 4 bit", () => {
+  setTruecolor(false);
+  assert.equal(paint("public", "allow", true), `${BASIC.allow}public\x1b[0m`);
+  assert.equal(paint("confidential", "between", true), `${BASIC.between}confidential\x1b[0m`);
+  assert.ok(!statusLine(base, true).includes("38;2;"));
+  setTruecolor(supportsTruecolor());
+});
+
+test("truecolor is read from COLORTERM, and anything else is 4 bit", () => {
+  assert.ok(supportsTruecolor({ COLORTERM: "truecolor" }));
+  assert.ok(supportsTruecolor({ COLORTERM: "24bit" }));
+  assert.ok(!supportsTruecolor({ COLORTERM: "" }));
+  assert.ok(!supportsTruecolor({}));
 });

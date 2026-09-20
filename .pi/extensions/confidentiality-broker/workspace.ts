@@ -3,7 +3,7 @@ import type { Metadata } from "./metadata.ts";
 import { clearanceOf, cleared, lowest, normalizeLevel, rank } from "./policy.ts";
 import type { Policy } from "./policy.ts";
 import { levelColor, paint } from "./status.ts";
-import type { Color } from "./status.ts";
+import type { Paint } from "./status.ts";
 
 /** Summary lines for /confidentiality. */
 export function describeWorkspace(
@@ -33,10 +33,10 @@ export function describeProviders(
   current: string | undefined,
   color = true,
 ): string[] {
-  const p = (text: string, c: Color) => paint(text, c, color);
+  const p = (text: string, c: Paint) => paint(text, c, color);
   const lvl = (l: string, width = 0) => p(l.padEnd(width), levelColor(policy, l));
   const access = (clearance: string) =>
-    cleared(policy, clearance, level) ? p("✓ cleared", "green") : p("✗ no access", "red");
+    cleared(policy, clearance, level) ? p("✓ cleared", "allow") : p("✗ no access", "refuse");
 
   const providers = Object.entries(policy.providers).sort(
     ([a, la], [b, lb]) => rank(policy, lb) - rank(policy, la) || a.localeCompare(b),
@@ -71,7 +71,7 @@ export function describeWorkspaces(
   provider: string | undefined,
   color = true,
 ): string[] {
-  const p = (text: string, c: Color) => paint(text, c, color);
+  const p = (text: string, c: Paint) => paint(text, c, color);
   const clearance = clearanceOf(policy, provider);
 
   const entries = found.map((e) => (e.name === current.name ? { ...e, level: current.level } : e));
@@ -84,8 +84,8 @@ export function describeWorkspaces(
   const levelWidth = Math.max("invalid".length, ...policy.levels.map((l) => l.length));
   const lines = entries.map(({ name, level }) => {
     const known = policy.levels.includes(level);
-    const label = known ? p(level.padEnd(levelWidth), levelColor(policy, level)) : p("invalid".padEnd(levelWidth), "red");
-    const access = known && cleared(policy, clearance, level) ? p("✓", "green") : p("✗", "red");
+    const label = known ? p(level.padEnd(levelWidth), levelColor(policy, level)) : p("invalid".padEnd(levelWidth), "refuse");
+    const access = known && cleared(policy, clearance, level) ? p("✓", "allow") : p("✗", "refuse");
     const mark = name === current.name ? `  ${p("← this session", "dim")}` : "";
     return `  ${name.padEnd(nameWidth)}  ${label}  ${access}${mark}`;
   });
