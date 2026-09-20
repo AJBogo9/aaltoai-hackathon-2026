@@ -1,7 +1,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/cover-dark.svg">
   <img src="docs/cover-light.svg" width="100%"
-       alt="confidentiality-broker: access control for LLM agents. The folder carries a label, the provider carries a clearance, and the broker compares them on every tool call.">
+       alt="confidentiality-broker: a label on the folder, a clearance on the provider, compared on every tool call.">
 </picture>
 
 <!-- brand:marking -->
@@ -15,34 +15,41 @@
 
 # confidentiality-broker
 
-**An agent cannot analyse data it is not allowed to read. The moment it can read it, it can
-send it anywhere.** Built at AaltoAI 2026 for Norrin's *Trustworthy process monitor*
-challenge: audit an undocumented industrial sensor dataset with an LLM, without the raw data
-leaving the operator's environment.
+An AI harness that accounts for data confidentiality, built on the open-source
+harness pi. It has two halves.
 
-Two halves, one for each half of the brief:
+A pi extension confines the agent to one labelled folder and refuses any provider
+whose declared clearance sits below that folder's label. The comparison runs in
+code on every tool call, message and compaction, never in the prompt. The
+extension is a guardrail; the container is the boundary. `scripts/launch.sh
+<folder>` starts pi in a container where that one folder is the only writable
+thing: the repo is not mounted, the root filesystem is read-only, every capability
+is dropped, and the folder's label file is mounted read-only over it so the agent
+cannot relabel its own workspace. Before that container starts, a second throwaway
+container with no network validates the label using the same code the extension
+runs, so the launcher and the gate can never disagree about what a level means.
+The container is also what makes a shell available at all: the broker refuses
+`bash` outright unless it is running inside the launcher's container, because a
+command cannot be confined by checking a path.
 
-- **The broker** ([`.pi/extensions/confidentiality-broker/`](.pi/extensions/confidentiality-broker/)) confines
-  the agent to one labelled folder and refuses any provider that is not cleared for that
-  label. 114 tests.
-- **The audit** ([`hyvätraportit/`](hyvätraportit/)) infers what 52 unnamed sensor tags are
-  from 18 undocumented recordings, and separates real process faults from broken instruments.
+The second half is the audit, in `.pi/skills/`. `analyze` profiles a folder of
+undocumented process data in one script run and reasons over the statistics it
+prints, never over the rows, so derived statistics are all that reaches the
+model: the brief's data minimisation met by construction. It never names what a
+sensor measures, because unlabelled numbers do not carry that; real tag names
+come only from a person, through a notes file. Every report opens with the
+workspace's label and the providers cleared for it, so it still says what it is
+when read elsewhere. Alongside it a demo path trades accuracy for seconds, by
+fixed thresholds instead of reasoning, and says outright that most of its labels
+are wrong. It carries no facts of its own: each finding's evidence is quoted
+verbatim, and the numbers behind any call can be printed on demand.
 
-**Reviewing this with five minutes?** The mechanism is [The rule](#the-rule), about a minute
-of reading. What the audit found is [`hyvätraportit/summary.md`](hyvätraportit/summary.md),
-one line per recording. Whether we answered the brief is
-[the table further down](#where-the-brief-is-answered). The ten minute pitch is
-[`demo/Norrin_Pitch.pdf`](demo/Norrin_Pitch.pdf), with its stage script and speaker notes
-written out in [`demo/pitch.md`](demo/pitch.md).
 
-## The rule
+## How it works
 
-We did not try to teach the model to behave. We took the decision away from it.
+Every provider carries a clearance, and every data folder, a workspace, carries a label.
 
-A folder carries a label. A provider carries a clearance. On every tool call the broker
-compares the two, and refuses if the clearance is lower, unreadable or missing.
-
-**`.pi/confidentiality.json`**, the policy, yours to edit:
+The provider policy is stored in **`.pi/confidentiality.json`**
 
 ```json
 {
@@ -55,32 +62,61 @@ compares the two, and refuses if the clearance is lower, unreadable or missing.
 }
 ```
 
-**`demo/confidential-hr/.confidentiality.json`**, the label, one per folder:
+The label for each workspace is stored in **`<workspace>/.confidentiality.json`**
 
 ```json
 { "level": "confidential" }
 ```
 
-`google` is cleared `public`, the folder is `confidential`, so it gets nothing. Not a
-summary, not a file listing, not the knowledge that the file exists:
+As an example, `openai` is cleared `public`, the folder is `confidential`, so the harness prevents messages and tool calls.
 
 ```text
-The workspace is labeled confidential, but provider "google" is only cleared for public.
-Do not retry with this provider; ask the user to switch to a provider cleared for confidential.
+Workspace: /workspace
+Workspace level: confidential.
+Provider openai is cleared for public: every tool will be refused. Switch to a provider cleared for confidential.
+Session level: confidential.
 ```
 
-The model is never asked for its opinion about this, so a prompt injection has nothing to
-talk to. Every refusal is deterministic code that names the check which refused.
+
+## Tutorial
+
+**Dependencies.** [pi](https://pi.dev), docker or podman, and the API key of each cloud provider
+you want, exported in your shell. Local providers need no key. The tests additionally need Node
+22.18 or newer, because they are TypeScript and rely on Node's type stripping; we ran them on
+24.18.
+
+**Build.** Nothing to build by hand: `scripts/launch.sh` builds the container image the first time
+it runs. After a change to `.devcontainer/Dockerfile`, pass `--rebuild`.
+
+**Workspace.** One labelled folder per session, chosen at launch and fixed for the session:
+
+```bash
+scripts/launch.sh demo/confidential-hr
+```
+
+`/workspaces` lists every labelled folder and its label. To use another one, exit and launch again.
+
+**Model.** `/model <provider>` switches provider mid-session, or launch with `-- --provider
+mistral`.
+
+**Providers.** `/providers` lists every provider, its clearance, and whether it may use this
+workspace. Clearances live in `.pi/confidentiality.json`, and a provider that is not listed there
+is treated as the lowest level.
+
+**Confidentiality.** `/confidentiality` shows the workspace label, the current provider's
+clearance and the session level. The footer shows the same state at all times.
+
+**Skills.** `analyze` audits a folder of undocumented process data, `analyze-fast` does the same by
+fixed rules for demo timing, and `audit` reads the resulting reports back out. Ask for them in
+plain language rather than as slash commands: they are mounted outside the workspace, so the broker
+refuses the model's own read of the skill file.
+
 
 ## Try the broker
 
-You need [pi](https://pi.dev), docker or podman, and the API keys of the providers you want
-in your shell. Running the tests additionally needs Node 22.18 or newer, because the test
-files are TypeScript and rely on Node's type stripping. We ran them on 24.18. The policy and
-the labelled demo folders are already in this repo.
-
-The workspace is chosen when pi launches and cannot change during a session, so the agent
-runs on one labelled folder in a container where only that folder is writable:
+The policy and the labelled demo folders are already in this repo, so this runs as it is. The
+workspace is chosen when pi launches and cannot change during a session, so the agent runs on one
+labelled folder in a container where only that folder is writable:
 
 ```bash
 scripts/launch.sh demo/confidential-hr        # add --dry-run to check without starting pi
@@ -108,120 +144,6 @@ Run the tests:
 cd .pi/extensions/confidentiality-broker && npm install && npm test   # 114 tests
 ```
 
-## Try the audit
-
-Nothing to install: the audit scripts use the Python 3 standard library only, which is also
-all the container has. (`requirements.txt` is for the exploratory notebook in
-[`notebooks/`](notebooks/), not for this.)
-
-```bash
-# the evidence behind the headline finding, straight from the CSVs
-python3 .pi/skills/audit/show_window.py unit_06 tag_19 tag_08 --window 500 619
-
-# rebuild the walkthrough from the reports, which should leave the committed file unchanged
-python3 .pi/skills/audit/build_session.py --reports hyvätraportit
-```
-
-The first prints tag_19's scatter collapsing to exactly 0 across the window while tag_08
-keeps moving. The second is what generated
-[`walkthrough/session.json`](hyvätraportit/walkthrough/session.json); re-running it
-reproduces the committed file byte for byte.
-
-The input is [`sensordata/`](sensordata/): 18 CSV files, 3 minute sampling, columns
-`tag_01` to `tag_52`, no documentation, no units, no labels. The agent is told nothing about
-them. It writes one profiling script, runs it, and reasons over that
-output rather than over the rows. That is the brief's data minimisation requirement met by
-construction: derived statistics are what reaches the model. Being honest about the
-boundary, this is a property of how the audit is written, not something the broker enforces.
-See [Limits](#limits).
-
-**The reports are in [`hyvätraportit/`](hyvätraportit/)** ([`summary.md`](hyvätraportit/summary.md)
-first, then one JSON per file). Read that folder, not `reports/`, which holds a deliberately
-fast low accuracy pass kept for demo timing and says so at the top of its own summary.
-
-What it found, in one example. `unit_06` is the clean case:
-
-> **tag_19 is frozen at 22.57 for samples 500 to 619** while tag_08, a rescaling of
-> it, keeps moving. The plant did not change. The instrument died.
-
-A range alarm sees nothing there, because 22.57 is a perfectly plausible reading. The
-separation matters operationally: a dead sensor and a sick plant look identical on a
-dashboard and need opposite responses.
-
-It also states what it does not know. Of the 52 tags, **27 are left `indeterminate` rather
-than guessed**, and four channels that look like actuators are called out as a sampling
-artefact rather than a lead.
-
-The brief says a lower confidence inference with visible reasoning should count as stronger
-than a confident sounding label with none, so every finding carries the reasoning that
-produced it. This is the full entry behind that one line about `tag_19`, at confidence 0.9:
-
-> tag_19 holds the identical value 22.57 for 120 consecutive samples (500-619); its normal
-> maximum repeat run is 1 sample. Block scatter over that stretch is exactly 0.00 against a
-> pooled sigma of 0.605. tag_08, which tracks -(tag_19-30.57)/0.42095 to within 0.2 in all 18
-> files, keeps moving normally throughout (block medians 18.08, 18.34 and scatter 1.13, 0.95
-> of pooled), so the quantity itself was still changing while the tag_19 channel stopped
-> reporting.
-
-## Where the brief is answered
-
-| Norrin asked for | Where it is |
-| --- | --- |
-| Infer the meaning of each unlabelled sensor | `schema` in each [`hyvätraportit/unit_*.json`](hyvätraportit/), typed from statistics and lagged correlation alone |
-| Check data quality before reasoning about the process | Instrument and record faults reported separately from process events, in 12 of the 18 files |
-| Detect early signs of process drift | Sustained oscillation called in `unit_04` and `unit_18`, a runaway in `unit_07` |
-| Diagnose root cause and rank responsible sensors | A driver column per event, with the lag that implicates it |
-| Separate inference, assumption and uncertainty | 27 tags marked indeterminate, confidences on every row |
-| Keep a human able to review, question and override every conclusion | Evidence and a confidence on every finding, plus [`walkthrough/session.json`](hyvätraportit/walkthrough/session.json), which regroups the 216 findings into 24 events, names the driver for the 7 system-layer ones and lists the co-moving columns for the rest, generated from the reports unmodified |
-| Raw data never leaves the environment | Enforced per tool call by the broker for any labelled workspace, not promised in a prompt. `sensordata/` is not labelled yet, so for the audit this holds by construction: see [Limits](#limits) |
-| A swappable, locally hosted or EU hosted model | Provider ids in one config file. `ollama` and `lemonade` run on the operator's machine; [`docs/cloud-setup.md`](docs/cloud-setup.md) covers the Finnish GPU cloud for anything heavier |
-| Generalise beyond sensor data | The same broker runs unchanged over the HR and health demo workspaces |
-
-## Limits
-
-Said plainly, because a reviewer will find them anyway:
-
-- **It is a guardrail, not a sandbox.** It works through pi's tool hooks. The container is
-  still the real boundary.
-- **A clearance is a declaration we do not verify.** A level is attached to a provider id,
-  not to an endpoint we have checked is local or EU hosted.
-- **The session level is coarse.** It is a high water mark, not a record of what influenced
-  what. Once the session has read confidential data, everything it writes is confidential.
-- **One label per folder.** A `.confidentiality.json` deeper in the tree is protected from
-  writes but not honoured for reads, so keep workspaces flat.
-- **The audit does not run inside the broker yet.** `sensordata/` carries no label, so the two
-  halves are still two halves. The broker enforces the boundary for the demo workspaces; the
-  audit's data minimisation holds because of how it is written. One command should do both,
-  and that is the first thing we would build next.
-
-The full list, including the parts we did not have time to verify, is in
-[the broker's own README](.pi/extensions/confidentiality-broker/README.md#limits).
-
-## What is in here
-
-| Path | What |
-| --- | --- |
-| [`.pi/extensions/confidentiality-broker/`](.pi/extensions/confidentiality-broker/) | The broker: policy, path resolution, the gate, the status line, 114 tests |
-| [`.pi/skills/`](.pi/skills/) | The audit skills: `analyze` (the real pass), `analyze-fast` (the fast pass), `audit` (the walkthrough) |
-| [`sensordata/`](sensordata/) | The 18 undocumented recordings, plus [`MANIFEST.md`](sensordata/MANIFEST.md) |
-| [`hyvätraportit/`](hyvätraportit/) | **The audit output.** Start with `summary.md` |
-| [`reports/`](reports/) | The fast low accuracy pass. Not for decisions |
-| [`demo/`](demo/) | Three labelled workspaces, the demo script, and the pitch deck |
-| [`design-system/`](design-system/) | The visual system behind this page and the deck: tokens, components, guidelines |
-| [`docs/`](docs/) | The challenge brief, decisions log, cloud setup, cover images |
-
-## Data handling
-
-This is a data sovereignty hackathon, so the repo treats sponsor data as radioactive.
-
-- **Everything in `data/` is gitignored.** Partner datasets, exports and scratch files go there.
-- **Give the agent one labeled folder at a time.** Put a `.confidentiality.json` in it and start pi with
-  `scripts/launch.sh`. Providers cleared below the label get no access.
-- **Secrets live in a local environment file that git ignores**, created from the committed
-  example. Never commit the real one.
-- The sensor CSVs and every byte in `demo/` are invented. Nothing here is a partner dataset.
-- Assume this repo may be made public before judging. Nothing committed here should be
-  anything you would not hand to a stranger.
 
 ## Team
 
