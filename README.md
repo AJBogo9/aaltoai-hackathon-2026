@@ -108,9 +108,22 @@ cd .pi/extensions/confidentiality-broker && npm install && npm test   # 109 test
 
 ## Try the audit
 
+Nothing to install: the audit scripts use the Python 3 standard library only, which is also
+all the container has. (`requirements.txt` is for the exploratory notebook in
+[`notebooks/`](notebooks/), not for this.)
+
 ```bash
-uv venv && uv pip install -r requirements.txt
+# the evidence behind the headline finding, straight from the CSVs
+python3 .pi/skills/read-report/show_window.py unit_06 tag_19 tag_08 --window 500 619
+
+# rebuild the walkthrough from the reports, which should leave the committed file unchanged
+python3 .pi/skills/read-report/build_session.py --reports hyvätraportit
 ```
+
+The first prints tag_19's scatter collapsing to exactly 0 across the window while tag_08
+keeps moving. The second is what generated
+[`walkthrough/session.json`](hyvätraportit/walkthrough/session.json); re-running it
+reproduces the committed file byte for byte.
 
 The input is [`sensordata/`](sensordata/): 18 CSV files, 3 minute sampling, columns
 `tag_01` to `tag_52`, no documentation, no units, no labels. The agent is told nothing about

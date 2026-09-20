@@ -1,4 +1,10 @@
-# Analysis stack for the hackathon. Recreate with:
+# Stack for the exploratory notebook in notebooks/ and for scripts/convert_rdata.py.
+#
+# NOT needed for the audit. The skills under .pi/skills/ use the Python 3 standard
+# library only (csv, json, math, statistics, re, glob, collections), which is also all
+# the container in .devcontainer/Dockerfile provides. Nothing below is imported by any
+# of them, so do not install this to read or rebuild the reports.
+#
 #   uv venv && uv pip install -r requirements.txt
 pandas
 numpy
