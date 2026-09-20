@@ -1,0 +1,383 @@
+{
+  "schema": [
+    {
+      "column": "sample",
+      "type": "counter",
+      "role": "index",
+      "confidence": 0.3,
+      "evidence": "name matches an index column"
+    },
+    {
+      "column": "timestamp",
+      "type": "counter",
+      "role": "index",
+      "confidence": 0.3,
+      "evidence": "name matches an index column"
+    },
+    {
+      "column": "tag_01",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_02",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_03",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_04",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_05",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_06",
+      "type": "flow",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_07",
+      "type": "flow",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_08",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_09",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_10",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_11",
+      "type": "composition",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_12",
+      "type": "composition",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_13",
+      "type": "temperature",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_14",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_15",
+      "type": "pressure",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_16",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_17",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_18",
+      "type": "flow",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_19",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_20",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_21",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_22",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_23",
+      "type": "pressure",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_24",
+      "type": "pressure",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_25",
+      "type": "flow",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_26",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_27",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_28",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_29",
+      "type": "pressure",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_30",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_31",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_32",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_33",
+      "type": "flow",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_34",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_35",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_36",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_37",
+      "type": "composition",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_38",
+      "type": "pressure",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_39",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_40",
+      "type": "temperature",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_41",
+      "type": "pressure",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_42",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_43",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_44",
+      "type": "pressure",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_45",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_46",
+      "type": "pressure",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_47",
+      "type": "temperature",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_48",
+      "type": "composition",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_49",
+      "type": "composition",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_50",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_51",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    },
+    {
+      "column": "tag_52",
+      "type": "level",
+      "role": "observed",
+      "confidence": 0.3,
+      "evidence": "range-based guess"
+    }
+  ],
+  "findings": []
+}
