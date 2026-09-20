@@ -1,0 +1,24 @@
+<!-- @dsCard group="Evidence" height=200 width=1280 --><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Mono&display=swap">
+<style>
+  html,body{margin:0}
+  body{background:var(--paper-000);color:var(--ink-900);font-family:var(--font-sans)}
+  .stage{padding:var(--space-5)}
+  .cap{font-family:var(--font-mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-400);margin:0 0 var(--space-2)}
+  .band{display:flex;justify-content:space-between;align-items:baseline;color:var(--band-ink);
+        font-family:var(--font-mono);font-size:17px;line-height:20px;letter-spacing:.18em;
+        padding:var(--space-2) var(--space-5);border-radius:var(--radius-flat)}
+  .band.pub{background:var(--band-public)} .band.con{background:var(--band-confidential)} .band.res{background:var(--band-restricted)}
+
+  .sl{display:flex;gap:var(--space-6);align-items:center;font-family:var(--font-mono);font-size:18px;
+      color:var(--ink-600);border-top:1px solid var(--rule-200);padding-top:var(--space-3);margin-bottom:var(--space-4)}
+  .sl b{font-weight:400;color:var(--ink-900)}
+  .no{color:var(--signal-refuse)} .yes{color:var(--signal-allow)}
+</style>
+<div class="stage">
+  <p class="cap">no access</p>
+  <div class="sl"><span class="no">&#9679;</span><span>restricted-health <b>[restricted]</b></span>
+    <span>google <b>[public]</b></span><span class="no">&#10007; no access</span><span>session <b>public</b></span></div>
+  <p class="cap">cleared, session level has risen</p>
+  <div class="sl"><span class="yes">&#9679;</span><span>confidential-hr <b>[confidential]</b></span>
+    <span>ollama <b>[restricted]</b></span><span class="yes">&#10003; cleared</span><span>session <b>confidential</b></span></div>
+</div>

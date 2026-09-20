@@ -1,0 +1,1067 @@
+{
+ "generated_from": "reports/ (unmodified)",
+ "n_units": 18,
+ "n_findings": 39,
+ "n_events": 20,
+ "teaching_order": [
+  "unit_05",
+  "unit_11",
+  "unit_02",
+  "unit_08",
+  "unit_17",
+  "unit_01",
+  "unit_03",
+  "unit_04",
+  "unit_06",
+  "unit_07",
+  "unit_09",
+  "unit_10",
+  "unit_12",
+  "unit_13",
+  "unit_14",
+  "unit_15",
+  "unit_16",
+  "unit_18"
+ ],
+ "column_schema": [
+  {
+   "column": "sample",
+   "confidence": 1.0,
+   "evidence": "monotonic integer sequence, no missing values",
+   "role": "index",
+   "type": "counter"
+  },
+  {
+   "column": "tag_01",
+   "confidence": 0.9,
+   "evidence": "strong correlation with tag_20 (1.0), likely driven by tag_20",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_02",
+   "confidence": 0.8,
+   "evidence": "moderate correlation with tag_01 (0.51) and tag_38 (0.80)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_03",
+   "confidence": 0.7,
+   "evidence": "weak correlations, no leading behavior",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_04",
+   "confidence": 0.8,
+   "evidence": "moderate correlation with tag_22 (0.53) and tag_14 (0.67)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_05",
+   "confidence": 0.8,
+   "evidence": "moderate correlation with tag_22 (0.59) and tag_14 (0.61)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_06",
+   "confidence": 0.9,
+   "evidence": "drives coupled changes in tag_25 (-0.99), tag_33 (0.99), tag_39 (0.96), tag_43 (0.95)",
+   "role": "actuated",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_07",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_22 (0.77)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_08",
+   "confidence": 0.9,
+   "evidence": "strong inverse correlation with tag_19 (-0.97), tag_25 (0.56)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_09",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_19 (0.79), tag_23 (0.70)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_10",
+   "confidence": 0.8,
+   "evidence": "moderate inverse correlation with tag_23 (-0.79), tag_25 (0.72)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_11",
+   "confidence": 0.7,
+   "evidence": "moderate correlation with tag_38 (0.79)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_12",
+   "confidence": 0.8,
+   "evidence": "strong inverse correlation with tag_22 (-0.74)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_13",
+   "confidence": 0.7,
+   "evidence": "moderate inverse correlation with tag_19 (-0.69)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_14",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_22 (0.80), tag_30 (0.89)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_15",
+   "confidence": 0.7,
+   "evidence": "moderate correlation with tag_20 (0.55)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_16",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_23 (0.71), tag_32 (0.74)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_17",
+   "confidence": 0.7,
+   "evidence": "moderate inverse correlation with tag_29 (-0.86)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_18",
+   "confidence": 0.9,
+   "evidence": "drives coupled changes in tag_27 (0.91), tag_28 (0.73)",
+   "role": "actuated",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_19",
+   "confidence": 0.9,
+   "evidence": "strong inverse correlation with tag_08 (-0.97), drives tag_51 (0.77)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_20",
+   "confidence": 1.0,
+   "evidence": "drives tag_01 (1.0), tag_38 (0.61)",
+   "role": "actuated",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_21",
+   "confidence": 0.9,
+   "evidence": "identical to tag_31 (1.0), inverse correlation with tag_08 (0.49)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_22",
+   "confidence": 0.9,
+   "evidence": "strong correlation with tag_14 (0.80), inverse with tag_33 (-0.94)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_23",
+   "confidence": 0.9,
+   "evidence": "strong correlation with tag_16 (0.71), tag_32 (0.85)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_24",
+   "confidence": 0.7,
+   "evidence": "moderate correlation with tag_38 (0.24)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_25",
+   "confidence": 0.9,
+   "evidence": "inverse of tag_06 (-0.99), strong correlation with tag_33 (0.99)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_26",
+   "confidence": 0.7,
+   "evidence": "moderate correlation with tag_22 (0.62)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_27",
+   "confidence": 0.9,
+   "evidence": "driven by tag_18 (0.91)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_28",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_18 (0.73), tag_27 (0.59)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_29",
+   "confidence": 0.8,
+   "evidence": "inverse correlation with tag_17 (-0.86), tag_49 (-0.88)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_30",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_14 (0.89)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_31",
+   "confidence": 0.9,
+   "evidence": "identical to tag_21 (1.0)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_32",
+   "confidence": 0.9,
+   "evidence": "strong correlation with tag_23 (0.85), tag_37 (0.99)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_33",
+   "confidence": 0.9,
+   "evidence": "driven by tag_06 (0.99), inverse of tag_22 (-0.94)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_34",
+   "confidence": 0.7,
+   "evidence": "moderate correlation with tag_22 (0.57)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_35",
+   "confidence": 0.7,
+   "evidence": "moderate correlation with tag_40 (0.63)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_36",
+   "confidence": 0.8,
+   "evidence": "drives tag_37 (0.63), tag_50 (0.97)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_37",
+   "confidence": 0.9,
+   "evidence": "strong correlation with tag_32 (0.99), driven by tag_36 (0.63)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_38",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_02 (0.80), tag_11 (0.79)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_39",
+   "confidence": 0.9,
+   "evidence": "driven by tag_06 (0.96), inverse of tag_22 (-0.89)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_40",
+   "confidence": 0.7,
+   "evidence": "moderate correlation with tag_35 (0.63)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_41",
+   "confidence": 0.8,
+   "evidence": "strong inverse correlation with tag_35 (-0.80)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_42",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_28 (0.81), tag_18 (0.60)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_43",
+   "confidence": 0.9,
+   "evidence": "driven by tag_06 (0.95)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_44",
+   "confidence": 0.7,
+   "evidence": "moderate correlation with tag_22 (0.44)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_45",
+   "confidence": 0.8,
+   "evidence": "strong inverse correlation with tag_27 (-0.78)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_46",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_14 (0.88), tag_22 (0.83)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_47",
+   "confidence": 0.8,
+   "evidence": "driven by tag_36 (1.0), coupled with tag_50 (0.95)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_48",
+   "confidence": 0.8,
+   "evidence": "strong inverse correlation with tag_20 (-0.78)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_49",
+   "confidence": 0.8,
+   "evidence": "strong inverse correlation with tag_29 (-0.88)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_50",
+   "confidence": 0.9,
+   "evidence": "driven by tag_36 (0.97), coupled with tag_47 (0.95)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_51",
+   "confidence": 0.8,
+   "evidence": "driven by tag_19 (0.77), inverse of tag_25 (-0.64)",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_52",
+   "confidence": 0.8,
+   "evidence": "strong correlation with tag_08 (0.90)",
+   "role": "observed",
+   "type": "unknown"
+  }
+ ],
+ "units": {
+  "unit_01": {
+   "unit": "unit_01",
+   "file": "unit_01.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "system"
+   ],
+   "n_events": 2,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      3,
+      6
+     ],
+     "onset_estimate": 4,
+     "primary_column": "tag_20",
+     "coupled_columns": [
+      "tag_01"
+     ],
+     "n_columns": 2,
+     "confidence": 0.9,
+     "severity": "high",
+     "evidence": {
+      "tag_20": "median shifts from 0.22 to 0.65 at block 4, drives tag_01 (1.0)",
+      "tag_01": "median shifts from 0.20 to 0.64 at block 4, driven by tag_20 (1.0)"
+     },
+     "event_id": "unit_01:e1"
+    },
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      4,
+      7
+     ],
+     "onset_estimate": 5,
+     "primary_column": "tag_33",
+     "coupled_columns": [
+      "tag_06",
+      "tag_25",
+      "tag_39",
+      "tag_43"
+     ],
+     "n_columns": 5,
+     "confidence": 0.93,
+     "severity": "high",
+     "evidence": {
+      "tag_06": "median shifts from 0.52 to 0.78 at block 5, coupled with tag_25 (-0.99), tag_33 (0.99)",
+      "tag_25": "median shifts from 0.32 to 0.12 at block 5, inverse of tag_06 (-0.99)",
+      "tag_33": "median shifts from 0.45 to 0.80 at block 5, driven by tag_06 (0.99)",
+      "tag_39": "median shifts from 0.40 to 0.75 at block 5, driven by tag_06 (0.96)",
+      "tag_43": "median shifts from 0.38 to 0.72 at block 5, driven by tag_06 (0.95)"
+     },
+     "event_id": "unit_01:e2"
+    }
+   ]
+  },
+  "unit_02": {
+   "unit": "unit_02",
+   "file": "unit_02.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "measurement"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "measurement",
+     "fault_type": "noise_spike",
+     "window": [
+      2,
+      5
+     ],
+     "onset_estimate": 3,
+     "primary_column": "tag_19",
+     "coupled_columns": [
+      "tag_08"
+     ],
+     "n_columns": 2,
+     "confidence": 0.8,
+     "severity": "medium",
+     "evidence": {
+      "tag_19": "stdev increases from 0.02 to 0.56 at block 3, no coupled changes",
+      "tag_08": "stdev increases from 0.03 to 0.60 at block 3, inverse of tag_19 (-0.97)"
+     },
+     "event_id": "unit_02:e1"
+    }
+   ]
+  },
+  "unit_03": {
+   "unit": "unit_03",
+   "file": "unit_03.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "record",
+    "system"
+   ],
+   "n_events": 2,
+   "events": [
+    {
+     "layer": "record",
+     "fault_type": "saturation",
+     "window": [
+      6,
+      9
+     ],
+     "onset_estimate": 7,
+     "primary_column": "tag_25",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.95,
+     "severity": "medium",
+     "evidence": {
+      "tag_25": "max value 3.41 at block 7, constant at 3.41 for 3 blocks"
+     },
+     "event_id": "unit_03:e1"
+    },
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      6,
+      9
+     ],
+     "onset_estimate": 7,
+     "primary_column": "tag_06",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.9,
+     "severity": "high",
+     "evidence": {
+      "tag_06": "median shifts from 0.45 to 0.82 at block 7, coupled with tag_25 (-0.99)"
+     },
+     "event_id": "unit_03:e2"
+    }
+   ]
+  },
+  "unit_04": {
+   "unit": "unit_04",
+   "file": "unit_04.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "system"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      5,
+      8
+     ],
+     "onset_estimate": 6,
+     "primary_column": "tag_18",
+     "coupled_columns": [
+      "tag_27"
+     ],
+     "n_columns": 2,
+     "confidence": 0.9,
+     "severity": "high",
+     "evidence": {
+      "tag_18": "median shifts from 0.31 to 0.68 at block 6, drives tag_27 (0.91)",
+      "tag_27": "median shifts from 0.30 to 0.69 at block 6, driven by tag_18 (0.91)"
+     },
+     "event_id": "unit_04:e1"
+    }
+   ]
+  },
+  "unit_05": {
+   "unit": "unit_05",
+   "file": "unit_05.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "record"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "record",
+     "fault_type": "missing_data",
+     "window": [
+      1,
+      4
+     ],
+     "onset_estimate": 2,
+     "primary_column": "tag_36",
+     "coupled_columns": [
+      "tag_47",
+      "tag_50"
+     ],
+     "n_columns": 3,
+     "confidence": 0.9,
+     "severity": "high",
+     "evidence": {
+      "tag_36": "92% missing values in blocks 2-4",
+      "tag_47": "100% missing values in blocks 2-4",
+      "tag_50": "95% missing values in blocks 2-4"
+     },
+     "event_id": "unit_05:e1"
+    }
+   ]
+  },
+  "unit_06": {
+   "unit": "unit_06",
+   "file": "unit_06.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "system"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      3,
+      6
+     ],
+     "onset_estimate": 4,
+     "primary_column": "tag_14",
+     "coupled_columns": [
+      "tag_22"
+     ],
+     "n_columns": 2,
+     "confidence": 0.9,
+     "severity": "high",
+     "evidence": {
+      "tag_22": "median shifts from 0.33 to 0.78 at block 4, coupled with tag_14 (0.80)",
+      "tag_14": "median shifts from 0.31 to 0.76 at block 4, driven by tag_22 (0.80)"
+     },
+     "event_id": "unit_06:e1"
+    }
+   ]
+  },
+  "unit_07": {
+   "unit": "unit_07",
+   "file": "unit_07.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "system"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      4,
+      7
+     ],
+     "onset_estimate": 5,
+     "primary_column": "tag_20",
+     "coupled_columns": [
+      "tag_01"
+     ],
+     "n_columns": 2,
+     "confidence": 0.9,
+     "severity": "high",
+     "evidence": {
+      "tag_20": "median shifts from 0.25 to 0.68 at block 5, drives tag_01 (1.0)",
+      "tag_01": "median shifts from 0.24 to 0.67 at block 5, driven by tag_20 (1.0)"
+     },
+     "event_id": "unit_07:e1"
+    }
+   ]
+  },
+  "unit_08": {
+   "unit": "unit_08",
+   "file": "unit_08.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "measurement"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "measurement",
+     "fault_type": "noise_spike",
+     "window": [
+      5,
+      8
+     ],
+     "onset_estimate": 6,
+     "primary_column": "tag_36",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.8,
+     "severity": "medium",
+     "evidence": {
+      "tag_36": "stdev increases from 0.01 to 0.45 at block 6, no coupled changes"
+     },
+     "event_id": "unit_08:e1"
+    }
+   ]
+  },
+  "unit_09": {
+   "unit": "unit_09",
+   "file": "unit_09.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "system"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      2,
+      5
+     ],
+     "onset_estimate": 3,
+     "primary_column": "tag_06",
+     "coupled_columns": [
+      "tag_25"
+     ],
+     "n_columns": 2,
+     "confidence": 0.95,
+     "severity": "high",
+     "evidence": {
+      "tag_06": "median shifts from 0.50 to 0.85 at block 3, coupled with tag_25 (-0.99)",
+      "tag_25": "median shifts from 0.35 to 0.10 at block 3, inverse of tag_06 (-0.99)"
+     },
+     "event_id": "unit_09:e1"
+    }
+   ]
+  },
+  "unit_10": {
+   "unit": "unit_10",
+   "file": "unit_10.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "system"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      3,
+      6
+     ],
+     "onset_estimate": 4,
+     "primary_column": "tag_18",
+     "coupled_columns": [
+      "tag_27"
+     ],
+     "n_columns": 2,
+     "confidence": 0.9,
+     "severity": "high",
+     "evidence": {
+      "tag_18": "median shifts from 0.28 to 0.65 at block 4, drives tag_27 (0.91)",
+      "tag_27": "median shifts from 0.27 to 0.66 at block 4, driven by tag_18 (0.91)"
+     },
+     "event_id": "unit_10:e1"
+    }
+   ]
+  },
+  "unit_11": {
+   "unit": "unit_11",
+   "file": "unit_11.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "record"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "record",
+     "fault_type": "constant",
+     "window": [
+      1,
+      4
+     ],
+     "onset_estimate": 2,
+     "primary_column": "tag_08",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.95,
+     "severity": "medium",
+     "evidence": {
+      "tag_08": "constant value 0.0 from block 2 onwards"
+     },
+     "event_id": "unit_11:e1"
+    }
+   ]
+  },
+  "unit_12": {
+   "unit": "unit_12",
+   "file": "unit_12.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "system"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      4,
+      7
+     ],
+     "onset_estimate": 5,
+     "primary_column": "tag_20",
+     "coupled_columns": [
+      "tag_01"
+     ],
+     "n_columns": 2,
+     "confidence": 0.9,
+     "severity": "high",
+     "evidence": {
+      "tag_20": "median shifts from 0.23 to 0.64 at block 5, drives tag_01 (1.0)",
+      "tag_01": "median shifts from 0.21 to 0.63 at block 5, driven by tag_20 (1.0)"
+     },
+     "event_id": "unit_12:e1"
+    }
+   ]
+  },
+  "unit_13": {
+   "unit": "unit_13",
+   "file": "unit_13.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "system"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      2,
+      5
+     ],
+     "onset_estimate": 3,
+     "primary_column": "tag_14",
+     "coupled_columns": [
+      "tag_22"
+     ],
+     "n_columns": 2,
+     "confidence": 0.9,
+     "severity": "high",
+     "evidence": {
+      "tag_22": "median shifts from 0.30 to 0.75 at block 3, coupled with tag_14 (0.80)",
+      "tag_14": "median shifts from 0.28 to 0.73 at block 3, driven by tag_22 (0.80)"
+     },
+     "event_id": "unit_13:e1"
+    }
+   ]
+  },
+  "unit_14": {
+   "unit": "unit_14",
+   "file": "unit_14.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "system"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      5,
+      8
+     ],
+     "onset_estimate": 6,
+     "primary_column": "tag_06",
+     "coupled_columns": [
+      "tag_25"
+     ],
+     "n_columns": 2,
+     "confidence": 0.95,
+     "severity": "high",
+     "evidence": {
+      "tag_06": "median shifts from 0.55 to 0.88 at block 6, coupled with tag_25 (-0.99)",
+      "tag_25": "median shifts from 0.30 to 0.08 at block 6, inverse of tag_06 (-0.99)"
+     },
+     "event_id": "unit_14:e1"
+    }
+   ]
+  },
+  "unit_15": {
+   "unit": "unit_15",
+   "file": "unit_15.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "system"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      3,
+      6
+     ],
+     "onset_estimate": 4,
+     "primary_column": "tag_18",
+     "coupled_columns": [
+      "tag_27"
+     ],
+     "n_columns": 2,
+     "confidence": 0.9,
+     "severity": "high",
+     "evidence": {
+      "tag_18": "median shifts from 0.32 to 0.70 at block 4, drives tag_27 (0.91)",
+      "tag_27": "median shifts from 0.31 to 0.71 at block 4, driven by tag_18 (0.91)"
+     },
+     "event_id": "unit_15:e1"
+    }
+   ]
+  },
+  "unit_16": {
+   "unit": "unit_16",
+   "file": "unit_16.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "system"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      2,
+      5
+     ],
+     "onset_estimate": 3,
+     "primary_column": "tag_06",
+     "coupled_columns": [
+      "tag_25"
+     ],
+     "n_columns": 2,
+     "confidence": 0.95,
+     "severity": "high",
+     "evidence": {
+      "tag_06": "median shifts from 0.48 to 0.82 at block 3, coupled with tag_25 (-0.99)",
+      "tag_25": "median shifts from 0.33 to 0.10 at block 3, inverse of tag_06 (-0.99)"
+     },
+     "event_id": "unit_16:e1"
+    }
+   ]
+  },
+  "unit_17": {
+   "unit": "unit_17",
+   "file": "unit_17.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "measurement"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "measurement",
+     "fault_type": "noise_spike",
+     "window": [
+      4,
+      7
+     ],
+     "onset_estimate": 5,
+     "primary_column": "tag_36",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.8,
+     "severity": "medium",
+     "evidence": {
+      "tag_36": "stdev increases from 0.02 to 0.38 at block 5, no coupled changes"
+     },
+     "event_id": "unit_17:e1"
+    }
+   ]
+  },
+  "unit_18": {
+   "unit": "unit_18",
+   "file": "unit_18.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "system"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      3,
+      6
+     ],
+     "onset_estimate": 4,
+     "primary_column": "tag_20",
+     "coupled_columns": [
+      "tag_01"
+     ],
+     "n_columns": 2,
+     "confidence": 0.9,
+     "severity": "high",
+     "evidence": {
+      "tag_20": "median shifts from 0.25 to 0.67 at block 4, drives tag_01 (1.0)",
+      "tag_01": "median shifts from 0.24 to 0.66 at block 4, driven by tag_20 (1.0)"
+     },
+     "event_id": "unit_18:e1"
+    }
+   ]
+  }
+ }
+}

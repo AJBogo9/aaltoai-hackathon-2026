@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "verda": {
+      "command": "verda",
+      "args": ["mcp", "serve"]
+    }
+  }
+}

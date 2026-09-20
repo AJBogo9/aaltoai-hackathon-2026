@@ -1,0 +1,72 @@
+# --- Sponsor and partner data: never commit ---
+data/*
+!data/.gitkeep
+
+# --- pi session transcripts written inside a workspace by scripts/launch.sh ---
+.pi-sessions/
+
+# --- Secrets ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+service-account*.json
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Editors ---
+.vscode/
+.idea/
+*.swp
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+dist/
+build/
+*.egg-info/
+
+# --- Node ---
+node_modules/
+.next/
+.vite/
+npm-debug.log*
+pnpm-debug.log*
+yarn-error.log*
+
+# --- Rust ---
+target/
+
+# --- Misc ---
+.cache/
+*.log
+
+
+node_modules/
+
+# --- OpenTofu / Terraform ---
+# State holds every attribute in plaintext, including secrets. Never commit it.
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+override.tf
+override.tf.json
+
+# --- Claude Code ---
+# Worktrees live here. Project settings and skills under .claude/ stay committable.
+.claude/worktrees/
+
+# Built into the Pages artifact from demo/, never committed
+site/Norrin_Pitch.pdf

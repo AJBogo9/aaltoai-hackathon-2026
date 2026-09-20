@@ -1,0 +1,1026 @@
+{
+ "generated_from": "reports/ (unmodified)",
+ "n_units": 18,
+ "n_findings": 31,
+ "n_events": 20,
+ "teaching_order": [
+  "unit_01",
+  "unit_02",
+  "unit_04",
+  "unit_05",
+  "unit_08",
+  "unit_13",
+  "unit_16",
+  "unit_18",
+  "unit_06",
+  "unit_07",
+  "unit_10",
+  "unit_12",
+  "unit_14",
+  "unit_15",
+  "unit_03",
+  "unit_09",
+  "unit_11",
+  "unit_17"
+ ],
+ "column_schema": [
+  {
+   "column": "sample",
+   "confidence": 0.3,
+   "evidence": "name matches an index column",
+   "role": "index",
+   "type": "counter"
+  },
+  {
+   "column": "timestamp",
+   "confidence": 0.3,
+   "evidence": "name matches an index column",
+   "role": "index",
+   "type": "counter"
+  },
+  {
+   "column": "tag_01",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_02",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_03",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_04",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_05",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_06",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_07",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_08",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_09",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_10",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_11",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_12",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_13",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_14",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_15",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_16",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_17",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_18",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_19",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_20",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_21",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_22",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_23",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_24",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_25",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_26",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_27",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_28",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_29",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_30",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_31",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_32",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_33",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_34",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_35",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_36",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_37",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_38",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_39",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_40",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_41",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_42",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_43",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_44",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_45",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_46",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_47",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_48",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_49",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_50",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_51",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  },
+  {
+   "column": "tag_52",
+   "confidence": 0.0,
+   "evidence": "not inferable from unlabelled data",
+   "role": "observed",
+   "type": "unknown"
+  }
+ ],
+ "units": {
+  "unit_01": {
+   "unit": "unit_01",
+   "file": "unit_01.csv",
+   "rows": null,
+   "verdict": "clean",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [],
+   "n_events": 0,
+   "events": []
+  },
+  "unit_02": {
+   "unit": "unit_02",
+   "file": "unit_02.csv",
+   "rows": null,
+   "verdict": "clean",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [],
+   "n_events": 0,
+   "events": []
+  },
+  "unit_03": {
+   "unit": "unit_03",
+   "file": "unit_03.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "measurement"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "measurement",
+     "fault_type": "bias_step",
+     "window": [
+      89,
+      178
+     ],
+     "onset_estimate": 89,
+     "primary_column": "tag_05",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.3,
+     "severity": "medium",
+     "evidence": {
+      "tag_05": "block-median jump of 6.0 robust sigma at block 1; no other column jumps in that block"
+     },
+     "event_id": "unit_03:e1"
+    }
+   ]
+  },
+  "unit_04": {
+   "unit": "unit_04",
+   "file": "unit_04.csv",
+   "rows": null,
+   "verdict": "clean",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [],
+   "n_events": 0,
+   "events": []
+  },
+  "unit_05": {
+   "unit": "unit_05",
+   "file": "unit_05.csv",
+   "rows": null,
+   "verdict": "clean",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [],
+   "n_events": 0,
+   "events": []
+  },
+  "unit_06": {
+   "unit": "unit_06",
+   "file": "unit_06.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "record"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "record",
+     "fault_type": "frozen_channel",
+     "window": [
+      500,
+      620
+     ],
+     "onset_estimate": 500,
+     "primary_column": "tag_19",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.3,
+     "severity": "medium",
+     "evidence": {
+      "tag_19": "120 identical consecutive values from row 500"
+     },
+     "event_id": "unit_06:e1"
+    }
+   ]
+  },
+  "unit_07": {
+   "unit": "unit_07",
+   "file": "unit_07.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "record"
+   ],
+   "n_events": 4,
+   "events": [
+    {
+     "layer": "record",
+     "fault_type": "impossible_value",
+     "window": [
+      0,
+      227
+     ],
+     "onset_estimate": 0,
+     "primary_column": "tag_01",
+     "coupled_columns": [
+      "tag_03",
+      "tag_06"
+     ],
+     "n_columns": 3,
+     "confidence": 0.3,
+     "severity": "medium",
+     "evidence": {
+      "tag_01": "227 values more than 12 robust sigma from the median",
+      "tag_03": "227 values more than 12 robust sigma from the median",
+      "tag_06": "227 values more than 12 robust sigma from the median"
+     },
+     "event_id": "unit_07:e1"
+    },
+    {
+     "layer": "record",
+     "fault_type": "impossible_value",
+     "window": [
+      0,
+      726
+     ],
+     "onset_estimate": 0,
+     "primary_column": "tag_02",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.3,
+     "severity": "medium",
+     "evidence": {
+      "tag_02": "241 values more than 12 robust sigma from the median"
+     },
+     "event_id": "unit_07:e2"
+    },
+    {
+     "layer": "record",
+     "fault_type": "impossible_value",
+     "window": [
+      0,
+      175
+     ],
+     "onset_estimate": 0,
+     "primary_column": "tag_04",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.3,
+     "severity": "medium",
+     "evidence": {
+      "tag_04": "175 values more than 12 robust sigma from the median"
+     },
+     "event_id": "unit_07:e3"
+    },
+    {
+     "layer": "record",
+     "fault_type": "impossible_value",
+     "window": [
+      0,
+      261
+     ],
+     "onset_estimate": 0,
+     "primary_column": "tag_05",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.3,
+     "severity": "medium",
+     "evidence": {
+      "tag_05": "261 values more than 12 robust sigma from the median"
+     },
+     "event_id": "unit_07:e4"
+    }
+   ]
+  },
+  "unit_08": {
+   "unit": "unit_08",
+   "file": "unit_08.csv",
+   "rows": null,
+   "verdict": "clean",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [],
+   "n_events": 0,
+   "events": []
+  },
+  "unit_09": {
+   "unit": "unit_09",
+   "file": "unit_09.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "system"
+   ],
+   "n_events": 2,
+   "events": [
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      84,
+      167
+     ],
+     "onset_estimate": 84,
+     "primary_column": "tag_02",
+     "coupled_columns": [
+      "tag_11",
+      "tag_29",
+      "tag_43"
+     ],
+     "n_columns": 4,
+     "confidence": 0.3,
+     "severity": "high",
+     "evidence": {
+      "tag_02": "block-median jump of 8.4 robust sigma at block 1; 4 columns jump in the same block",
+      "tag_11": "block-median jump of 8.4 robust sigma at block 1; 4 columns jump in the same block",
+      "tag_29": "block-median jump of 4.1 robust sigma at block 1; 4 columns jump in the same block",
+      "tag_43": "block-median jump of 5.5 robust sigma at block 1; 4 columns jump in the same block"
+     },
+     "event_id": "unit_09:e1"
+    },
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      167,
+      251
+     ],
+     "onset_estimate": 167,
+     "primary_column": "tag_04",
+     "coupled_columns": [
+      "tag_17"
+     ],
+     "n_columns": 2,
+     "confidence": 0.3,
+     "severity": "high",
+     "evidence": {
+      "tag_04": "block-median jump of 5.0 robust sigma at block 2; 7 columns jump in the same block",
+      "tag_17": "block-median jump of 4.3 robust sigma at block 2; 7 columns jump in the same block"
+     },
+     "event_id": "unit_09:e2"
+    }
+   ]
+  },
+  "unit_10": {
+   "unit": "unit_10",
+   "file": "unit_10.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "record"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "record",
+     "fault_type": "missing_values",
+     "window": [
+      96,
+      690
+     ],
+     "onset_estimate": 96,
+     "primary_column": "tag_43",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.3,
+     "severity": "high",
+     "evidence": {
+      "tag_43": "15 missing/unparseable cells, first at row 96"
+     },
+     "event_id": "unit_10:e1"
+    }
+   ]
+  },
+  "unit_11": {
+   "unit": "unit_11",
+   "file": "unit_11.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "measurement",
+    "record",
+    "system"
+   ],
+   "n_events": 4,
+   "events": [
+    {
+     "layer": "record",
+     "fault_type": "impossible_value",
+     "window": [
+      214,
+      217
+     ],
+     "onset_estimate": 214,
+     "primary_column": "tag_06",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.3,
+     "severity": "medium",
+     "evidence": {
+      "tag_06": "3 values more than 12 robust sigma from the median"
+     },
+     "event_id": "unit_11:e1"
+    },
+    {
+     "layer": "record",
+     "fault_type": "impossible_value",
+     "window": [
+      215,
+      216
+     ],
+     "onset_estimate": 215,
+     "primary_column": "tag_33",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.3,
+     "severity": "medium",
+     "evidence": {
+      "tag_33": "1 values more than 12 robust sigma from the median"
+     },
+     "event_id": "unit_11:e2"
+    },
+    {
+     "layer": "measurement",
+     "fault_type": "bias_step",
+     "window": [
+      172,
+      258
+     ],
+     "onset_estimate": 172,
+     "primary_column": "tag_30",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.3,
+     "severity": "medium",
+     "evidence": {
+      "tag_30": "block-median jump of 5.3 robust sigma at block 2; no other column jumps in that block"
+     },
+     "event_id": "unit_11:e3"
+    },
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      258,
+      344
+     ],
+     "onset_estimate": 258,
+     "primary_column": "tag_36",
+     "coupled_columns": [
+      "tag_47",
+      "tag_50"
+     ],
+     "n_columns": 3,
+     "confidence": 0.3,
+     "severity": "high",
+     "evidence": {
+      "tag_36": "block-median jump of 7.1 robust sigma at block 3; 3 columns jump in the same block",
+      "tag_47": "block-median jump of 6.4 robust sigma at block 3; 3 columns jump in the same block",
+      "tag_50": "block-median jump of 6.0 robust sigma at block 3; 3 columns jump in the same block"
+     },
+     "event_id": "unit_11:e4"
+    }
+   ]
+  },
+  "unit_12": {
+   "unit": "unit_12",
+   "file": "unit_12.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "record"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "record",
+     "fault_type": "frozen_channel",
+     "window": [
+      54,
+      64
+     ],
+     "onset_estimate": 54,
+     "primary_column": "tag_12",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.3,
+     "severity": "medium",
+     "evidence": {
+      "tag_12": "10 identical consecutive values from row 54"
+     },
+     "event_id": "unit_12:e1"
+    }
+   ]
+  },
+  "unit_13": {
+   "unit": "unit_13",
+   "file": "unit_13.csv",
+   "rows": null,
+   "verdict": "clean",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [],
+   "n_events": 0,
+   "events": []
+  },
+  "unit_14": {
+   "unit": "unit_14",
+   "file": "unit_14.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "record"
+   ],
+   "n_events": 2,
+   "events": [
+    {
+     "layer": "record",
+     "fault_type": "impossible_value",
+     "window": [
+      76,
+      679
+     ],
+     "onset_estimate": 76,
+     "primary_column": "tag_07",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.3,
+     "severity": "medium",
+     "evidence": {
+      "tag_07": "8 values more than 12 robust sigma from the median"
+     },
+     "event_id": "unit_14:e1"
+    },
+    {
+     "layer": "record",
+     "fault_type": "impossible_value",
+     "window": [
+      113,
+      579
+     ],
+     "onset_estimate": 113,
+     "primary_column": "tag_40",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.3,
+     "severity": "medium",
+     "evidence": {
+      "tag_40": "6 values more than 12 robust sigma from the median"
+     },
+     "event_id": "unit_14:e2"
+    }
+   ]
+  },
+  "unit_15": {
+   "unit": "unit_15",
+   "file": "unit_15.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "record"
+   ],
+   "n_events": 1,
+   "events": [
+    {
+     "layer": "record",
+     "fault_type": "frozen_channel",
+     "window": [
+      475,
+      485
+     ],
+     "onset_estimate": 475,
+     "primary_column": "tag_52",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.3,
+     "severity": "medium",
+     "evidence": {
+      "tag_52": "10 identical consecutive values from row 475"
+     },
+     "event_id": "unit_15:e1"
+    }
+   ]
+  },
+  "unit_16": {
+   "unit": "unit_16",
+   "file": "unit_16.csv",
+   "rows": null,
+   "verdict": "clean",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [],
+   "n_events": 0,
+   "events": []
+  },
+  "unit_17": {
+   "unit": "unit_17",
+   "file": "unit_17.csv",
+   "rows": null,
+   "verdict": "faulted",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [
+    "record",
+    "system"
+   ],
+   "n_events": 3,
+   "events": [
+    {
+     "layer": "record",
+     "fault_type": "impossible_value",
+     "window": [
+      0,
+      145
+     ],
+     "onset_estimate": 0,
+     "primary_column": "tag_37",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.3,
+     "severity": "medium",
+     "evidence": {
+      "tag_37": "141 values more than 12 robust sigma from the median"
+     },
+     "event_id": "unit_17:e1"
+    },
+    {
+     "layer": "record",
+     "fault_type": "impossible_value",
+     "window": [
+      1,
+      145
+     ],
+     "onset_estimate": 1,
+     "primary_column": "tag_32",
+     "coupled_columns": [],
+     "n_columns": 1,
+     "confidence": 0.3,
+     "severity": "medium",
+     "evidence": {
+      "tag_32": "63 values more than 12 robust sigma from the median"
+     },
+     "event_id": "unit_17:e2"
+    },
+    {
+     "layer": "system",
+     "fault_type": "step_change",
+     "window": [
+      164,
+      247
+     ],
+     "onset_estimate": 164,
+     "primary_column": "tag_16",
+     "coupled_columns": [
+      "tag_25",
+      "tag_32",
+      "tag_37"
+     ],
+     "n_columns": 4,
+     "confidence": 0.3,
+     "severity": "high",
+     "evidence": {
+      "tag_16": "block-median jump of 6.8 robust sigma at block 2; 5 columns jump in the same block",
+      "tag_25": "block-median jump of 4.5 robust sigma at block 2; 5 columns jump in the same block",
+      "tag_32": "block-median jump of 11.3 robust sigma at block 2; 5 columns jump in the same block",
+      "tag_37": "block-median jump of 12.5 robust sigma at block 2; 5 columns jump in the same block"
+     },
+     "event_id": "unit_17:e3"
+    }
+   ]
+  },
+  "unit_18": {
+   "unit": "unit_18",
+   "file": "unit_18.csv",
+   "rows": null,
+   "verdict": "clean",
+   "clean_rationale": null,
+   "summary_line": null,
+   "layers": [],
+   "n_events": 0,
+   "events": []
+  }
+ }
+}

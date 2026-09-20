@@ -1,0 +1,29 @@
+<!-- @dsCard group="Slide parts" height=300 width=1280 --><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Mono&display=swap">
+<style>
+  html,body{margin:0}
+  body{background:var(--paper-000);color:var(--ink-900);font-family:var(--font-sans)}
+  .stage{padding:var(--space-5)}
+  .cap{font-family:var(--font-mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-400);margin:0 0 var(--space-2)}
+  .band{display:flex;justify-content:space-between;align-items:baseline;color:var(--band-ink);
+        font-family:var(--font-mono);font-size:17px;line-height:20px;letter-spacing:.18em;
+        padding:var(--space-2) var(--space-5);border-radius:var(--radius-flat)}
+  .band.pub{background:var(--band-public)} .band.con{background:var(--band-confidential)} .band.res{background:var(--band-restricted)}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6)}
+  .lab{font-family:var(--font-mono);font-size:18px;letter-spacing:.16em;color:var(--ink-400);
+       border-bottom:1px solid var(--rule-200);padding-bottom:var(--space-1);margin:0}
+  .val{font-family:var(--font-mono);font-size:22px;line-height:1.6;color:var(--ink-900);margin:var(--space-3) 0 0}
+  .con{color:var(--text-confidential)} .pub{color:var(--text-public)}
+  .kick{font-family:var(--font-serif);font-size:23px;color:var(--ink-900);border-top:1px solid var(--rule-200);
+        padding-top:var(--space-3);margin:var(--space-4) 0 0}
+  .kick b{font-weight:400;color:var(--text-confidential)} .kick i{font-style:normal;color:var(--text-public)}
+</style>
+<div class="stage">
+  <div class="cols">
+    <div><p class="lab">THE FOLDER SAYS</p>
+      <p class="val">demo/confidential-hr/<br>.confidentiality.json<br>{ "level": <span class="con">"confidential"</span> }</p></div>
+    <div><p class="lab">THE PROVIDER IS CLEARED FOR</p>
+      <p class="val">google<br><span class="pub">public</span></p></div>
+  </div>
+  <p class="kick"><i>public</i> is below <b>confidential</b>, so google gets no access to this folder at all. Not even a file listing.</p>
+</div>

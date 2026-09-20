@@ -1,0 +1,28 @@
+<!-- @dsCard group="Marking" height=180 width=1280 --><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Mono&display=swap">
+<style>
+  html,body{margin:0}
+  body{background:var(--paper-000);color:var(--ink-900);font-family:var(--font-sans)}
+  .stage{padding:var(--space-5)}
+  .cap{font-family:var(--font-mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-400);margin:0 0 var(--space-2)}
+  .band{display:flex;justify-content:space-between;align-items:baseline;color:var(--band-ink);
+        font-family:var(--font-mono);font-size:17px;line-height:20px;letter-spacing:.18em;
+        padding:var(--space-2) var(--space-5);border-radius:var(--radius-flat)}
+  .band.pub{background:var(--band-public)} .band.con{background:var(--band-confidential)} .band.res{background:var(--band-restricted)}
+
+  .chips{display:flex;gap:var(--space-3);align-items:center;margin-bottom:var(--space-4)}
+  .chip{font-family:var(--font-mono);font-size:18px;padding:4px 12px;color:var(--band-ink);border-radius:var(--radius-chip)}
+  .prose{font-family:var(--font-serif);font-size:24px;line-height:1.35;color:var(--ink-600)}
+  .prose b{font-weight:400}
+  .t-pub{color:var(--text-public)} .t-con{color:var(--text-confidential)} .t-res{color:var(--text-restricted)}
+</style>
+<div class="stage">
+  <p class="cap">chips: the level as a value</p>
+  <div class="chips">
+    <span class="chip" style="background:var(--band-public)">public</span>
+    <span class="chip" style="background:var(--band-confidential)">confidential</span>
+    <span class="chip" style="background:var(--band-restricted)">restricted</span>
+  </div>
+  <p class="cap">the same levels set as text on paper</p>
+  <p class="prose"><b class="t-pub">public</b> is below <b class="t-con">confidential</b>, so google gets no access
+  to this folder at all. Not even a file listing.</p>
+</div>

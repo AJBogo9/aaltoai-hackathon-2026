@@ -1,0 +1,14 @@
+{
+  "name": "pi-ext-confidentiality-broker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "node --test \"*.test.ts\""
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "0.85.1",
+    "@types/node": "^24",
+    "typescript": "^5"
+  }
+}
