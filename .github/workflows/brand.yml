@@ -1,0 +1,38 @@
+name: Marked surfaces match the policy
+
+# The design system's one rule is that the artifact is marked by the system it
+# describes, so a marking that disagrees with .pi/confidentiality.json is a bug in
+# the product's central claim, not a typo. This check is what noticed the GitHub
+# banner still saying "4 of 5" providers a day after verda was added.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  brand:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # Standard library only, so there is nothing to install. Without inkscape the two
+      # cover SVGs cannot be re-flattened here; their clearance ladder is checked against
+      # the policy instead, which is the fact that goes stale.
+      - name: Every generated surface is current
+        run: python3 scripts/brand.py --check
+
+      # The tests are TypeScript run directly, so they need a Node that strips types.
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+
+      - name: The broker's tests pass
+        working-directory: .pi/extensions/confidentiality-broker
+        run: |
+          npm ci --ignore-scripts
+          npm test

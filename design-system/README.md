@@ -1,3 +1,7 @@
+<!-- brand:marking -->
+`PUBLIC` · cleared: google, openai, mistral, verda, lemonade, ollama
+<!-- /brand:marking -->
+
 # Marked Document
 
 The visual system for **confidentiality-broker**: label based access control for LLM agents, built for
@@ -38,11 +42,13 @@ with build cost removed from the score.
 
 The band is a claim you make out loud, so it has to be true of the page it sits on:
 
+<!-- brand:marking-table -->
 | The page shows | Band | Fill token |
 | --- | --- | --- |
-| Nothing confidential (a mechanism diagram, the roadmap, the title) | `PUBLIC` and the five cleared providers | `band-public` |
+| Nothing confidential (a mechanism diagram, the roadmap, the title) | `PUBLIC` and the six cleared providers | `band-public` |
 | A confidential path, filename or field name | `CONFIDENTIAL` and the four cleared providers | `band-confidential` |
 | Anything from the health workspace | `RESTRICTED` and the two cleared providers | `band-restricted` |
+<!-- /brand:marking-table -->
 
 The right hand side of the band lists the providers cleared at that level, read from
 `.pi/confidentiality.json`. When the file changes, the bands change. A band that does not
@@ -91,6 +97,35 @@ prints: `✗` for a refusal, `✓` for an allow, `●` for the session led. They
 Mono at text size and coloured `signal-refuse` or `signal-allow`. Do not substitute an icon
 font, and do not add a lock, a shield or a key: the argument is that this is bookkeeping,
 not security theatre.
+
+## Where each surface is written down
+
+| Guideline | Surface |
+| --- | --- |
+| [`20-deck.md`](guidelines/20-deck.md) | The nine slides, built with python-pptx |
+| [`30-github-cover.md`](guidelines/30-github-cover.md) | The banner, the badges, the marking line |
+| [`40-web.md`](guidelines/40-web.md) | The Pages site and the component previews |
+| [`50-terminal.md`](guidelines/50-terminal.md) | The launcher band and the footer status line |
+| [`60-generated-documents.md`](guidelines/60-generated-documents.md) | The audit reports, and every page we author |
+
+## One generator, or it drifts
+
+`tokens.json` and `.pi/confidentiality.json` own the facts. **`scripts/brand.py` turns them
+into every surface that states one**, and `python3 scripts/brand.py --check` fails when a
+committed surface disagrees:
+
+| It writes | For |
+| --- | --- |
+| `tokens.css`, `tokens.py`, `tokens.sh` | web, python, bash |
+| `brand.generated.ts` | the broker's terminal palette |
+| `marked.mplstyle` | matplotlib, on the same foundations |
+| `docs/cover-light.svg`, `docs/cover-dark.svg`, `site/social-card.png`, `site/favicon.svg` | the repository's first frame |
+| the marking line and badges in the READMEs, the workspace table in `demo/DEMO.md` | every page we author |
+
+This is not tidiness. The banner said `CLEARED: GOOGLE, OPENAI, MISTRAL, LEMONADE, OLLAMA`
+and `4 of 5` for a day after `verda` was added, because five surfaces each held their own
+copy of a list that lives in one file. A band that does not match its page is worse than no
+band, and the same is true of a cover.
 
 ## Using a token
 

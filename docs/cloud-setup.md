@@ -1,3 +1,7 @@
+<!-- brand:marking -->
+`PUBLIC` · cleared: google, openai, mistral, verda, lemonade, ollama
+<!-- /brand:marking -->
+
 # Using the Verda cloud
 
 We have a shared Verda project, `aaltoai-hackathon`, funded with **$286.50** of

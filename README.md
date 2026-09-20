@@ -4,12 +4,14 @@
        alt="confidentiality-broker: access control for LLM agents. The folder carries a label, the provider carries a clearance, and the broker compares them on every tool call.">
 </picture>
 
+<!-- brand:marking -->
 `PUBLIC` · cleared: google, openai, mistral, verda, lemonade, ollama
 
-![tests](https://img.shields.io/badge/tests-111%20passing-00703C)
+![tests](https://img.shields.io/badge/tests-114%20passing-00703C)
 ![levels](https://img.shields.io/badge/levels-3-0B3D91)
 ![models](https://img.shields.io/badge/models-local%20or%20EU-3C4048)
-![event](https://img.shields.io/badge/AaltoAI%202026-Norrin-8C8C8C)
+![AaltoAI 2026](https://img.shields.io/badge/AaltoAI%202026-Norrin-8C8C8C)
+<!-- /brand:marking -->
 
 # confidentiality-broker
 
@@ -22,7 +24,7 @@ Two halves, one for each half of the brief:
 
 - **The broker** ([`.pi/extensions/confidentiality-broker/`](.pi/extensions/confidentiality-broker/)) confines
   the agent to one labelled folder and refuses any provider that is not cleared for that
-  label. 111 tests.
+  label. 114 tests.
 - **The audit** ([`hyvätraportit/`](hyvätraportit/)) infers what 52 unnamed sensor tags are
   from 18 undocumented recordings, and separates real process faults from broken instruments.
 
@@ -103,7 +105,7 @@ The footer status line shows the whole state while you do it:
 Run the tests:
 
 ```bash
-cd .pi/extensions/confidentiality-broker && npm install && npm test   # 111 tests
+cd .pi/extensions/confidentiality-broker && npm install && npm test   # 114 tests
 ```
 
 ## Try the audit
@@ -114,10 +116,10 @@ all the container has. (`requirements.txt` is for the exploratory notebook in
 
 ```bash
 # the evidence behind the headline finding, straight from the CSVs
-python3 .pi/skills/read-report/show_window.py unit_06 tag_19 tag_08 --window 500 619
+python3 .pi/skills/audit/show_window.py unit_06 tag_19 tag_08 --window 500 619
 
 # rebuild the walkthrough from the reports, which should leave the committed file unchanged
-python3 .pi/skills/read-report/build_session.py --reports hyvätraportit
+python3 .pi/skills/audit/build_session.py --reports hyvätraportit
 ```
 
 The first prints tag_19's scatter collapsing to exactly 0 across the window while tag_08
@@ -199,8 +201,8 @@ The full list, including the parts we did not have time to verify, is in
 
 | Path | What |
 | --- | --- |
-| [`.pi/extensions/confidentiality-broker/`](.pi/extensions/confidentiality-broker/) | The broker: policy, path resolution, the gate, the status line, 111 tests |
-| [`.pi/skills/`](.pi/skills/) | The audit skills: `analyze` (the real pass), `analyze-fast` (the fast pass), `read-report` (the walkthrough) |
+| [`.pi/extensions/confidentiality-broker/`](.pi/extensions/confidentiality-broker/) | The broker: policy, path resolution, the gate, the status line, 114 tests |
+| [`.pi/skills/`](.pi/skills/) | The audit skills: `analyze` (the real pass), `analyze-fast` (the fast pass), `audit` (the walkthrough) |
 | [`sensordata/`](sensordata/) | The 18 undocumented recordings, plus [`MANIFEST.md`](sensordata/MANIFEST.md) |
 | [`hyvätraportit/`](hyvätraportit/) | **The audit output.** Start with `summary.md` |
 | [`reports/`](reports/) | The fast low accuracy pass. Not for decisions |

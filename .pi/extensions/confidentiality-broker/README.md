@@ -1,3 +1,7 @@
+<!-- brand:marking -->
+`PUBLIC` · cleared: google, openai, mistral, verda, lemonade, ollama
+<!-- /brand:marking -->
+
 # confidentiality-broker
 
 A [pi](https://pi.dev) extension that runs the agent on one folder, the **workspace**, and stops data from

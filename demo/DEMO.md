@@ -1,6 +1,6 @@
 # Demo script
 
-Four fake workspaces, and providers at each level (see `.pi/confidentiality.json`):
+The fake workspaces, and providers at each level (see `.pi/confidentiality.json`):
 
 | Provider | Where it runs | Clearance |
 |---|---|---|
@@ -8,12 +8,15 @@ Four fake workspaces, and providers at each level (see `.pi/confidentiality.json
 | mistral, verda | cloud, EU | confidential |
 | lemonade, ollama | local | restricted |
 
+<!-- brand:workspaces -->
 | Workspace | Label | Providers cleared |
 |---|---|---|
-| `demo/public-docs` | public | google, openai, mistral, verda, lemonade, ollama |
-| `demo/confidential-hr` | confidential | mistral, verda, lemonade, ollama |
-| `demo/restricted-health` | restricted | lemonade, ollama |
-| `demo/restricted-plant` | restricted | lemonade, ollama |
+| `demo/confidential-hr` | `confidential` | mistral, verda, lemonade, ollama |
+| `demo/confidential-plant` | `confidential` | mistral, verda, lemonade, ollama |
+| `demo/public-docs` | `public` | google, openai, mistral, verda, lemonade, ollama |
+| `demo/restricted-health` | `restricted` | lemonade, ollama |
+| `demo/restricted-plant` | `restricted` | lemonade, ollama |
+<!-- /brand:workspaces -->
 
 All data is made up. Each session is bound to one workspace: `scripts/launch.sh <folder>` starts pi in a
 container where only that folder is writable. Use `/model` to switch provider. Watch the footer at every step.
@@ -67,10 +70,10 @@ request works.
 folder, exit and run `scripts/launch.sh` again.
 
 ## 9. The launcher refuses bad workspaces
-- `scripts/launch.sh .` — the project folder cannot be a workspace.
-- `scripts/launch.sh demo` — no `.confidentiality.json`.
-- `scripts/launch.sh --dry-run demo/public-docs` — checks and prints the command without starting pi.
-- `scripts/launch.sh --offline demo/restricted-health` — same session with no network at all. Nothing can
+- `scripts/launch.sh .`: the project folder cannot be a workspace.
+- `scripts/launch.sh demo`: no `.confidentiality.json`.
+- `scripts/launch.sh --dry-run demo/public-docs`: checks and prints the command without starting pi.
+- `scripts/launch.sh --offline demo/restricted-health`: same session with no network at all. Nothing can
   leave the machine, and no provider is reachable either, so use it to show containment rather than to run a
   model.
 

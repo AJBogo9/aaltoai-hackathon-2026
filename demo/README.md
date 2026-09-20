@@ -1,7 +1,11 @@
+<!-- brand:marking -->
+`PUBLIC` · cleared: google, openai, mistral, verda, lemonade, ollama
+<!-- /brand:marking -->
+
 # demo workspaces
 
 Four self-contained workspaces for demoing `confidentiality-broker` together with the
-`analyze` / `analyze-fast` / `read-report` skills. Every byte in here is invented.
+`analyze` / `analyze-fast` / `audit` skills. Every byte in here is invented.
 Nothing is partner data.
 
 `demo/` itself carries no label, because it is a folder of workspaces rather than a
