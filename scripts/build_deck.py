@@ -463,8 +463,8 @@ def slide_questions(prs, policy):
          "It never moves. The folder is on the operator's machine, and only a provider cleared at or "
          "above its label sees any of it."),
         ("Is this GDPR?",
-         "No. The traces are simulated and have no data subjects. The argument is trade secret and "
-         "operational confidentiality, which is what an operator will not post to a US API."),
+         "No. The traces are simulated, so there are no data subjects. The argument is trade secret "
+         "and operational confidentiality."),
     ]
     y = 196
     for question, answer in pairs:
