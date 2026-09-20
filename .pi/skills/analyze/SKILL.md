@@ -12,15 +12,16 @@ problem rather than a real process change — an operator needs to know which
 channels to distrust, separately from what the plant actually did. Run end
 to end, no clarifying questions.
 
-**The data is in the workspace this pi instance was given with `/workspace`** —
+**The data is in the workspace this pi instance was launched on** —
 the absolute path is in your system prompt, under `## Workspace`. Read the CSVs
 from the first of `<workspace>/sensordata`, `<workspace>/data`, or the workspace
 root itself that holds them, and write every report inside that same workspace.
 Do not resolve paths against this skill's own location — it may be installed
 outside the workspace — and do not use the working directory, which pi requires
 to sit *outside* the workspace, so writes there are blocked. Every `reports/...`
-path below means `<workspace>/reports/...`. If no workspace is set, stop and ask
-the user to run `/workspace <folder>`.
+path below means `<workspace>/reports/...`. If no workspace is set, stop and tell
+the user to exit and start pi with `scripts/launch.sh <folder>`; the workspace is
+fixed at launch and cannot be changed during a session.
 
 If the person asks for speed over accuracy — a demo, a smoke test, "just get
 something out" — follow `references/fast-pass.md` instead of the rest of this

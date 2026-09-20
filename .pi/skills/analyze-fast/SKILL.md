@@ -14,8 +14,8 @@ audit, use `analyze`.
 
 ## Do exactly this
 
-Pass the workspace folder this pi instance was given with `/workspace` — it is
-named in your system prompt, under `## Workspace`:
+Pass the workspace folder this pi instance was launched on — it is named in your
+system prompt, under `## Workspace`:
 
 ```bash
 python3 .pi/skills/analyze-fast/fast_report.py --workspace /abs/path/to/workspace

@@ -11,7 +11,7 @@ by file, do not iterate, do not verify.
    holds `*.csv`, and write to `<workspace>/reports`. Do not resolve paths
    against this file's location or the working directory — pi keeps cwd
    outside the workspace and blocks writes there. No workspace set: stop and
-   ask the user to run `/workspace <folder>`.
+   tell the user to restart pi with `scripts/launch.sh <folder>`.
 1. Write **one** Python 3 script (stdlib only: `csv`, `statistics`, `math` —
    no venv, no installs, no pandas) that loops over every CSV in that input
    folder and, per file, mechanically emits
