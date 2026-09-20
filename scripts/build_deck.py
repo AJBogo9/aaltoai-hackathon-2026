@@ -201,8 +201,7 @@ def slide_bind(prs, policy):
     """1. The pain. No solution anywhere on this page."""
     slide = new_slide(prs, policy, "restricted")
     eyebrow(slide, "The bind")
-    bottom = headline(slide, "The data that needs an agent is the data you cannot send", lines=2)
-    sub(slide, "Eighteen recordings, fifty-two unnamed tags, no documentation and no units.", bottom + S4)
+    headline(slide, "The data that needs an agent is the data you cannot send", lines=2)
 
     body_y = 330
     col_w = (CONTENT_W - S6) // 2
@@ -218,9 +217,7 @@ def slide_bind(prs, policy):
 
     y = field_label(slide, right_x, body_y, col_w, "What it gives away")
     textbox(slide, right_x, y, col_w, 150, [
-        serif_run("Throughput. Recipe. Efficiency.\n", VALUE),
-        serif_run("A plant's traces are its trade secret, which is why they do not "
-                  "go to an API in another jurisdiction.", SUB, INK_600),
+        serif_run("Throughput.\nRecipe.\nEfficiency.", VALUE + 4),
     ], line_spacing=1.45)
 
     kick(slide, "So the operator picks one: hand the plant's fingerprint to a US API, "
@@ -255,16 +252,12 @@ def slide_injection(prs, policy):
     textbox(slide, right_x, block_y, right_w, 40, [serif_run("It obeyed all three", SUB + 2, bold=True)])
     hairline(slide, block_y + 44, right_x, right_w)
 
-    rows = [
-        ("Ran a shell command", "cat /etc/passwd"),
-        ("Read outside the project", "~/.pi/agent/auth.json"),
-        ("Wrote into a public folder", "../public-docs/leak.txt"),
-    ]
-    y = block_y + 70
-    for title, value in rows:
-        textbox(slide, right_x, y, right_w, 28, [serif_run(title, LABEL + 1, INK_900)])
-        textbox(slide, right_x, y + 26, right_w, 26, [mono_run(value, LEVEL_COLOR["restricted"], size=15)])
-        y += 78
+    # The paths themselves are already in red in the note, so they are not printed twice.
+    rows = ["Ran a shell command", "Read outside the project", "Wrote into a public folder"]
+    y = block_y + 74
+    for title in rows:
+        textbox(slide, right_x, y, right_w, 70, [serif_run(title, SUB, INK_900)], line_spacing=1.3)
+        y += 92
 
     kick(slide, "Nobody typed that. It came out of the handover note the agent was asked to read.")
 
@@ -274,8 +267,8 @@ def slide_routing(prs, policy):
     slide = new_slide(prs, policy, "public")
     eyebrow(slide, "What we built")
     bottom = headline(slide, "The folder decides which model sees it")
-    sub(slide, "Not the prompt, where the model can be talked out of it. The broker compares the "
-               "folder's label with the provider's clearance on every single tool call.", bottom + S4)
+    sub(slide, "The broker compares the folder's label with the provider's clearance, "
+               "on every tool call.", bottom + S4)
 
     left_w = 660
     right_x = GUTTER + left_w + S6
@@ -283,7 +276,7 @@ def slide_routing(prs, policy):
 
     rows = [
         ("demo/restricted-plant/", "restricted", "the raw rows: 18 recordings, 52 tags",
-         "lemonade, ollama", "on this machine, and nowhere else"),
+         "lemonade, ollama", "no cloud model, not even the EU one"),
         ("demo/confidential-plant/", "confidential", "the derived fingerprints the audit produced",
          "mistral, verda, lemonade, ollama", "the Finnish endpoint may, Google may not"),
     ]
@@ -354,16 +347,16 @@ def slide_evidence(prs, policy):
     y = 360
     left_y = field_label(slide, GUTTER, y, col_w, "It fails closed")
     textbox(slide, GUTTER, left_y, col_w, 90, [serif_run(
-        "No folder set, an unreadable policy, or a provider it does not know: every file tool is "
-        "refused, and the refusal names the check that refused it.", LABEL + 1, INK_600)], line_spacing=1.4)
+        "No folder, no policy, no known provider: every file tool refuses, and names the check.",
+        SUB, INK_600)], line_spacing=1.4)
 
     right_y = field_label(slide, right_x, y, col_w, "bash is contained")
     textbox(slide, right_x, right_y, col_w, 90, [serif_run(
-        "It runs only inside the launcher's container, where the workspace is the only writable "
-        "folder, and only for a provider cleared for the label.", LABEL + 1, INK_600)], line_spacing=1.4)
+        "It runs only in the container, where the workspace is the only writable folder.",
+        SUB, INK_600)], line_spacing=1.4)
 
-    kick(slide, "It is a guardrail, not a sandbox. The container is still the real boundary, and a "
-                "clearance is a declaration we do not verify.")
+    kick(slide, "A guardrail, not a sandbox: the container is the real boundary, and a clearance "
+                "is declared, not verified.")
 
 
 def slide_team(prs, policy):
