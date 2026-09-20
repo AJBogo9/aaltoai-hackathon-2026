@@ -12,6 +12,8 @@
 # cleared below the workspace label gets no tools and no messages; the confidentiality broker extension enforces that.
 # The workspace cannot be changed after launch: start a new session to use another one.
 # --dry-run runs the check and prints the command without starting pi.
+# --offline removes the container's network. The broker decides which PROVIDER sees data; it does not inspect
+# bash commands, so without --offline anything the agent can run can also reach the network.
 
 # Sourcing would run set -e and exit inside your own shell and close the terminal.
 if (return 0 2>/dev/null); then
@@ -23,10 +25,14 @@ set -euo pipefail
 
 usage() {
   cat >&2 <<'EOF'
-usage: scripts/launch.sh [--dry-run] [--rebuild] <workspace> [-- pi args...]
+usage: scripts/launch.sh [--dry-run] [--rebuild] [--offline] <workspace> [-- pi args...]
 
   workspace  folder with a .confidentiality.json, e.g. demo/confidential-hr
   --rebuild  rebuild the image first (needed after the Dockerfile changes)
+  --offline  run with no network at all (docker --network none). The workspace
+             then cannot leave the machine over the network, but NO provider is
+             reachable either, including ollama and lemonade on the host, so use
+             it to show containment rather than to run a model.
   pi args    passed to pi after `--`, e.g. -- --provider mistral
 
 environment:
@@ -51,12 +57,14 @@ ENV_LOCAL="$REPO/.env.local"
 
 DRY_RUN=0
 REBUILD=0
+OFFLINE=0
 POSITIONAL=()
 PI_EXTRA=()
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --dry-run) DRY_RUN=1 ;;
     --rebuild) REBUILD=1 ;;
+    --offline) OFFLINE=1 ;;
     -h | --help) usage ;;
     --)
       shift
@@ -173,14 +181,23 @@ if [[ ${#KEY_ARGS[@]} -eq 0 && ${#VERDA_EXT_ARGS[@]} -eq 0 ]]; then
   echo "launch: warning: no provider key found (GEMINI/OPENAI/MISTRAL/ANTHROPIC_API_KEY in the environment, or VERDA_API_KEY in .env.local); only local providers will work." >&2
 fi
 
+# --- Network. The broker gates which PROVIDER sees data; it does not inspect bash commands, so anything the
+# agent can run in the container can also reach the network. Open by default, because every cloud provider and
+# the host-gateway route to a local ollama need it. --offline removes it entirely: containment you can show,
+# at the cost of no model being reachable.
+NET_ARGS=(--add-host=host.docker.internal:host-gateway)
+if [[ $OFFLINE -eq 1 ]]; then
+  NET_ARGS=(--network none)
+fi
+
 # --- Start pi. Only /workspace is writable; everything else in the container is read-only.
 TTY_ARGS=(-i)
 if [[ -t 0 && -t 1 ]]; then TTY_ARGS=(-it); fi
 
 RUN=("$RT" run --rm --init "${TTY_ARGS[@]}" "${USER_ARGS[@]}"
+  "${NET_ARGS[@]}"
   --read-only --tmpfs /tmp:rw,mode=1777,size=512m
   --cap-drop=ALL --security-opt=no-new-privileges --pids-limit=512 --memory=4g --memory-swap=4g
-  --add-host=host.docker.internal:host-gateway
   --mount "type=bind,src=$WS,dst=/workspace"
   --mount "type=bind,src=$WS/.confidentiality.json,dst=/workspace/.confidentiality.json,readonly"
   --mount "type=bind,src=$GUARD,dst=/opt/guard/extensions/confidentiality-broker,readonly"
@@ -207,6 +224,11 @@ RUN+=("$IMAGE" pi
 RUN+=(${PI_EXTRA[@]+"${PI_EXTRA[@]}"})
 
 echo "launch: workspace $WS is labeled $LEVEL. Providers cleared for it: ${CLEARED:-(none listed)}. Any other provider gets no tools." >&2
+if [[ $OFFLINE -eq 1 ]]; then
+  echo "launch: --offline: the container has no network, so no provider is reachable." >&2
+else
+  echo "launch: the container has network access. bash is not command-checked, so treat the container as the boundary; --offline removes the network." >&2
+fi
 if [[ $DRY_RUN -eq 1 ]]; then
   echo "launch: dry run, not starting pi. Command:" >&2
   printf '%q ' "${RUN[@]}" >&2
