@@ -111,40 +111,6 @@ fixed rules for demo timing, and `audit` reads the resulting reports back out. A
 plain language rather than as slash commands: they are mounted outside the workspace, so the broker
 refuses the model's own read of the skill file.
 
-
-## Try the broker
-
-The policy and the labelled demo folders are already in this repo, so this runs as it is. The
-workspace is chosen when pi launches and cannot change during a session, so the agent runs on one
-labelled folder in a container where only that folder is writable:
-
-```bash
-scripts/launch.sh demo/confidential-hr        # add --dry-run to check without starting pi
-```
-
-| Step | Command | What should happen |
-| --- | --- | --- |
-| 1 | Launch on `demo/confidential-hr` with model **google**, then ask *list the files* | Refused. `google` is cleared `public`, the folder is `confidential`, so the message is withheld before the provider sees it. |
-| 2 | `/model ollama`, then ask *summarise employees.csv* | It works, on your machine. |
-| 3 | Still in that session: `/model google` | Withheld again. The session sits at the workspace label from its first message, so a `public` provider never gets a turn. |
-| 4 | `/workspaces` | Lists every labelled folder and its label. Nothing inside pi switches to one: exit and relaunch to use another. |
-
-The footer status line shows the whole state while you do it:
-
-```text
-● confidential-hr [confidential]  ·  google [public] ✗ no access  ·  session confidential ⛔ messages withheld
-```
-
-[`demo/DEMO.md`](demo/DEMO.md) has the full script, and the labelled workspaces under
-[`demo/`](demo/) hold invented data at one label each.
-
-Run the tests:
-
-```bash
-cd .pi/extensions/confidentiality-broker && npm install && npm test   # 114 tests
-```
-
-
 ## Team
 
 Andreas Bogossian, Matias Häkkinen and Tomi Hirviniemi.
