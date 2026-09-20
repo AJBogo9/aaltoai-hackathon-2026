@@ -74,12 +74,12 @@ COLOR = {
 }
 
 SPACE = {
-    "space-1": "6px",
-    "space-2": "12px",
-    "space-3": "18px",
-    "space-4": "26px",
-    "space-5": "38px",
-    "space-6": "58px"
+    "space-1": "8px",
+    "space-2": "14px",
+    "space-3": "24px",
+    "space-4": "36px",
+    "space-5": "64px",
+    "space-6": "88px"
 }
 
 #: Providers cleared to read each level, lowest clearance first.

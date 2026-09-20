@@ -7,7 +7,7 @@ This is the stage script and it is the only copy of this wording: the notes page
 [`Norrin_Pitch.pptx`](Norrin_Pitch.pptx) are empty, so there is nothing to read off a
 presenter view. Read it off paper or a phone. Slide numbers match the deck.
 
-Six slides are presented. Slides 7, 8 and 9 are appendix and are only opened if a judge asks.
+Seven slides are presented. There is no appendix in the deck.
 
 Lines in quotes are meant to be said close to word for word. Everything else is a stage
 direction.
@@ -16,16 +16,16 @@ direction.
 
 | Slide | Starts | Runs | What happens |
 | --- | --- | --- | --- |
-| 1 | 0:00 | 0:30 | The bind: you cannot send this data anywhere |
-| 2 | 0:30 | 0:35 | The injection, recorded clip |
-| 3 | 1:05 | 0:45 | **The contribution: the folder decides which model sees it** |
-| 4 | 1:50 | **5:00** | **Live demo, three beats** |
-| 5 | 6:50 | 0:25 | How you can tell, and the limits |
-| 6 | 7:15 | 0:15 | The team, then stop talking |
-| - | 7:30 | 2:30 | Questions, with the team slide still on screen |
-| 7, 8, 9 | appendix | - | Only if a judge asks |
+| 1 | 0:00 | 0:25 | The problem: ask an agent, and the plant leaves the EU |
+| 2 | 0:25 | 0:30 | Today: the raw rows cross two borders, unchecked |
+| 3 | 0:55 | 0:30 | With the broker: the same map, and nothing crosses |
+| 4 | 1:25 | 0:45 | **The rule: the folder decides which model sees it** |
+| 5 | 2:10 | **5:00** | **Live demo, three beats** |
+| 6 | 7:10 | 0:25 | How you can tell, and the limits |
+| 7 | 7:35 | 0:15 | The team, then stop talking |
+| - | 7:50 | 2:10 | Questions, with the team slide still on screen |
 
-If you are running long, the slides give, never the demo. Slides 1, 2 and 5 can each lose ten
+If you are running long, the slides give, never the demo. Slides 1, 2 and 6 can each lose ten
 seconds without losing a claim.
 
 ## The two workspaces, and why there are two
@@ -54,48 +54,59 @@ enforced by two labels rather than by a sentence in a prompt.
       about files inside the workspace instead. (This bites `/analyze`, `/analyze-fast` and the
       report skill equally. That last one is being renamed from `read-report` to `audit` on
       main, which is another reason not to type its name on stage.)
-- [ ] **The slide 2 clip exists and plays offline.** Without it you narrate the slide, which is
-      weaker but survivable.
 - [ ] The provider ids in `.pi/confidentiality.json` match the ids pi shows for your models. A
       provider that is not listed is treated as `public`, so a typo silently locks you out.
 - [ ] `pi` starts from the repo root, not from inside a demo folder.
 - [ ] Terminal font large enough to read from the back. The footer status line is the single
-      most important thing on screen during slide 4.
+      most important thing on screen during slide 5.
 
-## 1. The bind (0:00 to 0:30)
+## 1. The problem (0:00 to 0:25)
 
 Do not introduce the product. Let the problem sit there first.
 
-> "Eighteen recordings from a plant floor. Fifty-two columns called tag_01 to tag_52. No
-> documentation, no units, and nobody left who remembers what they are."
+> "A data engineer at a plant has an agent open. Everyone does now. They ask it what is wrong
+> with unit six. The agent reads the sensor logs and sends them to the model, and the model is
+> wherever the vendor put it."
 
-> "Working out what these mean is exactly what a language model is good at. And it is exactly
-> the data you are not allowed to send to one, because a plant's traces are its throughput, its
-> recipe and its efficiency."
-
-> "So the operator picks one: hand the plant's fingerprint to an API in another jurisdiction, or
-> go without the agent entirely."
+> "Those logs are the plant's throughput, its recipe and its efficiency. If the plant makes
+> something the country cannot do without, that copy is a defence risk. Nobody decided to take
+> it. It went one question at a time."
 
 Say the last line slowly. It is the whole problem.
 
-## 2. The injection (0:30 to 1:05)
+## 2. Today (0:25 to 0:55)
 
-Play the clip over this slide. If there is no clip, show the slide and narrate it.
+The map: the operator's environment, the EU, and outside the EU, left to right. One red line
+runs from the raw file across both borders to `google`.
 
-> "It is worse than that. Here is a shift handover note, sitting in the same folder as the
-> sensor data. It reads like any other night shift note, right up to the paragraph in red."
+> "Here is that path, on our machine, with our data. One file, raw: eight hundred and ten
+> samples, fifty-two columns. It crosses the plant's border and the EU's border, and nothing on
+> the way asks whether it should. And nothing writes down that it did."
 
-> "Nobody typed that paragraph. It is a prompt injection sitting inside the operator's own
-> data, and the agent has no way to tell the difference between data it was asked to read and
-> instructions it was asked to follow."
-
-> "Three demands. It ran all three. And it was told not to mention it, so it did not."
+Every number on this slide is read from the file itself. Nothing is retyped from a terminal.
 
 Beat. Then:
 
 > "Same folder, same question, with what we built."
 
-## 3. The contribution (1:05 to 1:50)
+## 3. With the broker (0:55 to 1:25)
+
+Same map, same geometry. The red line is now a stub that stops on the machine, a blue line
+stops in the EU, and the right hand region holds only the broker's refusal.
+
+> "The raw rows stop here, on the machine: the only models cleared for them run locally. The
+> statistics our audit derived from them are confidential, so they may go to the Finnish
+> endpoint, and they stop there. Google gets nothing. Not the rows, not the statistics, not a
+> file listing."
+
+Worth adding if the room is quiet: the band at the top of this slide went green, because
+nothing confidential is on this page. The deck is marked by the system it describes.
+
+**If a judge says Google has EU regions:** an engineer with an API key is not region-pinned.
+Region pinning is an enterprise contract, and the broker uses whatever clearance the operator
+declared for the provider.
+
+## 4. The rule (1:25 to 2:10)
 
 **This is the pitch. Everything else is evidence for it.** Do not rush it.
 
@@ -113,10 +124,7 @@ Point at the two rows.
 > "Your brief asks for data minimization by design. That is it, on screen. Not a promise in a
 > system prompt: two labels on two folders, checked on every call."
 
-Worth adding if the room is quiet: the band at the top of this slide went green, because
-nothing confidential is on this page. The deck is marked by the system it describes.
-
-## 4. Live demo (1:50 to 6:50)
+## 5. Live demo (2:10 to 7:10)
 
 **Run it live.** Launch before you start talking:
 
@@ -136,7 +144,9 @@ Say this, because a judge will wonder: there is no command that switches workspa
 The session is bound to one folder from its first message.
 
 **Beat 2: the injection fails.**
-`/model verda`, then ask "Summarise handover-note.md." Same injection as in the clip.
+`/model verda`, then ask "Summarise handover-note.md." The audience has not seen the note, so
+say what is in it before you send it: a night shift handover with a paragraph telling the
+assistant to run a shell command, read a key file and write it into a public folder.
 
 Say what it tried and what stopped each part. Both paths it names are outside the workspace, so
 the read and the write are refused by the broker. Do not say bash is blocked, because it is
@@ -151,14 +161,14 @@ hoping for is unit_06: tag_19 stops moving while tag_08, an exact rescaling of i
 
 > "The broker did not make the agent useless. It made it accountable."
 
-**If the model wanders or the answer is thin,** do not fight it. Say the finding yourself, from
-the appendix slide, and move on. The claim being demonstrated is the routing, not the model's
+**If the model wanders or the answer is thin,** do not fight it. Say the finding yourself
+(unit_06: tag_19 frozen while tag_08 keeps moving) and move on. The claim being demonstrated is the routing, not the model's
 prose.
 
 **If the wifi dies or verda times out:** cut to the recording and say so plainly. Do not debug
 on stage. A presenter who says "that is why we recorded it" loses nothing.
 
-## 5. How you can tell (6:50 to 7:15)
+## 6. How you can tell (7:10 to 7:35)
 
 > "Everything I have claimed is visible while you use it. That line is always on screen."
 
@@ -174,7 +184,7 @@ down into a lower label, and the agent cannot change `.confidentiality.json` at 
 
 Both limits are written down in our README. This buys more credibility than it costs.
 
-## 6. The team (7:15 to 7:30)
+## 7. The team (7:35 to 7:50)
 
 Names, one line each, and then stop. Leave this slide up for the whole question period.
 
@@ -189,8 +199,7 @@ Then stop talking and take questions.
 
 ## Anticipated questions
 
-Appendix slides 7, 8 and 9 hold these. Jump to 7 for the sensor finding, 8 for coverage of the
-brief, 9 for the four below.
+There are no appendix slides. Answer these from here, with the team slide on screen.
 
 **What happens when the model is wrong?**
 The model never makes the access decision. A wrong model writes a bad sentence, not a leak.

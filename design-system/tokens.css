@@ -21,12 +21,12 @@
   --font-sans: "PT Sans", system-ui, sans-serif;
   --font-mono: "PT Mono", ui-monospace, monospace;
 
-  --space-1: 6px;
-  --space-2: 12px;
-  --space-3: 18px;
-  --space-4: 26px;
-  --space-5: 38px;
-  --space-6: 58px;
+  --space-1: 8px;
+  --space-2: 14px;
+  --space-3: 24px;
+  --space-4: 36px;
+  --space-5: 64px;
+  --space-6: 88px;
   --radius-flat: 0;
   --radius-chip: 2px;
   --radius-panel: 6px;

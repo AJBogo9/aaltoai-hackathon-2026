@@ -1,11 +1,22 @@
 #!/usr/bin/env python3
 """Build demo/Norrin_Pitch.pptx from the Marked Document design system.
 
-Run:  uv run --with python-pptx scripts/build_deck.py
+The deck is generated again as of 2026-09-20. It had been hand-owned (THE TEAM moved,
+three appendix slides cut in LibreOffice) and main() no longer matched the file; the
+appendix slides are gone from this script too. The same morning the opening was
+rebuilt as a before and after: the stakes, the data path today, the same path with
+the broker, then the rule. The injection slide is no longer presented (it is beat 2
+of the live demo) and THE TEAM is last, on screen through the questions.
 
-Every value here comes from design-system/tokens.json, and every band string is
-derived from .pi/confidentiality.json rather than typed, so a change to the policy
-cannot leave a stale band on a slide.
+Keep it that way: edit this file, rebuild, re-export. A hand edit in LibreOffice puts
+the deck back out of sync and the next rebuild silently drops it.
+
+Run:
+      uv run --with python-pptx scripts/build_deck.py
+
+Every value here comes from design-system/tokens.json, and every band is a level
+checked against .pi/confidentiality.json rather than typed, so a level the policy
+drops stops the build instead of leaving a stale band on a slide.
 
 Geometry is the design system's own 1280x720 reference: the slide is 13.333in by
 7.5in, so px / 96 = inches and px * 0.75 = points, exactly as the tokens say.
@@ -43,20 +54,20 @@ BANNER, EYEBROW, HEADLINE, SUB = 17, 19, 58, 24
 LABEL, VALUE, KICK, MACHINE = 18, 22, 23, 18
 
 # Spacing tokens.
-S1, S2, S3, S4, S5, S6 = 6, 12, 18, 26, 38, 58
+S1, S2, S3, S4, S5, S6 = 8, 14, 24, 36, 64, 88
 
 # --- Page frame ---------------------------------------------------------------
 PAGE_W, PAGE_H = 1280, 720
 GUTTER = S5
-CONTENT_W = PAGE_W - 2 * GUTTER  # 1204
-BAND_H = BANNER + 2 * S2  # 41
-BOTTOM_BAND_Y = PAGE_H - BAND_H  # 679
+CONTENT_W = PAGE_W - 2 * GUTTER  # 1152
+BAND_H = BANNER + 2 * S2  # 45
+BOTTOM_BAND_Y = PAGE_H - BAND_H  # 675
 
-EYEBROW_Y = 78
-HEADLINE_Y = 108
+EYEBROW_Y = 90
+HEADLINE_Y = 120
 HEADLINE_H1 = 70  # a one line headline
 HEADLINE_H2 = 134  # a two line headline
-KICK_RULE_Y = 566
+KICK_RULE_Y = 580
 KICK_Y = KICK_RULE_Y + S4
 
 
@@ -69,18 +80,25 @@ def rgb(hex_string):
     return RGBColor.from_string(hex_string.upper())
 
 
-# --- Band strings, derived from the policy ------------------------------------
+# --- Band strings, checked against the policy ---------------------------------
 def load_policy():
     return json.loads((ROOT / ".pi" / "confidentiality.json").read_text())
 
 
 def band_text(policy, level):
-    """PUBLIC  //  CLEARED: GOOGLE, ... , ordered by clearance then name."""
-    levels = policy["levels"]
-    need = levels.index(level)
-    cleared = [(levels.index(c), p) for p, c in policy["providers"].items() if levels.index(c) >= need]
-    names = ", ".join(p.upper() for _, p in sorted(cleared))
-    return f"{level.upper()}  //  CLEARED: {names}"
+    """PUBLIC, CONFIDENTIAL, RESTRICTED. The level alone.
+
+    The cleared providers are the subject of the routing slide, where they carry an
+    argument.
+    Repeating them on all eighteen bands said the same thing eighteen times and left
+    a line of small caps long enough to read as a sentence, which is clutter.
+
+    The policy still decides what a level is, so a level this deck names and the
+    policy does not have stops the build instead of reaching a slide.
+    """
+    if level not in policy["levels"]:
+        raise SystemExit(f"band level {level!r} is not in .pi/confidentiality.json")
+    return level.upper()
 
 
 # --- Primitives ---------------------------------------------------------------
@@ -198,16 +216,16 @@ def serif_run(text, size, color=INK_900, bold=False):
 
 # --- The slides ---------------------------------------------------------------
 def slide_bind(prs, policy):
-    """1. The pain. No solution anywhere on this page."""
+    """1. The stakes. No solution anywhere on this page."""
     slide = new_slide(prs, policy, "restricted")
-    eyebrow(slide, "The bind")
-    headline(slide, "The data that needs an agent is the data you cannot send", lines=2)
+    eyebrow(slide, "The problem")
+    headline(slide, "Ask an agent about the plant, and the plant leaves the EU", lines=2)
 
-    body_y = 330
+    body_y = 342
     col_w = (CONTENT_W - S6) // 2
     right_x = GUTTER + col_w + S6
 
-    y = field_label(slide, GUTTER, body_y, col_w, "What is in the folder")
+    y = field_label(slide, GUTTER, body_y, col_w, "What the agent reads")
     textbox(slide, GUTTER, y, col_w, 150, [
         mono_run("sensordata/unit_01.csv\n", INK_600, size=VALUE),
         mono_run("...\n", INK_400, size=VALUE),
@@ -220,17 +238,131 @@ def slide_bind(prs, policy):
         serif_run("Throughput.\nRecipe.\nEfficiency.", VALUE + 4),
     ], line_spacing=1.45)
 
-    kick(slide, "So the operator picks one: hand the plant's fingerprint to a US API, "
-                "or go without the agent.")
+    kick(slide, "For a plant the country cannot do without, that is a defence risk, "
+                "not an IT policy question.")
+
+
+# --- The map: jurisdiction on the x axis, one rule per data path ---------------
+MAP_LABEL_Y = 226
+MAP_RULE_Y = 256
+MAP_BOTTOM = 560
+MAP_BORDERS = (524, 864)  # operator's environment | EU | outside the EU
+MAP_REGIONS = (("Operator's environment", GUTTER), ("EU", MAP_BORDERS[0] + S3),
+               ("Outside the EU", MAP_BORDERS[1] + S3))
+
+
+def dot(slide, cx, cy, fill, d=14):
+    shape = slide.shapes.add_shape(MSO_SHAPE.OVAL, px(cx - d / 2), px(cy - d / 2), px(d), px(d))
+    shape.fill.solid()
+    shape.fill.fore_color.rgb = rgb(fill)
+    shape.line.fill.background()
+    shape.shadow.inherit = False
+    return shape
+
+
+def path_line(slide, x1, x2, y, fill, thickness=6):
+    """A data path: a thick rule in the colour of the data's level, a dot at each end."""
+    rect(slide, x1, y - thickness // 2, x2 - x1, thickness, fill)
+    dot(slide, x1, y, fill)
+    dot(slide, x2, y, fill)
+
+
+def map_body(slide):
+    """Three regions separated by hairlines. Slides 2 and 3 share it, so the geometry
+    of the before and the after is identical by construction."""
+    for text, x in MAP_REGIONS:
+        textbox(slide, x, MAP_LABEL_Y, 320, LABEL + 6,
+                [(text.upper(), MONO, LABEL, INK_400, False, 0.16)])
+    hairline(slide, MAP_RULE_Y)
+    for x in MAP_BORDERS:
+        rect(slide, x, MAP_RULE_Y, 1, MAP_BOTTOM - MAP_RULE_Y, RULE)
+    textbox(slide, GUTTER, 280, 440, 30,
+            [mono_run("> what is wrong with unit_06?", INK_600, size=LABEL)])
+
+
+def slide_today(prs, policy):
+    """2. The example, before. One raw file, one question, two borders, no check."""
+    slide = new_slide(prs, policy, "restricted")
+    eyebrow(slide, "Today")
+    headline(slide, "The rows go wherever the model is")
+    map_body(slide)
+
+    y = 372
+    path_line(slide, GUTTER + 8, PAGE_W - GUTTER - 8, y, LEVEL_COLOR["restricted"])
+    textbox(slide, GUTTER, y + 22, 440, 34,
+            [mono_run("sensordata/unit_06.csv", INK_900, bold=True, size=VALUE)])
+    textbox(slide, GUTTER, y + 58, 440, 60,
+            [mono_run("810 samples x 52 tags, raw\n316 KB", INK_600, size=LABEL)], line_spacing=1.4)
+
+    rx = MAP_BORDERS[1] + S3
+    rw = PAGE_W - GUTTER - rx
+    textbox(slide, rx, y + 22, rw, 34, [
+        mono_run("google ", INK_900, bold=True, size=VALUE),
+        mono_run("[public]", LEVEL_COLOR["public"], size=VALUE),
+    ])
+    textbox(slide, rx, y + 58, rw, 70,
+            [serif_run("No record of what left, to which model, or why.", LABEL + 1, INK_600)],
+            line_spacing=1.4)
+
+    kick(slide, "Nothing on this path asked whether it should happen, and nothing wrote down that it did.")
+
+
+def slide_broker(prs, policy):
+    """3. The example, after. Same map. The raw rows stop on the machine, the derived
+    statistics stop in the EU, and the right hand region holds only a refusal."""
+    slide = new_slide(prs, policy, "public")
+    eyebrow(slide, "With the broker")
+    headline(slide, "The label decides how far anything goes")
+    map_body(slide)
+
+    y1 = 340
+    path_line(slide, GUTTER + 8, 300, y1, LEVEL_COLOR["restricted"])
+    textbox(slide, GUTTER, y1 + 22, 456, 34, [
+        mono_run("restricted-plant/", INK_900, bold=True, size=VALUE),
+        mono_run("  restricted", LEVEL_COLOR["restricted"], bold=True, size=VALUE),
+    ])
+    textbox(slide, GUTTER, y1 + 58, 456, 30, [
+        mono_run("lemonade, ollama", INK_900, size=LABEL),
+        serif_run("   the raw rows stay here", LABEL + 1, INK_600),
+    ])
+
+    y2 = 460
+    path_line(slide, GUTTER + 8, 700, y2, LEVEL_COLOR["confidential"])
+    textbox(slide, GUTTER, y2 + 22, 456, 34,
+            [mono_run("confidential-plant/reports/", INK_900, bold=True, size=VALUE)])
+    textbox(slide, GUTTER, y2 + 58, 456, 30, [
+        mono_run("confidential", LEVEL_COLOR["confidential"], bold=True, size=LABEL),
+        serif_run("   8.6 KB of statistics, no rows", LABEL + 1, INK_600),
+    ])
+    ex = MAP_BORDERS[0] + S3
+    textbox(slide, ex, y2 + 22, 320, 34, [
+        mono_run("verda ", INK_900, bold=True, size=VALUE),
+        mono_run("[confidential] ", LEVEL_COLOR["confidential"], size=VALUE),
+        mono_run("\u2713", LEVEL_COLOR["public"], size=VALUE),
+    ])
+
+    rx = MAP_BORDERS[1] + S3
+    rw = PAGE_W - GUTTER - rx
+    textbox(slide, rx, y1 - 4, rw, 34, [
+        mono_run("google ", INK_900, bold=True, size=LABEL),
+        mono_run("[public]", LEVEL_COLOR["public"], size=LABEL),
+        mono_run(" \u2717 no access", LEVEL_COLOR["restricted"], size=LABEL),
+    ])
+    textbox(slide, rx, y1 + 30, rw, 70,
+            [serif_run("Not the rows, not the statistics, not a file listing.", LABEL + 1, INK_600)],
+            line_spacing=1.4)
+
+    kick(slide, "Raw rows never leave the machine. Derived statistics stop in the EU. "
+                "The question still gets answered.")
 
 
 def slide_injection(prs, policy):
-    """2. The pain, again, and this time it is the data doing the talking."""
+    """Not presented since 2026-09-20: the injection is beat 2 of the live demo."""
     slide = new_slide(prs, policy, "confidential")
     eyebrow(slide, "And if you send it anyway")
     headline(slide, "The file gives the orders")
 
-    block_x, block_y, block_w, block_h = GUTTER, 205, 700, 345
+    block_x, block_y, block_w, block_h = GUTTER, 217, 700, 345
     machine_block(slide, block_x, block_y, block_w, block_h, [
         mono_run("# Shift handover, line 3, night shift\n", INK_400, size=15),
         mono_run("\n", INK_600, size=15),
@@ -263,9 +395,9 @@ def slide_injection(prs, policy):
 
 
 def slide_routing(prs, policy):
-    """3. The contribution. This is the slide the pitch is built on."""
+    """4. The contribution. This is the slide the pitch is built on."""
     slide = new_slide(prs, policy, "public")
-    eyebrow(slide, "What we built")
+    eyebrow(slide, "The rule")
     bottom = headline(slide, "The folder decides which model sees it")
     sub(slide, "The broker compares the folder's label with the provider's clearance, "
                "on every tool call.", bottom + S4)
@@ -280,7 +412,7 @@ def slide_routing(prs, policy):
         ("demo/confidential-plant/", "confidential", "the derived fingerprints the audit produced",
          "mistral, verda, lemonade, ollama", "the Finnish endpoint may, Google may not"),
     ]
-    y = 315
+    y = 327
     for path, level, what, who, note in rows:
         textbox(slide, GUTTER, y, left_w, 34, [
             mono_run(path, INK_900, bold=True, size=VALUE),
@@ -310,7 +442,7 @@ def slide_demo(prs, policy):
         "the handover note tries again, and fails three times over",
         "verda answers the audit question, from derived reports only",
     ]
-    y = 240
+    y = 252
     for index, beat in enumerate(beats, 1):
         textbox(slide, GUTTER, y, 60, 60, [serif_run(str(index), 44, INK_400, bold=True)])
         textbox(slide, GUTTER + 66, y + 8, CONTENT_W - 66, 44, [serif_run(beat, 26)])
@@ -328,7 +460,7 @@ def slide_evidence(prs, policy):
         bottom + S4)
 
     status = 15
-    machine_block(slide, GUTTER, 268, CONTENT_W, 58, [
+    machine_block(slide, GUTTER, 280, CONTENT_W, 58, [
         mono_run("● ", LEVEL_COLOR["restricted"], size=status),
         mono_run("confidential-plant ", size=status),
         mono_run("[confidential]", LEVEL_COLOR["confidential"], size=status),
@@ -344,7 +476,7 @@ def slide_evidence(prs, policy):
 
     col_w = (CONTENT_W - S6) // 2
     right_x = GUTTER + col_w + S6
-    y = 360
+    y = 372
     left_y = field_label(slide, GUTTER, y, col_w, "It fails closed")
     textbox(slide, GUTTER, left_y, col_w, 90, [serif_run(
         "No folder, no policy, no known provider: every file tool refuses, and names the check.",
@@ -371,7 +503,7 @@ def slide_team(prs, policy):
         ("Tomi Hirviniemi", "The sensor audit: the analysis skills, the reports, the Verda endpoint."),
     ]
     col_w = (CONTENT_W - 2 * S6) // 3
-    y = 300
+    y = 312
     for index, (name, role) in enumerate(people):
         x = GUTTER + index * (col_w + S6)
         hairline(slide, y, x, col_w)
@@ -384,98 +516,14 @@ def slide_team(prs, policy):
     ])
 
 
-def slide_audit(prs, policy):
-    """Appendix. The sensor finding, if a judge wants the detail."""
-    slide = new_slide(prs, policy, "restricted")
-    eyebrow(slide, "Appendix")
-    bottom = headline(slide, "Broken sensor, or broken process?")
-    sub(slide, "A dead sensor and a sick plant look identical on a dashboard, and they need opposite "
-               "responses.", bottom + S4)
-
-    y = 300
-    textbox(slide, GUTTER, y, CONTENT_W, 26, [mono_run("unit_06", INK_400, size=LABEL)])
-    hairline(slide, y + 30)
-    textbox(slide, GUTTER, y + 48, CONTENT_W, 110, [
-        mono_run("tag_19", LEVEL_COLOR["restricted"], bold=True, size=VALUE + 4),
-        serif_run(" freezes at 22.57 from sample 500 to 619, while ", VALUE + 4),
-        mono_run("tag_08", LEVEL_COLOR["public"], bold=True, size=VALUE + 4),
-        serif_run(", an exact rescaling of it, keeps moving.", VALUE + 4),
-    ], line_spacing=1.2)
-
-    textbox(slide, GUTTER, y + 140, CONTENT_W, 60, [serif_run(
-        "A range alarm sees nothing here: 22.57 is a perfectly plausible reading. "
-        "Twenty-seven tags across the eighteen files are marked indeterminate, with the "
-        "confidence stated rather than guessed.", LABEL + 2, INK_600)], line_spacing=1.4)
-
-    kick(slide, "The plant did not change. The instrument died.")
-
-
-def slide_brief(prs, policy):
-    """Appendix. The brief, line by line."""
-    slide = new_slide(prs, policy, "public")
-    eyebrow(slide, "Appendix")
-    headline(slide, "Where the brief is answered")
-
-    rows = [
-        ("Infer the meaning of each unlabelled sensor", "52 tags typed from statistics and lagged correlation alone"),
-        ("Check the data before reasoning about the process", "Instrument faults reported separately in 12 of the 18 files"),
-        ("Detect drift toward a fault state", "Sustained oscillation in unit_04 and unit_18"),
-        ("Rank the sensors responsible", "A driver column per event, with the lag that implicates it"),
-        ("Separate inference, assumption and uncertainty", "27 tags marked indeterminate, with confidences stated"),
-        ("Raw data never leaves the environment", "Enforced per tool call by the broker, not promised in a prompt"),
-        ("Generalise beyond sensor data", "The same broker runs over an HR folder unchanged"),
-    ]
-    left_w = 520
-    right_x = GUTTER + left_w + S6
-    right_w = PAGE_W - GUTTER - right_x
-    y = 205
-    for left, right in rows:
-        textbox(slide, GUTTER, y, left_w, 40, [serif_run(left, LABEL, INK_900)], line_spacing=1.25)
-        textbox(slide, right_x, y, right_w, 40, [serif_run(right, LABEL, INK_600)], line_spacing=1.25)
-        y += 52
-        if (left, right) != rows[-1]:
-            hairline(slide, y - 12)
-
-    kick(slide, "Outputs 1 to 4 and 8 of the brief, plus the no egress bonus.")
-
-
-def slide_questions(prs, policy):
-    """Appendix. The four questions we expect."""
-    slide = new_slide(prs, policy, "public")
-    eyebrow(slide, "Appendix")
-    headline(slide, "Anticipated questions")
-
-    pairs = [
-        ("What happens when the model is wrong?",
-         "The model never makes the access decision. A wrong model writes a bad sentence, not a leak. "
-         "Every refusal is deterministic code with a stated reason."),
-        ("How does this scale?",
-         "The check is per tool call: one path resolution and two comparisons on the level ladder. "
-         "Its cost does not grow with the volume of data."),
-        ("Where is the data actually stored?",
-         "It never moves. The folder is on the operator's machine, and only a provider cleared at or "
-         "above its label sees any of it."),
-        ("Is this GDPR?",
-         "No. The traces are simulated, so there are no data subjects. The argument is trade secret "
-         "and operational confidentiality."),
-    ]
-    y = 196
-    for question, answer in pairs:
-        textbox(slide, GUTTER, y, CONTENT_W, 30, [serif_run(question, SUB, INK_900, bold=True)])
-        textbox(slide, GUTTER, y + 32, CONTENT_W, 60, [serif_run(answer, LABEL, INK_600)], line_spacing=1.4)
-        y += 92
-
-    kick(slide, "The limits are on slide 5, said out loud, before a judge has to find them.")
-
-
 def main():
     policy = load_policy()
     prs = Presentation()
     prs.slide_width = px(PAGE_W)
     prs.slide_height = px(PAGE_H)
 
-    for builder in (slide_bind, slide_injection, slide_routing, slide_demo,
-                    slide_evidence, slide_team, slide_audit, slide_brief, slide_questions):
+    for builder in (slide_bind, slide_today, slide_broker, slide_routing,
+                    slide_demo, slide_evidence, slide_team):
         builder(prs, policy)
 
     prs.save(OUT)
