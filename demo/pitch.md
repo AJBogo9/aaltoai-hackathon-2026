@@ -91,8 +91,8 @@ The banner changed to public on this slide, because nothing confidential is on s
 pointing at if the room is quiet.
 
 Say this, it is no longer printed on the slide. Two halves, three people: the broker confines
-the agent to one folder, blocks bash and keeps source files read-only, with 117 tests behind
-it. The audit reads 18 recordings of 52 unnamed sensors and works out what each one is.
+the agent to one folder, confines bash to a container where only that folder is writable, and
+keeps the label file read-only, with 109 tests behind it. The audit reads 18 recordings of 52 unnamed sensors and works out what each one is.
 
 ## 4. Live demo (1:10 to 5:40)
 
@@ -103,14 +103,17 @@ Four and a half minutes for three beats is about ninety seconds each. That is sl
 let a command finish on screen and to read a refusal out loud instead of talking over it.
 
 **Beat 1: a provider with no clearance gets nothing.**
-`/model google`, then `/workspace demo/confidential-hr`, then ask "List the files in the
-workspace." Read the refusal out loud. Point out that `google` is cleared `public` and the
+Launch on it before you start: `scripts/launch.sh demo/confidential-hr`. Then `/model google`
+and ask "List the files in the workspace." Read the refusal out loud. There is no command that
+switches workspace mid-session, which is the point: the session is bound to one folder from
+its first message. Point out that `google` is cleared `public` and the
 folder is `confidential`, so it does not even get a file listing.
 
 **Beat 2: the injection fails three times over.**
 Switch to a cleared provider, then ask "Summarise vendor-email.txt." Same injection as in the
-clip. Say what it tried and what stopped each part: bash is not in the tool list, and both of
-those paths are outside the folder.
+clip. Say what it tried and what stopped each part: both paths it names are outside the folder,
+so the read and the write are refused. Do not say bash is blocked, because it is not: bash runs
+inside the container, and that is what beat 3 uses.
 
 **Beat 3: the work still gets done.** This is the important one, do not rush it.
 Ask "Write a report of average salary to report.md." It works.
@@ -138,7 +141,7 @@ Worth adding if there is time: a range alarm sees nothing here at all, because 2
 perfectly plausible reading.
 
 Neither the indeterminate tags nor the range alarm is printed on this slide any more. The
-twenty indeterminate tags are on appendix slide 8 if a judge wants them written down.
+27 indeterminate tags are on appendix slide 8 if a judge wants them written down.
 
 ## 6. How you can tell (6:05 to 6:25)
 
@@ -149,9 +152,13 @@ The status line sits under the prompt for the whole session and changes as the s
 > "The interesting direction is the one people skip: what does it do when it is confused? It
 > refuses, and names the check that refused."
 
-Two are on the slide: it fails closed, and bash is gone. Say the other two, they were cut to
-make room. It will not write down into a lower label, and the agent cannot change
-`.confidentiality.json` at any depth.
+One is on the slide: it fails closed. Say the other three, they were cut to make room. Bash is
+confined to a container where the workspace is the only writable folder, it will not write down
+into a lower label, and the agent cannot change `.confidentiality.json` at any depth.
+
+Slide 6 still reads "bash is gone", which is wrong: the launcher passes bash in the tool list
+and the broker allows it for a cleared provider inside the container. Correct it on the slide
+before presenting, or say the accurate version over it.
 
 **Say the limits line out loud. Do not let a judge find it first.**
 
