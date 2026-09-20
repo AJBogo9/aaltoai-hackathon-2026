@@ -90,8 +90,10 @@ fi
 if [[ "$REPO/" == "${WS%/}/"* ]]; then
   die "The workspace must not contain the project folder ($REPO)."
 fi
-for protected in .pi .git .devcontainer .claude; do
-  if [[ "$WS/" == "$REPO/$protected/"* ]]; then
+# The workspace is mounted read/write, so a labelled folder inside any of these would hand the agent the code
+# that launches it, builds its image, or runs in CI.
+for protected in .pi .git .github .devcontainer .claude scripts infra; do
+  if [[ "$WS/" == "$REPO/$protected/"* || "$WS" == "$REPO/$protected" ]]; then
     die "The workspace must not be inside $protected."
   fi
 done
